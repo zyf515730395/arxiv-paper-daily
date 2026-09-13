@@ -74,7 +74,18 @@
     "2609.10363": "|**2026-09-09**|**SceneHI: High-Resolution 3D-Consistent Scene Texturing with Controllable Illumination**|Athanasios Tragakis et.al.|[2609.10363](https://arxiv.org/abs/2609.10363)|null|\n",
     "2609.10376": "|**2026-09-09**|**Shape-guided Gaussian Splatting for Sparse-View X-ray 3D Reconstruction**|Pranav Poudel et.al.|[2609.10376](https://arxiv.org/abs/2609.10376)|null|\n",
     "2609.10456": "|**2026-09-09**|**Advanced Brain Tissue Imaging with Data-Consistent Diffusion Priors in Laminographic X-Ray Nanoimaging**|Wenxuan Fang et.al.|[2609.10456](https://arxiv.org/abs/2609.10456)|null|\n",
-    "2609.10531": "|**2026-09-09**|**Guiding Image-to-3D Generation with Test-Time Partial Observations**|Jerred Chen et.al.|[2609.10531](https://arxiv.org/abs/2609.10531)|null|\n"
+    "2609.10531": "|**2026-09-09**|**Guiding Image-to-3D Generation with Test-Time Partial Observations**|Jerred Chen et.al.|[2609.10531](https://arxiv.org/abs/2609.10531)|null|\n",
+    "2609.10643": "|**2026-09-09**|**Zero-shot rib design: merging training-free generative prior with topology optimization**|Yongmin Kwon et.al.|[2609.10643](https://arxiv.org/abs/2609.10643)|null|\n",
+    "2609.11129": "|**2026-09-10**|**ReconPlusGen: Injecting Reconstruction Prior into Multi-view 3D Generation through Noise Inversion and Modulation**|Jiarui Liu et.al.|[2609.11129](https://arxiv.org/abs/2609.11129)|null|\n",
+    "2609.11223": "|**2026-09-10**|**Tri-DehazeGS: Scene--Medium Decoupled Gaussian Splatting with Transmittance-Aware Optimization**|Kui Jiang et.al.|[2609.11223](https://arxiv.org/abs/2609.11223)|null|\n",
+    "2609.11434": "|**2026-09-10**|**Hologram Representation via Quadratic Phase Gaussian Splatting**|Haolong Wang et.al.|[2609.11434](https://arxiv.org/abs/2609.11434)|null|\n",
+    "2609.11439": "|**2026-09-10**|**Multi-Modal Controlled Coherent Motion Generation**|Yifei Liu et.al.|[2609.11439](https://arxiv.org/abs/2609.11439)|null|\n",
+    "2609.11472": "|**2026-09-10**|**BridgeMatch: Conditional Transport Bridges in Matching Matrix Space for 3D Deformable Registration**|Qianliang Wu et.al.|[2609.11472](https://arxiv.org/abs/2609.11472)|null|\n",
+    "2609.11499": "|**2026-09-10**|**Recursive Code World Models: Building Complex Worlds through Recursive Scene Programs**|Zhiqi Li et.al.|[2609.11499](https://arxiv.org/abs/2609.11499)|null|\n",
+    "2609.11506": "|**2026-09-10**|**UBone3D: Physics-Rectified Conditional Flow Matching for Anatomical 3D Shape Completion from Ultrasound**|Weiying Chen et.al.|[2609.11506](https://arxiv.org/abs/2609.11506)|null|\n",
+    "2609.11722": "|**2026-09-10**|**Revisiting Avatar-As-Image: High-Fidelity Registration is All You Need**|Margaret Kostyrko et.al.|[2609.11722](https://arxiv.org/abs/2609.11722)|null|\n",
+    "2609.11886": "|**2026-09-10**|**Guided Super-Resolution of Digital Elevation Models with Diffusion-Based Image Generators**|Armand Mihai Nicolicioiu et.al.|[2609.11886](https://arxiv.org/abs/2609.11886)|null|\n",
+    "2609.11894": "|**2026-09-10**|**3D Point Splatting for mmWave Radar Novel View Synthesis**|Adnan Armouti et.al.|[2609.11894](https://arxiv.org/abs/2609.11894)|null|\n"
   },
   "3D Generation": {
     "2501.01722": "|**2025-01-03**|**AR4D: Autoregressive 4D Generation from Monocular Videos**|Hanxin Zhu et.al.|[2501.01722](http://arxiv.org/abs/2501.01722)|null|\n",
@@ -1263,7 +1274,9 @@
     "2609.05397": "|**2026-09-04**|**CrossDepth: Geometry-Constrained Attention for Generalizable Multi-View Surround Depth Estimation**|Samer Abualhanud et.al.|[2609.05397](https://arxiv.org/abs/2609.05397)|null|\n",
     "2609.06665": "|**2026-09-06**|**TransNormal-2: Geometry-Grounded Rectified Flow with Edge-Aware Decoding for Precise Normal Estimation**|Mingwei Li et.al.|[2609.06665](https://arxiv.org/abs/2609.06665)|null|\n",
     "2609.06809": "|**2026-09-06**|**Disparity Has a Sign: Stereo Matching Beyond the Zero-Disparity Plane**|Jian Shi et.al.|[2609.06809](https://arxiv.org/abs/2609.06809)|null|\n",
-    "2609.08084": "|**2026-09-08**|**Marigold V2: Revisiting Diffusion Transformers for Monocular Depth Estimation**|Igor Pavlovic et.al.|[2609.08084](https://arxiv.org/abs/2609.08084)|null|\n"
+    "2609.08084": "|**2026-09-08**|**Marigold V2: Revisiting Diffusion Transformers for Monocular Depth Estimation**|Igor Pavlovic et.al.|[2609.08084](https://arxiv.org/abs/2609.08084)|null|\n",
+    "2609.10756": "|**2026-09-09**|**GRADE: Single-Frame Generative Radar Depth Estimation Under Visual Degradation**|Bin Zhao et.al.|[2609.10756](https://arxiv.org/abs/2609.10756)|null|\n",
+    "2609.11079": "|**2026-09-10**|**RIDE: Relocalization-Informed Depth Estimation with 3D Gaussian Splatting**|Jiarong Lian et.al.|[2609.11079](https://arxiv.org/abs/2609.11079)|null|\n"
   },
   "Image Gen&Edit": {
     "2608.30081": "|**2026-09-02**|**Tracing Generated Samples to Training-Data Clusters in Flow-Matching Models**|Rania Briq et.al.|[2608.30081](https://arxiv.org/abs/2608.30081)|null|\n",
@@ -1316,7 +1329,15 @@
     "2609.08282": "|**2026-09-08**|**Dreaming in Flow: Generative Grounding Feedback for Self-Evolving Unified Multimodal Models**|Ke Hao et.al.|[2609.08282](https://arxiv.org/abs/2609.08282)|null|\n",
     "2609.09486": "|**2026-09-08**|**Efficient Fairness Auditing Across Guidance Scales in Text-to-Image Diffusion Models via Causal Abstraction**|Nabila Tasfiha Rahman et.al.|[2609.09486](https://arxiv.org/abs/2609.09486)|null|\n",
     "2609.09905": "|**2026-09-09**|**FlowCPO: A Unified Divergence View of Preference Alignment for Flow Models**|Yansen Han et.al.|[2609.09905](https://arxiv.org/abs/2609.09905)|null|\n",
-    "2609.09909": "|**2026-09-09**|**Interpreting Object-Dependent Concept Brittleness in Text-to-Image Diffusion Models**|Yifan Yuan et.al.|[2609.09909](https://arxiv.org/abs/2609.09909)|null|\n"
+    "2609.09909": "|**2026-09-09**|**Interpreting Object-Dependent Concept Brittleness in Text-to-Image Diffusion Models**|Yifan Yuan et.al.|[2609.09909](https://arxiv.org/abs/2609.09909)|null|\n",
+    "2609.10723": "|**2026-09-09**|**AcFlow: Controlling Text-to-Image Diffusion Transformers via Learned Conditional Activation Flow**|Junran Wang et.al.|[2609.10723](https://arxiv.org/abs/2609.10723)|null|\n",
+    "2609.10811": "|**2026-09-09**|**Overpainting: Localized Context-aware Diffusion Image Editing**|Sam Sartor et.al.|[2609.10811](https://arxiv.org/abs/2609.10811)|null|\n",
+    "2609.11317": "|**2026-09-10**|**Mi-Ripple: Restoring Images Degraded by Iterative AI Editing**|Jiayin Chen et.al.|[2609.11317](https://arxiv.org/abs/2609.11317)|null|\n",
+    "2609.11519": "|**2026-09-10**|**Learning Interaction between Image and Layout Priors for Joint Image-Layout Generation in Design Templates**|Shirong Yang et.al.|[2609.11519](https://arxiv.org/abs/2609.11519)|null|\n",
+    "2609.11673": "|**2026-09-10**|**Multimodal Taxonomic Conditioning for Generative Plankton Imagery**|Daniela Ivanova et.al.|[2609.11673](https://arxiv.org/abs/2609.11673)|null|\n",
+    "2609.11804": "|**2026-09-10**|**Logit Refiner: Improving Visual Autoregressive Models via Intra-Scale Dependency Modeling**|Meimingwei Li et.al.|[2609.11804](https://arxiv.org/abs/2609.11804)|null|\n",
+    "2609.11842": "|**2026-09-10**|**Model-Aware Schedules Improve Generation via Fiberwise Optimal Transport**|Luyi Jia et.al.|[2609.11842](https://arxiv.org/abs/2609.11842)|null|\n",
+    "2609.11929": "|**2026-09-10**|**SenseNova-U1.5: Towards Native Unified Visual Intelligence**|Haiwen Diao et.al.|[2609.11929](https://arxiv.org/abs/2609.11929)|null|\n"
   },
   "Image Generation": {
     "2409.18128": "|**2024-09-26**|**FlowTurbo: Towards Real-time Flow-Based Image Generation with Velocity Refiner**|Wenliang Zhao et.al.|[2409.18128](http://arxiv.org/abs/2409.18128)|**[link](https://github.com/shiml20/flowturbo)**|\n",
@@ -6674,7 +6695,8 @@
     "2608.24109": "|**2026-08-25**|**ExMesh++: From Multi-View Images to Relightable UV-PBR Mesh Assets via Topology-Adaptive Reconstruction and Decomposition**|Chuanjin Fan et.al.|[2608.24109](https://arxiv.org/abs/2608.24109)|null|\n",
     "2609.00901": "|**2026-09-02**|**HELIOS: From midnight to noon, continuous outdoor urban scene relighting**|Hala Djeghim et.al.|[2609.00901](https://arxiv.org/abs/2609.00901)|null|\n",
     "2609.07414": "|**2026-09-07**|**RelightFormer: Feed-forward Generative Transformer for Multiview Object Relighting**|Hejun Wang et.al.|[2609.07414](https://arxiv.org/abs/2609.07414)|null|\n",
-    "2609.09884": "|**2026-09-09**|**Albedo Estimation via Latent Bridge Matching**|Carme Corbi et.al.|[2609.09884](https://arxiv.org/abs/2609.09884)|null|\n"
+    "2609.09884": "|**2026-09-09**|**Albedo Estimation via Latent Bridge Matching**|Carme Corbi et.al.|[2609.09884](https://arxiv.org/abs/2609.09884)|null|\n",
+    "2609.11430": "|**2026-09-10**|**Gaussian Light Transport**|Patrick Attimont et.al.|[2609.11430](https://arxiv.org/abs/2609.11430)|null|\n"
   },
   "Video Gen&Edit": {
     "2608.29621": "|**2026-08-30**|**CineForge: Self-Improving Agents for Long-Horizon Video Generation**|Junxiang Liu et.al.|[2608.29621](https://arxiv.org/abs/2608.29621)|null|\n",
@@ -6701,7 +6723,12 @@
     "2609.08496": "|**2026-09-08**|**SignRefine: Adapting Foundational Video Models for Sign Language Generation**|Anton Pelykh et.al.|[2609.08496](https://arxiv.org/abs/2609.08496)|null|\n",
     "2609.08505": "|**2026-09-08**|**Temporal State Transport in Video Generation: Diagnosing and Correcting Spectral Imbalance**|Luyao Tang et.al.|[2609.08505](https://arxiv.org/abs/2609.08505)|null|\n",
     "2609.09123": "|**2026-09-08**|**Mask Forcing: Improving Autoregressive Video Diffusion Distillation via Dual-Noise Masking Rollout**|Zhuoran Zhao et.al.|[2609.09123](https://arxiv.org/abs/2609.09123)|null|\n",
-    "2609.10317": "|**2026-09-09**|**Decoupled Self-Forcing Distillation for Streaming Talking Head Generation**|Yanru An et.al.|[2609.10317](https://arxiv.org/abs/2609.10317)|null|\n"
+    "2609.10317": "|**2026-09-09**|**Decoupled Self-Forcing Distillation for Streaming Talking Head Generation**|Yanru An et.al.|[2609.10317](https://arxiv.org/abs/2609.10317)|null|\n",
+    "2609.10943": "|**2026-09-10**|**CamPilot: A Multi-Agent Cinematic Assistant for Camera-Controlled Movie Generation**|Yang Wu et.al.|[2609.10943](https://arxiv.org/abs/2609.10943)|null|\n",
+    "2609.11242": "|**2026-09-10**|**From Evaluation to Enhancement: Benchmarking and Improving Think-with-Video Reasoning for Video Generative Models**|Meng Luo et.al.|[2609.11242](https://arxiv.org/abs/2609.11242)|null|\n",
+    "2609.11265": "|**2026-09-10**|**Uncertainty DMD: Restoring Diversity in Few-Step Autoregressive Video Distillation**|Zixuan Duan et.al.|[2609.11265](https://arxiv.org/abs/2609.11265)|null|\n",
+    "2609.11507": "|**2026-09-10**|**Harnessing Intrinsic Subject-Aware Attention for Controllable Multi-Subject Video Generation**|Niange Yu et.al.|[2609.11507](https://arxiv.org/abs/2609.11507)|null|\n",
+    "2609.11638": "|**2026-09-10**|**Vidu S2: Real-Time Interactive, Editable, and Spatial Video Generation**|Jintao Zhang et.al.|[2609.11638](https://arxiv.org/abs/2609.11638)|null|\n"
   },
   "Video Generation": {
     "2409.18964": "|**2024-09-27**|**PhysGen: Rigid-Body Physics-Grounded Image-to-Video Generation**|Shaowei Liu et.al.|[2409.18964](http://arxiv.org/abs/2409.18964)|**[link](https://github.com/stevenlsw/physgen)**|\n",
@@ -8794,6 +8821,11 @@
     "2609.09941": "|**2026-09-09**|**HaWMPO: Hallucination-Aware World Model-based Policy Optimization for Generalist Robot Policy**|Zengjue Chen et.al.|[2609.09941](https://arxiv.org/abs/2609.09941)|null|\n",
     "2609.10464": "|**2026-09-09**|**Semigroup-JEPA: Latent Dynamics Consistency for Zero-Shot Physics Generalization**|Andy Zeyi Liu et.al.|[2609.10464](https://arxiv.org/abs/2609.10464)|null|\n",
     "2609.10506": "|**2026-09-09**|**DUET-DINO: Simultaneous Cross-View World Modeling for Latent Planning in Robot Manipulation**|Nisarga Nilavadi et.al.|[2609.10506](https://arxiv.org/abs/2609.10506)|null|\n",
-    "2609.10540": "|**2026-09-09**|**Programmable World Model**|Zheng-Hui Huang et.al.|[2609.10540](https://arxiv.org/abs/2609.10540)|null|\n"
+    "2609.10540": "|**2026-09-09**|**Programmable World Model**|Zheng-Hui Huang et.al.|[2609.10540](https://arxiv.org/abs/2609.10540)|null|\n",
+    "2609.10954": "|**2026-09-10**|**Measuring the Value of World-Model Updates: A Counterfactual Utility Protocol for Continual Adaptation**|Anqi Peter Li et.al.|[2609.10954](https://arxiv.org/abs/2609.10954)|null|\n",
+    "2609.11445": "|**2026-09-10**|**FARM: Reading Failure Signals from the Internal Predictive States of a Frozen Robotic World Model**|Haoran Pei et.al.|[2609.11445](https://arxiv.org/abs/2609.11445)|null|\n",
+    "2609.11548": "|**2026-09-10**|**World in World: Explore the World with World Models**|Chenxi Song et.al.|[2609.11548](https://arxiv.org/abs/2609.11548)|null|\n",
+    "2609.11561": "|**2026-09-10**|**Memory as Plans: World-Action Modeling with Memory-Grounded Planning**|Sizhe Zhao et.al.|[2609.11561](https://arxiv.org/abs/2609.11561)|null|\n",
+    "2609.11922": "|**2026-09-10**|**A Chip-scale Space-time Multiplexed Gaussian Boson Sampling Processor Beyond 10,000 Photons**|Yu-Xuan Fu et.al.|[2609.11922](https://arxiv.org/abs/2609.11922)|null|\n"
   }
 }

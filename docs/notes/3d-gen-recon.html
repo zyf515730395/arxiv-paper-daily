@@ -13,6 +13,632 @@
       <h1>3D Gen&amp;Recon · 论文要点</h1>
     </header>
     <div class="summary-topic-list">
+    <article class="summary-article summary-topic-entry" id="summary-2608.16863" data-arxiv-id="2608.16863" data-status="ready">
+<h1>[2608.16863] SplatGuide: Geometric Priors from 3D Gaussians for Pose-Free Novel View Synthesis</h1>
+<p><a href="https://arxiv.org/abs/2608.16863" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>SplatGuide 通过复用单一 3D 高斯泼溅（3DGS）场景中的几何、可见性和特征信号，解决了现有无姿态新视角合成（NVS）流水线中信息连接断裂的结构瓶颈，从而实现了无需姿态标注的高质量合成。</p>
+<h2>解决的问题</h2>
+<p>现有无姿态新视角合成（NVS）方法存在结构性信息连接断裂：前馈重建模型虽能生成包含完整几何、每高斯源视图所有权和特征表示的 3D 场景，但现有流水线仅提取其中单一信号（如仅姿态或仅像素渲染）并丢弃其余信息，导致合成质量受限且参考视图选择策略失效。</p>
+<h2>创新点</h2>
+<ul>
+<li>识别出信息连接断裂是无姿态新视角合成（NVS）的结构瓶颈，并提出 SplatGuide，通过桥接来自单一重建 3DGS 场景的渲染图像、每高斯可见性和重建令牌，弥合了扩散生成器与重建输出之间的信息鸿沟。</li>
+<li>引入了一种可见性感知的视图选择器，该选择器将每高斯源视图索引渲染为目标视图投票图，在计算成本极低的情况下，在紧凑上下文预算下显著优于基于姿态和基于时间最近邻的策略。</li>
+<li>在四个基准测试上实现了最先进的无姿态新视角合成性能，在 RealEstate10K 数据集上（给定足够输入视图时）超越了真值姿态基线，并证明了框架的模块化特性，允许零样本替换重建骨干网络以直接受益于前馈重建技术的进步。</li>
+<li>提出利用三种互补信号（几何信号、可见性信号、特征信号）来充分利用单一 3DGS 场景：通过渲染生成像素对齐图像以提供直接几何条件，通过渲染索引生成投票图以实现遮挡感知的参考选择，并通过交叉注意力注入相机和注册令牌以提供场景级上下文。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2603.22782" data-arxiv-id="2603.22782" data-status="ready">
+<h1>[2603.22782] Know3D: Prompting 3D Generation with Knowledge from Vision-Language Models</h1>
+<p><a href="https://arxiv.org/abs/2603.22782" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>Know3D 提出了一种利用视觉语言模型（VLM）的丰富语义知识和常识推理能力来提示 3D 生成的新框架，通过多模态扩散模型作为中间桥梁将语义知识转化为图像空间的结构先验，从而解决单视图 3D 生成中不可控和几何不合理的问题。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>提出 Know3D 框架，利用 VLM 的语义理解和常识推理能力，通过多模态扩散模型将抽象的 VLM 表示转化为图像空间的结构先验，以增强 3D 生成的可控性和合理性。</li>
+<li>针对现有 VLM 模型（如 Qwen-Image-Edit）在空间方向理解（如生成物体背面视图）和主体姿态保持方面的不足，对模型进行了微调以提升空间感知能力和生成稳定性。</li>
+<li>探索了三种将图像空间结构先验注入 3D 生成模型的设计方案（直接使用 MMDiT 完全去噪的 VAE 潜在变量、解码后提取 DINOv3 特征、直接使用 MMDiT 中间层的隐藏状态），并证明直接使用隐藏状态在空间和语义感知上表现最佳。</li>
+<li>在 HY3D-Bench 上的评估表明，Know3D 在语义一致性方面与最先进的方法具有竞争力，并实现了语言可控的未见背面区域生成。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.10938" data-arxiv-id="2608.10938" data-status="ready">
+<h1>[2608.10938] GS-CPE: Unified 6-Degree-of-Freedom Camera Pose Estimation via 3D Gaussian Splatting</h1>
+<p><a href="https://arxiv.org/abs/2608.10938" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>GS-CPE 是一种基于预训练 3D 高斯泼溅（3DGS）场景表示的粗到细视觉定位框架，通过结合检索初始化、几何粗估计和可见性感知的 3DGS 渲染光流细化，实现了统一的 6 自由度相机位姿估计。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种基于预训练 3DGS 场景表示的粗到细视觉定位框架，该框架结合了基于检索的初始化和基于几何的位姿估计。</li>
+<li>引入了一种鲁棒的基于光流（warping-based）的位姿细化方法，通过最小化 3DGS 渲染图像与查询 RGB 图像的对齐误差来优化位姿。</li>
+<li>通过自适应重线性化（adaptive re-linearization）、多尺度优化（multi-scale optimization）以及可见性感知光流掩码（visibility-aware warping mask）显著提升了细化过程的鲁棒性。</li>
+<li>在室内和室外基准数据集以及额外的真实世界数据集上验证了 GS-CPE，展示了其相对于代表性 APR、SCR 和 NRP 基线的一致改进。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.17298" data-arxiv-id="2608.17298" data-status="ready">
+<h1>[2608.17298] 3D Gaussian Accelerated Ray Tracing: Fast training through particle-based backward propagation</h1>
+<p><a href="https://arxiv.org/abs/2608.17298" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种名为 3DGART 的框架，通过引入基于粒子的反向传播方案来解决射线追踪高斯训练中的原子操作竞争瓶颈，从而显著提升了训练速度。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>识别出像素中心化的反向传播中的原子操作竞争是阻碍射线追踪高斯实际训练的主要瓶颈。</li>
+<li>提出了一种基于透视校正投影边界的紧凑中间缓冲区布局，以实现高效存储和检索反向传播所需的值。</li>
+<li>引入了一种基于瓦片 - 高斯映射的粒子中心化反向传播方案，大幅减少了梯度累积的竞争。</li>
+<li>证明 3DGART 的训练速度比 3DGRT 快 4 倍，并将射线追踪高斯训练的速度提升到了与光栅化方法相当的水平。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.17420" data-arxiv-id="2608.17420" data-status="ready">
+<h1>[2608.17420] SPVC: Structured and Panoptic Video Fixing for Cross-Dataset Driving Scene Rendering</h1>
+<p><a href="https://arxiv.org/abs/2608.17420" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>SPVC 是一个结构化且全景式的视频修复框架，旨在通过利用显式的空间信号（如相机姿态、BEV/HD 地图和 3D 边界框）来修复跨数据集驾驶场景渲染中的背景几何失真和前景车辆不一致等伪影。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>提出 SPVC，这是一个可控的视频扩散框架，能够利用显式的相机、地图和边界框条件，同时修复背景渲染伪影和前景车辆插入伪影。</li>
+<li>构建了可扩展的配对训练数据，涵盖多个数据集的退化 - 清洁驾驶视频修复，使得单一共享修复器能够超越单一场景或数据集进行工作。</li>
+<li>在 Waymo、nuScenes 和 PandaSet 上的实验表明，SPVC 在新型视图渲染修复、前景车辆修复、时间一致性和空间可控性方面优于强大的图像级和视频级基线。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.17535" data-arxiv-id="2608.17535" data-status="ready">
+<h1>[2608.17535] GroupForward: Building Referable 3D Scenes via Instance-Grouped Feed-Forward Gaussian Splatting</h1>
+<p><a href="https://arxiv.org/abs/2608.17535" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>GroupForward 提出了一种基于实例分组的前馈高斯泼溅模型，通过低维实例嵌入实现跨视图一致的 3D 实例重建，并构建了基于 3D 实例场景图的推理框架（RSRF），以支持复杂自然语言指代推理和 3D 指代分割。</p>
+<h2>解决的问题</h2>
+<p>现有前馈语义 3DGS 方法存在两个主要局限：首先，大多数方法将语义表示为每个高斯的特征嵌入，难以区分同一类别内的多个实例并保持跨视图身份一致性；其次，现有方法主要支持类别级或短语级语义查询，难以处理涉及物体身份、空间关系及功能属性的复杂指代表达。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了 Instance-Grouped Feed-Forward Gaussian Splatting (GroupForward)，将前馈语义 3DGS 从基于高维特征渲染转变为基于低维实例嵌入的实例分组重建，实现了从稀疏输入视图显式生成实例级场景结构。</li>
+<li>构建了 Referential Scene Reasoning Framework (RSRF)，该框架基于 3D 实例场景图，将语义 3DGS 从简单的类别或短语查询扩展至复杂自然语言指代推理和 3D 指代分割任务。</li>
+<li>设计了基于实例的语义聚合与传播机制，利用 2D 开放词汇模型提取上下文语义特征并聚合为每个 3D 实例的语义原型，从而在目标视图中生成视图一致的开放词汇语义预测。</li>
+<li>建立了包含跨视图一致 3D 实例及其语义原型、多视图掩码、3D 位置和可见性的场景图，并通过视觉 - 语言模型（VLM）在实例节点上进行推理以选择目标，而非生成新的分割掩码。</li>
+<li>在稀疏视图重建、语义重建和指代推理任务上的实验表明，该方法优于现有方法，验证了实例分组前馈重建和基于 3D 实例推理的有效性。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.17682" data-arxiv-id="2608.17682" data-status="ready">
+<h1>[2608.17682] Differentiable Voronoi Ray Tracing Beyond Rasterization Speeds</h1>
+<p><a href="https://arxiv.org/abs/2608.17682" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种基于 Voronoi 分区的可微光线追踪方法，通过优化遍历成本、内存流量和早期终止机制，在保持光线追踪灵活性的同时，实现了超越传统光栅化基线的实时渲染速度。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>展示了可微光线追踪可以通过围绕遍历成本、内存流量和早期终止进行设计，从而匹配或超过光栅化新视图合成基线的吞吐量。</li>
+<li>用八面体表面和视差纹理替换了每个单元体的球谐函数，减少了每次光线 - 单元交互时加载的外观值数量，同时允许单元体内包含空间细节。</li>
+<li>引入了表面集中的不透明度公式以及尺度不变密度参数化，鼓励透明自由空间并在紧凑表面处快速终止。</li>
+<li>利用空间单元排序、warp 一致光线调度、对齐纹理加载和低贡献单元跳过等技术优化了推理过程。</li>
+<li>采用基于密集对应关系的简单固定预算训练设置初始化，避免了剪枝、稠密化、渐进下采样和多阶段调度。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.17832" data-arxiv-id="2608.17832" data-status="ready">
+<h1>[2608.17832] GenRec: Knowing Where to Reconstruct and Where to Generate</h1>
+<p><a href="https://arxiv.org/abs/2608.17832" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>GenRec 提出了一种将生成式新视角合成（NVS）任务分解为观察区域重建和未观察区域生成的架构，通过像素级掩码分别处理，以同时提升重建保真度和生成质量。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种基于几何的生成式 NVS 分解方法，利用每像素观察掩码分别处理观察区域和未观察区域，并应用独立的模块与损失函数。</li>
+<li>设计了一个多视图流匹配骨干网络，能够联合去噪 RGB 图像和场景坐标图，从而在单次前向传播中实现跨视图一致性及 3D 对应关系信号。</li>
+<li>开发了一个像素空间重建分支，利用稀疏 3D 交叉注意力恢复因潜在压缩而丢失的高频细节，同时避免干扰未观察区域的生成先验。</li>
+<li>在 RealEstate10K、DL3DV-10K 和 Mip-NeRF 360 数据集上进行了广泛验证，证明该方法在观察区域实现了最佳重建保真度，并在未观察区域超越了纯生成基线的感知质量。</li>
+<li>展示了所提模型在推理速度上比最强基线快两个数量级。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.17988" data-arxiv-id="2608.17988" data-status="ready">
+<h1>[2608.17988] GS-Voxel: Fitting-Free Structured Latents for Large-Scale 3DGS Generation</h1>
+<p><a href="https://arxiv.org/abs/2608.17988" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>GS-Voxel 提出了一种无需拟合的有结构潜在框架，旨在解决将大规模预优化 3DGS 重建转换为空间潜在表示的瓶颈，从而支持大规模航拍 3D 场景生成。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种无需拟合（fitting-free）的有结构潜在框架 GS-Voxel，能够在不重新优化场景、不拟合固定基数模板且不进行全局最优传输重排的情况下，将预优化的百万级 3DGS 重建转换为空间潜在表示。</li>
+<li>设计了基于体素化的转换机制，在保留选定原子的亚体素位置和渲染属性的同时，仅在每个活动体素内施加固定的槽位预算，并通过分解的 VAE 将体素几何和局部高斯属性编码为结构化稀疏 3D 潜在。</li>
+<li>在 GS-Voxel 的潜在空间中训练了图像条件化的流模型，以生成航拍 3DGS 场景，并展示了通过感知重叠的平铺推理实现大面积合成的能力。</li>
+<li>验证了该方法能够处理包含超过 300 万个原子的 200m x 200m 航拍 3DGS 瓦片，克服了原生 3DGS 无序且空间不规则的特性，使其适用于稀疏潜在架构。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.18285" data-arxiv-id="2608.18285" data-status="ready">
+<h1>[2608.18285] QuARC-GS: Quantized Anchored Residual Coding for Compact Dynamic Scene Streaming with Gaussian Splatting</h1>
+<p><a href="https://arxiv.org/abs/2608.18285" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>QuARC-GS 提出了一种基于分层锚点的在线重建框架，通过量化分层锚点变形和变化门控稠密化模块，显著降低了自由视点视频（FVV）的每帧存储需求，同时保持了重建保真度和渲染速度。</p>
+<h2>解决的问题</h2>
+<p>现有自由视点视频（FVV）压缩方法面临巨大存储需求、快速重建渲染速度要求以及有限带宽下传输效率低下的挑战，特别是现有方法在运动量化和锚点属性残差存储成本上仍存在不足。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种紧凑的在线 FVV 重建框架，结合了持久的多级锚点运动表示与紧凑的每帧外观更新。</li>
+<li>引入了量化感知锚点残差优化，利用前向传播的量化值优化每锚点运动残差，使训练期间的变形与传输的运动载荷相匹配。</li>
+<li>设计了变化门控稠密化模块，利用锚点变形后的帧间变化来门控增量高斯创建，从而减少静态但困难区域中的冗余外观容量。</li>
+<li>在 N3DV 和 MeetRoom 数据集上的广泛实验表明，该方法将每帧存储减少了高达 11 倍，同时保持了具有竞争力的重建质量和训练速度。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.18840" data-arxiv-id="2608.18840" data-status="ready">
+<h1>[2608.18840] Beyond Placement and Articulation: Usage-Driven Code Scenes for Embodied Interaction</h1>
+<p><a href="https://arxiv.org/abs/2608.18840" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了 RoomWright，一个基于代码的场景生成代理框架，旨在超越传统的物体放置和关节控制，通过用法驱动的物体推理、多部件交互以及注释引导的朝向分配，为具身交互生成可编辑且仿真就绪的 3D 场景。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了 RoomWright，一个代码场景生成代理框架，能够生成用于具身交互的可编辑且仿真就绪的环境。</li>
+<li>引入了用法驱动的物体推理和用户中心组合，根据预期活动和功能关系推导场景内容和空间组织。</li>
+<li>通过代码代理实现多部件交互，将每个交互表示为声明对象状态上的触发 - 条件 - 效果规则，捕捉超越单一物体关节的因果依赖。</li>
+<li>实现了注释引导的用法导向朝向分配，利用建模阶段记录的语义注释指导可操作物体的使用朝向分配，缓解朝向歧义。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.19036" data-arxiv-id="2608.19036" data-status="ready">
+<h1>[2608.19036] USR-Drive: Unified Driving Scene Representation via Joint Denoising of 3D Gaussians and Boxes</h1>
+<p><a href="https://arxiv.org/abs/2608.19036" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>USR-Drive 提出了一种统一表示，通过联合去噪 3D 高斯和边界框，将动态驾驶场景的稠密几何与物体中心结构建模为协同进化的状态变量，以解决传统方法中场景重建与实例感知分离的问题。</p>
+<h2>解决的问题</h2>
+<p>现有驾驶场景方法缺乏统一表示，将稠密几何重建与实例级感知作为分离任务处理，导致在遮挡、大运动和稀疏视角下，连续几何可能产生时间不一致和涂抹伪影，而独立的 3D 感知缺乏稠密几何的显式定位依据。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种针对 3D 驾驶场景的统一表示，将物体中心结构与场景对应的稠密几何建模为协同进化的状态变量，超越了分离的感知和无约束重建范式。</li>
+<li>设计了一个双分支自编码框架，结合统一位置编码（UPE），在共享度量时空空间内对齐稠密渲染原语（3D 高斯）和稀疏物体中心结构（3D 边界框）。</li>
+<li>开发了一个基于多模态扩散 Transformer（MMDiT）的生成框架，联合去噪几何和布局令牌，在多种数据集上实现了高保真动态场景合成和时间连贯 3D 检测的最先进性能。</li>
+<li>在推理阶段，通过统一的去噪过程直接生成动态 3D 高斯和 3D 边界框，无需真实边界框、物体轨迹或布局标注。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.19556" data-arxiv-id="2608.19556" data-status="ready">
+<h1>[2608.19556] Stream4D: 4D-Consistency for Streaming Autoregressive Diffusion Video Models</h1>
+<p><a href="https://arxiv.org/abs/2608.19556" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>Stream4D 是一个强化学习框架，旨在将 4D 一致性和自然运动先验蒸馏到流式自回归视频模型中，通过结合 4D 高斯泼溅重建一致性、以目标为中心的自然运动先验以及感知锚定来解决现有模型在长序列生成中积累的 4D 不一致性问题。</p>
+<h2>解决的问题</h2>
+<p>现有自回归扩散视频模型在长序列生成中会积累误差，导致尺度漂移、深度关系不一致以及场景或相机运动不自然，而基于静态 3D 高斯泼溅的强化学习方法无法表示动态场景，导致物体运动被抑制，场景冻结。</p>
+<h2>创新点</h2>
+<ul>
+<li>识别出累积的 4D 不一致性是蒸馏流式自回归视频模型的核心故障模式，并将其缓解问题形式化为一个强化学习问题。</li>
+<li>提出了 Stream4D，这是一种可转移的训练目标，结合了结构化的 4D 重建一致性、以目标为中心的自然运动先验以及感知锚定。</li>
+<li>在三个蒸馏自回归骨干网络上展示了持续改进，包括 4D-PSNR 提升高达 6.76 dB，同时在短时间和长时间生成范围内保持了运动质量和通用视频质量。</li>
+<li>引入了一种基于预训练 4D 高斯泼溅模型的重建分数，作为衡量几何、运动和相机动态一致性的良好 4D 一致性指标。</li>
+<li>添加了一个高斯运动奖励，以自然运动强度为中心，惩罚不足或过度的运动，并利用时间平滑度和刚性质量因子进行调制。</li>
+<li>包含一个轻量级图像奖励模型作为感知锚点，以保留原始模型的视觉保真度，并通过标准化独立组合三个奖励分量。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.19900" data-arxiv-id="2608.19900" data-status="ready">
+<h1>[2608.19900] AvatarDynamizer: From Static to Dynamic Human Avatars via Generative Dynamic Textures</h1>
+<p><a href="https://arxiv.org/abs/2608.19900" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>AvatarDynamizer 提出了一种基于纹理空间的表面动力学嵌入方法，通过结合预训练视频扩散先验和大规模自采集数据集 DynaHuman，将静态 3D 人体头像转化为具有真实动态纹理的可控 4D 头像。</p>
+<h2>解决的问题</h2>
+<p>现有的静态 3D 头像动画主要依赖近似刚性的蒙皮变形，缺乏真实的表面动态（如衣物褶皱和阴影），导致“恐怖谷”效应；同时，现有的动态建模方法要么牺牲 3D 一致性，要么因数据稀缺和确定性回归的局限性而无法生成精细且随运动变化的表面动态。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种新颖的纹理空间表面动力学嵌入方法，将 4D 人体表示为紧凑的 2D 动态纹理图，并配合通用高斯解码器实现多视角一致渲染。</li>
+<li>设计了一个动态纹理生成器，利用预训练的视频扩散先验在体素空间执行条件图像到图像翻译，以生成受身份和运动条件控制的高细节动态纹理。</li>
+<li>构建了 DynaHuman 大规模人体数据集，包含 58 名演员、100 台 4K 相机拍摄的数据，具有多样化的身份、视角和运动多样性。</li>
+<li>提出了一种三阶段方法，包括多视角数据编码与通用高斯解码器学习、动力学生成器学习，以及利用静态头像进行推理，从而将静态头像转化为可控的 4D 头像。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.20000" data-arxiv-id="2608.20000" data-status="ready">
+<h1>[2608.20000] Point-Based 3D Reconstruction from Sparse Views under Known Illumination</h1>
+<p><a href="https://arxiv.org/abs/2608.20000" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>该方法提出了一种基于已知直接光照的稀疏视图点云重建方法，利用紧凑的带不透明度的 beta surfels 和显式的散射、可见性及透射率，在无需假设每个 surfel 出射辐射度恒定的情况下实现了几何与材质的高效恢复。</p>
+<h2>解决的问题</h2>
+<p>片段指出，仅凭外观无法唯一确定表面形状、反射率和可见性，且现有的基于外观的点云方法（如 Gaussian Splatting）可能导致几何不准确（如浮点、碎片化），而现有的表面感知变体仍依赖基于光栅化的图像形成而非基于物理的光传输。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种在已知直接光照下进行稀疏视图重建的方法，该方法使用紧凑的带不透明度的 beta surfels，并显式处理散射、可见性和透射率，同时不假设每个 surfel 上的出射辐射度是恒定的。</li>
+<li>设计了一种显式包含不透明度的伴随光传输公式，能够针对 surfel 的几何、反照率、不透明度以及局部不透明度轮廓形状提供解析梯度。</li>
+<li>采用局部坐标视角表达传输，允许辐射度和材质响应在 surfel 支持范围内变化，从而实现了比现有基线少一个数量级原语数量（平均 267 个 surfels 对比 51k 个原语）的同时保持更优的重建结果。</li>
+<li>通过蒙特卡洛路径采样估计传输积分，并针对校准的点光源专门化了直接光照，实现了针对 surfel 几何、材质、不透明度和局部不透明度轮廓形状的优化更新。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.20277" data-arxiv-id="2608.20277" data-status="ready">
+<h1>[2608.20277] Point Spread Function Engineering Using Implicit Neural Representations</h1>
+<p><a href="https://arxiv.org/abs/2608.20277" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种利用隐式神经表示（INRs）进行点扩散函数（PSF）工程的方法，通过多层感知机（MLP）参数化光瞳相位掩模，解决了传统像素级优化方法易陷入局部最优、对初始化敏感且缺乏物理可解释性的问题。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种基于隐式神经表示（INRs）的光瞳设计方法，使用多层感知机（MLP）参数化光瞳相位掩模，从而消除了预先定义基函数的需求。</li>
+<li>该方法提供了光瞳相位的平滑连续表示，使其更适合基于梯度的优化，并且相比像素级优化方法具有更强的初始化鲁棒性。</li>
+<li>引入了一种针对目标 PSF 堆栈的预处理步骤，模拟光学系统的频带限制频率响应，以缓解训练过程中的收敛困难。</li>
+<li>利用可微傅里叶光学模型训练 MLP，使其能够以任意空间分辨率查询连续的功能表示，无需插值或重新训练。</li>
+<li>构建了一个灵活的框架，使用户能够针对特定任务指定任意的 3D PSF 分布，减少了对特定领域知识的依赖。</li>
+<li>通过空间光调制器（SLM）进行了实验验证，展示了所提方法在多种 PSF 设计中的有效性及其相对于最先进像素级优化方法的优势。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.20308" data-arxiv-id="2608.20308" data-status="ready">
+<h1>[2608.20308] DreamHand: Repurposing Video Diffusion Models for Occlusion-Robust Egocentric 3D Hand Motion Recovery</h1>
+<p><a href="https://arxiv.org/abs/2608.20308" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>ACE-Ego-Hand 是一种离线片段级框架，通过将预训练视频扩散模型重构为确定性清洁潜变量编码器，实现了无需外部检测器且对遮挡和手部消失具有鲁棒性的度量双手运动恢复。</p>
+<h2>解决的问题</h2>
+<p>以第一人称视角的视频捕捉存在频繁的手 - 物体交互遮挡以及头部快速运动导致手部完全移出视野（OOS）的问题，使得从原始视频中恢复度量 3D 手部运动极具挑战性。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了 ACE-Ego-Hand 框架，将预训练视频扩散模型重新利用为确定性清洁潜变量编码器，从而在不依赖任何外部检测器的情况下恢复度量双手轨迹。</li>
+<li>设计了一种双向时空解码器，结合空间锚定查询、片段级形状先验和双向推理，以重建在严重遮挡和长时间手部消失期间的不可见手部。</li>
+<li>提出了一种基于射线的相机求解器，将手部运动与相机动态解耦，从而实现了测试时无需相机内参（intrinsics-free）的推理。</li>
+<li>在五个具有挑战性的第一人称视角基准测试上进行了广泛评估，结果显示该方法在 4545 次主要度量比较中优于最先进基线，并在严重遮挡和手部缺失情况下保持稳定。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.20534" data-arxiv-id="2608.20534" data-status="ready">
+<h1>[2608.20534] Grounded-Exo2Ego: Structured Semantic Grounding for Robust Exocentric-to-Egocentric Video Generation</h1>
+<p><a href="https://arxiv.org/abs/2608.20534" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>Grounded-Exo2Ego 提出了一种双分支视频扩散模型框架，通过结合几何锚定与语义 grounding 分支，并引入相机重定位及全自动合成数据引擎，以解决外心到心视视频生成中几何条件不可靠和训练数据脆弱的问题。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>提出 Grounded-Exo2Ego 框架，将外心到心视视频生成视为独立问题，从架构和数据两个层面系统性地解决现有方法的局限性。</li>
+<li>在架构层面引入双分支视频扩散模型，其中几何锚定分支利用场景重建的 ego 视图渲染确定整体结构，语义 grounding 分支通过锚定对象级语义来修复因几何失真或遮挡导致的不可识别区域。</li>
+<li>在数据层面引入相机重定位技术，将 ego 相机重新定位到不准确的单目重建内部，以解决渲染与真实世界几何之间的严重错位，从而减少训练数据过滤并提高对齐质量。</li>
+<li>开发全自动合成数据引擎，生成具有准确标注的可动画化 3D 人类及随机环境，完全规避重建质量和对齐问题，并填补了缺乏人类间心视交互数据的空白。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.20602" data-arxiv-id="2608.20602" data-status="ready">
+<h1>[2608.20602] Sparse Light Field Sampling Improves Casual 3D and 4D Reconstruction</h1>
+<p><a href="https://arxiv.org/abs/2608.20602" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文通过引入稀疏光场采样和一种新型复用光场相机硬件，证明了在单目输入受限的场景下，利用消费级多目相机（如手机多摄、立体相机和光场相机）获取的角向多样性能显著提升静态和动态场景的 3D 及 4D 重建质量。</p>
+<h2>解决的问题</h2>
+<p>现有新型视图合成社区几乎 exclusively 假设单目输入，导致多目相机（如 iPhone 多摄、Apple Vision Pro 立体相机、Lytro 光场相机）采集的角向信息被丢弃，且现有方法在积累角向多样性时面临昂贵设备或时空分辨率权衡的困境。</p>
+<h2>创新点</h2>
+<ul>
+<li>构建了包含静态和动态真实场景的多相机数据集，涵盖 iPhone 15 Pro（每曝光 3 个视角）、Apple Vision Pro（立体）和 Lytro Illum 光场相机（每曝光 81 个视角）。</li>
+<li>建立了跨相机基准测试，系统评估了 3DGS、4DGS 和稀疏视角高斯泼溅基线在不同消费级多目相机类型、曝光数量和角向基线下的表现。</li>
+<li>提出了两项关键发现：(i) 在视角受限的 regimes 下，采样光场流的消费级相机优于单目相机；(ii) 这种优势在动态场景中最为显著，因为每个时间步的角向多样性对于恢复场景几何和运动至关重要。</li>
+<li>提出了硬件 - 软件协同设计，构建了一种复用光场相机原型，其高分辨率子透镜图像在传感器上故意重叠，在真实拍摄中优于单目和标准光场采集，证明了优化角向 - 空间权衡的潜力。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.20687" data-arxiv-id="2608.20687" data-status="ready">
+<h1>[2608.20687] TopoSurfel: Closing the Loop between Gaussian Surfels and Meshes for Surface Reconstruction</h1>
+<p><a href="https://arxiv.org/abs/2608.20687" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>TopoSurfel 是一个轻量级框架，通过将可微分的代理网格引入 Gaussian Surfels 训练，利用结构化表面先验和网格引导的 Surfels 演化策略，实现了高保真表面重建。</p>
+<h2>解决的问题</h2>
+<p>现有基于 3D Gaussian Splatting 的方法多为离散非结构化表示，难以可靠生成高质量网格，且约束仅以碎片化方式改善表面拟合，无法在模糊区域传播结构约束；MILo 等方法虽将显式网格纳入优化循环，但依赖昂贵的局部空间划分和隐式函数评估，增加了计算和内存成本，且离散 Gaussian 与连续网格间的几何联系不够直接；Gaussian Surfels 虽更接近真实表面，但作为离散片元集合缺乏显式的邻域连接性和流形结构，难以建立与连续流形的显式几何对应关系以注入全局拓扑约束。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了 TopoSurfel 框架，在不引入额外可学习参数的情况下，将可微分代理网格融入 Gaussian Surfels 训练，提供结构化表面先验。</li>
+<li>开发了基于提取的网格先验的网格引导 Surfels 演化策略，包括结合全局一致性和视图相关校正的法线对齐，以及基于显式点到面距离的几何感知密度控制。</li>
+<li>利用提取的代理网格作为双向监督信号（渲染深度和法线图一致性）的直接指导，不仅用于监督还用于 Surfels 结构细化。</li>
+<li>引入了稳定的预热阶段和场景感知的重初始化方案，有效稳定了物体中心和大规模场景的重建过程。</li>
+<li>构建了基于几何驱动的可微分 Poisson 重建（DPSR）和可微分行进立方体（DiffMC）的连续网格提取与渲染管线。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.20699" data-arxiv-id="2608.20699" data-status="ready">
+<h1>[2608.20699] ArtiMo: Agent-Driven Articulated Mesh Animation</h1>
+<p><a href="https://arxiv.org/abs/2608.20699" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>ArtiMo 是一个零样本代理框架，通过结合 VLM 的视觉语义理解、LLM 的运动规划以及 URDF 定义的关节约束，实现了由文本引导的机械结构网格动画生成。</p>
+<h2>解决的问题</h2>
+<p>现有的文本驱动 4D 动画方法通常忽略明确的机械结构，难以处理由关节轴、运动限制、部件依赖和因果顺序主导的运动；同时，现有的结构化资产格式（如 URDF）仅规定了部件如何运动，却未说明针对特定动作应如何运动，导致缺乏对机械动画的因果理解。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了文本驱动的机械结构网格动画任务，旨在生成同时满足 URDF 定义的关节运动学约束和物体部件间因果关系的 4D 动画。</li>
+<li>提出了 ArtiMo 框架，该框架集成了基于 VLM 的视觉语义定位与因果推理、基于 LLM 的运动规划、URDF 约束的运动执行，以及利用渲染关键帧和运动提示进行迭代改进的视觉自我改进循环。</li>
+<li>构建了一个包含 21 个物体类别、225 个标注运动序列的新基准测试，涵盖了因果和非因果动作，以评估文本条件机械结构网格动画。</li>
+<li>实验表明 ArtiMo 在运动学耦合和因果依赖运动上显著优于现有的 2D 和 4D 动画基线，消融实验证实了结构化代理规划和视觉批评机制的重要性。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.20740" data-arxiv-id="2608.20740" data-status="ready">
+<h1>[2608.20740] VisTa3D: A Dataset and Benchmark for Thin Object Reconstruction from Vision, Tactile, and 3D Point Clouds</h1>
+<p><a href="https://arxiv.org/abs/2608.20740" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>VisTa3D 是一个针对薄物体重建的多模态数据集和基准，融合了视觉、触觉和 3D 点云数据，并提出了首个结合这三种模态的基线模型。</p>
+<h2>解决的问题</h2>
+<p>现有 3D 重建方法在处理薄物体时表现不佳，因为薄物体在 RGB 图像中占据像素少、范围传感器回波稀疏，且现有数据集缺乏对薄结构的关注。</p>
+<h2>创新点</h2>
+<ul>
+<li>引入了首个用于薄物体重建的多模态数据集，包含同步的 RGB 图像、深度图、带有惯性测量和相机校准的触觉响应图，以及关联的真实深度图和分割掩码。</li>
+<li>提出了一套广泛的数据策展流程，涉及对薄物体进行高保真激光扫描，并通过后处理推导出上述各项数据。</li>
+<li>在数据集上对 11 种现有方法进行了 6 种评估模式的基准测试，发现它们在处理薄物体时始终存在困难。</li>
+<li>提出了首个融合视觉、触觉和范围信息的 3D 重建模型作为基线，证明在仅使用合成数据或合成与真实数据联合训练时，将触觉信息整合到视觉 - 范围融合中能改善薄物体重建效果。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.20759" data-arxiv-id="2608.20759" data-status="ready">
+<h1>[2608.20759] DiGS-Avatar: Single-Image Animatable 3D Human Reconstruction via UV-Space Diffusion</h1>
+<p><a href="https://arxiv.org/abs/2608.20759" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>DiGS-Avatar 将单图像可动画 3D 人体重建重构为高效的 UV 空间潜在补全任务，利用教师 - 学生框架和 GASA 模块，在 0.71 秒内生成具有照片级真实感且可动画的 3D 化身。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>将单图像 3D 人体重建重构为高效的 2D UV 潜在补全任务，利用 UV 像素与表面点的唯一映射关系，在确保 3D 一致性的同时规避了原生 3D 扩散的计算瓶颈和多视图方法的高昂合成成本。</li>
+<li>通过教师 - 学生框架实现该公式化，利用多视图教师构建几何对齐的伪真实 UV 潜在来监督单视图扩散学生，从而仅需 2D 渲染监督即可实现鲁棒的 3D 重建，避免了推理时的多视图图像生成。</li>
+<li>提出几何对齐语义聚合（GASA）模块，将预训练 ViT 外观编码器提取的高层语义特征注入几何一致的骨架中，以克服 VAE 压缩导致的纹理丢失并恢复精细纹理细节。</li>
+<li>提出的 DiGS-Avatar 模型仅需 0.71 秒即可从单张图像生成照片级真实、完全 rigged 且可动画的 3D 化身，在视觉保真度和零样本泛化能力上达到最先进或极具竞争力的水平，同时拥有显著更高的推理效率。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.22344" data-arxiv-id="2608.22344" data-status="ready">
+<h1>[2608.22344] Fast and Compact 3D Gaussian Splatting with Polarized Opacity Prior</h1>
+<p><a href="https://arxiv.org/abs/2608.22344" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种高效的训练框架，通过引入极化不透明度先验（POP）和 L2 损失函数，解决了 3D 高斯泼溅（3DGS）中因传统“密化 - 修剪”范式导致的模型膨胀问题，实现了更紧凑的表示、更快的收敛速度和更低的内存占用。</p>
+<h2>解决的问题</h2>
+<p>3D 高斯泼溅（3DGS）在实际部署中受到“模型膨胀”的严重阻碍，这源于传统的“密化 - 修剪”范式生成了数百万个冗余的低不透明度高斯，消耗了过多的内存并浪费了计算资源。</p>
+<h2>创新点</h2>
+<ul>
+<li>分析了梯度正则化权衡：指出标准 L1 损失提供的梯度幅度不足以抵消强不透明度正则化，导致伪影，并提出使用 L2 损失公式以提供与误差成比例的梯度，从而在稀疏约束下稳定优化。</li>
+<li>引入了极化不透明度先验（POP）：这是一种新颖的正则化项，将信息丰富的原语导向全不透明度，同时将冗余原语导向透明度，这种极化促进了早期射线终止，从而加速渲染。</li>
+<li>开发了高效的训练框架：该框架用 POP 替换了原始的不透明度重置循环，实现了自然且连续的修剪，达到了最先进的训练速度，并产生了显著更小的模型，同时提供了与当前最先进方法相当的渲染质量。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.22465" data-arxiv-id="2608.22465" data-status="ready">
+<h1>[2608.22465] M$^3$ISR: A Multi-Modal Multi-View Benchmark for 3D/4D Gaussian Splatting and Feedforward Compression</h1>
+<p><a href="https://arxiv.org/abs/2608.22465" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>M3ISR 是一个多模态多视角基准，旨在通过受控的合成场景和丰富标注，系统评估基于 3D/4D Gaussian Splatting 的自由视点视频（FVV）生成与高效传输。</p>
+<h2>解决的问题</h2>
+<p>现有的基准仅部分支持实际自由视点视频系统所需的系统性评估：静态数据集主要评估新视角重建，动态资源未明确针对生成与传输效率的联合评估，而图像域压缩基准则缺乏 3D 场景几何、同步多视角观测或相机校准信息。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一个受控的多视角自由视点视频基准，包含 25 个合成室内外场景、两种相机/运动配置、六个同步 1080p 以自我为中心的视角，以及包括 RGB、相机参数、深度、语义和实例分割在内的丰富真值标注。</li>
+<li>提供了一个统一的基准，支持在共同的相机几何和渲染协议下，对 3DGS 和 4DGS 的新视角合成、4DGS 流媒体传输以及表示压缩进行系统性评估。</li>
+<li>定义了五个涵盖合成、流媒体和压缩的挑战赛道：Track 1 用于 3DGS 合成，Track 2 用于 4DGS 合成，Track 3 用于 4DGS 流媒体，Track 4 用于 3DGS 压缩，Track 5 用于 4DGS 压缩。</li>
+<li>建立了一个可复现的评估协议，将渲染质量、表示率、计算复杂度和时间一致性作为互补的评估维度，并提供了代表性基线结果和用于未来挑战参与者的前馈压缩参考设计。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.22740" data-arxiv-id="2608.22740" data-status="ready">
+<h1>[2608.22740] Seeing the Unseen: Semantic-in-Gaussian for Sparse-View 3D Generalization</h1>
+<p><a href="https://arxiv.org/abs/2608.22740" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了 SeeU，一种基于语义引导的 3D Gaussian Splatting 框架，旨在通过跨视图熵感知模块和条件高斯 Transformer 解决稀疏视图重建中的深度不确定性问题。</p>
+<h2>解决的问题</h2>
+<p>现有通用 3DGS（G-3DGS）方法严重依赖像素对齐的反投影，在稀疏视图条件下因深度估计误差导致遮挡区域出现“黑洞”或几何坍塌，且缺乏细粒度结构支持。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了 SeeU 框架，将重建过程从直接的像素空间估计转移至语义引导的高斯空间细化，以减少对精确深度对齐的依赖。</li>
+<li>设计了条件高斯 Transformer（Conditional Gaussian Transformer），用于对粗高斯进行残差细化，以恢复语义锚定部分中缺失的表面。</li>
+<li>提出了跨视图熵感知模块（Cross-view Entropy-Aware module），聚合多视图语义线索并利用深度分布熵来强调弱约束区域，提供结构感知的条件输入。</li>
+<li>在插值、外推和零样本跨数据集设置下进行了广泛评估，特别是在 RealEstate10K 的外推任务中，相比最先进方法 HiSplat 将 PSNR 提升了 2.32 dB。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.22773" data-arxiv-id="2608.22773" data-status="ready">
+<h1>[2608.22773] LagrangeGS: Non-Conservative Lagrangian System on Dynamic 3D Gaussian Splatting</h1>
+<p><a href="https://arxiv.org/abs/2608.22773" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>LagrangeGS 提出了一种基于非保守拉格朗日系统的动态 3D 高斯泼溅框架，通过引入时间无关解耦拉格朗日神经网络（TD-LNN）和本地刚性对齐（LRA）机制，解决了现有动态场景重建方法在物理一致性、时间可逆性和长期外推稳定性方面的不足。</p>
+<h2>解决的问题</h2>
+<p>片段明确指出，现有的动态 3D 场景扩展方法（如预测速度或加速度场）存在三个主要问题：(i) 物理不一致的轨迹，(ii) 缺乏时间可逆性，以及 (iii) 长期外推过程中的几何坍塌。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了 LagrangeGS，将动态 3DGS 形式化为一个由势能、初始速度和非保守力显式参数化的非保守拉格朗日系统，从根本上解决了物理不一致的轨迹问题并正式定义了物理操作。</li>
+<li>引入了时间无关解耦拉格朗日神经网络（TD-LNN），通过将速度 - 海森矩阵近似为单位矩阵来避免计算数百万高斯粒子的速度 - 海森逆矩阵，从而解决了计算瓶颈，并利用时间无关的非保守力实现了一致的时间可逆性。</li>
+<li>提出了本地刚性对齐（LRA）方法，通过 Kabsch 求解器将解耦的粒子绑定为局部刚性结构，以防止长期外推过程中的几何坍塌。</li>
+<li>验证了 LagrangeGS 在动态物体和动态室内场景基准测试上的有效性，展示了其在短期和长期外推、时间可逆以及反事实物理编辑任务中的稳定性，且无需重新训练。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.22821" data-arxiv-id="2608.22821" data-status="ready">
+<h1>[2608.22821] SiZeUp: Fast 3D Proxy from Aerial Images via Depth Ordinal Loss</h1>
+<p><a href="https://arxiv.org/abs/2608.22821" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>SiZeUp 是一种直接从校准的多视角倾斜航空图像中提取 3D 代理的高效方法，通过将建筑几何估计简化为单一的高度推断，并利用基于深度序数的损失函数在图像空间中进行优化。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种名为 SiZeUp 的新方法，直接从校准的多视角倾斜航空图像中提取 3D 代理，无需依赖传统的点云提取或 SfM/MVS 重建流程。</li>
+<li>将 3D 代理建模为将 2D 建筑足迹垂直拉伸为体积，从而将复杂的 3D 恢复问题转化为受约束的图像空间对齐问题，仅需推断单个高度。</li>
+<li>开发了一种可微渲染器，并引入了新颖的序数一致性损失（ordinal consistency loss），利用深度先验中的相对深度结构而非绝对深度值来指导优化，以容忍深度估计的不精确性。</li>
+<li>构建了一个完整的处理流程，结合 SAM 3 和 Depth Anything 3 提取 2D 足迹，并通过可微渲染器利用多视角深度排序、视差和遮挡线索进行建筑高度估计。</li>
+<li>实现了一个快速动态视图选择算法，仅需对少量输入图像（几百张）进行轻量级优化，从而显著提升了计算效率。</li>
+<li>在真实场景的定量和定性评估中证明，SiZeUp 相比现有基线（如低多边形网格、凸包和 ArcPro）实现了 23-52 倍的速度提升，同时保持了相当的代理级覆盖率和体积一致性。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.22888" data-arxiv-id="2608.22888" data-status="ready">
+<h1>[2608.22888] NemoSplat: Feed-Forward 4D Gaussian Splatting for Media-Aware Underwater Reconstruction</h1>
+<p><a href="https://arxiv.org/abs/2608.22888" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>NemoSplat 是首个专为动态水下环境设计的面向媒体的前馈 4D 高斯泼溅（4DGS）视觉基础模型，能够直接从未校准的海洋视频中同时处理复杂的水体动力学和严重的介质诱导视觉退化。</p>
+<h2>解决的问题</h2>
+<p>现有的前馈 3D 高斯泼溅方法主要针对静态、清澈的空气环境设计，直接应用于海洋领域时，其特征聚合机制会受到水下运动干扰和光学衰减（如光吸收和散射）的致命破坏，导致跟踪失败和重建质量下降。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了 NemoSplat，这是首个面向动态水下环境媒体感知重建的前馈 4DGS 框架，在几何估计和新视角合成方面达到了最先进的性能。</li>
+<li>设计了可提示的动态解耦器（Promptable Dynamic Disentangler），通过融合动态概率和可选的文本语义先验，实现了将大量移动物体与静态背景进行鲁棒解耦。</li>
+<li>构建了媒体感知高斯预测器（Media-Aware Gaussian Predictor），这是一个嵌入物理渲染网络，通过多视图一致性和物理损失进行调节，以内在建模水体介质并从退化输入中恢复原始外观。</li>
+<li>构建了一个大规模动态水下数据集，旨在促进水下视觉重建方法的训练和评估，涵盖了具有不同光学衰减程度和复杂物体运动的多样化海洋场景。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.22906" data-arxiv-id="2608.22906" data-status="ready">
+<h1>[2608.22906] AquaFlow: A Monocular Gaussian Splatting SLAM for Underwater Streaming Reconstruction</h1>
+<p><a href="https://arxiv.org/abs/2608.22906" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>AquaFlow 是一个单目 3D 高斯泼溅 SLAM 框架，通过微调水下视觉基础模型和结合物理引导的混合场景建模，解决了水下连续视频重建中的鲁棒位姿跟踪和介质感知场景建模难题。</p>
+<h2>解决的问题</h2>
+<p>现有水下 3D 高斯泼溅方法主要存在以下问题：1. 多为离线方法，依赖完整图像序列和预估计位姿，计算开销大且难以扩展到长视频序列；2. 现有 SLAM 系统基于陆地训练数据，难以适应水下复杂的光传输和弱纹理环境，导致位姿跟踪漂移；3. 标准 3D 高斯泼溅基于清晰介质假设，无法处理水下距离相关的谱衰减和体积后向散射，导致几何畸变和渲染伪影。</p>
+<h2>创新点</h2>
+<ul>
+<li>微调 3D 视觉基础模型以利用大规模水下数据集，弥合陆地到水下的域差距，为相机位姿跟踪和密集深度初始化提供鲁棒的几何先验。</li>
+<li>设计一种兼容流式处理的混合场景表示，结合距离感知神经高斯与物理水下光学模型，有效分离内在外观与距离相关的衰减及后向散射效应。</li>
+<li>构建包含 62 个多样化真实世界序列的综合水下评估基准，涵盖 25 个公开数据集序列和 37 个野外水下视频。</li>
+<li>通过统一显式光学建模与隐式神经表示，实现内在场景几何与复杂光学退化的解耦，在相机跟踪和高保真 3D 重建方面达到最先进精度。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2609.10643" data-arxiv-id="2609.10643" data-status="ready">
+<h1>[2609.10643] Zero-shot rib design: merging training-free generative prior with topology optimization</h1>
+<p><a href="https://arxiv.org/abs/2609.10643" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种零样本肋骨设计框架，通过将冻结的文本到图像扩散模型与拓扑优化在梯度层面耦合，实现了无需训练数据或微调的文本引导式结构优化。</p>
+<h2>解决的问题</h2>
+<p>传统基于惩罚的拓扑优化方法因目标函数非凸性导致存在大量局部极小值，难以保证收敛到全局最优解，尤其在肋骨加强筋等组合设计任务中表现不佳。</p>
+<h2>创新点</h2>
+<ul>
+<li>首次将分数蒸馏采样应用于物理约束的拓扑优化，通过冻结预训练的扩散模型与 SIMP 方法在梯度层面耦合，实现了无需任何训练数据或微调的文本引导式结构优化。</li>
+<li>识别出死端抑制是分数蒸馏采样引导改进的主要结构特征，跨物理域分析表明生成先验主要通过移除非承载死端来提升设计性能，而非添加分支。</li>
+<li>诊断并解决了分数蒸馏采样与 SIMP 耦合中产生的显著灰度密度倾向问题，通过同步贝塔调度与分数蒸馏采样调度将中间密度比从 42.6% 降低至 3% 以下。</li>
+<li>验证了该方法在四个几何域和两种物理 regime 下的通用性与可扩展性，结果显示在 49 种提示 - 域组合中有 38 种实现了统计显著的刚度降低，性能优于所有基线方法。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2609.11129" data-arxiv-id="2609.11129" data-status="ready">
+<h1>[2609.11129] ReconPlusGen: Injecting Reconstruction Prior into Multi-view 3D Generation through Noise Inversion and Modulation</h1>
+<p><a href="https://arxiv.org/abs/2609.11129" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>ReconPlusGen 通过噪声反演和调制将重建先验注入多视图 3D 生成过程，以解决传统方法在低纹理区域脆弱及生成方法几何一致性差的问题。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种新颖的几何注入范式，即在物体中心规范空间中重建可见几何并将其反演为初始噪声，为扩散轨迹提供确定性锚点。</li>
+<li>提出了一种置信度感知的空间变化噪声调制方案，根据重建几何的估计可靠性自适应地控制其影响，在可靠区域保持保真度，在不确定和未观测区域保留生成灵活性。</li>
+<li>在多样化的稀疏视图 3D 物体重建基准上实现了最先进的性能。</li>
+<li>该方法相比先前的特征条件化管道，提供了更强的几何保真度、更好的图像对齐以及更鲁棒的未见区域补全。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2609.11223" data-arxiv-id="2609.11223" data-status="ready">
+<h1>[2609.11223] Tri-DehazeGS: Scene--Medium Decoupled Gaussian Splatting with Transmittance-Aware Optimization</h1>
+<p><a href="https://arxiv.org/abs/2609.11223" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>Tri-DehazeGS 是一个统一框架，通过联合学习解耦的参与介质表示和采用透射感知策略优化干净场景，从而实现从多视角雾图像中重建干净的新视角渲染。</p>
+<h2>解决的问题</h2>
+<p>在雾环境下进行多视角重建时，标准 3D 高斯泼溅（3DGS）直接优化雾图像会导致大气衰减和散射效应被编码到高斯原语的颜色、不透明度或几何中，产生场景与介质的纠缠表示，且低透射率区域会衰减反向传播的梯度，导致远处受损结构优化不足。</p>
+<h2>创新点</h2>
+<ul>
+<li>将雾态 3D 高斯重建定义为场景 - 介质解耦与监督重平衡的联合问题，为参与介质下的干净新视角重建提供了结构化视角。</li>
+<li>提出了 Tri-DehazeGS 统一框架，该框架联合学习显式的视图共享参与介质表示和干净的高斯场景原语。</li>
+<li>引入紧凑的三平面雾场，在共享三维坐标空间中组织雾变量，减少大气退化与场景表示之间的纠缠。</li>
+<li>开发了介质解耦透射梯度补偿（MD-TGC）策略，这是一种透射感知优化方法，能在冻结介质表示后补偿低透射率区域衰减的梯度，且无需修改基于物理的正向渲染过程。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2609.11434" data-arxiv-id="2609.11434" data-status="ready">
+<h1>[2609.11434] Hologram Representation via Quadratic Phase Gaussian Splatting</h1>
+<p><a href="https://arxiv.org/abs/2609.11434" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种通过二次相位高斯泼溅实现全息图表示的新方法，该方法利用带有可学习曲率参数的复值高斯波前来显式建模全息场，并推导了基于显示采样限制的每原语曲率边界以避免高频混叠。</p>
+<h2>解决的问题</h2>
+<p>现有基于高斯的全息图表示方法通常假设每个原语具有平坦的相位轮廓，这种假设限制了其表示能力，且关于此类高斯原语表示能力的探索尚不充分。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了带有曲率参数的二次相位高斯原语，通过添加一个曲率参数来调制其波前。</li>
+<li>从显示的采样限制推导出了每原语的曲率边界，从而避免了高频混叠现象。</li>
+<li>通过多种设置进行了全面的实验，证明该方法在通用质量提升和参数有效性方面优于基线方法。</li>
+<li>研究了 CVQPG 的频率域特征，并对其组件进行了消融实验分析。</li>
+<li>承诺在论文被接收后公开相关代码。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2609.11439" data-arxiv-id="2609.11439" data-status="ready">
+<h1>[2609.11439] Multi-Modal Controlled Coherent Motion Generation</h1>
+<p><a href="https://arxiv.org/abs/2609.11439" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种名为 MOCO 的新型基于扩散的框架，旨在解决多模态信号（如文本和语音）同时控制 3D 角色运动时面临的对齐数据稀缺及活动区域受限等挑战。</p>
+<h2>解决的问题</h2>
+<p>现有工作主要关注单模态控制，而多模态信号同时存在时，现有模型通常只能按顺序处理单一模态，缺乏真正的同时控制能力。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了 MOCO 框架，利用自然的空间分解策略，将语音音频主要驱动上半身动态（手势和面部表情），而将文本描述主要驱动下半身运动（行走和姿态变化）。</li>
+<li>设计了分步生成机制，在每次去噪步骤中分别根据输入噪声为每种模态生成运动，再根据预定义的空间规则组装身体部位，并通过迭代扩散过程使不同模态的运动逐步协调同步。</li>
+<li>实现了轨迹控制与伴语运动生成的结合，能够利用轨迹数据生成文本驱动的运动并与音频驱动的运动相结合，从而产生与给定轨迹紧密对齐的语音手势。</li>
+<li>构建了一个包含 1000 个测试片段的多模态基准数据集，该数据集由 40 种基础身体运动文本描述和 694 个来自八位不同说话者的音频片段生成，用于评估多模态控制任务。</li>
+<li>通过严格的实验评估证明，该方法在文本到运动和语音到手势的指标上均优于现有基线方法，推动了 3D 角色多模态控制运动生成领域的发展。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2609.11472" data-arxiv-id="2609.11472" data-status="ready">
+<h1>[2609.11472] BridgeMatch: Conditional Transport Bridges in Matching Matrix Space for 3D Deformable Registration</h1>
+<p><a href="https://arxiv.org/abs/2609.11472" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>BridgeMatch 提出了一种两阶段求解器，通过连接紧凑的粗分辨率扩散与高分辨率条件传输桥，在匹配矩阵空间中利用提升后的粗匹配估计作为源、高分辨率真实匹配矩阵作为目标，以修正粗对应估计并恢复细节。</p>
+<h2>解决的问题</h2>
+<p>非刚性点云配准中，现有的粗到细方法因 Top-K 剪枝可能丢弃低置信度但正确的匹配，而生成式方法虽能处理多候选却未显式存储每个源点的多个目标候选分数，导致难以在单步预测中解决不确定匹配。</p>
+<h2>创新点</h2>
+<ul>
+<li>首次将对应关系估计形式化为匹配矩阵空间中的条件传输桥，以提升后的粗匹配估计为源、高分辨率匹配矩阵为目标。</li>
+<li>利用高分辨率条件传输桥从提升的粗匹配矩阵中细化所有候选对应关系，无需 Top-K 剪枝即可保留低置信度但可能正确的匹配。</li>
+<li>研究了该形式化下的确定性端点-CFM 和随机配对布朗桥两种实现方式，以理解其如何细化模糊的对应关系估计。</li>
+<li>在 4DMatch 和 4DLoMatch 数据集上的实验表明，该方法在对应关系估计、下游配准及零样本泛化方面均优于 Diff-Reg，并在低重叠和强变形场景下表现更佳。</li>
+<li>通过消融研究验证了高分辨率细化机制和求解器步数预算对模型性能的具体贡献。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2609.11499" data-arxiv-id="2609.11499" data-status="ready">
+<h1>[2609.11499] Recursive Code World Models: Building Complex Worlds through Recursive Scene Programs</h1>
+<p><a href="https://arxiv.org/abs/2609.11499" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出递归代码世界模型（RCWM）和递归场景程序（RSP），通过在同一求解器上递归建立整体、调用子部分并返回后重新审视整体，来解决复杂世界构建中多尺度结构一致性问题。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>提出递归场景程序（RSP），这是一种可执行的场景表示法，将复杂世界组织为具有显式子引用、可编辑结构和共享依赖的组合子世界程序。</li>
+<li>提出完整的递归构建过程，其中同一视觉求解器在每个子世界中建立整体，递归重建未解析部分，并在返回后重新审视其组合，结合继承的观察几何、视觉引导的递归调用和主动的父级细化。</li>
+<li>通过参数化的 Three.js 编译器实例化该框架，并使用相同的基线模型评估整体场景和局部重建，同时通过消融研究考察构建顺序、递归深度和父级重访的作用。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2609.11506" data-arxiv-id="2609.11506" data-status="ready">
+<h1>[2609.11506] UBone3D: Physics-Rectified Conditional Flow Matching for Anatomical 3D Shape Completion from Ultrasound</h1>
+<p><a href="https://arxiv.org/abs/2609.11506" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>UBone3D 是一种新颖的物理校正条件流匹配框架，旨在从带有伪影的不完整超声观测中恢复解剖学上一致的完整 3D 结构。</p>
+<h2>解决的问题</h2>
+<p>从超声扫描中直接重建准确的三维骨骼几何形状仍然是一个根本性的未解决挑战，因为现有的体素最近邻插值方法会模糊薄皮质表面并将物理诱导的丢失和混响传播到空区域，且通用生成模型缺乏对超声固有声学物理的理解。</p>
+<h2>创新点</h2>
+<ul>
+<li>UBone3D 通过协同生成解剖学先验（BoneFM）与测试时的物理校正，能够从带有伪影的不完整超声观测中恢复解剖学上一致的完整 3D 结构，而无需依赖干净或完美分割的输入。</li>
+<li>我们引入了 USimNet，这是一种可微分的物理代理，用于模拟声学伪影（如骨阴影和条纹），支持显式的基于梯度的校正机制，以在推理过程中将演化的生成轨迹与物理观测约束对齐。</li>
+<li>该方法在模拟数据上展现出对未见过的观察角度的强大泛化能力，并且在纯几何基线失败的零样本体内数据上保持鲁棒性。</li>
+<li>本文提出的方法将恢复完整解剖几何结构的问题转化为由观测引导的去噪和形状补全问题，并解耦了由 BoneFM 处理的解剖学合理性和由 USimNet 处理的物理一致性这两个互补目标。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2609.11722" data-arxiv-id="2609.11722" data-status="ready">
+<h1>[2609.11722] Revisiting Avatar-As-Image: High-Fidelity Registration is All You Need</h1>
+<p><a href="https://arxiv.org/abs/2609.11722" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种名为 AvaImg 的多阶段优化流程，通过强制身体位于衣物内部来解决高保真注册问题，从而实现了 Avatar-As-Image 概念在生成式内容创作中的实际应用。</p>
+<h2>解决的问题</h2>
+<p>现有的基于 UV 的穿衣人体建模效果不佳，因为底层 3D 注册的精度限制了 UV 贴图的质量，导致生成的图像包含几何和纹理伪影，且缺乏能够处理衣物扫描并生成统一拓扑和 UV 纹理的鲁棒公开框架。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了 AvaImg，这是一个用于高保真 SMPL(-X)++D 注册并支持 UV 纹理映射的多阶段优化流程，能够处理包括噪声和不完整真实世界捕获在内的任意穿衣人体扫描数据。</li>
+<li>开发了高效的带符号绕数方法用于物理感知的人体拟合，替代了以往依赖表面法线侧向性的启发式方法，并通过三级效率级联将运行时间减少了约 10 倍，存储减少了约 95%。</li>
+<li>验证了 AvaImg 获得的高保真 Avatar-As-Image 表示与现成图像生成模型的直接兼容性，通过成功利用冻结的扩散 VAE 对 UV 贴图和解码，确认其数据位于自然图像分布内。</li>
+<li>实现了鲁棒的多视图 3D 关键点提升和粗细粒度位移公式，能够在高分辨率下恢复亚厘米级的几何细节，其精度甚至超过了数据集的基准真值。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2609.11886" data-arxiv-id="2609.11886" data-status="ready">
+<h1>[2609.11886] Guided Super-Resolution of Digital Elevation Models with Diffusion-Based Image Generators</h1>
+<p><a href="https://arxiv.org/abs/2609.11886" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种基于扩散模型的单步微调策略，利用高分辨率 RGB 影像引导低分辨率数字高程模型（DSM）的超分辨率重建，以解决现有方法在细节恢复、小物体检测及地理泛化能力方面的不足。</p>
+<h2>解决的问题</h2>
+<p>现有高分辨率 DSM 数据获取成本高且稀缺，而公开的高分辨率 RGB 影像丰富但缺乏对应的地形信息，导致许多遥感数据集仅有图像而无高程数据。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出 Elevate 方案，这是一种基于单步扩散生成器的引导式 DSM 超分辨率方法，在视觉上提供更详细的 DSM 并将均方根误差降低了约 15%。</li>
+<li>利用生成式概率模型的特性，实现了基于预测标准差的显式不确定性图估计，从而量化每个 DSM 像素的预测不确定性。</li>
+<li>证明了该方法在仅使用阿尔卑斯山以北瑞士地区数据进行训练的情况下，仍能良好泛化到该区域之外的城市环境。</li>
+<li>通过端到端的单步微调策略克服了现代生成式图像模型推理耗时长的弱点，在保持几乎相同 DSM 质量的同时大幅降低了计算成本。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2609.11894" data-arxiv-id="2609.11894" data-status="ready">
+<h1>[2609.11894] 3D Point Splatting for mmWave Radar Novel View Synthesis</h1>
+<p><a href="https://arxiv.org/abs/2609.11894" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种基于 3D 点溅射的毫米波雷达新视角合成方法，该方法通过从雷达方程的立体角形式推导封闭形式的可微渲染管道，实现了物理保真、复数值输出和多视角可处理性，从而解决了现有方法在结构上的局限性。</p>
+<h2>解决的问题</h2>
+<p>毫米波雷达数据集规模远小于光学或激光雷达数据集，且数据获取受限，新视角合成面临监督信号稀疏、受限于二维且视角数量少等结构性难题，同时现有方法难以同时满足物理保真、复数值输出和多视角可处理性这三个关键属性。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了首个针对雷达的可微点渲染器，采用了带有 ITU-R P.2040 材料参数的定向 3D 点作为雷达原生原语，并实现了基于复相量 PSF 溅射的多视角可处理渲染操作，该操作直接源自雷达方程的立体角形式。</li>
+<li>实现了与产品无关的渲染能力，使得同一优化后的场景能够通过标准 FFT 管道生成 CRP、ADC 和 RA 输出，而无需重新训练，同时能够重现天线图案、旁瓣和 FFT 窗化等信号模型组件。</li>
+<li>在六个 ColoRadar 室外场景上实现了稀疏视角雷达新视角合成的最先进性能，在保持视角新颖度的 RA、CRP 和 ADC 包络方面表现优异，单场景处理时间约为 3 分钟。</li>
+<li>设计了高效的 CUDA 内核，将 BSDF 评估、溅射和分析反向传播融合，利用 Hann 窗口的 PSF 溅射在恒定的每点每距离单元成本下实现了多视角优化所需的计算效率。</li>
+<li>验证了该方法在物理保真度上的优势，通过从几何路径长度积分相位而非学习相位，确保了预测结果与底层传感器物理一致，且优化后的场景参数具有可解释性和跨视角的可转移性。</li>
+</ul>
+</article>
     <article class="summary-article summary-topic-entry" id="summary-2608.23014" data-arxiv-id="2608.23014" data-status="ready">
 <h1>[2608.23014] AnaDiffusion: Anatomically CompositionalLatent Diffusion for Controllable 3D Brain MRI Generation</h1>
 <p><a href="https://arxiv.org/abs/2608.23014" rel="nofollow">arXiv 原文</a></p>
@@ -1828,6 +2454,6 @@
 </article>
     </div>
   </main>
-  <script type="application/json" id="summary-catalog">{"papers":{"2608.23014":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.23014"},"2608.23140":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.23140"},"2608.23206":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.23206"},"2608.23410":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.23410"},"2608.23549":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.23549"},"2608.24169":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.24169"},"2608.24212":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.24212"},"2608.24714":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.24714"},"2608.24760":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.24760"},"2608.25401":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.25401"},"2608.25461":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.25461"},"2608.25483":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.25483"},"2608.26656":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.26656"},"2608.26868":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.26868"},"2608.26948":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.26948"},"2608.26951":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.26951"},"2608.27073":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.27073"},"2608.27407":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.27407"},"2608.27735":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.27735"},"2608.28240":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.28240"},"2608.28272":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.28272"},"2608.28386":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.28386"},"2608.28570":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.28570"},"2608.28895":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.28895"},"2608.29346":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.29346"},"2608.29538":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.29538"},"2608.29680":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.29680"},"2608.29733":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.29733"},"2608.29793":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.29793"},"2608.29905":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.29905"},"2608.29928":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.29928"},"2608.30054":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.30054"},"2608.30184":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.30184"},"2608.30218":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.30218"},"2608.30307":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.30307"},"2608.30423":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.30423"},"2608.30617":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.30617"},"2608.30821":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.30821"},"2608.31023":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.31023"},"2608.31113":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.31113"},"2609.00625":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.00625"},"2609.00812":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.00812"},"2609.00923":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.00923"},"2609.00994":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.00994"},"2609.00995":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.00995"},"2609.01276":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.01276"},"2609.01516":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.01516"},"2609.01823":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.01823"},"2609.02184":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.02184"},"2609.02352":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.02352"},"2609.02543":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.02543"},"2609.02747":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.02747"},"2609.02847":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.02847"},"2609.03117":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03117"},"2609.03304":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03304"},"2609.03334":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03334"},"2609.03341":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03341"},"2609.03349":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03349"},"2609.03447":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03447"},"2609.03534":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03534"},"2609.03613":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03613"},"2609.03639":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03639"},"2609.03657":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03657"},"2609.03824":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03824"},"2609.03897":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03897"},"2609.03919":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03919"},"2609.03931":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03931"},"2609.03956":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03956"},"2609.04174":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.04174"},"2609.04196":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.04196"},"2609.04201":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.04201"},"2609.04942":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.04942"},"2609.04984":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.04984"},"2609.05127":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.05127"},"2609.05210":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.05210"},"2609.05255":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.05255"},"2609.05382":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.05382"},"2609.05415":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.05415"},"2609.05416":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.05416"},"2609.06436":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.06436"},"2609.06723":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.06723"},"2609.06726":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.06726"},"2609.06810":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.06810"},"2609.06955":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.06955"},"2609.07085":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.07085"},"2609.07137":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.07137"},"2609.07174":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.07174"},"2609.07231":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.07231"},"2609.07274":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.07274"},"2609.07346":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.07346"},"2609.07434":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.07434"},"2609.07557":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.07557"},"2609.07724":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.07724"},"2609.07734":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.07734"},"2609.08101":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.08101"},"2609.08148":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.08148"},"2609.08332":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.08332"},"2609.08449":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.08449"},"2609.08493":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.08493"},"2609.08730":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.08730"},"2609.08841":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.08841"},"2609.08848":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.08848"},"2609.09012":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.09012"},"2609.09145":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.09145"},"2609.09394":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.09394"},"2609.09418":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.09418"},"2609.09491":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.09491"},"2609.09507":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.09507"},"2609.09513":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.09513"},"2609.09606":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.09606"},"2609.09890":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.09890"},"2609.10095":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.10095"},"2609.10307":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.10307"},"2609.10322":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.10322"},"2609.10363":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.10363"},"2609.10376":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.10376"},"2609.10456":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.10456"},"2609.10531":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.10531"}},"topic":"3D Gen&Recon","version":1}</script>
+  <script type="application/json" id="summary-catalog">{"papers":{"2603.22782":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2603.22782"},"2608.10938":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.10938"},"2608.16863":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.16863"},"2608.17298":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.17298"},"2608.17420":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.17420"},"2608.17535":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.17535"},"2608.17682":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.17682"},"2608.17832":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.17832"},"2608.17988":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.17988"},"2608.18285":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.18285"},"2608.18840":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.18840"},"2608.19036":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.19036"},"2608.19556":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.19556"},"2608.19900":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.19900"},"2608.20000":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.20000"},"2608.20277":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.20277"},"2608.20308":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.20308"},"2608.20534":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.20534"},"2608.20602":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.20602"},"2608.20687":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.20687"},"2608.20699":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.20699"},"2608.20740":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.20740"},"2608.20759":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.20759"},"2608.22344":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.22344"},"2608.22465":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.22465"},"2608.22740":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.22740"},"2608.22773":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.22773"},"2608.22821":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.22821"},"2608.22888":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.22888"},"2608.22906":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.22906"},"2608.23014":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.23014"},"2608.23140":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.23140"},"2608.23206":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.23206"},"2608.23410":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.23410"},"2608.23549":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.23549"},"2608.24169":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.24169"},"2608.24212":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.24212"},"2608.24714":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.24714"},"2608.24760":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.24760"},"2608.25401":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.25401"},"2608.25461":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.25461"},"2608.25483":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.25483"},"2608.26656":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.26656"},"2608.26868":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.26868"},"2608.26948":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.26948"},"2608.26951":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.26951"},"2608.27073":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.27073"},"2608.27407":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.27407"},"2608.27735":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.27735"},"2608.28240":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.28240"},"2608.28272":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.28272"},"2608.28386":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.28386"},"2608.28570":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.28570"},"2608.28895":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.28895"},"2608.29346":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.29346"},"2608.29538":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.29538"},"2608.29680":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.29680"},"2608.29733":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.29733"},"2608.29793":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.29793"},"2608.29905":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.29905"},"2608.29928":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.29928"},"2608.30054":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.30054"},"2608.30184":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.30184"},"2608.30218":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.30218"},"2608.30307":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.30307"},"2608.30423":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.30423"},"2608.30617":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.30617"},"2608.30821":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.30821"},"2608.31023":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.31023"},"2608.31113":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2608.31113"},"2609.00625":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.00625"},"2609.00812":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.00812"},"2609.00923":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.00923"},"2609.00994":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.00994"},"2609.00995":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.00995"},"2609.01276":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.01276"},"2609.01516":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.01516"},"2609.01823":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.01823"},"2609.02184":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.02184"},"2609.02352":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.02352"},"2609.02543":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.02543"},"2609.02747":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.02747"},"2609.02847":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.02847"},"2609.03117":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03117"},"2609.03304":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03304"},"2609.03334":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03334"},"2609.03341":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03341"},"2609.03349":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03349"},"2609.03447":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03447"},"2609.03534":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03534"},"2609.03613":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03613"},"2609.03639":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03639"},"2609.03657":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03657"},"2609.03824":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03824"},"2609.03897":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03897"},"2609.03919":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03919"},"2609.03931":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03931"},"2609.03956":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.03956"},"2609.04174":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.04174"},"2609.04196":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.04196"},"2609.04201":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.04201"},"2609.04942":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.04942"},"2609.04984":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.04984"},"2609.05127":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.05127"},"2609.05210":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.05210"},"2609.05255":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.05255"},"2609.05382":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.05382"},"2609.05415":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.05415"},"2609.05416":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.05416"},"2609.06436":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.06436"},"2609.06723":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.06723"},"2609.06726":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.06726"},"2609.06810":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.06810"},"2609.06955":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.06955"},"2609.07085":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.07085"},"2609.07137":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.07137"},"2609.07174":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.07174"},"2609.07231":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.07231"},"2609.07274":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.07274"},"2609.07346":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.07346"},"2609.07434":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.07434"},"2609.07557":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.07557"},"2609.07724":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.07724"},"2609.07734":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.07734"},"2609.08101":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.08101"},"2609.08148":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.08148"},"2609.08332":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.08332"},"2609.08449":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.08449"},"2609.08493":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.08493"},"2609.08730":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.08730"},"2609.08841":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.08841"},"2609.08848":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.08848"},"2609.09012":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.09012"},"2609.09145":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.09145"},"2609.09394":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.09394"},"2609.09418":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.09418"},"2609.09491":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.09491"},"2609.09507":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.09507"},"2609.09513":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.09513"},"2609.09606":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.09606"},"2609.09890":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.09890"},"2609.10095":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.10095"},"2609.10307":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.10307"},"2609.10322":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.10322"},"2609.10363":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.10363"},"2609.10376":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.10376"},"2609.10456":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.10456"},"2609.10531":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.10531"},"2609.10643":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.10643"},"2609.11129":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.11129"},"2609.11223":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.11223"},"2609.11434":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.11434"},"2609.11439":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.11439"},"2609.11472":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.11472"},"2609.11499":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.11499"},"2609.11506":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.11506"},"2609.11722":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.11722"},"2609.11886":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.11886"},"2609.11894":{"status":"ready","url":"notes/3d-gen-recon.html#summary-2609.11894"}},"topic":"3D Gen&Recon","version":1}</script>
 </body>
 </html>

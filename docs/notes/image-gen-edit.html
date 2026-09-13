@@ -13,6 +13,466 @@
       <h1>Image Gen&amp;Edit · 论文要点</h1>
     </header>
     <div class="summary-topic-list">
+    <article class="summary-article summary-topic-entry" id="summary-2608.16721" data-arxiv-id="2608.16721" data-status="ready">
+<h1>[2608.16721] GenRouter: Unified Workflow Routing for Agentic Image Generation</h1>
+<p><a href="https://arxiv.org/abs/2608.16721" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了 GenCanvas 统一工作流空间和 GenRouter 经验引导的工作流路由器，旨在解决代理图像生成中的碎片化和计算不匹配瓶颈，通过动态路由实现高效且高质量的图像生成。</p>
+<h2>解决的问题</h2>
+<p>现有代理图像生成框架存在两个关键瓶颈：一是碎片化，各框架在孤立环境中开发专用管道，难以整合不同能力或适应多样化任务；二是计算不匹配，采用“一刀切”范式对所有请求施加重型工作流，导致简单提示也需经过昂贵的推理或迭代步骤，浪费计算资源并引入高延迟。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了 GenCanvas，这是首个统一的工作流空间，将代理图像生成分解为通用基础原语（如搜索、推理、验证、草图）和可扩展的标准模板库，为社区提供了模块化且可扩展的基础设施。</li>
+<li>提出了 GenRouter，这是一个经验引导的动态工作流路由器，通过需求画像（profiling）、效用匹配（matching）和基于成本的帕累托过滤（filtering）三个核心组件，将提示词与最优后端图像生成器及工作流模板进行动态配对。</li>
+<li>构建了一个自我进化的系统机制，通过路由、执行和蒸馏的持续循环，利用历史执行痕迹和蒸馏的经验卡片自适应地部署帕累托最优执行计划，并随时间推移提升性能。</li>
+<li>在多样化的基准测试中进行了广泛的实证验证，证明该框架能有效缓解碎片化和计算不匹配问题，相比重型静态管道（如 GEMS），在保持视觉对齐的同时将执行成本降低了 95% 以上，延迟降低了 65%。</li>
+<li>展示了系统通过积累的经验实现持续自我进化，能够增强泛化能力并进一步降低计算开销，从而在动态路由中实现性能与效率的平衡。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.16765" data-arxiv-id="2608.16765" data-status="ready">
+<h1>[2608.16765] TRACE-Bench: Decomposing and Diagnosing Multi-Reference Image Generation</h1>
+<p><a href="https://arxiv.org/abs/2608.16765" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>TRACE-Bench 提出了一种基于能力视角的多参考图像生成评估框架，通过分解为四个原子操作符（Anchor, Disentangle, Apply, Compose）来构建包含约 1600 个案例的基准，并设计了细粒度的诊断评估协议以定位模型失败的具体原因。</p>
+<h2>解决的问题</h2>
+<p>现有的多参考图像生成评估基准存在三个关键局限性：(1) 覆盖不完整，预定义的任务类别无法扩展到实际使用的完整组合空间；(2) 缺乏故障诊断，整体任务级评分无法 pinpoint 导致失败的具体能力（如身份识别、属性提取或绑定错误）；(3) 复杂度不可控，缺乏统一结构来系统地控制或比较不同场景的结构复杂度。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种基于能力的形式化方法，将参考图像生成分解为四个原子操作符（Anchor, Disentangle, Apply, Compose），并通过组合公式系统地表征多样化的多参考设置。</li>
+<li>构建了 TRACE-Bench 基准，包含约 1600 个案例，基于 631 个公式模板和约 4000 张参考图像，并通过槽位数量（1-8）实现了对结构复杂度的系统性控制。</li>
+<li>设计了一种与操作符对齐的评估协议和诊断树分析方法，支持细粒度的单能力评估和失败源定位，克服了传统整体评分的不足。</li>
+<li>对 9 个领先的专有和开源模型进行了基准测试，揭示了当前模型的主要瓶颈在于属性解耦（Disentangle）和属性绑定（Apply）而非场景级组合（Compose），并发现锚定难度主要受参考图像中实体数量而非公式槽位数量的驱动。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.16812" data-arxiv-id="2608.16812" data-status="ready">
+<h1>[2608.16812] Unlocking the Potential of Image Editing via Concept Scaling and Dense Supervision</h1>
+<p><a href="https://arxiv.org/abs/2608.16812" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出通过概念扩展和密集监督来解锁图像编辑的潜力，主要贡献包括建立包含 1000 个细粒度类别的编辑概念分层分类法、提出利用组合编辑提供密集监督信号的训练方法、开发结合 LLM 知识蒸馏和 VQA 过滤的改进合成框架，以及构建包含 1200 万个样本的 ConceptEdit 数据集和基准。</p>
+<h2>解决的问题</h2>
+<p>现有图像编辑框架直接沿用文生图（T2I）的训练范式存在两个根本性差异：首先，现有数据集主要通过扩展源图像多样性进行扩展，而忽视了编辑概念本身的多样性和细粒度，导致概念多样性不足成为泛化的瓶颈；其次，图像编辑本质上是稀疏的，仅局部区域需要修改，而现有研究未充分利用这种稀疏性，导致训练效率低下且监督信号不足。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出编辑概念扩展范式，将数据扩展重点从源图像多样性转向编辑概念丰富度，并建立包含 1000 个细粒度类别的分层分类法以增强训练性能。</li>
+<li>提出密集监督训练方法，利用组合编辑将多个细粒度编辑概念合成到单张图像对中，从而提供密集监督信号，提升训练效率及单编辑和多编辑任务的性能。</li>
+<li>开发改进的合成框架，通过蒸馏大语言模型（LLM）的世界知识来主动枚举潜在编辑概念以确保场景覆盖的完备性，并针对每个实例定制 VQA 过滤机制以引导模型关注易错区域并进行思维链验证。</li>
+<li>构建了包含 1200 万个高质量样本的 ConceptEdit 数据集及基准，涵盖超过 1000 个细粒度类别，据称是目前规模最大的图像编辑数据集之一，支持鲁棒的训练和细粒度评估。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.16887" data-arxiv-id="2608.16887" data-status="ready">
+<h1>[2608.16887] An Empirical Study of Training Pixel-Space Text-to-Image Diffusion Models</h1>
+<p><a href="https://arxiv.org/abs/2608.16887" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文通过大规模实证研究，提出了一种结合潜在空间预训练与像素空间后训练的“潜在到像素”策略，解决了像素空间扩散模型收敛慢的问题，并建立了包含初始化、数据、预测目标等关键设计的训练配方，实现了与潜在空间模型相当的生成质量及 3.18 至 4.75 倍的端到端推理加速。</p>
+<h2>解决的问题</h2>
+<p>片段未提供关于具体研究问题（problem）的独立描述，相关背景与挑战（如像素空间扩散收敛慢、缺乏大规模训练研究）已融入引言背景与贡献总结中。</p>
+<h2>创新点</h2>
+<ul>
+<li>提供了像素空间与潜在空间扩散模型在大规模预训练设置下的受控比较，揭示了像素空间扩散收敛速度显著慢于潜在空间对应模型的现象。</li>
+<li>系统研究了大规模下的“潜在到像素”适应过程，建立了一套包含初始化、训练数据、预测目标、解码器架构和噪声调度等关键设计选择的实用训练配方。</li>
+<li>提出的最终配方生成的像素空间模型在整体基准性能上与成熟的潜在空间模型相当，同时实现了 3.18 至 4.75 倍的端到端推理加速。</li>
+<li>通过结合渐进式补丁大小调整与步骤蒸馏技术，进一步提升了推理效率，并在 Z-Image 和 FLUX2-klein 等多个基准上验证了该配方的通用性。</li>
+<li>相较于先前的潜在到像素方法，所提出的模型在大多数基准测试中均取得了改进，并显著降低了推理延迟。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.17067" data-arxiv-id="2608.17067" data-status="ready">
+<h1>[2608.17067] DiSCO: Defending text-to-image generation through distribution-guided contrastive prompt optimization</h1>
+<p><a href="https://arxiv.org/abs/2608.17067" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出 DiSCO，一种无需训练、严格黑盒且即插即用的提示优化模块，通过分布引导的对比后缀搜索来防御文本到图像生成中的良性对抗攻击。</p>
+<h2>解决的问题</h2>
+<p>片段未提供关于具体研究问题的详细描述，仅提到将防御良性对抗提示视为分布对齐问题，即文本安全的提示可能因模型学习到的输出分布而触发不安全图像生成。</p>
+<h2>创新点</h2>
+<ul>
+<li>形式化了文本到图像安全中的良性对抗范式，指出文本安全的提示仍可能因模型学习到的输出分布而诱导不安全生成。</li>
+<li>提出了 DiSCO，这是一种无需训练、严格黑盒且即插即用的提示优化模块，通过分布引导的对比后缀搜索来引导生成走向安全区域。</li>
+<li>展示了 DiSCO 在 I2P 基准测试上对四种红队攻击的评估结果，证明其在 undefended 和 defended 系统中均能一致提升安全性。</li>
+<li>报告了实验数据，显示在五个种子和 32 种系统 - 攻击设置下，DiSCO 将 NudeNet 下的平均 ASR 从 23.6% 降至 2.4%，将 Q16 下的平均 ASR 从 8.3% 降至 1.7%。</li>
+<li>证明了 DiSCO 的模块化和通用性，能够提升从免训练推理方法到微调方法在内的最先进防御的鲁棒性。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.17286" data-arxiv-id="2608.17286" data-status="ready">
+<h1>[2608.17286] Abra: Scaling Diffusion Image Training</h1>
+<p><a href="https://arxiv.org/abs/2608.17286" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文通过 Abra 系列模型在 10^19 至 10^22 FLOPs 范围内进行了系统性的扩展研究，推导出了文本到图像扩散模型的最优计算分配规则，并发现其存在与 LLM 类似的缩放坍塌现象。</p>
+<h2>解决的问题</h2>
+<p>片段未提供关于具体研究问题（problem）的明确描述，仅提及将缩放定律分析扩展到视觉生成领域存在挑战且该领域研究不足。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一项关于密集文本到图像变换器计算最优扩展的综合且受控研究，并推导出了适用于扩散模型训练的 200 TPP（每参数图像令牌数）规则。</li>
+<li>展示了扩散模型训练对过度训练具有鲁棒性，并精确刻画了这一现象，使从业者有信心倾向于训练更小模型但使用更多数据。</li>
+<li>将分析扩展到显示常见生成指标可预测地缩放，并表明表征能力和生成能力以异质方式缩放。</li>
+<li>首次证明扩散模型表现出缩放坍塌（scaling collapse）现象。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.17747" data-arxiv-id="2608.17747" data-status="ready">
+<h1>[2608.17747] TINA+: Probing Residual Visual Knowledge in Unlearned Diffusion Models via Diffusion-Consistent Text-Free Inversion</h1>
+<p><a href="https://arxiv.org/abs/2608.17747" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出 TINA+，一种基于扩散一致性的无文本反转攻击，旨在探测经过概念擦除的扩散模型中是否仍残留未被清除的视觉知识，从而挑战仅切断文本 - 图像映射的传统擦除范式。</p>
+<h2>解决的问题</h2>
+<p>现有的概念擦除方法主要遵循以文本为中心的范式，仅致力于切断文本提示与目标概念之间的映射关系，却错误地假设这等同于消除了模型参数空间中的底层视觉知识，导致即使文本输入失效，目标概念的视觉知识仍可能潜伏在模型中。</p>
+<h2>创新点</h2>
+<ul>
+<li>首次识别出以文本为中心的概念擦除范式的根本局限性，即切断文本 - 图像映射并不必然消除扩散模型中底层的视觉知识。</li>
+<li>提出了 TINA+，这是一种基于扩散一致轨迹正则化的无文本攻击方法，通过优化基础上的零文本反转来可靠地探测被擦除模型中残留的视觉知识。</li>
+<li>发现并分析了仅优化反转精度会导致虚假的、与扩散不一致的轨迹这一先前被忽视的失效模式，证明了仅凭视觉相似性不足以证实概念知识的真实保留。</li>
+<li>将原始 TINA 框架扩展为 TINA+，引入了源自前向扩散边际的边际能量约束以惩罚严重的潜变量能量坍塌，并提出了前向边际初始化策略以稳定轨迹发现。</li>
+<li>大幅扩展了实验评估，除了攻击成功率外，还包含了轨迹级诊断、有效性感知分析、新组件的消融研究以及额外的鲁棒性研究，以证明 TINA+ 能更好地区分真实的残留视觉知识与无约束反转产生的伪影。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.17995" data-arxiv-id="2608.17995" data-status="ready">
+<h1>[2608.17995] AViTS: Adaptive Spatiotemporal Token Selection for Efficient Dynamic-Resolution Generation</h1>
+<p><a href="https://arxiv.org/abs/2608.17995" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>AViTS 提出了一种自适应时空令牌选择框架，通过联合建模语义对齐和跨步动态来识别关键令牌，从而实现高效动态分辨率生成。</p>
+<h2>解决的问题</h2>
+<p>现有动态分辨率采样策略在分辨率转换时通常对所有潜在令牌进行均匀上采样，导致大量冗余计算、伪影及不一致性，且缺乏对文本条件语义对齐和跨步表示动态的显式建模。</p>
+<h2>创新点</h2>
+<ul>
+<li>揭示了低分辨率去噪过程中潜在令牌重要性的显著时空异质性，从语义对齐和跨步动态两个视角提供了实证依据。</li>
+<li>提出了 AViTS 框架，将上采样优先级建模为由语义对齐和跨步动态共同决定的时空重要性估计问题，实现了基于重要性的选择性上采样。</li>
+<li>在多种模型和任务上显著降低了推理成本并保持了高质量，且能有效与蒸馏、量化和特征缓存等技术组合以进一步加速。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.18040" data-arxiv-id="2608.18040" data-status="ready">
+<h1>[2608.18040] Optimize Your Sampling: Tuned Diffusion Sampling with Bayesian Optimization</h1>
+<p><a href="https://arxiv.org/abs/2608.18040" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种名为 OYS 的方法，利用贝叶斯优化将扩散模型的采样步长选择视为黑盒优化问题，以在低步数预算下通过全局重新分配步长来显著提升生成质量。</p>
+<h2>解决的问题</h2>
+<p>现有的采样优化方法（如 AYS）主要关注局部细化或基于 KL 散度上界的启发式初始化，导致在低步数预算下无法有效全局重新分配步长，从而限制了质量提升。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出 OYS 方法，将采样步长选择建模为无需梯度信息的黑盒优化问题，并采用贝叶斯优化算法在全配置空间内搜索最优解。</li>
+<li>证明 OYS 无需额外训练即可应用于任意扩散模型，且在文本生成、修复和图像逆任务中均优于 AYS 及默认采样调度。</li>
+<li>揭示 OYS 生成的优化调度模式：相比 AYS 和默认调度的均匀 log-SNR 分布，OYS 倾向于在高噪声步长处分配更多采样步数。</li>
+<li>展示 OYS 的高效性：仅需 5 步即可保留 50 步调度的大部分质量，且其调优成本（约 8.5 万次前向传播）远低于 AYS 的上限。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.18063" data-arxiv-id="2608.18063" data-status="ready">
+<h1>[2608.18063] EDITBRIDGE: Towards Faithful and Efficient Ultra-High-Resolution Image Editing</h1>
+<p><a href="https://arxiv.org/abs/2608.18063" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>EditBridge 提出了一种基于先验引导的扩散桥框架，旨在通过利用原始高分辨率源图像作为条件指导，在保持编辑语义一致性的同时，高效地合成超高分辨率图像的精细纹理。</p>
+<h2>解决的问题</h2>
+<p>现有图像编辑模型受限于注意力机制的二次计算复杂度和显存需求，通常无法在推理阶段直接处理超过 1K 分辨率的图像。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种基于 DiT 的高分辨率图像编辑框架，在实现计算效率的同时保证了细节的忠实保留。</li>
+<li>设计了一个基于扩散桥的细化阶段，并配备了先验引导的块级稀疏注意力机制，以促进基于语义的选择性跨图像交互。</li>
+<li>该方法在超高分辨率编辑任务上达到了最先进的性能，同时将计算成本大幅降低，相比传统基于扩散的方法实现了高达 2.2 倍的速度提升。</li>
+<li>片段未提供关于具体实验数据集、与其他特定基线模型的详细对比数据或消融实验结果的证据。</li>
+<li>片段未提供关于模型具体参数量、训练时间或显存占用量的详细证据。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.18076" data-arxiv-id="2608.18076" data-status="ready">
+<h1>[2608.18076] From Corpora to Co-Evolving Capabilities: Capability-Centric Data Design for Generalist Image Generation</h1>
+<p><a href="https://arxiv.org/abs/2608.18076" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种以能力为中心的数据设计框架，通过构建三个互操作的专业化数据引擎（针对文生图、图像编辑和知识 grounding）以及一种遵循能力获取依赖顺序的动态课程调度策略，旨在促进通用图像生成模型中不同生成能力之间的跨任务迁移与协同进化。</p>
+<h2>解决的问题</h2>
+<p>现有数据管道通常将数据集视为特定任务的独立设计单元（如文生图或编辑的独立配对），在孤立状态下进行优化，这限制了监督信号在不同任务间的共享，且未能解决如何组织数据以发展相互依赖的通用生成能力这一关键问题。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种能力特定的数据管道，通过三个互操作的专业化引擎（文生图、图像编辑、知识 grounding）在分离数据构建的同时保留通过共享预处理和标注专家的迁移能力。</li>
+<li>提出了一个能力对齐的课程调度策略，该策略遵循能力获取的依赖顺序而非固定数据混合，其多阶段调度联合演化任务组成、视觉概念分布、数据质量和分辨率，并利用能力感知评估将残差缺口反馈给针对性检索和自适应重采样。</li>
+<li>开发了一个用于连接任务和粒度级别的标注框架，该框架基于 VLM 将编辑指令与文生图标注的词汇和描述结构对齐，提供从实体标签到长描述的多风格监督，并为结构和文本丰富的图像生成经过验证的密集标注。</li>
+<li>在大规模上构建了包含 4.4 亿张图像的文生图语料库、超过 1.2 亿对高质量图像编辑对以及约 2700 万张图像 - 实体对的结构化知识数据集，以支持长尾覆盖和缺陷感知训练。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.19000" data-arxiv-id="2608.19000" data-status="ready">
+<h1>[2608.19000] Mise-en-Scène: Implicit Layout Emergence in Diffusion Transformers for Human-AI Design Co-Creation</h1>
+<p><a href="https://arxiv.org/abs/2608.19000" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种名为 Mise-en-Scène 的范式，利用预训练扩散 Transformer 中的隐式布局能力，结合小型 LoRA 和确定性的 Match-and-Place 后处理模块，实现了基于给定视觉元素的元素条件化设计生成，从而在保持品牌资产完美还原的同时实现人机协同创作。</p>
+<h2>解决的问题</h2>
+<p>现有的基于元素的设计生成方法主要依赖解耦的多阶段流水线，特别是利用大语言模型（LLM）显式预测空间边界框的“计划 - 粘贴”范式，存在以下局限性：1. LLM 偏向 1D 序列推理，缺乏对密集 2D 空间关系和细粒度视觉美学的原生理解；2. 将连续视觉任务强制转换为离散坐标令牌引入了量化误差并造成了严重的模态差距；3. 规划器无法观察渲染器，导致放置错误传播并最终破坏视觉和谐；4. 生成的结果通常是扁平图像，缺乏可编辑性，不利于设计师的后续 refinement。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种从显式 LLM 布局规划转向预训练扩散 Transformer 中隐式布局涌现的新范式，仅需使用小型 LoRA 即可将预训练图像编辑扩散模型转化为元素条件化设计生成器。</li>
+<li>引入了一种确定性的 Match-and-Place 方案，将原始资产作为独立图层重新插入，确保了 100% 的视觉身份保留，并返回完全可编辑的分层设计文档而非扁平图像。</li>
+<li>证明了在元素条件化设计中，额外的条件组件并未带来收益，最简单的适应策略（仅使用小型 LoRA）效果最佳，且扩散模型主干在建立全局连贯布局和美学和谐方面表现出色。</li>
+<li>在大规模 PrismLayersPlus 基准上的广泛实验表明，该方法在感知质量上最接近真实设计，显著优于 LLM 布局规划器和专门的布局 Transformer 方法。</li>
+<li>验证了生成基础模型通过数十亿图像 - 文本对的训练，已经内化了关于结构平衡、文本背景对比和上下文对象放置的丰富连续先验，无需显式坐标预测即可涌现布局专业知识。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.19637" data-arxiv-id="2608.19637" data-status="ready">
+<h1>[2608.19637] TextRefine: Improving Textual Fidelity, Spatial Placement, and Glyph Rendering for Text Editing in Product Posters</h1>
+<p><a href="https://arxiv.org/abs/2608.19637" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>TextRefine 是一个针对产品海报文本编辑的框架，通过结合监督微调与强化学习，解决了现有模型在文本插入和替换任务中存在的文本保真度、空间布局及字形渲染不足的问题。</p>
+<h2>解决的问题</h2>
+<p>现有视觉文本渲染模型在“从头生成”场景表现良好，但在产品海报的“文本编辑”任务（插入与替换）中表现不佳，具体表现为：1. 文本保真度不足（遗漏或错误渲染）；2. 空间布局冲突（新文本覆盖产品或现有内容）；3. 字形渲染缺陷（结构损坏或字符混淆）；4. 现有监督信号（如 OCR 或规则评分）无法同时满足插入任务的跨度级评估和替换任务的细粒度字形监督需求。</p>
+<h2>创新点</h2>
+<ul>
+<li>将产品海报中的文本编辑任务形式化为两个互补的子任务：文本插入（Text Insertion）和文本替换（Text Replacement），并明确了两者在文本保真度、空间布局、字形渲染及源图像保持方面的不同需求。</li>
+<li>提出了 TextRefine 框架，该框架首先通过混合插入和替换数据的监督微调建立通用编辑能力，随后应用强化学习，针对插入任务设计了评估语义保真度、目标跨度覆盖及惩罚产品/文本冲突的文本跨度级奖励，并引入门控结构约束以保护非文本内容；针对替换任务设计了基于 CTC 后验概率的字形级奖励，以提供对缺失笔画、结构变形及相似字符混淆的细粒度监督。</li>
+<li>构建了 OpenTextEdit 数据集，包含 10 万张产品海报图像，涵盖多文本布局和结构复杂的低频字符，提供了文本内容、布局参考、视觉属性及产品掩码，以支持任务对齐的训练与评估。</li>
+<li>在文本插入和替换两个任务上的实验表明，该方法在文本准确性、放置可靠性、字形保真度以及内容保持方面均优于现有的强基线图像编辑模型。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.20161" data-arxiv-id="2608.20161" data-status="ready">
+<h1>[2608.20161] DARS: Dual-Level Credit Assignment RL with Structured Reasoning for Instruction-Based Image Editing</h1>
+<p><a href="https://arxiv.org/abs/2608.20161" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>DARS 提出了一种针对基于指令的图像编辑的双层级信用分配强化学习框架，通过解耦跨模块更新分配和规划器内部推理诊断来解决联合优化中的信用分配模糊问题。</p>
+<h2>解决的问题</h2>
+<p>现有的图像编辑系统采用规划器 - 渲染器流水线，但在联合优化时面临双层级信用分配问题：首先，单一的渲染后评分将规划器（语义/组合错误）和渲染器（视觉伪影/执行不完整）的不同性质错误坍缩，导致无法确定应侧重优化哪个模块；其次，即使确定规划器是瓶颈，结果层面的反馈也无法指出具体是修改请求、保留约束、场景目标还是执行提示哪一部分出错，导致规划器内部的信用分配未定义。</p>
+<h2>创新点</h2>
+<ul>
+<li>将规划器 - 渲染器图像编辑的联合强化学习形式化为一个双层级信用分配问题，涵盖跨模块更新分配和规划器内部推理诊断两个层面。</li>
+<li>提出了一种展开方差分解方法，用于分离跨计划与计划内变异性以指导跨模块路由，并结合展开奖励难度估计实现自适应课程调度。</li>
+<li>引入四字段结构化推理输出（Modify, Preserve, Overall, Tips）替代不透明的自由形式轨迹，配合前缀门控奖励和令牌级优势重加权，实现基于渲染反馈的规划器局部化优化。</li>
+<li>在五个基准测试上的实验表明，DARS 在推理密集型编辑任务中尤为有效，消融研究证实跨模块路由和结构化规划器监督贡献了互补的性能增益。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.20336" data-arxiv-id="2608.20336" data-status="ready">
+<h1>[2608.20336] WithEveryone: Unified Planning and Identity Grounding for Group Image Generation</h1>
+<p><a href="https://arxiv.org/abs/2608.20336" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>WithEveryone 是一个统一的统一多模态模型框架，旨在解决大规模群体图像生成中身份保持、空间规划及交叉干扰等挑战。</p>
+<h2>解决的问题</h2>
+<p>现有方法主要处理少量人物（通常 1 至 5 人），难以生成包含 5 至 10 人的语义连贯群体图像，且随着参考身份数量增加，身份相似度下降、面部重复或合并、身份信号稀释以及交叉身份干扰等问题日益严重。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了在单一统一模型内交织身份与布局推理的方法，将每个选定的参考身份加载为 ID 令牌，并通过结构化布局思维链扩展 ATLAS 风格的规划，实现身份与布局的绑定及面部区域、身体范围和姿态的联合预测。</li>
+<li>提出了身份表示强制机制，通过添加合成图像前的监督式单身份预测，鼓励选定的身份在共享上下文中保持可寻址性，防止身份信号被忽略。</li>
+<li>提出了基于布局锚定的身份损失函数，该函数依据布局注释而非基于嵌入的面部匹配来执行输出端的身份监督，从而消除了现有身份损失无法扩展到两人以上场景的失效模式。</li>
+<li>构建并系统评估了一个面向 5 至 10 人群体图像生成的系统，在身份不重叠基准测试中取得了比 GPT-Image 2 更高的目标上下文身份相似度（0.499 对 0.462）和更低的复制粘贴伪影分数（0.055 对 0.169）。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.20334" data-arxiv-id="2608.20334" data-status="ready">
+<h1>[2608.20334] Exploring the Performance Frontier of Compact Unified Image Generation Models</h1>
+<p><a href="https://arxiv.org/abs/2608.20334" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出 Swift-Image，一个紧凑的统一图像生成模型，通过系统化的训练工程在受限计算预算下实现了文本生成、单图编辑和多图编辑的统一支持。</p>
+<h2>解决的问题</h2>
+<p>现有图像生成模型通常伴随着巨大的生成骨干网络、昂贵的训练流程以及用于生成和编辑的独立模型变体，导致在有限计算预算下难以推动紧凑模型的性能边界。</p>
+<h2>创新点</h2>
+<ul>
+<li>开发了 Swift-Image 紧凑统一模型系列，支持文本生成、单图编辑和多图编辑，其中 6B 模型以仅 243K GPU 训练小时实现了领先的聚合性能，而压缩后的 3B 模型在大幅降低部署成本的同时几乎无性能损失。</li>
+<li>建立了一套端到端的紧凑统一图像模型训练流程，涵盖面向能力的渐进式训练、并行专家强化学习、多教师在线策略蒸馏、结构剪枝和少步蒸馏，有效协调了有限模型容量和计算资源下的异构生成与编辑目标。</li>
+<li>通过广泛的消融实验和训练实验，总结出一系列可迁移的紧凑视觉模型实践，包括随模型能力演变数据分布、优先语义覆盖再偏好优化、在整合前专门化冲突目标，以及使架构选择与生成可学习性、效率和训练稳定性对齐。</li>
+<li>设计了包含 Prompt Enhancer 的实用组件，将高层请求处理与像素级渲染解耦，并通过文本级重写反馈和图像级反馈联合优化生成与编辑任务，显著提升了知识密集型、组合式和布局敏感任务的表现。</li>
+<li>利用分布匹配蒸馏减少采样步数，并通过结构剪枝和渐进恢复训练获得不同参数规模与推理成本权衡的模型变体，同时保留了统一的接口。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.21229" data-arxiv-id="2608.21229" data-status="ready">
+<h1>[2608.21229] Anchoring Instruction Outside Mask: Exact Reference Caching for Efficient In-Context Diffusion Transformers</h1>
+<p><a href="https://arxiv.org/abs/2608.21229" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种超越掩码的架构设计，利用静态文本锚点实现参考图像 K 和 V 的精确缓存，并结合两阶段蒸馏策略恢复因架构变更导致的性能损失，从而在保持高效的同时提升多参考图像下的指令遵循能力。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种超越掩码（beyond-mask）的设计，利用无参数的静态文本锚点，使参考图像的 K 和 V 能够感知指令信息，同时在整个去噪过程中保持精确复用。</li>
+<li>开发了一种两阶段恢复程序，结合了教师强制速度蒸馏和针对学生访问状态的短周期在线策略蒸馏，以修复因注意力结构改变而导致的初始生成质量下降。</li>
+<li>首次将在线策略蒸馏（on-policy distillation）应用于扩散模型的架构恢复，以解决推理轨迹与学生自身轨迹之间的状态分布差距。</li>
+<li>该方法在三个图像编辑基准测试和多种评估设置中与全注意力基线表现相当，在五个参考图像下将 40 步去噪过程加速了 3.92 倍，在十个参考图像下加速了 5.47 倍。</li>
+<li>该方法基于参考侧的依赖结构，与时间缓存、稀疏注意力等互补的扩散加速技术正交，原则上可与它们结合使用。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.21713" data-arxiv-id="2608.21713" data-status="ready">
+<h1>[2608.21713] The Plan, Not the Decoder: Diagnosing and Repairing Compositional Failure in Reasoning-Augmented Text-to-Image Generation</h1>
+<p><a href="https://arxiv.org/abs/2608.21713" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>该研究通过诊断推理增强型文生图模型中计划生成与执行分离的故障，提出在推理阶段通过符号验证和原位修复来修补计划生成器，从而提升构图准确性。</p>
+<h2>解决的问题</h2>
+<p>现有生成思维链（GoT）模型将计划生成与图像解码耦合，导致基准测试混淆了计划错误与执行失败，且模型常因提示词顺序偏差产生无效关系或重叠边界框，限制了构图可靠性。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了基于硬件和种子控制的干预程序，通过验证、修复、替换和破坏计划来解耦计划错误与执行失败，并建立了包含内置真实值的指标验证体系。</li>
+<li>证明了解码器是忠实执行者，94% 的生成布局实现了计划的几何关系，且解码器将对象与边界框进行语义绑定而非位置绑定。</li>
+<li>发现外部注入的几何计划优于模型自生计划，证实了规划器而非解码器是主要瓶颈，且规划器似然度与执行成本无关。</li>
+<li>揭示了规划器存在约 20% 的无效关系生成率及显著的提示词顺序偏差，并提出了无需训练的符号重采样和原位修复方法以提升性能。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.21748" data-arxiv-id="2608.21748" data-status="ready">
+<h1>[2608.21748] Calibrate What You SHIP: Post-Selection Risk Control for Verifier-Guided Text-to-Image Generation</h1>
+<p><a href="https://arxiv.org/abs/2608.21748" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出 SHIP 方法，通过在选择性推理策略上直接校准风险预算，解决了传统候选级校准无法保证最终发布策略风险控制的候选 - 策略校准失配问题。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>刻画了文本到图像生成中特有的候选级到策略级的校准失配问题，并将其分解为提示词重加权（prompt reweighting）和提示词内选择（within-prompt selection）两个机制，证明了候选级风险控制并不总能控制发布输出的风险。</li>
+<li>提出了 SHIP（Selection-aware Held-out calibration of Inference Policies）方法，该方法在保留的提示词上运行或重放完整的推理策略，利用独立的目标评判器评估实际发布的输出，并选择满足规定发布输出风险预算的最宽松阈值。</li>
+<li>在固定、序列和自适应等多种文本到图像推理策略、多个模型及基准测试上验证了 SHIP 的有效性，并通过人类评估揭示了风险、覆盖率和推理成本之间存在的策略依赖性权衡关系。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.21776" data-arxiv-id="2608.21776" data-status="ready">
+<h1>[2608.21776] SpatialDiff: 3D-Aware Object Movement via Implicit Spatial Modeling</h1>
+<p><a href="https://arxiv.org/abs/2608.21776" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>SpatialDiff 是一种指令驱动的图像编辑框架，通过隐式 3D 空间建模机制和全局空间监督策略，在纯 2D 扩散过程中实现复杂场景中物体的灵活且精确的空间移动。</p>
+<h2>解决的问题</h2>
+<p>片段指出，纯 2D 域的扩散编辑方法缺乏 3D 空间知识（如深度和空间布局），难以保证物体运动在 3D 空间的一致性；而现有的 3D 感知方法依赖显式 3D 重建，在单图像输入和复杂场景下因视角未知、深度歧义等问题导致重建质量下降，限制了其应用。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了 SpatialDiff，这是首个通过隐式融合 3D 先验信息来实现精确物体空间移动的指令驱动方法。</li>
+<li>引入了隐式 3D 空间建模机制，利用 3D 视觉几何编码器从输入图像提取几何感知特征，并通过连接器模块将其与 DiT 潜在空间对齐。</li>
+<li>设计了全局空间监督策略，在训练阶段利用目标图像的深度图作为辅助监督信号，以正则化 3D 空间 token 的使用并引导模型形成连贯的空间理解。</li>
+<li>实验结果表明，该方法在指令级运动一致性和图像质量保持方面均达到了最先进的性能。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.22521" data-arxiv-id="2608.22521" data-status="ready">
+<h1>[2608.22521] VISTA: Test-Time Compositional Alignment for Visual Autoregressive Generation</h1>
+<p><a href="https://arxiv.org/abs/2608.22521" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>VISTA 是首个用于下一代视觉自回归（VAR）生成的基于梯度的测试时框架，旨在通过优化中间 token 表示来解决属性绑定、空间推理和关系任务中的组合性问题。</p>
+<h2>解决的问题</h2>
+<p>现有的文本到图像生成模型（包括扩散模型和 VAR 模型）在组合性任务（如属性绑定、空间推理和关系任务）上表现不可靠，且单纯增加模型规模无法解决此问题。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了首个基于梯度的测试时框架，用于在下一代视觉自回归（VAR）生成中进行组合性对齐，无需额外的训练、参数、奖励模型或候选搜索。</li>
+<li>识别了使测试时潜在优化在状态化、多尺度生成中不稳定的故障模式，并提供了独立于优化目标的解决机制（如缓存安全优化和逐 token 梯度归一化）。</li>
+<li>将组合性对齐构建为可扩展的可微目标空间，基于交叉注意力，允许直接移植现有的绑定和平面关系目标，并引入了无需外部深度估计器的深度边界约束。</li>
+<li>在 T2I-CompBench 和 GenEval 基准测试中显著提升了性能，例如在 2D 空间关系上实现了 84% 的相对增益，并在对象定位准确性上几乎翻了三倍。</li>
+<li>证明了该方法在提升组合性理解的同时不会降低图像质量，因为偏好模型对 VISTA 优化输出的评分提高了近 20%。</li>
+<li>设计了一个可插拔的注册表，允许任何可微的交叉注意力约束接入该基础设施，并通过两个旋钮暴露推理成本与收益之间的权衡，无需任务特定数据。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.22780" data-arxiv-id="2608.22780" data-status="ready">
+<h1>[2608.22780] Can We Perform Online RL for Image Editing without Editing Rewards?</h1>
+<p><a href="https://arxiv.org/abs/2608.22780" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出 Lever-Edit 框架，通过两阶段设计将参考图像和编辑指令转换为与冻结的文本到图像（T2I）奖励对齐的目标描述，从而在不构建专用编辑奖励的情况下实现图像编辑的强化学习。</p>
+<h2>解决的问题</h2>
+<p>现有的监督微调优化的是编辑对而非任务级人类偏好，而构建可靠的编辑奖励需要昂贵的三元组级监督且难以校准；此外，直接将成熟的 T2I 奖励应用于编辑任务面临条件语义不同（相对变换 vs 自包含描述）以及 VLM 生成描述与奖励模型评估空间不兼容的挑战。</p>
+<h2>创新点</h2>
+<ul>
+<li>从奖励转移的视角重新审视编辑质量的三个标准维度（纯图像质量、编辑执行、参考一致性），并识别出它们与通用图像评估的潜在对应关系，从而论证无需专用编辑奖励即可进行图像编辑强化学习。</li>
+<li>提出了 Lever-Edit 这一两阶段框架：第一阶段通过前缀微调适配 VLM，将参考图像和编辑指令映射为包含预期修改和保留源语义的对抗性目标描述，并使其表示与冻结的 T2I 奖励对齐；第二阶段冻结该描述器，仅使用转移后的 T2I 奖励优化扩散编辑策略。</li>
+<li>通过实验证明，在策略微调过程中不使用图像到图像奖励模型的情况下，转移后的 T2I 奖励能够提供具有竞争力的编辑对齐效果和源内容保留能力。</li>
+<li>该设计将奖励转移与策略优化分离，使其能够作为插件应用于不同的 VLM 和图像编辑骨干网络，无需重新设计对齐目标或部署昂贵的编辑评估器。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2609.10723" data-arxiv-id="2609.10723" data-status="ready">
+<h1>[2609.10723] AcFlow: Controlling Text-to-Image Diffusion Transformers via Learned Conditional Activation Flow</h1>
+<p><a href="https://arxiv.org/abs/2609.10723" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>AcFlow 通过在学习到的概念条件速度场中传输中间层激活值，实现了对冻结扩散 Transformer 的推理时控制，支持细粒度概念描述、未见概念泛化以及连续的风格调节与概念抑制。</p>
+<h2>解决的问题</h2>
+<p>现有的文本到图像生成模型缺乏精确的用户控制能力，直接提示无法提供校准的控制轴，且基于概念优化的参数级适应方法需要为每个新概念进行额外拟合、会影响非目标概念或在连续修改时导致已学控制能力退化。</p>
+<h2>创新点</h2>
+<ul>
+<li>将推理时的控制形式化为激活空间中通过学习到的速度场的传输，使图像令牌激活值接收随令牌变化且依赖于激活的更新。</li>
+<li>通过文本概念描述对速度场进行条件化，在一个任务家族内跨概念训练单一速度场而无需针对每个概念进行拟合，该共享场能够泛化到训练期间未见过的概念并响应细粒度描述。</li>
+<li>利用流地平线作为连续控制参数实现渐进式风格调节，在高水平风格对齐区域实现了最佳风格与内容权衡，并有效抑制了直接提示下仍存在的 unwanted 概念。</li>
+<li>通过探测学习到的速度场，实验证明了令牌特定更新的价值，轨迹分析显示该场在去噪步骤中系统性地调整其方向和能量分配，支持自适应激活传输场优于固定概念方向广播。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2609.10811" data-arxiv-id="2609.10811" data-status="ready">
+<h1>[2609.10811] Overpainting: Localized Context-aware Diffusion Image Editing</h1>
+<p><a href="https://arxiv.org/abs/2609.10811" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种基于三值图（trimap）的局部上下文感知扩散图像编辑方法，旨在解决现有模型在精确控制编辑区域与保持内容一致性之间的平衡难题。</p>
+<h2>解决的问题</h2>
+<p>现有图像编辑扩散模型难以实现用户指定的精确局部化编辑，因为即使提供掩码，模型也仅将其视为建议而非约束，且手动绘制精确编辑掩码对于细粒度特征或边界模糊的编辑任务既繁琐又容易出错。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种名为重绘（overpainting）的新型图像编辑任务，该任务利用三值图结合局部控制与内容感知能力，允许用户通过白色、黑色和灰色区域分别指定必须编辑、禁止编辑和可选编辑的像素。</li>
+<li>设计了一种结合联合注意力机制与团队协作（Teamwork）策略的信息共享方法，通过注意力丢弃技术平衡不同图像流之间的信息流动，以在掩码遵循度与编辑质量之间取得最佳权衡。</li>
+<li>开发了一套自动化的管道来生成重绘训练配对数据，并针对现有编辑模型常见的欠编辑、过编辑和位移失败进行了自动检测与过滤。</li>
+<li>构建了一个包含 180180 个示例的高质量手工制作重绘验证集，以评估模型在现有图像编辑扩散模型无法处理的广泛编辑示例上的表现。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2609.11317" data-arxiv-id="2609.11317" data-status="ready">
+<h1>[2609.11317] Mi-Ripple: Restoring Images Degraded by Iterative AI Editing</h1>
+<p><a href="https://arxiv.org/abs/2609.11317" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>Mi-Ripple 旨在恢复因迭代 AI 编辑而受损的图像，通过区分可移除的光谱污染与内容纠缠的退化，在去除伪影的同时保留合法纹理。</p>
+<h2>解决的问题</h2>
+<p>迭代参考条件图像编辑在重用输出作为下一参考时，会传播不需要的纹理，导致图像出现网格、蜂窝状图案或颗粒表面等结构化伪影，且现有研究多关注检测或解释成因，缺乏针对可见伪影是否可分离去除的实用恢复方案。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出超越去噪的恢复方法，结合孤立峰值陷波、结构感知抑制和清理参考再生，以修复光谱污染和退化纹理。</li>
+<li>采用诊断驱动的修复策略，利用光谱和空间探针区分晶格与颗粒伪影，并据此选择滤波、再生或审查。</li>
+<li>提供视觉和测量证据，通过恢复配对和六个肖像案例展示工作流程优势，并利用对齐残差独立检查滤波损伤。</li>
+<li>明确区分可移除的光谱污染与内容纠缠的退化，为迭代图像复制中的递归退化问题提供治疗导向的分析框架。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2609.11519" data-arxiv-id="2609.11519" data-status="ready">
+<h1>[2609.11519] Learning Interaction between Image and Layout Priors for Joint Image-Layout Generation in Design Templates</h1>
+<p><a href="https://arxiv.org/abs/2609.11519" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种名为 InterIL 的潜在扩散模型，旨在通过联合生成图像和布局来自动化设计模板的创建，解决了现有方法中背景与布局之间双向依赖建模不足的问题。</p>
+<h2>解决的问题</h2>
+<p>现有设计模板生成方法大多遵循顺序生成范式，导致背景生成与布局生成之间存在单向依赖，无法有效建模两者间至关重要的双向交互关系，从而引发视觉冲突并降低生成质量。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种新的联合图像 - 布局生成范式，用于图形设计模板生成，区别于现有的顺序生成方案。</li>
+<li>构建了一个基于扩散模型的设计模板生成框架，通过学习预训练图像先验和布局先验之间的交互，在单次生成过程中同时合成图像和布局。</li>
+<li>设计了一个推理时引导框架，能够在无需重新训练模型的情况下，根据用户偏好调整生成结果，例如减少前景元素对背景显著区域的遮挡。</li>
+<li>引入了两个新的评估指标 TemplateFID 和 TemplateCLIP，分别用于评估生成模板的视觉质量和文本遵循度。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2609.11673" data-arxiv-id="2609.11673" data-status="ready">
+<h1>[2609.11673] Multimodal Taxonomic Conditioning for Generative Plankton Imagery</h1>
+<p><a href="https://arxiv.org/abs/2609.11673" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>该研究提出了一种多模态分类学条件生成方法，旨在解决浮游生物图像数据长尾分布及细粒度形态差异带来的生成难题。</p>
+<h2>解决的问题</h2>
+<p>自动化仪器生成的浮游生物图像数据存在严重的长尾分布问题，即少数优势类群占据主导而生态重要的稀有物种图像极少，且细粒度形态差异要求生成模型必须精确复现细节而非近似，同时现有方法多将分类学信息仅作为训练过程的条件而非嵌入表示，且浮游生物分类层级深且分布不均，难以直接应用基于排名的对比学习目标。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种针对深层不规则生物分类学的排名对比学习适应方法，并引入了截断感知的深度匹配机制。</li>
+<li>设计了一种分类学条件的扩散模型，将层次化表示学习与生成过程解耦，通过独立学习的 CLIP 编码器嵌入几何结构来指导参数高效的扩散变换器。</li>
+<li>在分布保真度和下游分类器效用方面进行了全面评估，验证了该方法在浮游生物图像生成任务中的有效性。</li>
+<li>针对浮游生物标本通常仅鉴定到属或科级别的特点，解决了分类层级深且填充不均导致的对比学习直接应用困难问题。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2609.11804" data-arxiv-id="2609.11804" data-status="ready">
+<h1>[2609.11804] Logit Refiner: Improving Visual Autoregressive Models via Intra-Scale Dependency Modeling</h1>
+<p><a href="https://arxiv.org/abs/2609.11804" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>Logit Refiner 通过引入轻量级自回归模块恢复尺度内令牌间的依赖关系，解决了视觉自回归模型因并行解码导致的局部空间不连贯问题。</p>
+<h2>解决的问题</h2>
+<p>视觉自回归模型在并行尺度内解码时隐含了均值场假设，将联合条件分布分解为独立的单令牌分布，从而忽略了同尺度内令牌间的空间依赖，导致生成的图像出现局部纹理不匹配或结构不连续。</p>
+<h2>创新点</h2>
+<ul>
+<li>将视觉自回归模型生成样本的空间不连贯问题归因于并行尺度内解码中的均值场近似，并提出自回归尺度内采样是消除该近似误差所需的最小修正。</li>
+<li>提出一种轻量级自回归细化器模块，将其作为插件集成到冻结的骨干网络特征上，无需调整预训练权重即可恢复尺度内依赖。</li>
+<li>证明该细化器仅需约 10% 的额外参数和极少的训练计算量，即可在 310M 到 2B 参数的多种骨干模型上显著提升生成性能。</li>
+<li>通过消融实验证实，生成质量的提升源于依赖建模而非额外容量，且该方法可推广至文生图任务并带来一致的性能改善。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2609.11842" data-arxiv-id="2609.11842" data-status="ready">
+<h1>[2609.11842] Model-Aware Schedules Improve Generation via Fiberwise Optimal Transport</h1>
+<p><a href="https://arxiv.org/abs/2609.11842" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种基于纤维最优传输的模型感知调度方法，通过最小化系数路径动能作用并约束纤维预测风险，实现了生成质量的显著提升。</p>
+<h2>解决的问题</h2>
+<p>现有的系数路径动能作用定义是模型无关的，忽略了预测误差，且无法针对不同模型和设置进行有效的风险比较与调度优化。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了基于基保持最优传输的纤维预测风险概念，该风险在归一化对称乘积度量下简化为加权噪声预测均方误差，并可扩展至一般线性预测目标。</li>
+<li>引入了由模型无关动能基线定义的动能参考坐标，用于跨模型和设置比较风险轮廓与分配变形。</li>
+<li>将模型感知调度形式化为在纤维预测风险预算约束下的最小系数路径动能作用问题，并推导出一阶调度构建的闭式最优时间分配解。</li>
+<li>验证了在不同预测目标、训练配置、数据集和架构下，所提出的调度方案能一致地提升强基线模型的性能，包括在 16 次函数评估下将 FID 相对降低 38.6%。</li>
+<li>发现归一化风险形状和分配变形在动能参考坐标下具有经验普适性，并证实冻结的分析分配模板能保留大部分模型感知带来的改进。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2609.11929" data-arxiv-id="2609.11929" data-status="ready">
+<h1>[2609.11929] SenseNova-U1.5: Towards Native Unified Visual Intelligence</h1>
+<p><a href="https://arxiv.org/abs/2609.11929" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>SenseNova-U1.5 通过从独立块预测转向空间联合重建，以及从联合奖励优化转向先专业化后统一的策略，实现了视觉理解、推理和生成的原生统一，从而在保持高效推理的同时显著提升了高分辨率下的空间连贯性。</p>
+<h2>解决的问题</h2>
+<p>现有视觉生成系统通常采用预训练视觉编码器进行感知，变分自编码器进行生成，导致感知与生成处于不同的表征空间，限制了统一框架内感知、推理和生成的协调；此外，SenseNova-U1 将每个视觉令牌重构为独立的 RGB 块，这种因子化阻止了相邻块之间的信息交换，导致高分辨率下出现接缝、纹理不连续和几何不一致等问题。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了从独立块预测到空间联合重建的首次重大架构转变，通过将令牌投影到二维特征场并利用空间卷积和像素洗牌上采样进行渐进式重建，使相邻区域能在像素最终确定前交换信息，从而联合解决颜色、纹理和几何问题。</li>
+<li>实现了从联合奖励优化到先专业化后统一策略的转变，通过为不同能力（如美学合成、双语文本渲染等）训练专用的强化学习专家，并利用多专家在线策略蒸馏将其能力整合到单一统一策略中。</li>
+<li>证明了单一的紧凑视觉表征可以作为理解、推理、生成和编辑的共享基础，消除了并行视觉路径以及编码器特征与 VAE 潜在变量之间的重复转换。</li>
+<li>展示了该紧凑表征在支持高效推理的同时，能够交付高图像保真度、双语排版、复杂构图、多参考编辑、交错生成、指令遵循、视觉保持和细粒度控制等强大性能。</li>
+<li>验证了模型能够泛化到长组成性和高度结构化的视觉指令，表明通过多模态理解和推理获得的结构知识和规划能力可以自然地转移到视觉创作中。</li>
+</ul>
+</article>
     <article class="summary-article summary-topic-entry" id="summary-2608.23024" data-arxiv-id="2608.23024" data-status="ready">
 <h1>[2608.23024] When the Edit Changes the Patient: Measuring Identity Preservation in Counterfactual Retinal Images</h1>
 <p><a href="https://arxiv.org/abs/2608.23024" rel="nofollow">arXiv 原文</a></p>
@@ -1209,6 +1669,6 @@
 </article>
     </div>
   </main>
-  <script type="application/json" id="summary-catalog">{"papers":{"2608.23024":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.23024"},"2608.23999":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.23999"},"2608.24119":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.24119"},"2608.24563":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.24563"},"2608.25380":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.25380"},"2608.25386":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.25386"},"2608.25648":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.25648"},"2608.26956":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.26956"},"2608.28082":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.28082"},"2608.29160":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.29160"},"2608.29233":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.29233"},"2608.29335":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.29335"},"2608.29804":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.29804"},"2608.29809":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.29809"},"2608.29925":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.29925"},"2608.29997":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.29997"},"2608.30081":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.30081"},"2608.30087":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.30087"},"2608.31053":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.31053"},"2609.00476":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.00476"},"2609.00525":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.00525"},"2609.00708":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.00708"},"2609.00798":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.00798"},"2609.00862":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.00862"},"2609.00885":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.00885"},"2609.00955":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.00955"},"2609.00956":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.00956"},"2609.00968":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.00968"},"2609.00984":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.00984"},"2609.01123":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.01123"},"2609.01148":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.01148"},"2609.01370":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.01370"},"2609.01409":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.01409"},"2609.01433":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.01433"},"2609.01479":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.01479"},"2609.01582":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.01582"},"2609.01607":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.01607"},"2609.01746":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.01746"},"2609.01997":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.01997"},"2609.02004":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.02004"},"2609.02075":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.02075"},"2609.02160":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.02160"},"2609.02348":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.02348"},"2609.02349":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.02349"},"2609.02504":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.02504"},"2609.02616":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.02616"},"2609.02683":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.02683"},"2609.02748":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.02748"},"2609.02813":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.02813"},"2609.03415":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.03415"},"2609.03443":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.03443"},"2609.03585":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.03585"},"2609.03688":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.03688"},"2609.03740":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.03740"},"2609.03796":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.03796"},"2609.03813":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.03813"},"2609.04090":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.04090"},"2609.04151":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.04151"},"2609.04837":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.04837"},"2609.04939":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.04939"},"2609.04976":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.04976"},"2609.05028":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.05028"},"2609.05171":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.05171"},"2609.05234":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.05234"},"2609.06490":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.06490"},"2609.06491":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.06491"},"2609.06602":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.06602"},"2609.06651":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.06651"},"2609.06947":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.06947"},"2609.07012":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.07012"},"2609.07815":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.07815"},"2609.07853":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.07853"},"2609.08253":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.08253"},"2609.08282":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.08282"},"2609.08722":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.08722"},"2609.09486":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.09486"},"2609.09905":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.09905"},"2609.09909":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.09909"}},"topic":"Image Gen&Edit","version":1}</script>
+  <script type="application/json" id="summary-catalog">{"papers":{"2608.16721":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.16721"},"2608.16765":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.16765"},"2608.16812":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.16812"},"2608.16887":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.16887"},"2608.17067":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.17067"},"2608.17286":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.17286"},"2608.17747":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.17747"},"2608.17995":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.17995"},"2608.18040":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.18040"},"2608.18063":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.18063"},"2608.18076":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.18076"},"2608.19000":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.19000"},"2608.19637":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.19637"},"2608.20161":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.20161"},"2608.20334":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.20334"},"2608.20336":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.20336"},"2608.21229":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.21229"},"2608.21713":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.21713"},"2608.21748":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.21748"},"2608.21776":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.21776"},"2608.22521":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.22521"},"2608.22780":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.22780"},"2608.23024":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.23024"},"2608.23999":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.23999"},"2608.24119":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.24119"},"2608.24563":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.24563"},"2608.25380":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.25380"},"2608.25386":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.25386"},"2608.25648":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.25648"},"2608.26956":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.26956"},"2608.28082":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.28082"},"2608.29160":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.29160"},"2608.29233":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.29233"},"2608.29335":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.29335"},"2608.29804":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.29804"},"2608.29809":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.29809"},"2608.29925":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.29925"},"2608.29997":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.29997"},"2608.30081":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.30081"},"2608.30087":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.30087"},"2608.31053":{"status":"ready","url":"notes/image-gen-edit.html#summary-2608.31053"},"2609.00476":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.00476"},"2609.00525":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.00525"},"2609.00708":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.00708"},"2609.00798":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.00798"},"2609.00862":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.00862"},"2609.00885":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.00885"},"2609.00955":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.00955"},"2609.00956":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.00956"},"2609.00968":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.00968"},"2609.00984":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.00984"},"2609.01123":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.01123"},"2609.01148":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.01148"},"2609.01370":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.01370"},"2609.01409":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.01409"},"2609.01433":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.01433"},"2609.01479":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.01479"},"2609.01582":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.01582"},"2609.01607":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.01607"},"2609.01746":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.01746"},"2609.01997":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.01997"},"2609.02004":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.02004"},"2609.02075":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.02075"},"2609.02160":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.02160"},"2609.02348":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.02348"},"2609.02349":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.02349"},"2609.02504":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.02504"},"2609.02616":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.02616"},"2609.02683":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.02683"},"2609.02748":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.02748"},"2609.02813":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.02813"},"2609.03415":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.03415"},"2609.03443":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.03443"},"2609.03585":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.03585"},"2609.03688":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.03688"},"2609.03740":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.03740"},"2609.03796":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.03796"},"2609.03813":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.03813"},"2609.04090":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.04090"},"2609.04151":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.04151"},"2609.04837":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.04837"},"2609.04939":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.04939"},"2609.04976":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.04976"},"2609.05028":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.05028"},"2609.05171":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.05171"},"2609.05234":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.05234"},"2609.06490":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.06490"},"2609.06491":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.06491"},"2609.06602":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.06602"},"2609.06651":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.06651"},"2609.06947":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.06947"},"2609.07012":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.07012"},"2609.07815":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.07815"},"2609.07853":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.07853"},"2609.08253":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.08253"},"2609.08282":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.08282"},"2609.08722":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.08722"},"2609.09486":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.09486"},"2609.09905":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.09905"},"2609.09909":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.09909"},"2609.10723":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.10723"},"2609.10811":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.10811"},"2609.11317":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.11317"},"2609.11519":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.11519"},"2609.11673":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.11673"},"2609.11804":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.11804"},"2609.11842":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.11842"},"2609.11929":{"status":"ready","url":"notes/image-gen-edit.html#summary-2609.11929"}},"topic":"Image Gen&Edit","version":1}</script>
 </body>
 </html>

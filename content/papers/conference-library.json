@@ -1740,7 +1740,21 @@
         },
         "review_key": "45b0c28b717c23942c4e47e32762fe2282c62f11d3de04e2570364db51f09a47"
       },
-      "summary": null,
+      "summary": {
+        "contributions": [
+          "提出了一种在归一化物体坐标空间（NOCS）中直接条件化绝对相机姿态的新方法，消除了选择参考视图或构建相对世界坐标系的需要。",
+          "利用最先进的基于指令的图像编辑模型构建方向感知的视图合成系统，继承了其卓越的图像质量和泛化能力。",
+          "设计了一种新颖的区域注意力机制，通过空间对齐的普吕克射线图将目标 NOCS 相机姿态表示为相机令牌，确保每个目标相机令牌仅关注其对应的图像令牌，防止跨视图干扰。",
+          "利用底层编辑模型的原生文本条件化能力，通过自然语言明确定义输入物体的规范朝向，从而消除 NOCS 定义歧义并支持测试时对未见物体类别的鲁棒泛化。",
+          "构建了一个包含 22K 个物体的新数据集，并与 Objaverse-OA 和 ABO 数据集结合，为每个物体提供描述物体及其前视图定义的文本说明，以支持语言引导的视角控制。"
+        ],
+        "one_sentence": "本文提出了一种基于 2D 扩散模型的新方法，通过在归一化物体坐标空间（NOCS）中直接条件化绝对相机姿态，实现了生成式视图合成中的全局视角控制和高保真外观生成。",
+        "problem": "现有视图合成方法存在以下局限：基于输入的方法仅能提供相对视角控制，无法自动对齐标准规范坐标系；图像到 3D 的方法往往忽略网格方向对齐，导致缺乏标准规范朝向；而关注方向对齐的方法受限于 3D 生成纹理质量，难以达到最先进的 2D 图像合成细节和视觉保真度。"
+      },
+      "summary_source": {
+        "sha256": "158ef0f7edebfd3675a026eb7f06c74dc18ab24fc79f93ea4b494edd20076002",
+        "url": "https://eccv.ecva.net/virtual/2026/poster/3467"
+      },
       "title": "Global Pose Control for Generative View Synthesis in Normalized Object Coordinate Space",
       "topics": [
         "3D Gen&Recon"
@@ -2166,7 +2180,20 @@
         },
         "review_key": "271ac5586b3e4dd19903618be1eccb6fef99ed07a0c4a00f582f5148e7af7bc0"
       },
-      "summary": null,
+      "summary": {
+        "contributions": [
+          "提出了几何感知的视频扩散范式，明确将 3D 基础模型的结构先验与视频扩散模型耦合，以解决现有方法缺乏 3D 几何约束的问题。",
+          "设计了一种蒸馏范式，将预训练 3D 基础模型的高级结构知识转移到扩散模型中，使其能够预测与 3D 基础模型特征对齐的几何感知潜在表示。",
+          "构建了一个几何 - 外观解耦的两阶段生成流程，首先利用几何特征作为中间结构枢纽确保结构一致性，随后引导外观扩散模型合成最终的新视角。",
+          "证明了 DreamWorld 在视觉质量、3D 一致性和相机可控性方面均优于现有方法，实现了结构完整性与视觉真实性的无缝融合。"
+        ],
+        "one_sentence": "DreamWorld 提出了一种几何感知的视频扩散范式，通过将 3D 基础模型的结构先验与视频扩散模型的高保真生成能力紧密结合，实现了 3D 一致的世界建模。",
+        "problem": "现有的相机控制视频扩散模型主要依赖隐式时空表示来想象未观测或遮挡的场景几何，缺乏明确的 3D 几何约束，导致在新视角合成中出现几何结构不合理、物体形状扭曲和跨视角空间不一致等问题。"
+      },
+      "summary_source": {
+        "sha256": "6589b493ee11b43c5521fbabe8fb5b6003dc0b5bed4b96908a9a8029ca69f707",
+        "url": "https://eccv.ecva.net/virtual/2026/poster/5879"
+      },
       "title": "DreamWorld: Geometry-Grounded Video Diffusion for 3D-Consistent World Modeling",
       "topics": [
         "Video Gen&Edit",
@@ -4716,7 +4743,20 @@
         },
         "review_key": "93a6f2d44eefa3e5e9d21e3859dd4f7ff958cd7969751e18cea0134909f55025"
       },
-      "summary": null,
+      "summary": {
+        "contributions": [
+          "提出了一种名为 Anti-Prompt 的图像保护方法，该方法在去噪过程中削弱文本条件交互并放大仅视觉路径，适用于全注意力和交叉注意力两种常见的图像到视频架构。",
+          "引入了一种由视频大模型辅助的评估协议，该协议提供了可解释的、基于帧的诊断，能够跨四个视觉维度（主体保留、结构一致性、动态一致性和伪影抑制）评估保护引发的失败。",
+          "该方法在两种代表性图像到视频架构下实现了有效干扰合理动画的效果，同时具备较高的效率和极低的不可感知性。",
+          "该方法的操作基于中间注意力统计量而非生成的视频，从而消除了对昂贵参考视频生成的需求，显著提高了效率。"
+        ],
+        "one_sentence": "本文提出了一种名为 Anti-Prompt 的方法，通过削弱文本引导并增强视觉路径来保护图像免受文本引导的图像到视频生成滥用，同时引入了一种基于视频大模型的评估协议。",
+        "problem": "现代图像到视频生成模型允许公众共享的图像被各种提示词反复动画化，从而加剧了隐私和版权风险，且视频生成的动态叙事特性比静态图像更具说服力。"
+      },
+      "summary_source": {
+        "sha256": "754cf1d60c2a5cee33acdc006980c7910ab3dd2aa7724f8fc2531586c0b00dca",
+        "url": "https://eccv.ecva.net/virtual/2026/poster/3308"
+      },
       "title": "Anti-Prompt: Image Protection against Text-Guided Image-to-Video Generation",
       "topics": [
         "Image Gen&Edit"
@@ -5550,7 +5590,20 @@
         },
         "review_key": "94d358b78f3e998a5c851164e37b85244eb546c8385799c9e17df80abfc3eaa3"
       },
-      "summary": null,
+      "summary": {
+        "contributions": [
+          "提出了一种用于 S2MV 数据的新策展流程，通过利用 FS-COCO 数据集合成逼真正面视图、验证草图图像对齐并生成多视角，构建了包含 9222 个样本且每个样本有 33 个视角的严格基础数据集。",
+          "提出了相机感知注意力适配器（CA3），将投影旋转位置编码（PRoPE）注入预训练的视频扩散 Transformer 中，仅增加 2.7% 的额外参数即可使注意力层显式地考虑视图之间的相对投影几何关系。",
+          "引入了基于稀疏 InfoNCE 的对应监督损失（CSL），将其应用于适配器的潜在投影以维持跨视图的几何一致性，利用运动恢复结构提取的正样本对来强制跨视图身份并合并不同视角到统一的潜在表示中。",
+          "该方法能够直接从草图在单次端到端去噪过程中联合生成所有多视角，无需参考照片、无需每场景优化且无需迭代细化，据作者所知这是首个从自由手绘草图输入产生几何连贯且逼真多视角场景的方法。"
+        ],
+        "one_sentence": "本文提出了一种名为 Sketch-to-Multi-View (S2MV) 的新任务，旨在仅凭单张自由手绘草图生成几何一致的多个新视角，以解决现有生成模型在处理此类几何贫乏条件信号时的不足。",
+        "problem": "现有的多视角生成方法无法直接解决自由手绘草图带来的几何不一致性问题，因为草图虽然包含空间意图但存在抽象、非线性扭曲和笔触噪声，且缺乏像照片那样的密集外观和隐式 3D 线索，或像文本提示那样的语义灵活性而无空间约束。"
+      },
+      "summary_source": {
+        "sha256": "16e061abf1f4e081bb2eb3f4a8ed308314cf081de0171d9aae149c194f4c94ed",
+        "url": "https://eccv.ecva.net/virtual/2026/poster/3238"
+      },
       "title": "Geometrically Consistent Multi-View Scene Generation from Freehand Sketches",
       "topics": [
         "3D Gen&Recon"
@@ -6301,7 +6354,20 @@
         },
         "review_key": "266b8484e612634194452a381a019986f1831d6f310c6171512aa971b0b854ce"
       },
-      "summary": null,
+      "summary": {
+        "contributions": [
+          "提出了一种新颖的强化学习后训练探索机制，利用世界模型的图像预测不确定性作为内在新颖性度量，并结合安全门控奖励来鼓励有益的分布外探索。",
+          "提出了一种统一的 VLA 框架，联合预测未来轨迹、RGB 图像和深度图像，利用密集世界建模为规划骨干网络提供丰富的视觉和几何监督。",
+          "在 NAVSIM 基准测试上取得了最先进的性能，PDMS 达到 93.7，EPDMS 达到 88.8，并在 nuScenes 数据集上验证了方法的泛化能力。",
+          "片段未提供关于具体实验设置、消融研究细节或与其他特定基线模型详细对比的额外贡献描述。"
+        ],
+        "one_sentence": "本文提出了一种统一的感知 - 语言 - 动作框架，通过密集世界建模和基于世界模型预测不确定性的新颖探索机制，解决了端到端自动驾驶中策略分布脆弱和监督信号稀疏的问题。",
+        "problem": "现有的端到端自动驾驶方法存在两个主要局限：一是行为克隆或监督微调导致策略缺乏探索能力，在面对偏离专家分布的场景时表现出分布脆弱性；二是监督信号稀疏，仅依赖文本描述和轨迹关键点，无法捕捉驾驶场景丰富的空间几何和细粒度外观信息，限制了模型构建全面表征的能力。"
+      },
+      "summary_source": {
+        "sha256": "72dcaec0470540eb187025982941d04ba2b3f2d570c05d99eb8b43c29db7ae63",
+        "url": "https://eccv.ecva.net/virtual/2026/poster/5991"
+      },
       "title": "ExploreVLA: Dense World Modeling and Exploration for End-to-End Autonomous Driving",
       "topics": [
         "World Model"
@@ -9950,7 +10016,19 @@
         },
         "review_key": "6f482bde4b3c741e3cddd51cead463a220b21164a6acfdae52683c376a94ecae"
       },
-      "summary": null,
+      "summary": {
+        "contributions": [
+          "提出 OneWorld 框架，这是一个基于扩散的 3D 场景生成框架，运行在由预训练 3D 基础模型构建并通过 3D 统一表示自编码器（3D-URAE）统一的 3D 特征空间中，该编码器通过注入外观和蒸馏语义来联合编码几何、外观和语义。",
+          "引入一种用于统一 3D 空间中条件扩散训练的跨视图对应关系保持损失，显式地强制目标视图与条件视图之间的结构对应关系，以提高跨视图一致性。",
+          "识别出 3D 生成中由训练与推理不匹配引起的采样漂移问题，并提出流形漂移强制（Manifold-Drift Forcing）方法，该方法在解码时混合使用扩散采样的漂移表示和原始在流形上的表示来训练 3DGS 解码器，从而塑造稳健的 3D 流形以实现稳定采样，提升外观一致性和跨视图连贯性。"
+        ],
+        "one_sentence": "OneWorld 是一个基于扩散模型的 3D 场景生成框架，它利用预训练的 3D 基础模型构建统一的 3D 特征空间，通过注入外观和蒸馏语义来联合编码几何、外观和语义信息。",
+        "problem": "早期方法依赖昂贵的逐场景优化且几何不一致；基于多视图或视频潜空间的方法缺乏显式的跨视图 3D 耦合，削弱了多视图一致性；基于 Transformer 的模型虽进展迅速，但 Gen3R 等近期工作通过压缩 3D 表示空间以对齐视频潜空间，限制了表示能力，且将几何与外观分开生成，无法实现统一表示下的连贯几何与高保真外观，同时受限于小基线视角变化，难以泛化到大视角变化。"
+      },
+      "summary_source": {
+        "sha256": "680cbeac015dcada53eef104004f1b1da8899df71a0865e4f81d7e095adbba2f",
+        "url": "https://eccv.ecva.net/virtual/2026/poster/3181"
+      },
       "title": "OneWorld: Taming Scene Generation with 3D Unified Representation Autoencoder",
       "topics": [
         "3D Gen&Recon"
@@ -11204,7 +11282,20 @@
         },
         "review_key": "6f906b8ff5cb3f62717b63357717300c5a865bb393b0f8bf7e64dd6a061f1824"
       },
-      "summary": null,
+      "summary": {
+        "contributions": [
+          "提出了 PCFlow，这是一种将感知一致性整合到潜流目标中的统一直接传输框架，能够实现高效的多步图像恢复。",
+          "分析了结构目标与感知目标之间破坏性的梯度干扰，并引入了一种无冲突的、信噪比自适应的梯度对齐方法来稳定训练。",
+          "采用了一种仅包含卷积层的架构，其计算效率可与计算密集的多阶段扩散流水线相媲美，显著减少了参数数量和推理时间。",
+          "在盲人脸恢复、超分辨率、去噪、修复和色彩化等多个基准上的广泛评估表明，PCFlow 推动了扭曲 - 感知权衡的前沿。"
+        ],
+        "one_sentence": "本文提出了一种名为 PCFlow 的统一直接传输框架，通过整合感知一致性到潜流目标中，实现了高效的多步图像恢复，并在扭曲 - 感知权衡曲线上取得了显著进展。",
+        "problem": "图像恢复任务面临固有的退化模糊性，导致最小化失真误差的方法会产生过平滑结果，而优化感知真实感的方法则会产生严重的结构偏差和高重建误差，且现有的基于扩散或分阶段的方法计算成本高昂。"
+      },
+      "summary_source": {
+        "sha256": "0a66be9e86782a69605dc669beeb39b19479ae9d840a5108dbe709d29e397848",
+        "url": "https://eccv.ecva.net/virtual/2026/poster/5358"
+      },
       "title": "Flow Straight to Reality: Perceptually Consistent Flow Matching for Efficient Image Restoration",
       "topics": [
         "Image Gen&Edit"
@@ -13947,7 +14038,20 @@
         },
         "review_key": "cbe71a48617acb08a2cd3378ec193fe50a1528aa7d88bfe0614ecc0bb63a633d"
       },
-      "summary": null,
+      "summary": {
+        "contributions": [
+          "提出了一种新颖、简单且有效的场景划分策略，该策略根据相机的朝向和位置对视点进行聚类，通过将高重叠度且几何变化最小的视点分组，显著提升了大规模表面重建的鲁棒性和质量。",
+          "引入了一种场景补全方法，用于检测和补全初始场景点云中的缺失区域，从而在图像覆盖不足的区域内进一步增强表面重建的质量。",
+          "在广泛使用的大规模场景数据集上进行了大量实验，结果表明该方法在大型场景表面重建任务上取得了优于现有方法的最新性能。",
+          "提出了一种基于视点重叠度的关键洞察，即在高优化约束下，几何重建的准确性主要受视点重叠程度的影响，重叠度高的视点更有利于精确的几何重建。"
+        ],
+        "one_sentence": "本文提出了一种基于视点方向划分和场景补全的城市级 3D 表面重建方法，旨在解决大规模场景重建中的遮挡、复杂度不平衡及边界融合等挑战，并通过聚类高重叠度视点与补全稀疏点云来显著提升重建质量。",
+        "problem": "现有基于 3D 高斯泼溅（3DGS）的大规模场景重建方法采用空间划分策略时，面临遮挡、复杂度不平衡及多块融合困难等挑战，且现有方法多侧重于新视图合成而非精确的表面重建，导致边界处几何估计易出错且不稳定。"
+      },
+      "summary_source": {
+        "sha256": "22485906fddb01fea486f633890df95377b12168aaa2a808ea9688260be2d0fe",
+        "url": "https://eccv.ecva.net/virtual/2026/poster/4098"
+      },
       "title": "City-Level 3D Surface Reconstruction with Viewpoint Orientation Partitioning and Scene Completion",
       "topics": [
         "3D Gen&Recon"
@@ -15084,7 +15188,20 @@
         },
         "review_key": "461007fae8581cfcd3e63541b98b39a745430177412f31d1659ced572c3fbc66"
       },
-      "summary": null,
+      "summary": {
+        "contributions": [
+          "指出了现有坐标级 3D 监督在运动生成建模中的局限性，即其倾向于数据集特定的拟合并降低了多样性，尽管重建分数很高。",
+          "提出了 LaxMotion 框架，该框架通过从 2D 运动学线索和结构约束中学习来重新思考监督粒度，而不是依赖密集的 3D 姿态级标签。",
+          "引入了一种结构化的运动分解方法、在可观测性放松下的重构训练范式，以及用于强制多视图几何稳定性和时间一致性的放松正则化。",
+          "展示了放松监督能够产生与 3D 监督训练具有竞争力甚至更优的结果，提供了一种可扩展且可泛化的替代监督策略。"
+        ],
+        "one_sentence": "LaxMotion 通过重新思考监督粒度，利用单目 2D 运动学线索和结构约束替代密集的 3D 姿态标签，从而在保持高保真度的同时提升了文本驱动 3D 人体运动生成的多样性和泛化能力。",
+        "problem": "现有的基于坐标级 3D 监督的运动生成方法虽然能获得高重建精度，但倾向于过拟合数据集特定的低层细节，导致模型多样性不足且泛化能力较弱。"
+      },
+      "summary_source": {
+        "sha256": "22e3f75f024304caf9ed53464889a70147b950fb96071be177553421591fdd39",
+        "url": "https://eccv.ecva.net/virtual/2026/poster/4736"
+      },
       "title": "LaxMotion: Rethinking Supervision Granularity for 3D Human Motion Generation",
       "topics": [
         "3D Gen&Recon"

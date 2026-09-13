@@ -98471,6 +98471,371 @@
         "Video Gen&Edit",
         "World Model"
       ]
+    },
+    "2609.10643": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Generative-Prior Optimization",
+        "Feed-Forward"
+      ],
+      "topics": [
+        "Image Gen&Edit"
+      ]
+    },
+    "2609.10723": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Diffusion",
+        "Text Conditioning",
+        "Personalization",
+        "Pixel Space"
+      ],
+      "topics": [
+        "Image Gen&Edit"
+      ]
+    },
+    "2609.10756": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Generative Prior",
+        "Metric Depth",
+        "Monocular",
+        "Supervised"
+      ],
+      "topics": [
+        "Depth Estimation"
+      ]
+    },
+    "2609.10811": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Image Editing",
+        "Inpainting & Outpainting",
+        "Diffusion",
+        "Text Conditioning",
+        "Reference Conditioning"
+      ],
+      "topics": [
+        "Image Gen&Edit"
+      ]
+    },
+    "2609.10943": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Video Generation",
+        "Text Conditioned",
+        "Diffusion",
+        "Autoregressive",
+        "Joint Spatiotemporal"
+      ],
+      "topics": [
+        "Video Gen&Edit"
+      ]
+    },
+    "2609.10954": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Counterfactual Reasoning",
+        "Imagination-Based Planning",
+        "Robotics"
+      ],
+      "topics": [
+        "World Model"
+      ]
+    },
+    "2609.11079": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Metric Depth",
+        "Monocular",
+        "Video",
+        "Self-Supervised",
+        "Generative Prior"
+      ],
+      "topics": [
+        "3D Gen&Recon",
+        "Depth Estimation"
+      ]
+    },
+    "2609.11129": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Novel View Synthesis",
+        "Multi-View-to-3D",
+        "Optimization-Based"
+      ],
+      "topics": [
+        "3D Gen&Recon"
+      ]
+    },
+    "2609.11223": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "3D Reconstruction",
+        "Novel View Synthesis",
+        "Gaussian Splatting",
+        "Multi-View-to-3D"
+      ],
+      "topics": []
+    },
+    "2609.11242": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Video Generation"
+      ],
+      "topics": []
+    },
+    "2609.11265": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Video Generation",
+        "Autoregressive",
+        "Diffusion",
+        "Joint Spatiotemporal"
+      ],
+      "topics": []
+    },
+    "2609.11317": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Image Editing",
+        "Reference Conditioning"
+      ],
+      "topics": [
+        "Image Gen&Edit"
+      ]
+    },
+    "2609.11430": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Gaussian Splatting",
+        "Inverse Rendering",
+        "Reflectance-Aware Representation",
+        "Parametric Lighting",
+        "Environment Map"
+      ],
+      "topics": [
+        "3D Gen&Recon",
+        "Relighting"
+      ]
+    },
+    "2609.11434": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "3D Reconstruction",
+        "Gaussian Splatting",
+        "Novel View Synthesis"
+      ],
+      "topics": [
+        "3D Gen&Recon"
+      ]
+    },
+    "2609.11439": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Text-to-3D",
+        "Single-Image-to-3D",
+        "Feed-Forward"
+      ],
+      "topics": [
+        "Video Gen&Edit",
+        "3D Gen&Recon"
+      ]
+    },
+    "2609.11445": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Robotics",
+        "World-Model Policy Learning",
+        "Imagination-Based Planning"
+      ],
+      "topics": []
+    },
+    "2609.11472": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "3D Reconstruction"
+      ],
+      "topics": []
+    },
+    "2609.11499": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Single-Image-to-3D",
+        "Optimization-Based"
+      ],
+      "topics": [
+        "3D Gen&Recon",
+        "World Model"
+      ]
+    },
+    "2609.11506": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "3D Reconstruction",
+        "Single-Image-to-3D",
+        "Point Cloud",
+        "Feed-Forward",
+        "Generative-Prior Optimization"
+      ],
+      "topics": [
+        "3D Gen&Recon"
+      ]
+    },
+    "2609.11507": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Diffusion",
+        "Text Conditioned",
+        "Joint Spatiotemporal"
+      ],
+      "topics": [
+        "Video Gen&Edit"
+      ]
+    },
+    "2609.11519": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Diffusion",
+        "Text Conditioning",
+        "Structural Conditioning",
+        "Image Generation",
+        "Image Editing"
+      ],
+      "topics": [
+        "Image Gen&Edit"
+      ]
+    },
+    "2609.11561": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Robotics",
+        "Imagination-Based Planning",
+        "World-Model Policy Learning"
+      ],
+      "topics": []
+    },
+    "2609.11638": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Video Generation",
+        "Video Editing",
+        "Diffusion",
+        "Text Conditioned",
+        "Image Conditioned"
+      ],
+      "topics": [
+        "Video Gen&Edit"
+      ]
+    },
+    "2609.11673": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Diffusion",
+        "Text Conditioning",
+        "Reference Conditioning",
+        "Continuous Latents"
+      ],
+      "topics": [
+        "Image Gen&Edit"
+      ]
+    },
+    "2609.11722": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Novel View Synthesis",
+        "3D Reconstruction",
+        "Single-Image-to-3D",
+        "Optimization-Based",
+        "Mesh"
+      ],
+      "topics": [
+        "3D Gen&Recon"
+      ]
+    },
+    "2609.11804": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Autoregressive",
+        "Text Conditioning",
+        "Reference Conditioning",
+        "Pixel Space",
+        "Continuous Latents"
+      ],
+      "topics": [
+        "Image Gen&Edit",
+        "Video Gen&Edit"
+      ]
+    },
+    "2609.11842": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Diffusion",
+        "Flow Matching"
+      ],
+      "topics": [
+        "Image Gen&Edit",
+        "Video Gen&Edit"
+      ]
+    },
+    "2609.11886": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "3D Reconstruction"
+      ],
+      "topics": []
+    },
+    "2609.11894": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Novel View Synthesis",
+        "Point Cloud",
+        "Feed-Forward"
+      ],
+      "topics": []
+    },
+    "2609.11929": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Diffusion",
+        "Autoregressive",
+        "Text Conditioning",
+        "Reference Conditioning"
+      ],
+      "topics": [
+        "Image Gen&Edit",
+        "Video Gen&Edit"
+      ]
     }
   },
   "version": 2
