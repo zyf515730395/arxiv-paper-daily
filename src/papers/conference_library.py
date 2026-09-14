@@ -19,11 +19,17 @@ def load_library(path: Path = LIBRARY) -> dict:
     if not path.exists():
         return {'version': 1, 'papers': {}}
     value = json.loads(path.read_text(encoding='utf-8'))
+    return validate_library(value)
+
+
+def validate_library(value: dict) -> dict:
     if value.get('version') != 1 or not isinstance(value.get('papers'), dict):
         raise ValueError('Invalid conference library')
     for key, record in value['papers'].items():
+        review = record.get('topic_review', {}).get('decisions', {})
+        excluded = bool(review) and all(accept is False for accept in review.values())
         if (not re.fullmatch(r'conf-[a-f0-9]{24}', key) or record.get('id') != key
-                or not record.get('title') or not record.get('topics')
+                or not record.get('title') or (not record.get('topics') and not excluded)
                 or not record.get('url', '').startswith('https://')):
             raise ValueError('Invalid conference library record')
         display_id(record)
@@ -62,6 +68,8 @@ def library_rows(library: dict, archive: dict, ledger: dict) -> list[dict]:
     ids, titles = existing_identities(archive, ledger)
     rows = []
     for record in library['papers'].values():
+        if not record['topics']:
+            continue
         title = normalize_title(record['title'])
         if record.get('arxiv_id') in ids or title in titles:
             continue

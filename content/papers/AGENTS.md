@@ -12,3 +12,4 @@
 - Apply archive/ledger pairs with the existing lock, concurrent-edit checks and recoverable curation journal. Rebuild with `python -m papers build`; source snapshots and import evidence stay in ignored `build/reports/`, never in public data.
 
 - `conference-library.json` is the public conference intake overlay: stable DOI/official-URL identities, title-screened topics, provenance, partial publication dates, and validated summary output. It joins the website archive without inserting synthetic IDs into the arXiv ledger. Private screening responses, source bodies and retry state remain in `build/conferences/intake/`.
+- Explicit conference rechecks may attach `topic_review` decisions. All-false records retain their original metadata and summary as hidden tombstones with empty topics; subsequent intake preserves these decisions rather than resurrecting them.

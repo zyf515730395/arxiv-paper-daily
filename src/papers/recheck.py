@@ -12,6 +12,8 @@ import os
 import signal
 import sys
 import time
+import re
+from concurrent.futures import ThreadPoolExecutor
 
 from papers import paths
 from papers.annotations.catalog import (
@@ -24,7 +26,7 @@ from papers.annotations.prompts import annotation_messages
 from papers.batch.review import unique_object
 from papers.batch.cycle import DownloadGate
 from papers.candidate_ledger import utc_now
-from papers.model_runtime import DEFAULT_MODEL_TIMEOUT_SECONDS, DEFAULT_MODEL_MAX_TOKENS
+from papers.model_runtime import DEFAULT_MODEL, DEFAULT_MODEL_TIMEOUT_SECONDS, DEFAULT_MODEL_MAX_TOKENS
 from papers.site import parse_entry
 from papers.summaries.acquisition import ArxivSourceClient
 from papers.summaries.catalog import PaperCandidate
@@ -33,11 +35,13 @@ from papers.summaries.paths import private_path, normalize_arxiv_id, run_lock
 from papers.summaries.publisher import load_ready_keys, publish_summaries
 from papers.summaries.summarizer import summarize_paper
 from papers.summaries.extraction import extract_html_document, extract_pdf_document, extract_introduction
-from shared.loopback_chat import DEFAULT_MAX_MESSAGE_CHARS, LoopbackChatError, LoopbackChatTransport, validate_loopback_base_url
+from shared.loopback_chat import LoopbackChatError, LoopbackChatTransport, validate_loopback_base_url
 from shared.rendering import atomic_write_bytes
 
 POLICY = 'full-archive-recheck-v1'
-INFERENCE_REVISION = 'constrained-recovery-v7'
+INFERENCE_REVISION = 'all-topics-technical-v8'
+RUN_NAME = None
+REVIEW_MAX_MESSAGE_CHARS = 40_000
 DOWNLOADS = DownloadGate(5)
 
 
@@ -57,6 +61,8 @@ def atomic_write_json(path, value, *, pretty=True):
 
 
 def location(name):
+    if RUN_NAME:
+        return private_path('recheck', 'runs', RUN_NAME, name)
     return private_path('recheck', name)
 
 
@@ -98,9 +104,19 @@ def apply_records(archive, ledger, annotations, records):
     for record in records:
         paper_id = record['id']
         memberships = [topic for topic, rows in next_archive.items() if paper_id in rows]
-        validate_decisions(record['decisions'], {aliases[t] for t in memberships})
+        expected = {aliases[t] for t in memberships}
+        if set(record['decisions']) == set(allowlists):
+            expected = set(allowlists)
+        validate_decisions(record['decisions'], expected)
         decisions = record['decisions']
         retained = [t for t in memberships if decisions[aliases[t]]['accept'] is not False]
+        original_rows = {t: next_archive[t][paper_id] for t in memberships}
+        for topic, decision in decisions.items():
+            if decision['accept'] is True and not any(aliases[t] == topic for t in retained):
+                if not original_rows:
+                    raise ValueError('cannot assign a new topic without an original archive row')
+                next_archive.setdefault(topic, {})[paper_id] = next(iter(original_rows.values()))
+                retained.append(topic)
         previous = result.get(paper_id)
         if retained:
             value = copy.deepcopy(record.get('annotation') or previous)
@@ -112,7 +128,6 @@ def apply_records(archive, ledger, annotations, records):
                 result[paper_id] = annotation_value(filter_annotation_for_topics(annotation, labels, allowlists, retained))
         else:
             result.pop(paper_id, None)
-        original_rows = {t: next_archive[t][paper_id] for t in memberships}
         for topic in memberships:
             if topic not in retained:
                 del next_archive[topic][paper_id]
@@ -172,7 +187,7 @@ def bound_review_material(system, material):
     """Reserve room for review instructions and the longest corrective retry."""
     material = dict(material)
     while material.get('introduction'):
-        excess = len(system) + len(json.dumps(material, ensure_ascii=False)) + 2000 - DEFAULT_MAX_MESSAGE_CHARS
+        excess = len(system) + len(json.dumps(material, ensure_ascii=False)) + 2000 - REVIEW_MAX_MESSAGE_CHARS
         if excess <= 0:
             break
         material['introduction'] = material['introduction'][:max(0, len(material['introduction']) - excess)]
@@ -199,7 +214,7 @@ def evidence_tags(material, labels, args):
     messages = [{'role': 'system', 'content': system}, {'role': 'user', 'content': json.dumps(material, ensure_ascii=False)}]
     attempts = []
     for _ in range(2):
-        raw = LoopbackChatTransport(args.base_url).complete(tuple(messages), model=args.model, timeout=args.timeout,
+        raw = LoopbackChatTransport(args.base_url, max_message_chars=REVIEW_MAX_MESSAGE_CHARS, max_request_bytes=180_000).complete(tuple(messages), model=args.model, timeout=args.timeout,
                 max_tokens=DEFAULT_MODEL_MAX_TOKENS, enable_thinking=False, json_schema=schema)
         attempts.append(raw)
         atomic_write_json(location(material['id'] + '-tag-evidence.json'), {'material': material, 'system': system, 'attempts': attempts})
@@ -230,7 +245,7 @@ def infer_review(system, material, labels, args, record_attempt=None):
                 {'role': 'user', 'content': json.dumps(material, ensure_ascii=False)}]
     attempts = []
     for attempt in range(2):
-        raw = LoopbackChatTransport(args.base_url).complete(
+        raw = LoopbackChatTransport(args.base_url, max_message_chars=REVIEW_MAX_MESSAGE_CHARS, max_request_bytes=180_000).complete(
             tuple(messages), model=args.model, timeout=args.timeout,
             max_tokens=DEFAULT_MODEL_MAX_TOKENS, enable_thinking=False,
             json_schema=review_schema(material['requested_topics'], labels))
@@ -248,9 +263,16 @@ def infer_review(system, material, labels, args, record_attempt=None):
             if any(value['accept'] is True for value in decisions.values()) and not annotation.tags:
                 if attempt:
                     allowed = annotation_labels_for_topics(labels, allowlists, retained_topics)
-                    annotation = replace(annotation, tags=evidence_tags(material, allowed, args))
+                    try:
+                        annotation = replace(annotation, tags=evidence_tags(material, allowed, args))
+                    except PaperSummaryError as error:
+                        if error.code != 'annotation_tags_missing':
+                            raise
+                        # Preserve independently valid topic decisions; missing tags
+                        # remain an explicit failure eligible for recovery.
+                        annotation = replace(annotation, tags=())
                     return decisions, annotation, attempts
-                messages.append({'role': 'user', 'content': '上次接受了论文却没有技术标签。重新逐项检查 taxonomy 中任务、方法、表示等维度，以摘要明确陈述的核心贡献选择已有技术标签，最多5个且每维度最多2个。不得照抄示例空列表，不得猜测；确实没有任何支持证据时仍留空。重新输出完整 decisions 和 annotation JSON。'})
+                messages.append({'role': 'user', 'content': '上次接受了论文却没有技术标签。重新逐项检查 taxonomy 中方法、表示、条件控制等技术维度，以摘要明确陈述的核心贡献选择已有技术标签，最多5个且每维度最多2个。不得照抄示例空列表，不得猜测；确实没有任何支持证据时仍留空。重新输出完整 decisions 和 annotation JSON。'})
                 continue
             return decisions, annotation, attempts
         except (PaperSummaryError, LoopbackChatError):
@@ -279,8 +301,9 @@ def refresh_source(client, source, title):
 
 def process(paper_id, archive, ledger, annotations, ready, args):
     rows = {t: entries[paper_id] for t, entries in archive.items() if paper_id in entries}
+    original_rows = dict(rows)
     labels, allowlists, aliases = taxonomy()
-    topics = list(dict.fromkeys(aliases[t] for t in rows))
+    topics = list(allowlists)
     fingerprint = digest({'rows': rows, 'ledger': ledger['papers'].get(paper_id),
                           'annotation': annotations.get(paper_id), 'policy': POLICY,
                           'inference_revision': INFERENCE_REVISION,
@@ -288,7 +311,7 @@ def process(paper_id, archive, ledger, annotations, ready, args):
     receipt = location(paper_id + '.json')
     if receipt.exists():
         record = read(receipt)
-        if record.get('fingerprint') == fingerprint and record.get('status') == 'ready' and not record.get('summary_error') and not any(d['accept'] is None for d in record['decisions'].values()):
+        if record.get('fingerprint') == fingerprint and record.get('status') == 'ready' and not record.get('summary_error') and not record.get('annotation_error') and not any(d['accept'] is None for d in record['decisions'].values()):
             validate_decisions(record['decisions'], topics)
             return record
     parsed = parse_entry(paper_id, next(iter(rows.values())))
@@ -320,6 +343,7 @@ def process(paper_id, archive, ledger, annotations, ready, args):
             '\n这是用户授权的全量二次复核，不沿用任何历史筛选决定。'
             '同时判断 requested_topics 中每个主题。只有研究核心方法或主要贡献匹配才接受；'
             '关键词命中、仅使用现有技术的下游应用不足以接受。多个主题可同时接受。'
+            '主要针对医学、临床或生物医学的应用论文不纳入；领域属性不明确时保留不确定，不得凭作者或机构猜测。'
             '不相关为 false；证据不足为 null，禁止把不确定当作不相关。'
             '如果摘要已明确说明核心贡献不属于所请求主题，选择 false；null 仅用于材料本身不足以作出相关性判断。'
             '综述判断依据主要贡献，不能仅凭标题含 review、survey 或 taxonomy。'
@@ -348,10 +372,14 @@ def process(paper_id, archive, ledger, annotations, ready, args):
         if source:
             value['institutions'] = list(extract_institutions(source))
         retained = [t for t in rows if decisions[aliases[t]]['accept'] is not False]
+        for topic, decision in decisions.items():
+            if decision['accept'] is True and not any(aliases[t] == topic for t in retained):
+                rows[topic] = next(iter(rows.values()))
+                retained.append(topic)
         missing = [t for t in retained if (t, paper_id) not in ready]
         summaries = []
         summary_error = None
-        if missing:
+        if missing and not getattr(args, 'topics_only', False):
             try:
                 source = source or client.acquire(paper_id, title)
                 for attempt in range(2):
@@ -368,13 +396,14 @@ def process(paper_id, archive, ledger, annotations, ready, args):
             except (PaperSummaryError, LoopbackChatError) as error:
                 summary_error = error.code
         record = {'id': paper_id, 'fingerprint': fingerprint, 'status': 'ready',
-                  'model': args.model, 'policy': POLICY, 'reviewed_at': utc_now(), 'original_rows': rows,
+                  'model': args.model, 'policy': POLICY, 'reviewed_at': utc_now(), 'original_rows': original_rows,
                   'inference_revision': INFERENCE_REVISION,
                   'metadata': {'title': title, 'abstract': abstract, 'updated': parsed['date'].isoformat(),
                                'paper_url': f'https://arxiv.org/abs/{paper_id}',
                                'pdf_url': f'https://arxiv.org/pdf/{paper_id}.pdf', 'matched_topics': topics},
                   'decisions': decisions, 'annotation': value, 'summaries': summaries,
-                  'summary_error': summary_error}
+                  'summary_error': summary_error,
+                  'annotation_error': 'annotation_tags_missing' if any(d['accept'] is True for d in decisions.values()) and not annotation.tags else None}
         atomic_write_json(receipt, record)
         return record
     finally:
@@ -397,7 +426,7 @@ def recover():
             raise ValueError('public state changed; preserve recheck journal and resolve concurrent edits')
     # All preconditions checked before the first write; repeatable after interruption.
     for name, path in targets().items():
-        atomic_write_json(path, tx['after'][name], pretty=name != 'archive')
+        atomic_write_json(path, tx['after'][name])
     ready = load_ready_keys(paths.DOCS)
     results = []
     for item in tx['summaries']:
@@ -428,8 +457,9 @@ def recovery_ids(state, archive, annotations=None):
 
 def run_batch(args):
     with run_lock():
-        if not location('local-only.json').exists():
-            atomic_write_json(location('local-only.json'), {'reason': 'Full recheck awaits explicit remote publication authorization', 'created_at': utc_now()})
+        local_marker = private_path('recheck', 'local-only.json')
+        if not local_marker.exists():
+            atomic_write_json(local_marker, {'reason': 'Full recheck awaits explicit remote publication authorization', 'created_at': utc_now()})
         recover()
         current = {name: read(path) for name, path in targets().items()}
         before = {name: digest(value) for name, value in current.items()}
@@ -460,16 +490,27 @@ def run_batch(args):
             return state
         ready = load_ready_keys(paths.DOCS)
         records = []
+        def review_one(paper_id):
+            try:
+                return process(paper_id, current['archive'], current['ledger'], current['annotations']['papers'], ready, args)
+            except (PaperSummaryError, PaperAnnotationError, LoopbackChatError, ValueError) as error:
+                return error
+
+        active = [p for p in ids if any(p in rows for rows in current['archive'].values())]
+        with ThreadPoolExecutor(max_workers=args.workers) as pool:
+            outcomes = dict(zip(active, pool.map(review_one, active)))
         for paper_id in ids:
             if not any(paper_id in rows for rows in current['archive'].values()):
                 state['offset'] += 1
                 state['failed'].pop(paper_id, None)
                 continue
             try:
-                record = process(paper_id, current['archive'], current['ledger'], current['annotations']['papers'], ready, args)
+                record = outcomes[paper_id]
+                if isinstance(record, Exception):
+                    raise record
                 records.append(record)
-                if record['summary_error']:
-                    state['failed'][paper_id] = record['summary_error']
+                if record['summary_error'] or record.get('annotation_error'):
+                    state['failed'][paper_id] = record['summary_error'] or record['annotation_error']
                 else:
                     state['failed'].pop(paper_id, None)
                 state['reviewed'] += 1
@@ -492,7 +533,10 @@ def run_batch(args):
             state['offset'] += 1
         a, l, annotations = apply_records(current['archive'], current['ledger'], current['annotations']['papers'], records)
         state['removed'] += len(ordered_ids(current['archive'])) - len(ordered_ids(a))
-        state['removed_memberships'] += sum(map(len, current['archive'].values())) - sum(map(len, a.values()))
+        previous_memberships = {(t, p) for t, rows in current['archive'].items() for p in rows}
+        next_memberships = {(t, p) for t, rows in a.items() for p in rows}
+        state['removed_memberships'] += len(previous_memberships - next_memberships)
+        state['added_memberships'] = state.get('added_memberships', 0) + len(next_memberships - previous_memberships)
         state['updated_at'] = utc_now()
         if before != {name: digest(read(path)) for name, path in targets().items()}:
             raise ValueError('public files changed during inference; preserved results, retry against latest inputs')
@@ -505,17 +549,27 @@ def run_batch(args):
 
 
 def main(argv=None):
+    global RUN_NAME
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--model', default='PaperReader-Qwen3.5')
+    parser.add_argument('--run-name', help='separate private checkpoint and receipts for an explicitly requested new pass')
+    parser.add_argument('--workers', type=int, default=4)
+    parser.add_argument('--topics-only', action='store_true', help='correct topics and tags without generating missing summaries')
+    parser.add_argument('--include-conferences', action='store_true', help='review the conference overlay before the arXiv pass')
+    parser.add_argument('--model', default=DEFAULT_MODEL)
     parser.add_argument('--base-url', default='http://127.0.0.1:8000/v1')
     parser.add_argument('--timeout', type=float, default=DEFAULT_MODEL_TIMEOUT_SECONDS)
     parser.add_argument('--batch-size', type=int, default=20)
-    parser.add_argument('--max-batches', type=int)
+    parser.add_argument('--max-batches', type=int, help='maximum batches per source stage, including conferences when requested')
     parser.add_argument('--status', action='store_true')
     parser.add_argument('--dry-run', action='store_true')
     parser.add_argument('--retry-failures', action='store_true', help='after current pass finishes, retry failed and uncertain papers in descending ID order')
     parser.add_argument('--restart-recovery', action='store_true', help='preserve and rebuild an interrupted recovery pass; requires --retry-failures')
     args = parser.parse_args(argv)
+    if args.run_name and not re.fullmatch(r'[a-z0-9][a-z0-9-]{0,63}', args.run_name):
+        parser.error('run name must be lowercase letters, numbers and hyphens')
+    RUN_NAME = args.run_name
+    if not 1 <= args.workers <= 4:
+        parser.error('recheck workers must be between 1 and 4')
     if args.status or args.dry_run:
         state = read(location('state.json')) if location('state.json').exists() else {'queue': ordered_ids(read(paths.ARCHIVE)), 'offset': 0}
         print(json.dumps({**{k: v for k, v in state.items() if k != 'queue'}, 'total': len(state['queue']),
@@ -528,6 +582,14 @@ def main(argv=None):
         parser.error('--restart-recovery requires --retry-failures')
     if sys.platform != 'linux':
         parser.error('run recheck inside WSL to share the runtime lock')
+    if args.include_conferences:
+        from papers.conference_recheck import main as review_conferences
+        conference_args = ['--model', args.model, '--run-name', args.run_name or 'conference-review']
+        if args.max_batches is not None:
+            conference_args.extend(['--max-batches', str(args.max_batches)])
+        result = review_conferences(conference_args)
+        if result:
+            return result
     from papers.runtime import daily_waiting, lock, model_service
     signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
     try:

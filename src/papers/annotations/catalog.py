@@ -113,10 +113,10 @@ def load_topic_tag_dimensions(
         )
     result: dict[str, dict[str, tuple[str, ...]]] = {}
     for topic, dimensions in raw.items():
-        if not isinstance(dimensions, dict) or len(dimensions) < 4:
+        if not isinstance(dimensions, dict) or len(dimensions) < 3:
             raise PaperAnnotationError(
                 "invalid_label_config",
-                f"topic taxonomy needs at least four dimensions: {topic}",
+                f"topic taxonomy needs at least three dimensions: {topic}",
             )
         assigned: set[str] = set()
         normalized: dict[str, tuple[str, ...]] = {}

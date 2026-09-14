@@ -2059,6 +2059,19 @@
       },
       "summary": null,
       "title": "Adversarial Score Distillation for Stable One-Step Diffusion in Real-World Image Super-Resolution",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "论文提出基于扩散模型的一步图像超分辨率方法，属于图像生成/恢复（Image Synthesis/Restoration）范畴。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "Image Gen&Edit"
       ],
@@ -4847,6 +4860,19 @@
       },
       "summary": null,
       "title": "Mobile3DGS³: Accelerate Mobile 3DGS Rendering via Gradient-Aware Super-Sampling and Frame Interpolation",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "标题涉及移动设备上的3D高斯泼溅（3DGS）渲染加速，属于3D重建与神经渲染（Neural Rendering）领域。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "3D Gen&Recon"
       ],
@@ -6414,6 +6440,19 @@
       },
       "summary": null,
       "title": "The Path to Reconciling Quality and Safety Alignment in Text-to-Image Generation",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "论文核心是解决文本到图像（T2I）生成中安全性与质量对齐的问题，提出了新的对齐算法和数据集，属于图像生成领域。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "Image Gen&Edit"
       ],
@@ -22511,9 +22550,21 @@
         "url": "https://eccv.ecva.net/virtual/2026/poster/3444"
       },
       "title": "Predictive Structure Improves Video Diffusion Dynamics",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": true,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "论文旨在改进视频扩散模型（Video Diffusion）的动力学一致性，属于视频生成（Video Synthesis）范畴。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
-        "Video Gen&Edit",
-        "World Model"
+        "Video Gen&Edit"
       ],
       "url": "https://eccv.ecva.net/virtual/2026/poster/3444"
     },
@@ -32549,6 +32600,19 @@
       },
       "summary": null,
       "title": "PhysEdit: Physically Consistent Image Editing via Causal Enforcement",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "论文提出PhysEdit框架，核心贡献是物理一致性的图像编辑（Image Editing），虽利用视频模型先验，但主要任务为图像编辑。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "Image Gen&Edit"
       ],
@@ -39620,6 +39684,19 @@
       },
       "summary": null,
       "title": "Ambient-robust Inverse Rendering using Robot-assisted RGB-NIR Imaging",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": true,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "标题指出为逆渲染（Inverse Rendering），属于光照、反射率估计或生成范畴，符合Relighting主题。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "Relighting"
       ],
@@ -42758,6 +42835,19 @@
         "url": "https://eccv.ecva.net/virtual/2026/poster/4253"
       },
       "title": "POET: Preference Optimization for Enhanced Text-to-Image Generation",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "论文提出POET，通过偏好优化改进提示词重写，以提升文生图（T2I）模型的图像文本对齐和视觉质量，属于图像生成优化。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "Image Gen&Edit"
       ],
@@ -42886,6 +42976,19 @@
       },
       "summary": null,
       "title": "VGEdit: Unlocking Video Generation Priors for Reasoning-Informed Image Editing",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "摘要提出利用视频生成先验进行推理引导的图像编辑（Image Editing），核心任务是图像编辑，属于图像生成与编辑主题。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "Image Gen&Edit"
       ],
@@ -47916,6 +48019,19 @@
       },
       "summary": null,
       "title": "PhysiOpt: Physics-Driven Shape Optimization for 3D Generative Models",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "标题指出针对3D生成模型进行物理驱动的形态优化，核心涉及3D生成，属于3D生成与重建主题。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "3D Gen&Recon"
       ],
@@ -50217,6 +50333,19 @@
       },
       "summary": null,
       "title": "DPGS: A Diffusion-Prior Guided Framework for Large-Scale 3D Gaussian Splatting Reconstruction",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "论文提出DPGS框架，利用扩散先验和基础模型先验进行大规模3D高斯泼溅重建，旨在解决几何完整性和渲染质量，属于3D重建。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "3D Gen&Recon"
       ],
@@ -50456,9 +50585,21 @@
         "url": "https://eccv.ecva.net/virtual/2026/poster/3309"
       },
       "title": "PhysAlign: Learning Physical Priors for Dynamical Event-Driven Video Generation via Representation Alignment",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": true,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "摘要介绍了一种用于动态事件驱动的视频生成框架（PhysAlign），旨在提高视频生成的物理一致性，属于视频生成主题。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
-        "Video Gen&Edit",
-        "World Model"
+        "Video Gen&Edit"
       ],
       "url": "https://eccv.ecva.net/virtual/2026/poster/3309"
     },
@@ -56168,9 +56309,20 @@
       },
       "summary": null,
       "title": "SHINE-PPG: Non-Lambertian Intrinsic Decomposition for Illumination-Robust rPPG",
-      "topics": [
-        "Relighting"
-      ],
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "摘要表明该工作旨在通过内在分解提高远程光电容积脉搏波描记法（rPPG）的鲁棒性，属于生物医学/生理信号监测应用，排除在给定主题之外。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
+      "topics": [],
       "url": "https://eccv.ecva.net/virtual/2026/poster/5703"
     },
     "conf-5a486c6a820e0df826f127f6": {
@@ -65856,8 +66008,20 @@
         "url": "https://eccv.ecva.net/virtual/2026/poster/5218"
       },
       "title": "Reconstructing Dense Depth of Dark Scenes with Sparse LiDAR, Noisy Events, and Blurry RGB",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": false,
+          "Depth Estimation": true,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "论文提出ERU-Net，利用事件相机和LiDAR数据在低光场景下重建密集深度，核心任务是深度估计与补全。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
-        "3D Gen&Recon",
         "Depth Estimation"
       ],
       "url": "https://eccv.ecva.net/virtual/2026/poster/5218"
@@ -69629,6 +69793,19 @@
         "url": "https://eccv.ecva.net/virtual/2026/poster/5856"
       },
       "title": "RoomPlanner: Reachability-Aware View Sampling for Text-to-Room 3D Gaussian Splatting",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "论文提出RoomPlanner，利用3D高斯泼溅（3DGS）从文本生成室内3D场景，属于3D内容生成与重建范畴。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "3D Gen&Recon"
       ],
@@ -73419,6 +73596,19 @@
       },
       "summary": null,
       "title": "Transient LASSO: Transient Large-Scale Scene Reconstruction",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "标题指出进行瞬态大规模场景重建（Scene Reconstruction），属于3D重建主题。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "3D Gen&Recon"
       ],
@@ -81625,6 +81815,19 @@
       },
       "summary": null,
       "title": "Single Image 3D Portrait Relighting with Generative Priors",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": true,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "标题为单图像3D肖像重光照（Relighting），核心任务是估计或生成新光照下的外观，属于重光照主题。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "Relighting"
       ],
@@ -83086,6 +83289,19 @@
       },
       "summary": null,
       "title": "Zero-Shot Image Personalization from Personas",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "论文提出ZIPP方法，利用自然语言Persona条件化文生图扩散模型，实现零样本图像个性化生成，属于图像生成与个性化领域。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "Image Gen&Edit"
       ],
@@ -96481,6 +96697,19 @@
       },
       "summary": null,
       "title": "CFC: Simulating Character-Fluid Coupling using a Two-Level World Model",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": true
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "标题明确提到使用两级世界模型（Two-Level World Model）来模拟角色-流体耦合，属于世界模型主题。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "World Model"
       ],
@@ -97375,6 +97604,19 @@
       },
       "summary": null,
       "title": "GauSmoke: Hybrid Physics-Optical Gaussian Splatting for Sparse Smoke Reconstruction",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "标题指出使用混合物理-光学高斯泼溅（Gaussian Splatting）进行稀疏烟雾重建，属于3D重建与神经渲染范畴。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "3D Gen&Recon"
       ],
@@ -97583,6 +97825,19 @@
         "url": "https://eccv.ecva.net/virtual/2026/poster/4504"
       },
       "title": "LayerVerse: Finding the Sweet Spot for KV-Injection in Training-Free Image Editing",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "论文提出LayerVerse框架，通过优化KV注入策略解决多模态扩散Transformer在免训练图像编辑中的背景保留与编辑保真度权衡问题。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "Image Gen&Edit"
       ],
@@ -106812,6 +107067,19 @@
         "url": "https://eccv.ecva.net/virtual/2026/poster/5815"
       },
       "title": "Minute4D: Training High-Fidelity 4D Gaussian Splatting in One Minute",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "论文提出Minute4D，利用4D高斯泼溅从单目视频快速重建高保真4D场景，属于4D场景重建与动态视图合成。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "3D Gen&Recon"
       ],
@@ -111124,6 +111392,19 @@
       },
       "summary": null,
       "title": "PaD-GS: Leveraging Distortion Map for Panoramic Gaussian Splatting",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "论文提出PaD-GS，利用畸变图改进全景图像下的3D高斯泼溅渲染，属于基于神经渲染的3D场景表示与重建。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "3D Gen&Recon"
       ],
@@ -112048,6 +112329,19 @@
         "url": "https://eccv.ecva.net/virtual/2026/poster/3838"
       },
       "title": "SkyLume: A Large-Scale Multi-Illumination Aerial Benchmark for Urban Scene Reconstruction and Beyond",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "论文发布了一个大规模无人机数据集，旨在解决多光照条件下的3D重建（NeRF/3DGS）和逆渲染问题，核心属于3D重建与场景建模。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "3D Gen&Recon"
       ],
@@ -123098,6 +123392,19 @@
         "url": "https://eccv.ecva.net/virtual/2026/poster/5936"
       },
       "title": "Flash-Refine: Frustum-Guided Local Incremental Learning for Efficient 3D Gaussian Splatting Completion",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "论文提出Flash-Refine，用于静态3D高斯泼溅资产的局部增量修复和补全，属于3D场景重建与编辑的范畴。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "3D Gen&Recon"
       ],
@@ -126406,6 +126713,19 @@
       },
       "summary": null,
       "title": "ActiveStructure: Plane Scene Graph-Guided Active 3D Gaussian Splatting",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "论文提出ActiveStructure，通过平面场景图引导主动3D高斯泼溅，旨在提高3D场景重建的完整性和渲染质量，属于3D重建。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "3D Gen&Recon"
       ],
@@ -129248,6 +129568,19 @@
         "url": "https://eccv.ecva.net/virtual/2026/poster/5695"
       },
       "title": "EGGS: Explicitly Granular 3D Gaussian Splatting via Luma-Aware and Volume-Preserving Attribute Factorization",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "论文提出EGGS，一种3D高斯泼溅（3D Gaussian Splatting）的压缩与表示框架，用于新视角合成，属于3D重建与渲染。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "3D Gen&Recon"
       ],
@@ -136467,6 +136800,19 @@
       },
       "summary": null,
       "title": "Inference-time Motion Calibration for Video Generation",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": true,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "论文提出推理时运动校准框架以改进视频生成（Video Generation）的运动保真度，属于视频生成范畴。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "Video Gen&Edit"
       ],
@@ -142350,6 +142696,19 @@
       },
       "summary": null,
       "title": "GlassGS: Geometry and Concept-Aware 3D Gaussian Splatting for Reflective Enclosures",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "论文针对玻璃罩内的物体提出改进的3D高斯泼溅（3DGS）重建方法，解决反射对重建质量的影响，属于3D重建范畴。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "3D Gen&Recon"
       ],
@@ -143636,6 +143995,19 @@
       },
       "summary": null,
       "title": "MPO: Single-Stream Policy Optimization for Efficient Text-to-Image Alignment",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "论文提出MPO算法用于文生图（Text-to-Image）模型的对齐优化，属于图像生成方法。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "Image Gen&Edit"
       ],
@@ -147484,6 +147856,19 @@
         "url": "https://eccv.ecva.net/virtual/2026/poster/5950"
       },
       "title": "VLTR: Vision-Language Tool Reasoning for Instruction-Guided Image Editing",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "论文提出VLTR框架用于指令引导的图像编辑，核心贡献在于优化多工具图像编辑流程，属于图像编辑领域。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "Image Gen&Edit"
       ],
@@ -151087,6 +151472,19 @@
       },
       "summary": null,
       "title": "Thermo-JEPA: Learning a Geometry-Grounded Thermal World Model via Cross-Modal Privileged Masking",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": true
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "论文提出Thermo-JEPA，旨在学习基于几何的热成像世界模型，用于动态预测，核心贡献在于构建环境/物理动态的预测模型。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "World Model"
       ],
@@ -154127,6 +154525,19 @@
       },
       "summary": null,
       "title": "GSWT: Gaussian Splatting Wang Tiles",
+      "topic_review": {
+        "decisions": {
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
+        },
+        "model": "PaperReader-Qwen3.8",
+        "reason": "标题提及Gaussian Splatting（高斯泼溅）和Wang Tiles，属于3D场景表示与重建技术，尽管摘要缺失，但标题明确指向3D生成/重建主题。",
+        "reviewed_at": "2026-09-14T14:40:53+00:00"
+      },
       "topics": [
         "3D Gen&Recon"
       ],

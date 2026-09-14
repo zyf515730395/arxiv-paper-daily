@@ -299,33 +299,6 @@ collection:
   page_size: 100
   review_required_since: '2026-09-06T03:15:20.116692+00:00'
 paper_tag_groups:
-  task:
-  - name: Image Generation
-    description: Generates new still images rather than only modifying an input image.
-  - name: Image Editing
-    description: Modifies an existing image while preserving specified content or identity.
-  - name: Inpainting & Outpainting
-    description: Fills masked regions or extends content beyond the original image boundary.
-  - name: Personalization
-    description: Adapts generation or editing to a specific subject, identity, object or style.
-  - name: Video Generation
-    description: Generates a video sequence from a condition or learned distribution.
-  - name: Video Editing
-    description: Modifies an existing video with temporal consistency.
-  - name: Video Prediction
-    description: Predicts future or missing frames from observed video context.
-  - name: 3D Generation
-    description: Synthesizes new 3D assets, objects or scenes.
-  - name: 3D Reconstruction
-    description: Recovers 3D or 4D geometry and appearance from observations.
-  - name: Novel View Synthesis
-    description: Renders unseen viewpoints from learned scene observations.
-  - name: Illumination Estimation
-    description: Recovers explicit or implicit scene lighting from observations.
-  - name: Scene Relighting
-    description: Changes scene or subject illumination while preserving content.
-  - name: Lighting Harmonization
-    description: Matches foreground or inserted content lighting to a target scene.
   method:
   - name: Diffusion
     description: Denoising or score-based diffusion is a central generation mechanism.
@@ -382,7 +355,7 @@ paper_tag_groups:
     description: A single image is the primary observation for producing a 3D result.
   - name: Multi-View-to-3D
     description: Multiple views or video observations are used to produce a 3D result.
-  - name: Unconditional 3D Generation
+  - name: Unconditional Sampling
     description: New 3D content is sampled without an instance-specific input condition.
   representation:
   - name: Pixel Space
@@ -440,19 +413,6 @@ paper_tag_groups:
     description: The model evaluates interventions or alternative possible futures.
   - name: Planning Under Uncertainty
     description: Planning explicitly represents uncertainty over states, dynamics or outcomes.
-  application:
-  - name: Robotics
-    description: The world model supports robot perception, manipulation or control.
-  - name: Autonomous Driving
-    description: The world model supports driving prediction, simulation or planning.
-  - name: Video Prediction & Scene Understanding
-    description: The world model predicts visual futures or structured scene evolution.
-  - name: Multimodal Agents
-    description: The world model supports language-grounded or multimodal agents.
-  - name: RL/Games
-    description: The world model supports reinforcement learning, games or interactive environments.
-  - name: Scientific Modeling
-    description: The world model simulates physical, biological or other scientific systems.
   control:
   - name: Parametric Lighting
     description: Explicit light direction, position, color or intensity controls the result.
@@ -512,11 +472,6 @@ paper_tag_groups:
     description: Legacy tag retained only so existing public annotations remain readable.
 paper_topic_tag_dimensions:
   Image Gen&Edit:
-    task:
-    - Image Generation
-    - Image Editing
-    - Inpainting & Outpainting
-    - Personalization
     method:
     - Diffusion
     - Flow Matching
@@ -532,10 +487,6 @@ paper_topic_tag_dimensions:
     - Discrete Tokens
     - Continuous Latents
   Video Gen&Edit:
-    task:
-    - Video Generation
-    - Video Editing
-    - Video Prediction
     method:
     - Diffusion
     - Flow Matching
@@ -552,15 +503,11 @@ paper_topic_tag_dimensions:
     - Latent Dynamics
     - Long-Horizon Generation
   3D Gen&Recon:
-    task:
-    - 3D Generation
-    - 3D Reconstruction
-    - Novel View Synthesis
     condition:
     - Text-to-3D
     - Single-Image-to-3D
     - Multi-View-to-3D
-    - Unconditional 3D Generation
+    - Unconditional Sampling
     pipeline:
     - Feed-Forward
     - Optimization-Based
@@ -592,18 +539,7 @@ paper_topic_tag_dimensions:
     - World-Model Policy Learning
     - Counterfactual Reasoning
     - Planning Under Uncertainty
-    application:
-    - Robotics
-    - Autonomous Driving
-    - Video Prediction & Scene Understanding
-    - Multimodal Agents
-    - RL/Games
-    - Scientific Modeling
   Relighting:
-    task:
-    - Illumination Estimation
-    - Scene Relighting
-    - Lighting Harmonization
     method:
     - Inverse Rendering
     - Reflectance-Aware Representation

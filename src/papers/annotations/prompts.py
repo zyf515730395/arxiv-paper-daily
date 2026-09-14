@@ -7,7 +7,7 @@ import json
 from .models import LabelDefinition
 
 
-PROMPT_VERSION = "paper-annotation-v6-technical-only"
+PROMPT_VERSION = "paper-annotation-v7-methods-only"
 TRANSPORT_VERSION = "loopback-chat-v1"
 
 
@@ -29,9 +29,9 @@ def annotation_messages(
                 "tags 按与论文核心贡献的相关性从高到低排列，总数最多 5 个，每个维度最多 2 个。"
                 "每个维度也可在证据不足时不选，必须基于论文核心方法或贡献，"
                 "不能因为 related work、baseline、泛泛提到而添加。没有充分证据就保留空列表。"
-                "只标注技术相关维度，不标注人物、肖像、角色等对象类型。"
+                "只标注方法、表示、条件控制等技术维度，不标注任务类型、应用领域或人物、肖像、角色等对象类型。"
                 "taxonomy 中的细节标签已经按论文当前归档主题做过白名单过滤，禁止输出列表外标签。"
-                "不要用 Image Gen&Edit、Video Gen&Edit 等主题名作为 tags；任务标签不能新增。"
+                "不要用 Image Gen&Edit、Video Gen&Edit 等主题名作为 tags；禁止任务类型标签。"
                 "Diffusion 与 Autoregressive 等混合路线可以同时选择。"
                 "institutions 必须输出空列表：标题摘要不足以确认机构，机构由署名结构单独提取。"
                 "paper_type 只能是 paper 或 survey。仅当论文主要贡献是系统综述、survey、"

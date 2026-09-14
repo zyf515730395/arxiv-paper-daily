@@ -22,6 +22,7 @@ from urllib.parse import unquote, urlsplit
 import yaml
 
 from papers import paths
+from papers.model_runtime import DEFAULT_MODEL, DEFAULT_MODEL_MAX_TOKENS
 from papers.candidate_ledger import atomic_write_json, utc_now
 from papers.conference_library import LIBRARY, load_library, existing_identities, display_id
 from papers.proceedings import load_catalog, normalize_title
@@ -96,7 +97,7 @@ def _fingerprint(path: Path) -> str | None:
 
 
 def review_key(paper: dict) -> str:
-    return hashlib.sha256((paper['title'] + json.dumps(rules(), sort_keys=True)).encode()).hexdigest()
+    return hashlib.sha256((paper['title'] + DEFAULT_MODEL + json.dumps(rules(), sort_keys=True)).encode()).hexdigest()
 
 
 def review_titles(*, batch_size: int = 80, limit: int = 0) -> dict:
@@ -138,7 +139,7 @@ def review_titles(*, batch_size: int = 80, limit: int = 0) -> dict:
                     payload = json.dumps([{'index': i, 'title': p['title']} for i, p in enumerate(group)], ensure_ascii=False)
                     raw = LoopbackChatTransport('http://127.0.0.1:8000/v1', max_message_chars=32000).complete(
                         ({'role': 'system', 'content': system}, {'role': 'user', 'content': payload}),
-                        model=model, timeout=900, max_tokens=4096, enable_thinking=False, json_schema=schema)
+                        model=model, timeout=900, max_tokens=DEFAULT_MODEL_MAX_TOKENS, enable_thinking=False, json_schema=schema)
                     result = json.loads(raw)
                     if set(result) != set(topics) or any(not isinstance(v, list) or any(type(i) is not int or not 0 <= i < len(group) for i in v) or len(v) != len(set(v)) for v in result.values()):
                         raise ValueError('Invalid title classification indexes')
@@ -178,6 +179,11 @@ def screen(*, apply: bool = False) -> dict:
                 continue
             provenance = {'edition': paper['edition'], 'url': paper['url']}
             existing = library['papers'].get(key) or by_title.get(title)
+            if existing and existing.get('topic_review'):
+                if provenance not in existing['conferences']:
+                    existing['conferences'].append(provenance)
+                counts['preserved_recheck'] += 1
+                continue
             decision = screen_title(paper['title'])
             if existing and decision['status'] == 'excluded':
                 library['papers'].pop(existing['id'], None)
