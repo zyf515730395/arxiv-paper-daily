@@ -16,7 +16,7 @@ import urllib.request
 from zoneinfo import ZoneInfo
 
 from papers import paths
-from papers.model_runtime import DEFAULT_MODEL_TIMEOUT_SECONDS, DEFAULT_MODEL_WORKERS, MAX_MODEL_WORKERS
+from papers.model_runtime import DEFAULT_MODEL, DEFAULT_MODEL_TIMEOUT_SECONDS, DEFAULT_MODEL_WORKERS, MAX_MODEL_WORKERS
 
 PUBLIC = ('content/papers/archive.json', 'content/papers/arxiv-candidates.json',
           'content/papers/conference-library.json',
@@ -192,6 +192,8 @@ def model_service(service):
                 time.sleep(5)
                 continue
             break
+        if model != os.environ.get('TOGOS_WSL_LLM_MODEL', DEFAULT_MODEL):
+            raise RuntimeError('active model differs from the configured paper model; preserve the existing service and inspect its configuration')
         yield model
     finally:
         if started:

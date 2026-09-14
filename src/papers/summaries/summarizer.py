@@ -64,14 +64,17 @@ def _complete(
     model: str,
     timeout: float,
 ) -> PaperSummary:
-    try:
-        return parse_summary(transport.complete(
-            (*messages, {'role': 'user', 'content': '请写完整句子。字符串内容使用中文引号或不加引号，不使用 ASCII 双引号、反斜杠或尖括号。'}), model=model, timeout=timeout,
-            max_tokens=DEFAULT_MODEL_MAX_TOKENS, enable_thinking=False,
-            json_schema=SUMMARY_SCHEMA,
-        ))
-    except LoopbackChatError as error:
-        raise PaperSummaryError(error.code, error.message) from None
+    for allowance in (DEFAULT_MODEL_MAX_TOKENS, DEFAULT_MODEL_MAX_TOKENS * 2):
+        try:
+            return parse_summary(transport.complete(
+                (*messages, {'role': 'user', 'content': '请写完整句子。字符串内容使用中文引号或不加引号，不使用 ASCII 双引号、反斜杠或尖括号。'}), model=model, timeout=timeout,
+                max_tokens=allowance, enable_thinking=False,
+                json_schema=SUMMARY_SCHEMA,
+            ))
+        except LoopbackChatError as error:
+            if error.code == 'model_output_truncated' and allowance == DEFAULT_MODEL_MAX_TOKENS:
+                continue
+            raise PaperSummaryError(error.code, error.message) from None
 
 
 def summarize_paper(

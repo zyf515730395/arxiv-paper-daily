@@ -15,7 +15,7 @@ import sys
 from uuid import uuid4
 
 from papers.paths import ARCHIVE, CONFIG, DOCS, LEDGER
-from papers.model_runtime import DEFAULT_MODEL_TIMEOUT_SECONDS, DEFAULT_MODEL_WORKERS, MAX_MODEL_WORKERS
+from papers.model_runtime import DEFAULT_MODEL, DEFAULT_MODEL_TIMEOUT_SECONDS, DEFAULT_MODEL_WORKERS, MAX_MODEL_WORKERS
 from papers.summaries.acquisition import ArxivSourceClient
 from papers.annotations.catalog import (
     annotation_labels_for_topics,
@@ -358,7 +358,7 @@ def main(argv=None):
     parser.add_argument("--limit", type=int, help="maximum unique papers; default is all unfinished archive papers across all years")
     parser.add_argument("--paper", action="append", default=[], help="archived arXiv ID, repeatable; includes every missing topic")
     parser.add_argument("--dry-run", action="store_true", help="list candidates; no download, inference or writes")
-    parser.add_argument("--model", default=os.environ.get("TOGOS_WSL_LLM_MODEL", "PaperReader-Qwen3.5"))
+    parser.add_argument("--model", default=os.environ.get("TOGOS_WSL_LLM_MODEL", DEFAULT_MODEL))
     parser.add_argument("--base-url", default=os.environ.get("TOGOS_WSL_LLM_BASE_URL", "http://127.0.0.1:8000/v1"))
     parser.add_argument("--timeout", type=float, default=DEFAULT_MODEL_TIMEOUT_SECONDS)
     args = parser.parse_args(argv)

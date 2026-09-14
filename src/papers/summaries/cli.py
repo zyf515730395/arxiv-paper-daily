@@ -1,6 +1,7 @@
 """Command line interface for private local paper summarization."""
 
 from __future__ import annotations
+from papers.model_runtime import DEFAULT_MODEL, DEFAULT_MODEL_TIMEOUT_SECONDS, DEFAULT_MODEL_WORKERS
 
 import argparse
 import json
@@ -25,18 +26,18 @@ def build_parser() -> argparse.ArgumentParser:
     commands = parser.add_subparsers(dest="command", required=True)
     run = commands.add_parser("run", help="generate missing accepted paper summaries")
     run.add_argument(
-        "--model", default=os.environ.get("TOGOS_WSL_LLM_MODEL"), help="local model name"
+        "--model", default=os.environ.get("TOGOS_WSL_LLM_MODEL", DEFAULT_MODEL), help="local model name"
     )
     run.add_argument(
         "--base-url",
         default=os.environ.get("TOGOS_WSL_LLM_BASE_URL", DEFAULT_BASE_URL),
         help="literal loopback OpenAI-compatible /v1 URL",
     )
-    run.add_argument("--timeout", type=float, default=180.0)
+    run.add_argument("--timeout", type=float, default=DEFAULT_MODEL_TIMEOUT_SECONDS)
     run.add_argument(
         "--workers",
         type=int,
-        default=os.environ.get("TOGOS_WSL_LLM_WORKERS", "2"),
+        default=os.environ.get("TOGOS_WSL_LLM_WORKERS", str(DEFAULT_MODEL_WORKERS)),
         help="parallel paper workers (1-8)",
     )
     run.add_argument("--paper", action="append", default=[], help="accepted arXiv ID; repeatable")

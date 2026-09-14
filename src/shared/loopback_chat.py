@@ -253,6 +253,8 @@ class LoopbackChatTransport:
                 "local model response must contain one choice",
             )
         choice = choices[0]
+        if isinstance(choice, dict) and choice.get('finish_reason') == 'length':
+            raise LoopbackChatError('model_output_truncated', 'local model reached its output token limit')
         message = choice.get("message") if isinstance(choice, dict) else None
         content = message.get("content") if isinstance(message, dict) else None
         if not isinstance(content, str):

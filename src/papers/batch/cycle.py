@@ -8,6 +8,7 @@ import math
 import os
 from pathlib import Path
 import time
+import threading
 from types import SimpleNamespace
 from datetime import datetime, timezone
 from uuid import uuid4
@@ -19,7 +20,7 @@ from papers.annotations.catalog import archive_paper_ids, load_annotation_catalo
 from papers.paths import ANNOTATIONS
 from papers.summaries.models import PaperSummaryError
 from papers.summaries.paths import normalize_arxiv_id, private_path, run_lock
-from papers.model_runtime import DEFAULT_MODEL_TIMEOUT_SECONDS, DEFAULT_MODEL_WORKERS, MAX_MODEL_WORKERS
+from papers.model_runtime import DEFAULT_MODEL, DEFAULT_MODEL_TIMEOUT_SECONDS, DEFAULT_MODEL_WORKERS, MAX_MODEL_WORKERS
 from shared.loopback_chat import LoopbackChatError, validate_loopback_base_url
 from shared.rendering import atomic_write_text
 
@@ -57,13 +58,18 @@ class CycleStatus:
 
 
 class DownloadGate:
-    """Shared by serial download sessions, including retries and PDF fallback."""
+    """Serialize request starts across workers, retries and PDF fallback."""
     def __init__(self, interval, *, clock=time.monotonic, sleeper=time.sleep):
         self.interval, self.clock, self.sleeper = interval, clock, sleeper
         self.next_request = 0.0
         self.blocked = False
+        self._request_lock = threading.Lock()
 
     def before_request(self):
+        with self._request_lock:
+            self._wait_for_slot()
+
+    def _wait_for_slot(self):
         if self.blocked:
             raise PaperSummaryError('source_throttled', 'network paused after server refused requests')
         remaining = self.next_request - self.clock()
@@ -467,7 +473,7 @@ def parse_args(argv=None):
     parser.add_argument('--workers', type=int, default=DEFAULT_MODEL_WORKERS,
                         help=f'summary workers, 1-{MAX_MODEL_WORKERS}; downloads are always serial')
     parser.add_argument('--max-batches', type=int, help='stop after N batches, keep checkpoint; default runs entire queue')
-    parser.add_argument('--model', default=os.environ.get('TOGOS_WSL_LLM_MODEL', 'PaperReader-Qwen3.5'))
+    parser.add_argument('--model', default=os.environ.get('TOGOS_WSL_LLM_MODEL', DEFAULT_MODEL))
     parser.add_argument('--base-url', default=os.environ.get('TOGOS_WSL_LLM_BASE_URL', 'http://127.0.0.1:8000/v1'))
     parser.add_argument('--timeout', type=float, default=DEFAULT_MODEL_TIMEOUT_SECONDS)
     parser.add_argument('--reorder-checkpoint', choices=('dry-run', 'apply'),

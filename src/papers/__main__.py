@@ -7,7 +7,7 @@ import os
 import sys
 
 from papers import paths
-from papers.model_runtime import DEFAULT_MODEL_TIMEOUT_SECONDS, DEFAULT_MODEL_WORKERS, MAX_MODEL_WORKERS
+from papers.model_runtime import DEFAULT_MODEL, DEFAULT_MODEL_TIMEOUT_SECONDS, DEFAULT_MODEL_WORKERS, MAX_MODEL_WORKERS
 
 
 def build():
@@ -33,7 +33,7 @@ def main(argv=None):
         return benchmark_main(argv[1:])
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command', choices=['collect', 'curate', 'build', 'status', 'daily', 'publish-offline'])
-    parser.add_argument('--model', default=os.environ.get('TOGOS_WSL_LLM_MODEL', 'PaperReader-Qwen3.5'))
+    parser.add_argument('--model', default=os.environ.get('TOGOS_WSL_LLM_MODEL', DEFAULT_MODEL))
     parser.add_argument('--base-url', default=os.environ.get('TOGOS_WSL_LLM_BASE_URL', 'http://127.0.0.1:8000/v1'))
     parser.add_argument('--timeout', type=float, default=DEFAULT_MODEL_TIMEOUT_SECONDS)
     parser.add_argument('--workers', type=int, default=DEFAULT_MODEL_WORKERS)

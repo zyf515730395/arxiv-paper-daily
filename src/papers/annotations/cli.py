@@ -1,6 +1,7 @@
 """CLI for local paper annotation and coverage checks."""
 
 from __future__ import annotations
+from papers.model_runtime import DEFAULT_MODEL, DEFAULT_MODEL_TIMEOUT_SECONDS, DEFAULT_MODEL_WORKERS
 
 import argparse
 import json
@@ -18,10 +19,10 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="python -m papers.annotations")
     commands = parser.add_subparsers(dest="command", required=True)
     run = commands.add_parser("run", help="classify newly accepted papers; --paper explicitly selects an archived paper")
-    run.add_argument("--model", default=os.environ.get("TOGOS_WSL_LLM_MODEL"))
+    run.add_argument("--model", default=os.environ.get("TOGOS_WSL_LLM_MODEL", DEFAULT_MODEL))
     run.add_argument("--base-url", default=os.environ.get("TOGOS_WSL_LLM_BASE_URL", DEFAULT_BASE_URL))
-    run.add_argument("--timeout", type=float, default=180.0)
-    run.add_argument("--workers", type=int, default=os.environ.get("TOGOS_WSL_LLM_WORKERS", "2"))
+    run.add_argument("--timeout", type=float, default=DEFAULT_MODEL_TIMEOUT_SECONDS)
+    run.add_argument("--workers", type=int, default=os.environ.get("TOGOS_WSL_LLM_WORKERS", str(DEFAULT_MODEL_WORKERS)))
     run.add_argument("--paper", action="append", default=[])
     run.add_argument("--limit", type=int, default=100)
     run.add_argument("--refresh", action="store_true")

@@ -14,7 +14,7 @@ import subprocess
 import threading
 import time
 
-from papers.model_runtime import DEFAULT_MODEL_TIMEOUT_SECONDS, MAX_MODEL_WORKERS
+from papers.model_runtime import DEFAULT_MODEL, DEFAULT_MODEL_TIMEOUT_SECONDS, MAX_MODEL_WORKERS
 from papers.summaries.acquisition import ArxivSourceClient
 from papers.summaries.models import PaperSummaryError
 from papers.summaries.prompts import build_chunks, map_messages
@@ -151,7 +151,7 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--levels', default=','.join(map(str, DEFAULT_LEVELS)))
     parser.add_argument('--sample-size', type=int, default=16)
-    parser.add_argument('--model', default=os.environ.get('TOGOS_WSL_LLM_MODEL', 'PaperReader-Qwen3.5'))
+    parser.add_argument('--model', default=os.environ.get('TOGOS_WSL_LLM_MODEL', DEFAULT_MODEL))
     parser.add_argument('--base-url', default=os.environ.get('TOGOS_WSL_LLM_BASE_URL', 'http://127.0.0.1:8000/v1'))
     parser.add_argument('--timeout', type=float, default=DEFAULT_MODEL_TIMEOUT_SECONDS)
     args = parser.parse_args(argv)
