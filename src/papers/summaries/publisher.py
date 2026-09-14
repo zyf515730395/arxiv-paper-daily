@@ -91,7 +91,10 @@ def load_ready_keys(
 ) -> set[tuple[str, str]]:
     ready: set[tuple[str, str]] = set()
     notes = Path(docs_root) / "notes"
+    managed_names = {f'{slug}.html' for slug in TOPIC_SLUGS.values()}
     for path in sorted(notes.glob("*.html")):
+        if path.name not in managed_names:
+            continue
         try:
             expected_topic = next(
                 topic
