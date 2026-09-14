@@ -184,10 +184,13 @@ def model_service(service):
         if model is None and command('systemctl', 'is-active', '--quiet', service, check=False).returncode:
             command('sudo', '-n', '/usr/bin/systemctl', 'start', service)
             started = True
-        for attempt in range(60):
+        deadline = time.monotonic() + DEFAULT_MODEL_TIMEOUT_SECONDS
+        while True:
             model = registered_model()
             if model is None:
-                if attempt == 59:
+                if command('systemctl', 'is-failed', '--quiet', service, check=False).returncode == 0:
+                    raise RuntimeError('model service failed during startup; inspect its systemd journal')
+                if time.monotonic() >= deadline:
                     raise RuntimeError('model readiness timed out') from None
                 time.sleep(5)
                 continue
