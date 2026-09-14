@@ -13,6 +13,568 @@
       <h1>Video Gen&amp;Edit · 论文要点</h1>
     </header>
     <div class="summary-topic-list">
+    <article class="summary-article summary-topic-entry" id="summary-2608.09637" data-arxiv-id="2608.09637" data-status="ready">
+<h1>[2608.09637] DUET: A Diversity-Quality Duet of Distillation Experts for Two-Step Video Generation</h1>
+<p><a href="https://arxiv.org/abs/2608.09637" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出 DUET 方法，通过噪声级别的专家协作（将高噪声区间分配给多样性保持专家，低噪声区间分配给保真度导向专家）解决了少步生成中质量与多样性的权衡难题，并进一步引入基于角色的自适应机制（DUET+）以优化两者性能。</p>
+<h2>解决的问题</h2>
+<p>现有的少步蒸馏方法面临质量与多样性的权衡困境：轨迹级目标（如 sCM）能保持多样性但输出模糊，分布级目标（如 DMD）能产生清晰输出但模式单一；简单的损失函数组合往往导致优化困难且难以同时兼顾两者。</p>
+<h2>创新点</h2>
+<ul>
+<li>诊断了质量 - 多样性权衡的根本原因：轨迹级和分布级目标诱导了不同的噪声到数据映射，导致损失级组合优化困难且容易妥协。</li>
+<li>提出了 DUET（Diversity–qUality Expert Tandem），这是一种基于噪声级别的专家协作方法，将多样性和保真度导向的专家分配给各自最有效的噪声区间。</li>
+<li>引入了一种基于角色的自适应机制（DUET+），利用 sCM 专家的多样性进行偏好优化，并修复 DMD 专家的中继接口，使其适应 sCM 专家在推理时产生的实际中间分布。</li>
+<li>在 Wan2.1-1.3B 上验证了该方法的有效性：在极端的两步生成 regime 下，DUET 在保持 sCM 多样性的同时达到了 DMD 级别的质量，而 DUET+ 进一步提升了整体质量并保留了多样性优势。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2604.23789" data-arxiv-id="2604.23789" data-status="ready">
+<h1>[2604.23789] MuSS: A Large-Scale Dataset and Cinematic Narrative Benchmark for Multi-Shot Subject-to-Video Generation</h1>
+<p><a href="https://arxiv.org/abs/2604.23789" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>MuSS 是一个源自 3000 多部电影的大规模多镜头主体到视频生成数据集及电影叙事基准，旨在解决现有方法在复杂叙事逻辑、时空文本对齐及主体一致性方面的瓶颈。</p>
+<h2>解决的问题</h2>
+<p>现有开源数据集和生成框架主要局限于孤立的单镜头视频，难以满足依赖复杂多镜头序列的电影制作、广告和短视频内容需求。</p>
+<h2>创新点</h2>
+<ul>
+<li>构建了 MuSS，这是一个源自 3000 多部电影的大规模、高质量多镜头视频库，包含约 70 万个筛选后的镜头和超过 3 万个标注的多镜头序列。</li>
+<li>提出了渐进式视觉语言模型标注和精确的跨镜头主体匹配技术，利用交替镜头中的主体作为参考来鼓励自然的新视角生成并防止复制粘贴捷径。</li>
+<li>提出了电影叙事基准，采用视觉逻辑驱动的范式替代粗糙的全局文本评估，以评估多主体和多视角过渡中的讲故事能力。</li>
+<li>引入了反复制粘贴方差指标，通过量化参考与生成视频之间的结构和姿态多样性，来测试新视角生成能力而非简单的记忆化。</li>
+<li>实验表明，在当前的基线模型难以应对电影多镜头场景的情况下，基于 MuSS 增强的基线实现了最先进的讲故事效果、结构接地性和身份一致性。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.10439" data-arxiv-id="2608.10439" data-status="ready">
+<h1>[2608.10439] Stream Forcing: Constructing Unified Training Trajectory for Robust Streaming Video Generation</h1>
+<p><a href="https://arxiv.org/abs/2608.10439" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出 Stream Forcing，一种通过构建连续训练轨迹来统一独立采样与渐进采样范式，从而在视频生成中平衡训练分布覆盖与推理一致性的新训练框架。</p>
+<h2>解决的问题</h2>
+<p>片段未提供关于具体问题的详细描述，仅提及现有方法存在训练分布覆盖受限或破坏推理时假设的时间结构等局限性。</p>
+<h2>创新点</h2>
+<ul>
+<li>将训练时的噪声水平采样重构为帧索引的随机过程，建立了一个涵盖主流训练范式的统一空间。</li>
+<li>提出了 Stream Forcing 统一训练框架，结合联合校准算法和时间相关性采样算法，构建了从独立采样到渐进采样的连续训练轨迹。</li>
+<li>证明了该方法能平滑过渡训练配置，有效调和了广泛的训练分布覆盖与推理时的一致性需求。</li>
+<li>实验表明 Stream Forcing 在 UCF-101 和 Taichi-HD 数据集上显著提升了视频生成质量（FVD 分别提升 36.6% 和 4.7%）。</li>
+<li>验证了该方法在零样本长视界生成任务中的有效性，在 nuScenes 数据集的自动驾驶世界建模任务中也提升了 FID 和 FVD 指标。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.10519" data-arxiv-id="2608.10519" data-status="ready">
+<h1>[2608.10519] SparSTAR: Sparse Attention for SpaceTime AutoRegressive Video Synthesis</h1>
+<p><a href="https://arxiv.org/abs/2608.10519" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>SparSTAR 提出了一种针对时空自回归（STAR）视频生成的免训练块稀疏注意力框架，通过动态构建每头稀疏掩码和 clip 感知策略来解决传统方法在跨尺度和跨片段复用注意力模式时导致的注意力质量损失问题。</p>
+<h2>解决的问题</h2>
+<p>在 InfinityStar 等 STAR 视频生成模型中，尽管引入了时空稀疏注意力（SSA）来限制历史上下文，但当前片段的所有尺度仍需密集地关注前一个片段的最终尺度上下文，导致高计算成本。</p>
+<h2>创新点</h2>
+<ul>
+<li>通过系统性分析发现，InfinityStar 中的注意力模式在跨尺度和跨片段边界时不可靠地转移，且复用这些模式会导致显著的注意力质量（attention mass）损失。</li>
+<li>提出了一种免训练的 clip 感知块选择器（clip-aware block selector），能够在每个高成本尺度动态构建新的每尺度、每头稀疏模式，同时保留所有 token 和细化尺度。</li>
+<li>开发了一条仅前向的 FlexAttention 执行路径，并评估了其在 720p 文本到视频和图像到视频生成任务中的保真度与效率权衡。</li>
+<li>通过交叉尺度模式复用分析，将性能差距分解为块化、聚合 QK 评分和复用引起的模式失配项，证明新鲜聚合 QK 选择比跨尺度转移更接近最优块 oracle。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.10933" data-arxiv-id="2608.10933" data-status="ready">
+<h1>[2608.10933] SafeCA: Safe Cross-Attention Localization and Regulation for Text-to-Video Jailbreak Defense</h1>
+<p><a href="https://arxiv.org/abs/2608.10933" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>SafeCA 是一种针对文本到视频（T2V）模型越狱攻击的防御机制，通过分析交叉注意力特征空间中的累积分离效应和线性可分性增强现象，利用能量归一化注意力掩码和轻量级语义适配器在不修改模型权重的情况下实现细粒度抑制和输入提示词的反向映射检测。</p>
+<h2>解决的问题</h2>
+<p>现有的 T2V 防御方法主要依赖输入端过滤或提示词重构，存在两个主要局限性：一是倾向于改变原始语义、扭曲用户意图并导致干净生成的性能下降；二是部分系统级方法（如 T2VShield）需要大规模模型重写或密集的视频级检查，导致推理延迟高且难以实时部署，同时大多数策略仅关注文本侧而缺乏对多模态模型内跨模态对齐机制的深入理解。</p>
+<h2>创新点</h2>
+<ul>
+<li>首次揭示了 T2V 模型交叉注意力过程中存在累积分离效应和线性可分性增强趋势，为理解 T2V 越狱机制提供了新的跨模态视角。</li>
+<li>提出了 SafeCA 这一基于特征层面的交叉注意力防御机制，通过选择高可分性的步骤和块并执行特征正则化，实现了对潜在危险语义的细粒度抑制。</li>
+<li>SafeCA 显著降低了越狱成功率，同时保持了视频生成质量，并引入了反向映射抑制机制以检测输入提示词中的恶意词汇，支持可解释的黑盒防御。</li>
+<li>SafeCA 无需修改模型权重，仅通过收集干净推理过程中的交叉注意力特征并自动识别高风险步骤和关键块，实现了轻量级且高效的防御。</li>
+<li>SafeCA 在 Open-Sora 和 CogVideo 数据集上将越狱成功率分别降低了 20.7% 和 19.6%，且平均推理成本仅增加 0.1 秒，未引入额外的推理开销。</li>
+<li>SafeCA 通过能量归一化注意力掩码缓解异常激活，并引入轻量级语义空间适配器重定向偏离的语义流，从而稳定了跨模态对齐。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.14706" data-arxiv-id="2608.14706" data-status="ready">
+<h1>[2608.14706] Equilibrium Forcing: Adaptive Video Generation Without Noise Conditioning</h1>
+<p><a href="https://arxiv.org/abs/2608.14706" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种名为平衡强制（Equilibrium Forcing, EqF）的框架，旨在通过消除对噪声水平的显式条件依赖，实现自适应的视频生成，从而在有限的推理预算下提高视频生成的质量与一致性。</p>
+<h2>解决的问题</h2>
+<p>现有的去噪生成模型在自回归视频生成中依赖刚性的推理调度和噪声水平条件，这种开环机制导致调度噪声与样本真实噪声水平之间产生偏差，进而引发误差累积并降低生成质量。</p>
+<h2>创新点</h2>
+<ul>
+<li>挑战了显式噪声条件对于稳定、高质量自回归视频生成的必要性假设，提出了不受噪声水平条件限制的平衡强制（EqF）框架。</li>
+<li>通过学习统一所有噪声水平的平衡速度场，解决了标准噪声条件视频生成中因非平衡速度场链导致的脆弱性问题。</li>
+<li>利用闭环反馈机制从当前样本估计去噪进度并调节采样动力学，实现了数据自适应推理和预算自适应推理。</li>
+<li>证明了尽管训练目标更简单且信息量更少，EqF 在困难自回归视频生成数据集上仍能提升生成质量和一致性。</li>
+<li>展示了该模块化框架可以通过微调预训练的流匹配模型（1.3B 和 5B 参数）扩展至现实视频生成，且仅需少量预训练计算量。</li>
+<li>分析了噪声无条件模型如何学习与噪声条件模型相同的去噪场，并指出先前方法中存在的次优损失加权问题。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2606.27345" data-arxiv-id="2606.27345" data-status="ready">
+<h1>[2606.27345] SCoPE: Sightline-Coordinate Positional Encoding for Video Diffusion Transformers</h1>
+<p><a href="https://arxiv.org/abs/2606.27345" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>SCoPE 通过为视频扩散 Transformer 中的每个令牌添加相机射线作为第二个坐标，并引入一种新的射线配对项来改进相机控制，从而解决了现有方法在几何评分中无法同时满足令牌级关联、相机平移感知以及仅依赖射线即可读取几何信息的限制。</p>
+<h2>解决的问题</h2>
+<p>现有的视频扩散 Transformer 通常使用基于像素 - 时间网格的因子化 RoPE 作为位置编码，导致从不同视角观察同一表面的令牌仅通过网格偏移关联，模型必须仅凭外观恢复 3D 对应关系，且无法有效利用相机射线提供的深度约束。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出 SCoPE（Sightline-Coordinate Positional Encoding），将每个令牌的 Plücker 射线作为第二个地址添加到查询和键中，使相机控制成为坐标系本身的属性而非辅助信号。</li>
+<li>设计了一种新的几何评分机制，通过射线配对项直接读取两个射线而不依赖内容，满足了评分必须仅从两条射线中可读且能感知相机平移的需求。</li>
+<li>提出 Normalize-Gate-Inject 方法，通过分离尺度不变部分和显式对数幅度、使用学习门控以及匹配归一化，解决了不同姿态单位尺度不一致的问题。</li>
+<li>在 Wan2.2 模型上验证了 SCoPE 的有效性，结果显示其在所有相机可控性指标和保真度指标上均优于基线，且随着模型规模增大，性能优势进一步扩大。</li>
+<li>消融实验表明，移除射线配对项会导致旋转误差几乎翻倍，证明了该配对项在提升相机控制能力中的关键作用。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.12032" data-arxiv-id="2608.12032" data-status="ready">
+<h1>[2608.12032] LoSA: Near-Lossless Sparse Attention for Training-Free Video Diffusion Acceleration</h1>
+<p><a href="https://arxiv.org/abs/2608.12032" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>LoSA 是一种针对视频扩散模型的无训练稀疏注意力方法，通过固定保留注意力质量阈值（默认 99%）而非固定稀疏率，在移除约 40% 计算量的同时实现近无损加速。</p>
+<h2>解决的问题</h2>
+<p>现有无训练加速器中，追求高稀疏率的方法处于激进近似状态，在结合特征缓存的完整加速管道中，注意力误差会累积并影响生成质量，且固定稀疏率或依赖粗略重要性估计的方法难以在保留近无损精度的同时提供有意义的加速。</p>
+<h2>创新点</h2>
+<ul>
+<li>识别并表征了视频扩散注意力中的近无损稀疏区域，证明在移除约 40% 块交互的同时可保留 99% 的密集注意力质量。</li>
+<li>提出了 LoSA，该方法为每个样本构建一次基于精确块注意力质量的保留质量支持集，仅冻结块索引并在后续步骤复用，从而独立于层、头和查询块地实现近无损稀疏。</li>
+<li>证明了 LoSA 作为独立模块是近无损的，并且在与特征缓存结合时依然有效，能够提升多种模型和加速水平下的无训练速度 - 质量前沿。</li>
+<li>表明 LoSA 仅改变注意力支持集而不修改模型权重、去噪调度或缓存特征，是一种适用于可组合推理加速的更好基础组件。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.12203" data-arxiv-id="2608.12203" data-status="ready">
+<h1>[2608.12203] GeoFlow: Efficient Driving Video Generation via Geometry-Aligned Priors</h1>
+<p><a href="https://arxiv.org/abs/2608.12203" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>GeoFlow 提出了一种通过几何对齐先验实现高效驾驶视频生成的框架，利用参考帧和深度估计构建几何对齐的粗预测，并结合空间自适应噪声注入策略，从而显著缩短生成路径并提升少步生成质量。</p>
+<h2>解决的问题</h2>
+<p>现有基于扩散模型或流匹配框架的驾驶视频生成方法虽然具有高保真度和可控性，但依赖从标准高斯噪声开始迭代求解 ODE/SDE，导致推理步骤多、计算延迟高且成本昂贵。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出 GeoFlow 框架，改变传统从纯噪声开始的生成范式，转而利用参考帧信息作为起点，从根本上缩短并拉直了从源分布到目标分布的传输路径。</li>
+<li>构建了一种几何对齐先验分布（Geometry-Aligned Prior Distribution），利用驾驶视频固有的时空相干性和几何一致性，通过多视图几何和自车运动预测未来帧内容。</li>
+<li>提出空间自适应噪声注入策略（Spatially-Adaptive Noise Injection），基于几何一致性和语义先验推导连续像素级可靠性掩码，有效处理深度估计误差和动态环境带来的伪影，且无需额外可学习参数。</li>
+<li>实验证明 GeoFlow 能够在极低的适配成本下，显著改善少步生成（few-step generation）的视频质量，解决了传统方法在少步生成中纹理闪烁和几何漂移的问题。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.12290" data-arxiv-id="2608.12290" data-status="ready">
+<h1>[2608.12290] Beyond Trial-and-Error: Agentic Optimization for Image-to-Video Adherence</h1>
+<p><a href="https://arxiv.org/abs/2608.12290" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种名为“代理自我改进”（Agentic Self-Improvement）的框架，旨在通过闭环目标导向优化替代传统的试错法，以解决大规模黑盒图像到视频（I2V）模型在遵循创意简报方面的不足。</p>
+<h2>解决的问题</h2>
+<p>当前大规模黑盒图像到视频（I2V）模型存在固有的随机性和对超参数的高度敏感性，导致微小的参数变化（如随机种子或分类器自由引导尺度）会产生不可预测的输出，迫使从业者采用低效且计算昂贵的试错工作流，难以满足专业应用中对创意简报精确遵循的需求。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一个名为“代理自我改进”（Agentic Self-Improvement）的框架，将 I2V 模型的生成流程从开环推测过程重构为闭环目标导向优化。</li>
+<li>设计了一种提示词优化方法，利用多模态大语言模型（mLLM）结合自动生成的 Davidsonian 场景图（DSG）查询和常见错误问题（CMQ）进行迭代细化。</li>
+<li>应用贝叶斯优化方法，系统地协同优化随机种子和分类器自由引导（CFG）尺度等超参数。</li>
+<li>提出了一种新颖的视频 - 文本遵循度（VTA）指标，该指标直接源自结构化的 DSG 和 CMQ 评估，用于指导优化过程并量化输出质量。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.11745" data-arxiv-id="2608.11745" data-status="ready">
+<h1>[2608.11745] LiveAnimate: Stable Long-Form Streaming Human Animation in Real-Time</h1>
+<p><a href="https://arxiv.org/abs/2608.11745" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>LiveAnimate 是首个利用 14B 参数因果 DiT 实现实时流式人类动画与稳定长形式生成的系统，在 2×H100 GPU 上达到约 20 FPS 的实时性能。</p>
+<h2>解决的问题</h2>
+<p>现有方法均为离线生成，耗时分钟至小时级，无法支持响应式交互；且缺乏同时支持流式生成、实时推理和稳定长形式输出的全身体积扩散系统。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出 LiveAnimate，这是首个在十亿参数规模下实现实时流式人类动画与稳定长形式生成的系统，在 2×H100 GPU 上实现约 20 FPS 的生成速度。</li>
+<li>设计了两阶段训练流程：第一阶段通过参考锚定教师强制适应将预训练的双向 DiT 转换为块因果生成器；第二阶段利用块级自强制蒸馏（BS-DMD）将采样步数减少至三步，并采用单块回放方案使训练可在单张 80GB GPU 上完成。</li>
+<li>提出姿态检索池注意力（PR-Sink），这是一种结合静态池、姿态检索动态池和滚动窗口的有界 KV 缓存策略，用于在长形式流中保持外观一致性。</li>
+<li>在基础设施层面采用 Ulysses 风格的序列并行和算子融合技术，将注意力计算分布到多 GPU 上，从而在 2×H100 GPU 上实现了实时流式生成。</li>
+<li>在长达三分钟的长形式基准测试中，LiveAnimate 在整个生成过程中保持了感知质量和身份一致性，在质量、延迟和时长之间建立了优于现有离线系统的有利权衡。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.13028" data-arxiv-id="2608.13028" data-status="ready">
+<h1>[2608.13028] RGB-D Video Generation for Improving Human-to-Robot Object Handover Prediction</h1>
+<p><a href="https://arxiv.org/abs/2608.13028" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种名为 PassGen 的生成式 RGB 管道和基于形态学的深度噪声模拟方法，构建了包含全身上下文和真实传感器伪影的 Hand2Bot 数据集，以解决人形机器人物体交接预测中的模拟到现实差距及全身特征缺失问题。</p>
+<h2>解决的问题</h2>
+<p>现有用于人形机器人物体交接（H2R handover）的数据集存在两个关键缺陷：一是大多数数据为合成数据，无法捕捉真实世界传感器中的复杂噪声（如边缘散射、光照变化和运动模糊），导致严重的模拟到现实差距；二是主流基准主要关注以自我为中心或手部为中心的视角，完全忽略了面部表情、视线方向等关键的全身上下文特征，而这些特征对于自然及时的意图预测至关重要。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了 PassGen，这是一种基于 Stable Video Diffusion 的生成式 RGB 管道，通过嵌入专用的时序面部编码器（Temporal Face Encoder）来维持手 - 物体一致性并明确捕捉社交注视线索。</li>
+<li>引入了一种基于形态学的深度噪声模拟策略，能够复制真实传感器（如 Intel RealSense L515）特有的空洞分布模式，从而有效缓解模拟到现实的差距。</li>
+<li>构建了 Hand2Bot 数据集，提供了 5,000 对具有丰富全身标注的多模态视频，并通过大量的控制和消融实验验证了其在下游机器人任务中的实用性。</li>
+<li>部署了一个独立的意图门控（Intention Gating, IG）机制，利用全局社交线索主动触发抓取轨迹，从而将跟踪焦点从局部手部跟踪转移到多模态身体 - 注视上下文中。</li>
+<li>通过 UR5e 平台的广泛物理机器人试验证明，在 PassGen 增强数据上训练能够实现卓越的零样本迁移能力，成功消除了环境人类运动中的误触发并实现了更早的意图预测。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.13043" data-arxiv-id="2608.13043" data-status="ready">
+<h1>[2608.13043] From Local Mismatch to Global Impact: Optimizing Cache Reuse Policy for Efficient Diffusion</h1>
+<p><a href="https://arxiv.org/abs/2608.13043" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种名为 GCache 的新方法，通过建立缓存复用误差传播的理论表征并将其转化为双层优化问题，以解决现有基于局部相似度指标的策略无法准确反映缓存决策对最终生成质量全局影响的问题。</p>
+<h2>解决的问题</h2>
+<p>现有基于局部相似度指标（如相对 l1 距离）的缓存复用策略存在局限性，因为它们无法准确捕捉局部差异与最终生成质量之间的全局影响，导致局部大差异可能仅对应微小的感知退化，而局部小差异却可能引发显著的质量下降。</p>
+<h2>创新点</h2>
+<ul>
+<li>识别了局部缓存复用误差与全局生成质量之间的根本性错位，并提供了理论分析来表征缓存复用误差在扩散采样过程中的传播机制，建立了其全局影响的解析上界。</li>
+<li>证明了该理论上界与实证误差行为之间存在估计差距，观察到由于扩散动力学的高度非凸性，理论上界的悲观假设在保守估计方面存在偏差。</li>
+<li>提出了 GCache 方法，通过将误差传播指数参数化为 Bernstein 形式并将缓存复用策略搜索构建为双层优化问题，以更有效地对齐理论估计与实证误差行为。</li>
+<li>在图像和视频生成任务上进行了广泛的实验，证明 GCache 在速度 - 质量权衡方面始终优于现有的基于缓存的加速方法。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.13049" data-arxiv-id="2608.13049" data-status="ready">
+<h1>[2608.13049] H2R-Bench: Benchmarking Human-to-Robot Manipulation Video Generation in World Models</h1>
+<p><a href="https://arxiv.org/abs/2608.13049" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>H2R-Bench 是一个用于评估从人类演示到机器人操作视频生成的基准，旨在解决现有基准无法有效诊断跨化身操作转移失败的问题。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>引入了一种源相对评估设置，要求生成的视频在保留特定人类演示的任务目标和功能交互的同时，将人类演员替换为指定的机器人化身。</li>
+<li>提出了 H2R-Bench，涵盖六个操作家族和两个目标化身，包含任务目标、动作事件、物体状态演变和功能接触的结构化注释。</li>
+<li>开发了一种感知转移的评估协议，分别测量目标状态完成度、动作事件完成度、功能接触转移、化身正确性以及任务无关的视频质量，以揭示当前视频生成模型中视觉质量与有效机器人转移之间的持续不匹配。</li>
+<li>评估了 11 个代表性视频生成模型（包括 5 个专有模型和 6 个开源模型），并通过三名人类评估者验证了转移指标，证明了自动化评分与人类评分之间的高相关性。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.13205" data-arxiv-id="2608.13205" data-status="ready">
+<h1>[2608.13205] HPSD: Hybrid-Policy Self-Distillation for Text-Image-to-Video Diffusion Models</h1>
+<p><a href="https://arxiv.org/abs/2608.13205" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种混合策略自蒸馏（HPSD）框架，旨在解决统一文本 - 图像 - 视频（TI2V）扩散模型中，将特权条件（高质量首帧）激发的生成能力内化到基础文本生成能力中的问题。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>识别出特权条件（如高质量首帧）能够激发统一 TI2V 模型更强的生成能力，并提出了将该能力内化到模型基础生成能力中的新任务。</li>
+<li>揭示了在 TI2V 设置下，传统离线策略蒸馏存在分布漂移导致的暴露偏差，而在线策略蒸馏则面临教师特权条件与学生生成状态冲突的‘条件 - 状态不匹配’问题。</li>
+<li>提出了混合策略自蒸馏（HPSD）框架，该框架通过让教师生成包含特权条件的锚点轨迹，并由学生从中间状态继续去噪并接受监督，从而结合了离线锚定与在线修正的优势。</li>
+<li>在 WAN-2.2 和 LTX-2.3 两个代表性统一 TI2V 模型上进行了广泛实验，证明 HPSD 显著超越了离线和在线策略蒸馏基线，有效提升了模型的基础文本生成能力。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.13391" data-arxiv-id="2608.13391" data-status="ready">
+<h1>[2608.13391] Context-Matched Distillation: Teacher Causality for Autoregressive Video Distillation</h1>
+<p><a href="https://arxiv.org/abs/2608.13391" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种名为 Context-Matched Distillation (CMD) 的新方法，通过引入因果教师模型、前缀评分（Prefix Scoring）和前缀扰动（Prefix Corruption）来解决自回归视频蒸馏中教师与学生上下文不匹配的问题，从而显著提升长视频生成质量和相机姿态控制的准确性。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>引入 Context-Matched Distillation (CMD)，利用无法访问未来帧或控制信号的因果教师对每个生成的目标进行评分，以解决标准蒸馏管道中教师与学生上下文不匹配的问题。</li>
+<li>提出前缀评分（Prefix Scoring）机制，将每个评分条件化于产生该目标的学生生成历史，并引入前缀扰动（Prefix Corruption）以增强训练对早期滚动中不可靠细节的鲁棒性。</li>
+<li>将相同的因果架构和条件化设置统一应用于教师训练、蒸馏过程及学生推理阶段，确保整个流程中上下文的一致性。</li>
+<li>验证该方法在帧级和块级生成、长视频滚动以及时变相机控制等多种场景下的有效性，实验表明其在短视频和长视频质量上均优于双向评分基线，并显著降低了相机姿态误差。</li>
+<li>通过消融实验隔离并验证了因果评分、匹配滚动前缀以及前缀扰动这三个核心组件各自的贡献。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.13460" data-arxiv-id="2608.13460" data-status="ready">
+<h1>[2608.13460] SNM-VFI: Symmetric Nonlinear Motion-Guided Generative Video Frame Interpolation</h1>
+<p><a href="https://arxiv.org/abs/2608.13460" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种名为 SNM-VFI 的免训练生成式视频帧插值框架，通过结合基于流的精确运动引导与扩散模型的高感知质量，解决了现有方法在处理非线性运动、遮挡及时间不一致性方面的局限。</p>
+<h2>解决的问题</h2>
+<p>基于流的方法受限于线性运动假设，难以处理加速或非线性运动，且在遮挡和非刚性形变下表现不佳；而基于扩散模型的方法通常缺乏密集的运动对应关系，导致时间不一致性。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出 SNM-VFI，这是一个免训练的生成式 VFI 框架，利用显式运动先验将预训练视频扩散模型适配于低级时间视觉处理。</li>
+<li>引入流引导的潜在初始化及迭代扩散引导机制，在整个去噪过程中注入具有对应关系感知的运动线索。</li>
+<li>设计对称非线性运动先验，生成可靠的基于流的中间帧和置信度图，以实现对准确流预测和扩散生成细节的置信度感知融合。</li>
+<li>在 DAVIS、Sintel 和 KITTI 数据集上进行广泛实验，证明了该方法在感知质量、重建精度和时间一致性方面的优越性。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.14740" data-arxiv-id="2608.14740" data-status="ready">
+<h1>[2608.14740] From Dense Prediction to Visual Editing: Structured Supervision for Unified Image and Video Creation</h1>
+<p><a href="https://arxiv.org/abs/2608.14740" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种统一图像和视频生成的框架，通过引入深度和表面法线预测作为结构化视觉监督，在不增加推理时间模块的情况下，显著提升了模型在保持空间结构和几何一致性方面的能力。</p>
+<h2>解决的问题</h2>
+<p>现有的统一视觉生成系统难以在单一检查点中同时实现广泛的生成条件支持与对空间或时间结构的忠实控制，导致模型在遵循指令时可能出现身份漂移、未编辑区域修改、场景几何扭曲或帧间闪烁等问题。</p>
+<h2>创新点</h2>
+<ul>
+<li>引入深度预测和表面法线预测作为结构化视觉监督，用于共享的图像/视频生成骨干网络，以改善下游任务中的结构保持能力，而无需添加推理时的额外组件。</li>
+<li>开发了一个统一的去噪框架，将语义意图与空间对齐的视觉证据解耦，支持在一个检查点中完成七种不同的生成和编辑任务类型。</li>
+<li>建立了一种结构感知的训练配方，结合了结构化监督、由互相关注意力（MCA）生成的编辑对以及渐进式训练策略，并通过统一和编辑导向的实验及受控消融研究进行了验证。</li>
+<li>通过实验证明，密集监督任务能够教会骨干网络场景结构，而 MCA 编辑对则教导模型在何时何地保持或改变该结构，从而在 OpenVE 和 InsEdit 等基准测试中取得了优于现有方法的性能。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2607.02075" data-arxiv-id="2607.02075" data-status="ready">
+<h1>[2607.02075] HandsOnWorld: Unconstrained Egocentric Video Generation with Camera-Disentangled Hand Control</h1>
+<p><a href="https://arxiv.org/abs/2607.02075" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种无需多视角或标记式动作捕捉的三维手部控制自中心视频生成框架，并构建了大规模自中心三维手部标注数据集 EgoVid-Pro，同时引入了将相机普吕克射线与法线射线配对的三维感知控制信号 Plücker Hand Map，从而在表征层面解耦了手部绝对三维运动与相机自运动。</p>
+<h2>解决的问题</h2>
+<p>现有自中心视频生成方法受限于训练数据，高精度三维手部标注通常依赖受控的多相机设备，导致场景多样性不足；此外，在真实无约束场景中，如何从杂音中识别主角手部以及如何在生成时解耦手部绝对三维运动与相机自运动，是现有基于相机空间控制信号的方法难以解决的关键挑战。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种不依赖多视角或标记式动作捕捉的三维手部控制自中心视频生成框架，使其能够基于无约束的单目视频进行训练并泛化到多样化的日常生活场景。</li>
+<li>构建了 EgoVid-Pro 数据集，该数据集通过应用主角中心化的标注流程对大规模无约束自中心视频进行筛选，获得了纯净的主角专属三维手部轨迹，其规模与现有最大三维手部标注自中心数据集相当，但场景多样性远超后者。</li>
+<li>提出了 Plücker Hand Map，这是一种统一的三维空间控制信号，通过将相机普吕克射线扩展到手部表面法线射线，在表征层面解耦了手部的绝对三维运动与相机自运动，从而确保生成的手部能准确触及物体并产生更物理合理的交互。</li>
+<li>设计了一套主角中心化的标注流程，该流程在语义、图像和三维几何层面过滤野外检测到的手部轨迹，有效解决了无约束场景中主角手部识别难的问题。</li>
+<li>证明了将手部表示与相机置于同一世界坐标系中，能够消除相机相对姿态的歧义性，使生成的手部动作具有明确的绝对三维轨迹。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.13037" data-arxiv-id="2608.13037" data-status="ready">
+<h1>[2608.13037] Spatially-Grounded Text-to-Video Generation via Inference-Time Gradient-Free Optimization</h1>
+<p><a href="https://arxiv.org/abs/2608.13037" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种名为 GATO-Vid 的框架，旨在通过推理时的无梯度优化实现空间定位的文本到视频生成，解决了现有基于梯度的方法在显存和计算成本上的限制。</p>
+<h2>解决的问题</h2>
+<p>现有的基于梯度的无训练方法（如反向传播通过生成器）在应用于现代 DiT 架构时存在显著缺陷：(1) 显式计算平均交叉注意力图极其消耗内存；(2) 计算输入梯度需要反向传播整个网络，导致显存需求巨大（如 Wan2.2 需要超过单张 80GB GPU），使得消费级显卡用户无法使用；此外，现有无梯度替代方案提供的空间控制能力较弱。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了 GATO-Vid，这是一种无需训练且无需梯度的框架，能够在现代 DiT 视频生成器推理过程中避免反向传播，从而实现空间定位的文本到视频生成。</li>
+<li>将交叉注意力定位重构为可解析求解的代理目标函数，推导出了闭式解，从而在不显式计算注意力图或梯度的情况下提供最优调整方向。</li>
+<li>提出了一种几何感知的查询注入机制，能够在尊重 RMS 归一化流形的同时，将这些解析导向直接应用于 Transformer 的交叉注意力模块中，实现了稳定高效的推理时控制。</li>
+<li>实验表明，GATO-Vid 显著提升了定量定位指标，而测试的基线模型表现仅略优于基础模型，突显了该任务的挑战性。</li>
+<li>为了促进无梯度和无训练空间定位视频生成方法的可复现性，作者公开了相关代码。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.14043" data-arxiv-id="2608.14043" data-status="ready">
+<h1>[2608.14043] Beyond Text Conditioning: A Systematic Study of MLLM-DiT Fusion for Video Generation</h1>
+<p><a href="https://arxiv.org/abs/2608.14043" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文系统研究了多模态大语言模型（MLLM）与扩散 Transformer（DiT）的融合机制，提出了 BiVidGen 框架，通过 EMA 分词器生成离散语义令牌、在 MLLM 中使用因果注意力机制，并利用显式视觉令牌条件引导 DiT 进行视频生成。</p>
+<h2>解决的问题</h2>
+<p>尽管混合架构在图像生成中取得了成功，但在视频生成领域，现有的统一视频模型通常冻结语言骨干网络并依赖轻量级适配器，未能充分利用 MLLM 的生成能力进行结构化语义规划。</p>
+<h2>创新点</h2>
+<ul>
+<li>系统性地提出了三个相互依赖的研究问题，分别探讨 MLLM 向 DiT 传递的信息形式、MLLM 如何建模和生成该信息，以及 DiT 如何利用该信息进行扩散渲染。</li>
+<li>发现基于 EMA 的分词器能提供最稳定的表示，并证明离散语义令牌比连续视觉特征或层级令牌结构更适合视频生成的中间表示。</li>
+<li>通过对比因果注意力与全注意力机制，确定因果注意力在生成具有结构化时间表示的语义令牌方面更为有效。</li>
+<li>提出显式视觉令牌条件化策略优于基于可学习查询的潜在桥接方法，特别是在多层交叉注意力机制下能提供更强的生成引导。</li>
+<li>提出了 BiVidGen 框架，该框架结合离散语义令牌、因果注意力机制和显式视觉令牌条件，在 VBench-Long 基准测试中展现出优越的性能。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2603.17555" data-arxiv-id="2603.17555" data-status="ready">
+<h1>[2603.17555] FrescoDiffusion: 4K Image-to-Video with Prior-Regularized Tiled Diffusion</h1>
+<p><a href="https://arxiv.org/abs/2603.17555" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>FrescoDiffusion 是一种无需训练的 4K 图像到视频生成方法，通过在每个扩散步骤应用基于先知的瓦片融合，利用缩略图作为先验来指导高分辨率去噪，并引入动态先验强度调度与空间门控机制以区分处理活跃区域和背景。</p>
+<h2>解决的问题</h2>
+<p>现有最先进的图像到视频（I2V）模型在处理大规模（如 4K）图像时存在不足：直接缩放会导致细节不足，而内存和计算量随时空维度急剧增长限制了模型在 4K 图像上的应用，且简单的瓦片化方法会引入跨瓦片漂移和可见接缝，无法解决 fresco 动画中不同区域（静态背景与动态场景）对时间演化角色根本不同的问题。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出 FrescoDiffusion，这是一种无需训练的 4K 图像到视频方法，在每个扩散步骤应用基于先知的瓦片融合技术。</li>
+<li>引入一种新颖的基于先验的损失函数，该损失函数具有闭式解，并通过一个可解释的强度参数 λ 来控制创造性（瓦片去噪）与先验对齐之间的平衡。</li>
+<li>提出一种动态先验强度调度与空间门控机制，能够根据 fresco 特性自适应地调整活跃区域和背景的生成过程，在保持背景接近先验的同时赋予活跃区域足够的灵活性。</li>
+<li>构建并提出了 FrescoArchive，这是一个由复杂多场景图像组成的新数据集，专门用于 fresco 到视频的评估。</li>
+<li>公开了该算法和 FrescoArchive 数据集，并提供了补充视频及交互式网页以方便可视化。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2605.10723" data-arxiv-id="2605.10723" data-status="ready">
+<h1>[2605.10723] AgentMV: A State-Guided Multi-Agent Framework for Budget-Aware Music Video Generation</h1>
+<p><a href="https://arxiv.org/abs/2605.10723" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>AgentMV 是一个由五个智能体组成的状态引导多智能体框架，旨在通过结构化持久状态（SPS）和基于动态规划的多选择背包问题（MCKP）求解，实现预算感知的完整歌曲音乐视频生成，以平衡生成质量、长程一致性和生产成本。</p>
+<h2>解决的问题</h2>
+<p>现有音乐视频生成方法存在以下问题：1. 片段独立生成或统一策略导致视觉身份不一致且缺乏对累积成本的控制；2. 未显式解决完整歌曲生成的结构化规划挑战，难以联合优化视觉连贯性、节奏同步和生成效率；3. 固定生成策略忽略了不同音乐段落的重要性差异，且在重复动机中重复生成相关内容，导致合成成本增加且叙事连贯性有限；4. 缺乏显式机制来平衡整个歌曲的生成质量、长程一致性和生产成本。</p>
+<h2>创新点</h2>
+<ul>
+<li>设计了一个由结构化持久状态（SPS）引导的五智能体音乐视频生成框架，将长视界生产分解为感知、脚本规划、资产创建、片段实现和组装五个阶段，实现了内容生成与时间执行的显式分阶段协调。</li>
+<li>将动机感知的预算分配形式化为组级多选择背包问题（MCKP），并开发了动态规划求解器，在预算目标下实现最优计划选择，通过协调动机复用和质量分配实现成本效益高的长视界音乐视频生成。</li>
+<li>在包含五首歌曲的试点基准测试中进行了实验，证明 AgentMV 在质量 - 成本权衡方面优于现有的音乐视频生成框架，在 BeatAlign、CQR 和动机一致性方面表现最佳，同时具有最低的生成成本，且在视觉 - 语义对齐方面保持竞争力。</li>
+<li>提出了一种通过 SPS 存储类型化中间工件并在每个阶段进行检查点的通信机制，替代了无约束对话，确保规划决策在最终组装过程中得到保留。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.15818" data-arxiv-id="2608.15818" data-status="ready">
+<h1>[2608.15818] FlowDance: Music-Driven Dance Video Generation with Parallel Pose and RGB Streams</h1>
+<p><a href="https://arxiv.org/abs/2608.15818" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>FlowDance 提出了一种具有并行姿态和 RGB 流的音乐驱动舞蹈视频生成框架，通过统一扩散模型实现显式运动建模与参考保持的视觉合成，并引入了时序感知姿态注入和持久身份注入机制。</p>
+<h2>解决的问题</h2>
+<p>现有的音乐驱动舞蹈生成方法主要存在以下问题：1. 基于 3D 运动序列的方法忽略了舞者身份、外观和场景背景等关键视觉因素；2. 级联管道（如音乐到运动再到视频）在从 SMPL 参数投影到 2D 姿态时会产生误差累积和传播；3. 端到端方法虽然避免了显式投影，但将运动规划、身份保持和视觉合成耦合在一个高维空间中，导致优化困难且可能削弱运动保真度。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了 FlowDance 框架，采用并行姿态和 RGB 流，在统一扩散模型中实现显式运动建模与参考保持的视频合成，避免了级联管道的误差累积。</li>
+<li>引入了时序感知姿态注入机制，根据去噪步长自适应地调节姿态特征对 RGB 流的贡献，以提供鲁棒且自适应的结构引导。</li>
+<li>提出了持久身份注入机制，通过在多个 RGB 流块中重复注入参考特征，有效缓解了长视频中的身份漂移和外观不一致问题。</li>
+<li>构建了 FlowDanceSet 数据集，这是一个包含流行舞蹈视频、同步音乐、3D 运动、相机参数及 2D 姿态标注的高分辨率野外数据集。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2602.13185" data-arxiv-id="2602.13185" data-status="ready">
+<h1>[2602.13185] FlexAM: Flexible Appearance-Motion Decomposition for Versatile Video Generation Control</h1>
+<p><a href="https://arxiv.org/abs/2602.13185" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>FlexAM 提出了一种基于新颖外观 - 运动分解的统一框架，通过接受任意掩码视频作为外观条件并构建包含深度信息的 3D 感知运动视频，解决了现有方法中首帧依赖、控制不灵活、几何混叠和深度模糊等关键局限性。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种全面且通用的 3D 控制信号，通过将视频运动抽象为彩色动态点云并利用多频率位置编码区分相邻元素，显式地表示元素的 3D 时空运动。</li>
+<li>突破了单帧约束，利用掩码视频为图像到视频（I2V）和视频到视频（V2V）任务提供统一的外观条件，实现了对输入视频或图像任意部分外观和运动的灵活独立编辑。</li>
+<li>采用了一种在 3D 控制信号上进行不同程度下采样的训练策略，使模型能够平衡精度与泛化能力，灵活适应不同任务的需求。</li>
+<li>在可控视频生成与编辑、相机控制及空间物体编辑等任务上进行了广泛实验，证明 FlexAM 超越了所有基线方法并在所有评估任务中达到了最先进（SOTA）的性能。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2605.18736" data-arxiv-id="2605.18736" data-status="ready">
+<h1>[2605.18736] Spectral Progressive Diffusion for Efficient Image and Video Generation</h1>
+<p><a href="https://arxiv.org/abs/2605.18736" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种名为 Spectral Progressive Diffusion 的框架，利用扩散模型在频域的自回归特性，通过仅在高频内容开始显现时扩展分辨率，实现了无需修改模型架构即可直接应用于预训练模型的高效图像和视频生成。</p>
+<h2>解决的问题</h2>
+<p>视觉生成模型的计算需求随着分辨率和视频序列长度的增长而急剧增加，导致扩散 Transformer（DiTs）的自注意力机制成本随生成 token 数量呈二次方增长，从而在追求高保真长内容生成与现有架构的计算成本之间产生了冲突。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种由扩散模型去噪过程的频谱结构指导的渐进式分辨率生成框架，该框架无需修改模型架构即可直接应用于最先进的预训练扩散和流匹配模型。</li>
+<li>引入了一种基于频谱变换的频谱噪声扩展机制，能够在正确层级注入高频噪声的同时保留部分去噪后的低频内容，从而避免在噪声主导的频率上进行冗余计算。</li>
+<li>直接从模型的功率谱推导最优分辨率转换时间，仅需一个误差容忍度超参数即可确定何时扩展分辨率，无需依赖启发式方法。</li>
+<li>展示了该框架在潜空间图像生成、像素空间图像生成和潜空间视频生成三种视觉生成模态上的灵活性，并支持无需训练的推理和微调两种设置。</li>
+<li>在无需训练的设定下实现了高达 7 倍的图像生成加速和 2.5 倍的视频生成加速，优于先前的空间加速方法，并通过微调食谱进一步提升了效率和生成质量。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2607.26694" data-arxiv-id="2607.26694" data-status="ready">
+<h1>[2607.26694] Visko Orbis 1.0: A Live Model for Real-Time Interactive Long Video Generation</h1>
+<p><a href="https://arxiv.org/abs/2607.26694" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>Visko Orbis 1.0 是一个支持实时交互的长视频生成 Live Model，能够在生成过程中持续响应用户指令并维持长时程稳定性。</p>
+<h2>解决的问题</h2>
+<p>现有视频生成系统多为离线模式，无法支持直播、游戏等需要实时响应和持续生成的场景，且缺乏端到端解决实时性、长时程稳定性及用户交互的系统。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了统一的实时视频生成公式，将生成建模为跨块携带视觉状态的持久化潜流过程，支持 T2V、I2V 和 V2V 生成。</li>
+<li>构建了事件对齐数据引擎与渐进式流式训练流程，通过多阶段数据过滤和时序局部化标注实现从双向短视频先验到历史条件流式的适应。</li>
+<li>设计了用于长时程生成的有界记忆机制，通过保留近期高分辨率历史、渐进压缩旧跨度及整合固定容量学习状态来防止误差累积。</li>
+<li>实施了少步流后训练与物理感知对齐策略，利用引导蒸馏、自强制分布匹配及组相对强化学习优化视觉质量、运动质量和文本 - 视频对齐。</li>
+<li>实现了实时控制与推理对齐，通过滚动提示摘要、异步编码及保守内容自适应漂移控制，确保新指令在影响未来的同时保持会话上下文。</li>
+<li>设计了流式高分辨率系统协同设计，利用版本化状态复用、编译融合执行及参考感知的超分辨率模型，将原生低分辨率块渐进式交付为 4K 视频。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.02474" data-arxiv-id="2608.02474" data-status="ready">
+<h1>[2608.02474] EchoCache: Energy-Guided Cross-Modal Caching for Efficient Audio-Driven Video Generation</h1>
+<p><a href="https://arxiv.org/abs/2608.02474" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>EchoCache 提出了一种能量引导的跨模态缓存框架，通过将音频信号的时间 - 频率能量分布转化为跨模态显著性锚点，以指导视频生成过程中的细粒度缓存调度与管理，从而在保持生成质量的同时显著降低音频驱动视频生成的推理延迟。</p>
+<h2>解决的问题</h2>
+<p>现有动态缓存方法主要基于视觉特征差异进行调度，忽略了音频驱动视频生成（A2V）中独特的跨模态交互特性，导致在时间 - 语义层面无法区分不同音频片段对视频生成的驱动强度差异，且在计算 - 存储层面难以利用音频先验来精准识别关键片段，造成更新策略与存储需求的错配。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出 EchoCache 框架，将细粒度的音频时间动态显式转化为跨模态对齐信号，统一了显著性定位、缓存调度和缓存管理，使缓存从被动的视觉冗余复用机制转变为主动的跨模态计算分配机制。</li>
+<li>在时间 - 语义层面，将音频信号的时间 - 频率能量分布建模为跨模态显著性锚点，用于表征不同音频片段对视频生成的潜在驱动强度，从而区分动态与平滑片段。</li>
+<li>在计算 - 存储层面，设计了能量引导的步级潜在缓存调度机制，优先更新关键片段并复用非关键片段的历史缓存，同时根据状态差异动态调整步级缓存比例，实现质量与效率的细粒度协同优化。</li>
+<li>提出了一种内存高效的缓存管理策略，通过参考缓存与量化残差的协同存储，有效降低了细粒度缓存引入的中间状态存储开销和内存负担。</li>
+<li>在 Wan2.2-S2V 和 LongCat-Avatar 等主流音频驱动视频生成模型上进行了广泛实验，验证了 EchoCache 在保持生成质量和音画一致性的同时，相比现有基线实现了显著的推理延迟降低和更优的延迟 - 质量权衡。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.13368" data-arxiv-id="2608.13368" data-status="ready">
+<h1>[2608.13368] Sign Language Video Synthesis via Loss-Guided Multi-Expert GANs</h1>
+<p><a href="https://arxiv.org/abs/2608.13368" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>该论文提出了一种基于损失引导的多专家 GAN 框架，通过多判别器和多并行 U-Net 生成器解决手语视频合成中细粒度细节捕捉不足及训练不稳定的问题。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种损失引导的多专家框架，其中针对手、面部和全局区域的专用判别器分别驱动对应的生成器分支。</li>
+<li>设计了一种多并行 U-Net 框架，采用双路径架构（并行卷积和 Transformer 路径）并通过可学习权重融合，以实现稳定的区域特异性特征提取。</li>
+<li>提出了一种联合损失函数（United Loss function），用于在多个判别器之间建立软共识约束，以缓解训练不稳定性。</li>
+<li>引入了一种交替三模式训练计划，将整体生成与分支专业化优化解耦。</li>
+<li>集成了自适应实例归一化（AdaIN），用于在编码器层将骨架结构与风格图像外观融合，以确保输出逼真度。</li>
+<li>模型设计适用于消费级硬件，所有变体均可在单 GPU 上训练，推理显存占用在 1.5–8 GB 之间。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.14391" data-arxiv-id="2608.14391" data-status="ready">
+<h1>[2608.14391] Can We Defend Against AI-Generated Video Attacks on Real-World Crisis Events? A Systematic Evaluation of Detectors, Generators and Social Dissemination</h1>
+<p><a href="https://arxiv.org/abs/2608.14391" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了 RA-Bench 基准，通过以真实视频为锚点模拟现实危机事件中的 AI 生成视频，系统评估了检测器、生成器及社会传播中的表现，发现现有方法在应对此类攻击时普遍缺乏可靠性。</p>
+<h2>解决的问题</h2>
+<p>现有研究主要关注通用视频内容，缺乏对现实危机事件背景下 AI 生成视频检测器性能及生成器行为的系统性分析，导致不清楚当前检测器是否足以保护社会免受日益逼真的视频生成模型威胁。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了 RA-Bench 基准，包含 1,830 个来自 675 个公开源视频的真实视频锚点，覆盖 10 个社会风险类别和 44 个子类别，并基于这些锚点首帧生成了 17,886 个视频以模拟现实危机场景。</li>
+<li>构建了包含 633 个被人类评审员一致判定为真实的视频子集（RA-Bench-HumanProof），用于专门评估检测器在人类难以区分真假视频情况下的表现。</li>
+<li>引入了 RA-Bench-LastMile 社会传播模拟，用于评估检测器在视频经过社会传播后的鲁棒性，发现传播过程会显著削弱检测效果。</li>
+<li>系统评估了三类检测器（传统检测器、零样本多模态模型、微调 MLLM）在 RA-Bench 上的泛化能力，发现没有任何一类检测器能跨源保持一致的泛化性能。</li>
+<li>揭示了生成属性（如感知质量、条件信息、采样种子）对不同检测器家族的影响差异，例如高条件保真度会降低 Gemini 的诊断虚假率，而动态内容会增加其生成类证据。</li>
+<li>通过人类研究和传播模拟发现，能够误导人类的视频极难被现有检测器识别，且在社会传播过程中检测器的虚假率（FakeR）会大幅下降，证明当前方法无法可靠检测此类视频。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.16143" data-arxiv-id="2608.16143" data-status="ready">
+<h1>[2608.16143] AnyTalk: Speech Animation for Arbitrary Characters Leveraging a Video Generation Model</h1>
+<p><a href="https://arxiv.org/abs/2608.16143" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出 AnyTalk 方法，利用视频生成模型为任意角色生成语音动画，通过角色特定微调技术解决视觉不匹配问题，并采用基于特征点的优化技术从生成视频中估计混合形状参数。</p>
+<h2>解决的问题</h2>
+<p>现有基于音频驱动的 3D 面部动画方法通常需要针对每个独特的网格结构或混合形状配置进行配对音频 3D 数据训练，这对资源有限的独立开发者和小型工作室构成了显著障碍，且难以推广到野外角色。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出 AnyTalk，这是首个无需依赖 3D 动画数据即可为任意角色生成 3D 语音动画的方法，通过利用 2D 说话头生成模型并将生成的视频提升为 3D 动画来实现。</li>
+<li>提出角色特定微调方法，这是一种针对说话头生成模型的新型微调技术，能够在不使用任何视频数据的情况下使生成的视频与特定角色相匹配。</li>
+<li>提出基于单应性变换的变形技术，该技术由不变于说话的特征点选择驱动，确保任意角色的渲染图像与生成视频之间实现精确对齐，从而支持从生成视频中准确估计混合形状参数。</li>
+<li>开发实时变体 AnyTalkRT，利用模型蒸馏结合特征匹配和重建损失，实现了 110 FPS 的推理速度，满足实时应用需求。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.16154" data-arxiv-id="2608.16154" data-status="ready">
+<h1>[2608.16154] KeyID: Decoupled Drafting and Keyframe Editing for Identity-Preserving Video Generation</h1>
+<p><a href="https://arxiv.org/abs/2608.16154" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>KeyID 提出了一种无需训练的框架，通过解耦视频动态合成与身份注入，利用参考感知视频生成（RAVG）和身份保留关键帧编辑（IPKE）来解决多参考生成和顺序动作控制下的身份保持难题。</p>
+<h2>解决的问题</h2>
+<p>现有身份保持视频生成（IPVG）方法在耦合生成过程中难以同时满足多参考生成、顺序动作控制及长序列身份一致性，主要受限于提示词与面部参考之间的语义鸿沟以及端到端生成导致的身份漂移。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种新颖的范式，将视频动态合成与身份集成解耦，以解决复杂场景下的身份保持问题。</li>
+<li>设计了包含参考感知视频生成（RAVG）和身份保留关键帧编辑（IPKE）的解耦框架，有效支持多参考条件和顺序动作需求。</li>
+<li>在 ACM Multimedia 2026 IPVG 大奖赛中验证了方法的有效性，在面部生成赛道超越上一届第一名，并在顺序动作赛道获得亚军。</li>
+<li>通过提示增强、首帧编辑和多事件草稿扩展，实现了与多个参考（包括文本提示和通用对象）对齐的身份无关视频草稿生成。</li>
+<li>利用关键帧提取和面部交换技术，对草稿中的代表性关键帧进行显式身份细化，并通过插值重建完整视频。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.16220" data-arxiv-id="2608.16220" data-status="ready">
+<h1>[2608.16220] SingDance: Compositional Zero-Shot Singing-and-Dancing Video Generation with Role-Aware Audio Conditioning</h1>
+<p><a href="https://arxiv.org/abs/2608.16220" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>SingDance 提出了一种基于参考图像、文本提示和音频轨道的生成框架，通过显式的语音角色（说话者或倾听者）建模，实现了说话、倾听、仅跳舞和边唱边跳四种行为的组合零样本生成。</p>
+<h2>解决的问题</h2>
+<p>现有的音乐条件化舞蹈生成方法主要关注身体编排和节奏对齐，通常不建模舞者的发声 articulation；而语音驱动的人体视频模型通常假设输入声音由可见主体产生，无法处理可见主体仅作为倾听者或歌曲中不发声的情况。</p>
+<h2>创新点</h2>
+<ul>
+<li>将参考图像条件化的舞蹈视频生成与显式语音角色相结合，将说话、倾听、仅跳舞和边唱边跳组织为四种相关的生成行为。</li>
+<li>引入了一种角色感知条件设计，其中说话者和倾听者共享相同的语音表示和注入路径，并通过帧级联合音频注入组合任务路由的语音、音乐和角色令牌。</li>
+<li>通过非对称监督学习源角色 articulation 和歌曲条件化舞蹈，并展示了它们在未见的歌曲/源配置上的组合零样本泛化能力。</li>
+<li>通过成对角色干预验证了可控的 articulation，并通过运动 - 节拍评估和音乐条件化消融实验验证了音乐响应的身体运动。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.16328" data-arxiv-id="2608.16328" data-status="ready">
+<h1>[2608.16328] GRNEdit: Efficient General Video Editing from a New Binary-Evidence Perspective in Generative Refinement Networks</h1>
+<p><a href="https://arxiv.org/abs/2608.16328" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>GRNEdit 提出了一种基于二元证据的新视角，通过轻量级的两阶段框架将生成能力与编辑控制分离，实现了高效的通用视频编辑。</p>
+<h2>解决的问题</h2>
+<p>现有基于连续空间（如扩散模型或流模型）的视频编辑系统，其源条件化机制需要同时解释编辑意图并构建与骨干网络生成状态兼容的表示，这通常导致沉重的计算分支、高昂的源拼接成本以及随着骨干网络规模扩大而增加的优化负担。</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种新的二元证据视角，实现了生成能力与编辑控制的分离，并统一建模了多样化的编辑意图。</li>
+<li>提出了 GRNEdit，这是一个轻量级的两阶段框架，在极少的条件参数和训练数据下，其性能可与领先的视频编辑模型相媲美。</li>
+<li>重新设计了用于编辑的分类器自由空条件化方法，通过将空指令锚定到源重建来建立身份对齐的零条件，从而增强了编辑/不编辑的语义区分并提高了源一致性。</li>
+<li>利用身份锚点作为自然参考，在第二阶段通过轻量级的比特边距路由器在 logit 空间中对未解决的比特决策进行针对性修订，以优化内容保留和编辑效果。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.16513" data-arxiv-id="2608.16513" data-status="ready">
+<h1>[2608.16513] MLLM-Guided Semantic Correction for Text-to-Video Generation</h1>
+<p><a href="https://arxiv.org/abs/2608.16513" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>本文提出了一种无需训练、可解释的生成中语义修正框架，通过将多模态大语言模型（MLLM）反馈直接嵌入文本到视频的扩散采样循环中，实现了对动态语义偏差的在线轨迹修正。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>提出了一种无需训练、可解释的生成中修正框架，将 MLLM 反馈直接嵌入文本到视频的扩散采样循环，从而在不修改模型参数的情况下提升语义对齐和视觉质量。</li>
+<li>设计了两个关键模块：语义评估监督器（Semantic Assessment Supervisor）和语义修改助手（Semantic Modification Assistant），分别实现了对中间状态的可信解读和采样过程中的可控修正干预。</li>
+<li>通过广泛的实验证明，该方法在多个文本到视频基准测试中显著增强了语义一致性、视觉保真度和时间连贯性，验证了扩散采样期间 MLLM 引导语义反馈的有效性。</li>
+</ul>
+</article>
+    <article class="summary-article summary-topic-entry" id="summary-2608.16585" data-arxiv-id="2608.16585" data-status="ready">
+<h1>[2608.16585] SQuad: Sub-Quadratic Attention Distillation for Efficient Video Generation</h1>
+<p><a href="https://arxiv.org/abs/2608.16585" rel="nofollow">arXiv 原文</a></p>
+<h2>一句话结论</h2>
+<p>SQuad 提出了一种子二次注意力蒸馏框架，利用视频扩散 Transformer 中注意力图稀疏且重尾的特性，将计算复杂度从 O(n^2) 降低至 O(n√n)，同时保留完整的 softmax 机制以维持高质量生成。</p>
+<h2>解决的问题</h2>
+<p>片段未提供</p>
+<h2>创新点</h2>
+<ul>
+<li>提出 SQuad 框架，利用视频 DiT 中注意力图稀疏且重尾的特性，将注意力计算复杂度从 O(n^2) 降低至 O(n√n)。</li>
+<li>设计了一种固定的简化通信模式，包含在 O(√n) 大小窗口内的局部混合以及跨所有窗口的全局位置混合。</li>
+<li>在 Wan 2.2 5B 和 2.1 1.3B 文本生成视频模型上验证了该方法，实现了几乎无质量损失的同时显著降低延迟和 TFLOPs。</li>
+<li>与线性注意力或近似方法不同，SQuad 在降低计算成本的同时保留了完整的 softmax 机制，避免了表达能力下降的问题。</li>
+</ul>
+</article>
     <article class="summary-article summary-topic-entry" id="summary-2608.16717" data-arxiv-id="2608.16717" data-status="ready">
 <h1>[2608.16717] PersonaShot: Benchmarking Person-Centric Narrative Continuity in Multi-Shot Video Generation</h1>
 <p><a href="https://arxiv.org/abs/2608.16717" rel="nofollow">arXiv 原文</a></p>
@@ -1051,6 +1613,6 @@
 </article>
     </div>
   </main>
-  <script type="application/json" id="summary-catalog">{"papers":{"2608.14790":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.14790"},"2608.16717":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.16717"},"2608.16745":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.16745"},"2608.17426":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.17426"},"2608.17559":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.17559"},"2608.17566":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.17566"},"2608.17695":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.17695"},"2608.17973":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.17973"},"2608.18607":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.18607"},"2608.18948":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.18948"},"2608.19583":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.19583"},"2608.20749":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.20749"},"2608.20910":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.20910"},"2608.22819":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.22819"},"2608.23090":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.23090"},"2608.24293":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.24293"},"2608.24329":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.24329"},"2608.24680":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.24680"},"2608.25479":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.25479"},"2608.26101":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.26101"},"2608.26671":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.26671"},"2608.26809":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.26809"},"2608.26902":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.26902"},"2608.27123":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.27123"},"2608.27922":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.27922"},"2608.28404":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.28404"},"2608.29264":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.29264"},"2608.29322":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.29322"},"2608.29598":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.29598"},"2608.29621":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.29621"},"2608.29904":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.29904"},"2608.30194":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.30194"},"2608.30450":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.30450"},"2609.00610":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.00610"},"2609.00656":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.00656"},"2609.00919":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.00919"},"2609.01252":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.01252"},"2609.01277":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.01277"},"2609.01551":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.01551"},"2609.02367":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.02367"},"2609.02664":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.02664"},"2609.03528":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.03528"},"2609.03563":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.03563"},"2609.03586":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.03586"},"2609.03629":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.03629"},"2609.03820":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.03820"},"2609.04031":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.04031"},"2609.04120":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.04120"},"2609.04190":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.04190"},"2609.04903":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.04903"},"2609.06478":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.06478"},"2609.06628":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.06628"},"2609.06712":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.06712"},"2609.06948":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.06948"},"2609.07720":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.07720"},"2609.08108":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.08108"},"2609.08215":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.08215"},"2609.08275":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.08275"},"2609.08496":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.08496"},"2609.08505":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.08505"},"2609.09123":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.09123"},"2609.10317":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.10317"},"2609.10943":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.10943"},"2609.11242":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.11242"},"2609.11265":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.11265"},"2609.11507":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.11507"},"2609.11638":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.11638"}},"topic":"Video Gen&Edit","version":1}</script>
+  <script type="application/json" id="summary-catalog">{"papers":{"2602.13185":{"status":"ready","url":"notes/video-gen-edit.html#summary-2602.13185"},"2603.17555":{"status":"ready","url":"notes/video-gen-edit.html#summary-2603.17555"},"2604.23789":{"status":"ready","url":"notes/video-gen-edit.html#summary-2604.23789"},"2605.10723":{"status":"ready","url":"notes/video-gen-edit.html#summary-2605.10723"},"2605.18736":{"status":"ready","url":"notes/video-gen-edit.html#summary-2605.18736"},"2606.27345":{"status":"ready","url":"notes/video-gen-edit.html#summary-2606.27345"},"2607.02075":{"status":"ready","url":"notes/video-gen-edit.html#summary-2607.02075"},"2607.26694":{"status":"ready","url":"notes/video-gen-edit.html#summary-2607.26694"},"2608.02474":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.02474"},"2608.09637":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.09637"},"2608.10439":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.10439"},"2608.10519":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.10519"},"2608.10933":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.10933"},"2608.11745":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.11745"},"2608.12032":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.12032"},"2608.12203":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.12203"},"2608.12290":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.12290"},"2608.13028":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.13028"},"2608.13037":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.13037"},"2608.13043":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.13043"},"2608.13049":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.13049"},"2608.13205":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.13205"},"2608.13368":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.13368"},"2608.13391":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.13391"},"2608.13460":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.13460"},"2608.14043":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.14043"},"2608.14391":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.14391"},"2608.14706":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.14706"},"2608.14740":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.14740"},"2608.14790":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.14790"},"2608.15818":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.15818"},"2608.16143":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.16143"},"2608.16154":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.16154"},"2608.16220":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.16220"},"2608.16328":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.16328"},"2608.16513":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.16513"},"2608.16585":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.16585"},"2608.16717":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.16717"},"2608.16745":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.16745"},"2608.17426":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.17426"},"2608.17559":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.17559"},"2608.17566":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.17566"},"2608.17695":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.17695"},"2608.17973":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.17973"},"2608.18607":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.18607"},"2608.18948":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.18948"},"2608.19583":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.19583"},"2608.20749":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.20749"},"2608.20910":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.20910"},"2608.22819":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.22819"},"2608.23090":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.23090"},"2608.24293":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.24293"},"2608.24329":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.24329"},"2608.24680":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.24680"},"2608.25479":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.25479"},"2608.26101":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.26101"},"2608.26671":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.26671"},"2608.26809":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.26809"},"2608.26902":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.26902"},"2608.27123":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.27123"},"2608.27922":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.27922"},"2608.28404":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.28404"},"2608.29264":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.29264"},"2608.29322":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.29322"},"2608.29598":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.29598"},"2608.29621":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.29621"},"2608.29904":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.29904"},"2608.30194":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.30194"},"2608.30450":{"status":"ready","url":"notes/video-gen-edit.html#summary-2608.30450"},"2609.00610":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.00610"},"2609.00656":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.00656"},"2609.00919":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.00919"},"2609.01252":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.01252"},"2609.01277":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.01277"},"2609.01551":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.01551"},"2609.02367":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.02367"},"2609.02664":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.02664"},"2609.03528":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.03528"},"2609.03563":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.03563"},"2609.03586":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.03586"},"2609.03629":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.03629"},"2609.03820":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.03820"},"2609.04031":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.04031"},"2609.04120":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.04120"},"2609.04190":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.04190"},"2609.04903":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.04903"},"2609.06478":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.06478"},"2609.06628":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.06628"},"2609.06712":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.06712"},"2609.06948":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.06948"},"2609.07720":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.07720"},"2609.08108":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.08108"},"2609.08215":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.08215"},"2609.08275":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.08275"},"2609.08496":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.08496"},"2609.08505":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.08505"},"2609.09123":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.09123"},"2609.10317":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.10317"},"2609.10943":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.10943"},"2609.11242":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.11242"},"2609.11265":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.11265"},"2609.11507":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.11507"},"2609.11638":{"status":"ready","url":"notes/video-gen-edit.html#summary-2609.11638"}},"topic":"Video Gen&Edit","version":1}</script>
 </body>
 </html>
