@@ -332,6 +332,8 @@ def process(paper_id, archive, ledger, annotations, ready, args):
             if needs_refresh:
                 source = refresh_source(client, source, title)
             abstract = source.document.abstract.strip() or abstract
+        if len(abstract) < 40 and getattr(args, 'topics_only', False):
+            abstract = client.acquire_abstract(paper_id, title)
         if len(abstract) < 40:
             source = source or client.acquire(paper_id, title)
             abstract = source.document.abstract.strip() or client.acquire_abstract(paper_id, title)
