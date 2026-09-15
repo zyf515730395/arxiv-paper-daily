@@ -14,6 +14,7 @@ import html
 import json
 from pathlib import Path
 import re
+from threading import Lock
 import unicodedata
 from urllib.parse import urlencode, urljoin, urlparse
 
@@ -33,6 +34,14 @@ def normalize_title(title: str) -> str:
     return ''.join(char for char in text if char.isalnum())
 
 
+def paper_source_version(paper: dict) -> str:
+    """Version the official identity fields that can change downstream evidence."""
+    fields = {key: paper[key] for key in ('title', 'url', 'doi', 'arxiv_id', 'published')
+              if paper.get(key)}
+    return hashlib.sha256(json.dumps(fields, ensure_ascii=False, sort_keys=True,
+                                     separators=(',', ':')).encode()).hexdigest()
+
+
 def load_catalog(path: Path = CATALOG) -> dict:
     if not path.exists():
         return {'version': 1, 'editions': []}
@@ -43,10 +52,16 @@ def load_catalog(path: Path = CATALOG) -> dict:
     for edition in data['editions']:
         if not isinstance(edition.get('edition'), str) or edition['edition'] in editions:
             raise ValueError('Invalid or duplicate conference edition')
+        if edition.get('source_version') is not None and not re.fullmatch(
+                r'[0-9a-f]{64}', str(edition['source_version'])):
+            raise ValueError('Invalid conference source version')
         editions.add(edition['edition'])
         for paper in edition['papers']:
             if not paper.get('title') or urlparse(paper.get('url', '')).scheme != 'https':
                 raise ValueError('Invalid accepted-paper title or URL')
+            if paper.get('source_version') is not None and not re.fullmatch(
+                    r'[0-9a-f]{64}', str(paper['source_version'])):
+                raise ValueError('Invalid paper source version')
     return data
 
 
@@ -129,23 +144,76 @@ def parse_papers(text: str, url: str) -> list[dict]:
 class Fetcher:
     def __init__(self, cache: Path, refresh: bool = False):
         self.cache, self.refresh = cache, refresh
+        self._accessed = {}
+        self._access_lock = Lock()
         cache.mkdir(parents=True, exist_ok=True)
+
+    def reset_provenance(self) -> None:
+        with self._access_lock:
+            self._accessed.clear()
+
+    def provenance(self) -> list[dict]:
+        with self._access_lock:
+            return [dict(value) for _, value in sorted(self._accessed.items())]
+
+    def _record(self, url: str, sha256: str, cache_status: str) -> None:
+        with self._access_lock:
+            self._accessed[url] = {
+                'url': url, 'sha256': sha256, 'cache_status': cache_status,
+            }
 
     def get(self, url: str) -> str:
         path = self.cache / (hashlib.sha256(url.encode()).hexdigest() + '.html')
-        if path.exists() and not self.refresh:
-            text = path.read_text(encoding='utf-8')
-            # Only production fetches create a success receipt.
-            if path.with_suffix('.ok').exists():
-                return text
+        ok_path, metadata_path = path.with_suffix('.ok'), path.with_suffix('.json')
+        cached, metadata = None, {}
+        try:
+            if ok_path.exists():
+                cached = path.read_text(encoding='utf-8')
+                metadata = json.loads(metadata_path.read_text(encoding='utf-8')) if metadata_path.exists() else {}
+                digest = hashlib.sha256(cached.encode()).hexdigest()
+                if metadata and (metadata.get('url') != url or metadata.get('sha256') != digest):
+                    cached, metadata = None, {}
+        except (OSError, UnicodeError, json.JSONDecodeError, TypeError):
+            cached, metadata = None, {}
+        if cached is not None and not self.refresh:
+            self._record(url, hashlib.sha256(cached.encode()).hexdigest(), 'cached')
+            return cached
+        headers = {'User-Agent':'LOKEN-Proceedings/1.0'}
+        if cached is not None:
+            if metadata.get('etag'):
+                headers['If-None-Match'] = str(metadata['etag'])
+            if metadata.get('last_modified'):
+                headers['If-Modified-Since'] = str(metadata['last_modified'])
         with requests.Session() as session:
             session.mount('https://', HTTPAdapter(max_retries=Retry(total=3,backoff_factor=1,status_forcelist=[429,500,502,503,504])))
-            response = session.get(url, timeout=45, headers={'User-Agent':'LOKEN-Proceedings/1.0'})
+            response = session.get(url, timeout=45, headers=headers)
+        if response.status_code == 304 and cached is not None:
+            digest = hashlib.sha256(cached.encode()).hexdigest()
+            receipt = {
+                'version': 1, 'url': url, 'sha256': digest,
+                'etag': response.headers.get('ETag') or metadata.get('etag'),
+                'last_modified': response.headers.get('Last-Modified') or metadata.get('last_modified'),
+                'revalidated_on': date.today().isoformat(),
+            }
+            atomic_write_text(metadata_path, json.dumps(receipt, ensure_ascii=False, sort_keys=True) + '\n')
+            atomic_write_text(ok_path, date.today().isoformat())
+            self._record(url, digest, 'revalidated')
+            return cached
         response.raise_for_status()
         response.encoding = 'windows-1252' if 'charset=windows-1252' in response.text[:1000] else 'utf-8'
         text = response.text
+        digest = hashlib.sha256(text.encode()).hexdigest()
+        old_digest = hashlib.sha256(cached.encode()).hexdigest() if cached is not None else None
         atomic_write_text(path, text)
-        atomic_write_text(path.with_suffix('.ok'), date.today().isoformat())
+        atomic_write_text(ok_path, date.today().isoformat())
+        receipt = {
+            'version': 1, 'url': url, 'sha256': digest,
+            'etag': response.headers.get('ETag'),
+            'last_modified': response.headers.get('Last-Modified'),
+            'fetched_on': date.today().isoformat(),
+        }
+        atomic_write_text(metadata_path, json.dumps(receipt, ensure_ascii=False, sort_keys=True) + '\n')
+        self._record(url, digest, 'unchanged' if old_digest == digest else 'changed')
         return text
 
 
@@ -237,6 +305,7 @@ def refresh_catalog(config: dict, previous: dict, fetch: Fetcher, today: date, o
                 entry['collection_sources'] = meeting['accepted_papers_urls']
             end = str(meeting.get('end_date',''))
             entry['meeting_status'] = 'held' if end and end < today.isoformat() else 'upcoming_or_dates_pending'
+            fetch.reset_provenance()
             try:
                 if not meeting.get('proceedings_url') and not meeting.get('accepted_papers_urls'):
                     entry['status'] = 'pending'
@@ -246,8 +315,19 @@ def refresh_catalog(config: dict, previous: dict, fetch: Fetcher, today: date, o
                         raise ValueError('No accepted-paper entries parsed; source requires inspection')
                     if entry['papers'] and len(papers) < len(entry['papers']):
                         raise ValueError('List shrank; retain previous version pending review')
-                    entry.update(papers=papers,status='collected',collected_on=today.isoformat())
-                report.append({'edition':name,'status':entry['status'],'papers':len(entry['papers'])})
+                    papers = [{**paper, 'source_version': paper_source_version(paper)} for paper in papers]
+                    provenance = fetch.provenance()
+                    source_version = hashlib.sha256(json.dumps(
+                        [{k: source[k] for k in ('url', 'sha256')} for source in provenance],
+                        sort_keys=True, separators=(',', ':'),
+                    ).encode()).hexdigest()
+                    previous_version = entry.get('source_version')
+                    entry.update(papers=papers,status='collected',collected_on=today.isoformat(),
+                                 source_version=source_version)
+                report.append({'edition':name,'status':entry['status'],'papers':len(entry['papers']),
+                               'source_version':entry.get('source_version'),
+                               'source_changed':bool(previous_version and previous_version != entry.get('source_version'))
+                               if entry['status'] == 'collected' else False})
             except (requests.RequestException, ValueError) as error:
                 entry['status'] = 'refresh_failed' if entry['papers'] else 'unavailable'
                 report.append({'edition':name,'status':entry['status'],'papers':len(entry['papers']),'error':str(error)})
@@ -259,7 +339,7 @@ def refresh_catalog(config: dict, previous: dict, fetch: Fetcher, today: date, o
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--apply',action='store_true')
-    parser.add_argument('--refresh',action='store_true',help='Refetch cached successful sources')
+    parser.add_argument('--refresh',action='store_true',help='Conditionally revalidate cached successful sources')
     parser.add_argument('--edition',action='append',help='Retry only this configured edition; repeatable')
     args = parser.parse_args(argv)
     config = yaml.safe_load((ROOT/'config/conferences.yaml').read_text(encoding='utf-8'))
