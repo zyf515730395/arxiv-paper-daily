@@ -41,9 +41,13 @@ jobs:
       - name: Collect candidates
         id: collection
         continue-on-error: true
+        # Leave the job enough time to commit the latest atomic shard checkpoint.
+        timeout-minutes: 50
         run: python -m papers.collector --skip-if-current --report build/reports/collection.json
 
-      - name: Commit candidate state
+      # The ledger contains completed topic cursors, successful shard progress,
+      # and any active rate-limit cooldown. Commit it even when collection exits 75.
+      - name: Commit candidate ledger checkpoints
         if: always() && steps.collection.outcome != 'skipped'
         run: |
           git config user.name "github-actions[bot]"
@@ -52,14 +56,14 @@ jobs:
           if git diff --cached --quiet; then
             echo "No candidate updates"
           else
-            git commit -m "GitHub Action Collect LOKEN Papers"
+            git commit -m "Checkpoint arXiv candidate collection"
             git push origin main
           fi
 
       - name: Report incomplete collection
         if: always() && steps.collection.outcome == 'failure'
         run: |
-          echo "::error::Collection incomplete. Failed-topic cursors remain unchanged; the next scheduled catch-up retries the missing window. See the collection logs for the upstream cause."
+          echo "::error::Collection incomplete. Successful shards and completed topics were saved; the next scheduled catch-up resumes missing shards after any persisted rate-limit cooldown."
           if [ -f build/reports/collection.json ]; then
             cat build/reports/collection.json >> "$GITHUB_STEP_SUMMARY"
           fi
