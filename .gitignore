@@ -10,6 +10,7 @@ tests/
 
 # Local-only WSL configuration, recovery backup and private runtime.
 /.git.pre-reinit-backup/
+/.codex/
 /ops/
 /local-site/
 /build/
