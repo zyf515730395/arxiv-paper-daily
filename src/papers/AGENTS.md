@@ -1,5 +1,7 @@
 # Paper pipeline rules
 
+- Cloud collection treats exhausted HTTP 429 as a collection-wide pause: retain incomplete-topic cursors, save completed topics, emit a local JSON report, and return a nonzero CLI status. Scheduled catch-up runs skip when every topic has completed the current UTC day. Never report a deferred collection as successful or advance incomplete cursors.
+
 - Conference attribution comes from `content/papers/conference-papers.json`, a versioned catalog of official accepted-paper lists from configured editions since 2024. `proceedings.py` owns collection and deterministic matching. Never infer acceptance from topic, author affiliation, submission, or fuzzy title similarity. Keep failed/pending editions explicit and preserve previously collected lists on fetch failure. Raw responses and coverage reports belong under ignored `build/conferences/`.
 - The paper table displays Conference instead of Institutions; affiliation annotations remain preserved. Render conference names without years linked to the official paper/list. Monthly maintenance checks edition dates and list availability before refreshing and rebuilding.
 

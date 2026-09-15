@@ -5,8 +5,9 @@ name: Run LOKEN Daily
 on:
   workflow_dispatch:
   schedule:
-    # Run once daily at 01:00 UTC (09:00 Asia/Shanghai).
+    # Daily collection plus bounded catch-up; completed UTC days are skipped.
     - cron: "0 1 * * *"
+    - cron: "17 5,9 * * *"
 
 permissions:
   contents: write
@@ -38,9 +39,12 @@ jobs:
         run: python -m pip install -e .
 
       - name: Collect candidates
-        run: python -m papers.collector
+        id: collection
+        continue-on-error: true
+        run: python -m papers.collector --skip-if-current --report build/reports/collection.json
 
       - name: Commit candidate state
+        if: always() && steps.collection.outcome != 'skipped'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -51,3 +55,12 @@ jobs:
             git commit -m "GitHub Action Collect LOKEN Papers"
             git push origin main
           fi
+
+      - name: Report incomplete collection
+        if: always() && steps.collection.outcome == 'failure'
+        run: |
+          echo "::error::Collection incomplete. Failed-topic cursors remain unchanged; the next scheduled catch-up retries the missing window. See the collection logs for the upstream cause."
+          if [ -f build/reports/collection.json ]; then
+            cat build/reports/collection.json >> "$GITHUB_STEP_SUMMARY"
+          fi
+          exit 1

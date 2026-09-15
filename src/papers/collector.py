@@ -6,6 +6,7 @@ import argparse
 import datetime as dt
 import json
 import logging
+import sys
 from pathlib import Path
 import time
 
@@ -78,11 +79,13 @@ def fetch_arxiv_results(
         except (arxiv.ArxivError, requests.RequestException) as error:
             if not is_retryable_arxiv_error(error):
                 raise
-            if attempt == ARXIV_RETRY_ATTEMPTS:
-                raise ArxivRetryExhausted(
+            if attempt == ARXIV_RETRY_ATTEMPTS or (getattr(error, 'status', None) == 429 and attempt >= 2):
+                exhausted = ArxivRetryExhausted(
                     f"arXiv request for {topic!r} failed after "
-                    f"{ARXIV_RETRY_ATTEMPTS} attempts: {error}"
-                ) from error
+                    f"{attempt} attempts: {error}"
+                )
+                exhausted.status = getattr(error, 'status', None)
+                raise exhausted from error
             wait_seconds = ARXIV_RETRY_BACKOFF_SECONDS * (2 ** (attempt - 1))
             logging.warning(
                 "Transient arXiv error for %s (attempt %d/%d): %s; "
@@ -206,7 +209,11 @@ def fetch_collection(
     client = make_arxiv_client(page_size)
     records: list[dict] = []
     failed_topics: list[str] = []
+    rate_limited = False
     for topic, keyword_settings in config["keywords"].items():
+        if rate_limited:
+            failed_topics.append(topic)
+            continue
         start = end - dt.timedelta(days=lookback_days)
         if topic in cursors:
             cursor = dt.datetime.fromisoformat(cursors[topic])
@@ -230,11 +237,10 @@ def fetch_collection(
         except (ArxivRetryExhausted, arxiv.ArxivError, requests.RequestException) as error:
             logging.error("Preserving cursor for failed topic %s: %s", topic, error)
             failed_topics.append(topic)
+            rate_limited = getattr(error, 'status', None) == 429
             continue
         records.extend(topic_records.values())
         cursors[topic] = end.isoformat()
-    if failed_topics and len(failed_topics) == len(config["keywords"]):
-        raise RuntimeError("All arXiv topics failed: " + ", ".join(failed_topics))
     return records, failed_topics, cursors
 
 
@@ -269,7 +275,7 @@ def load_archive(path: str | Path) -> dict:
     return json.loads(content) if content else {}
 
 
-def collect(config_path: str | Path) -> dict[str, int]:
+def collect(config_path: str | Path, *, skip_if_current: bool = False) -> dict:
     config = load_config(config_path)
     archive_path = config["json_gitpage_path"]
     html_path = config["html_gitpage_path"]
@@ -282,16 +288,26 @@ def collect(config_path: str | Path) -> dict[str, int]:
     topics = list(config["queries"])
     archive = load_archive(archive_path)
     ledger = load_candidate_ledger(ledger_path)
+    today = dt.datetime.now(dt.timezone.utc).date()
+    if skip_if_current and all(
+        topic in ledger.get('collection_cursors', {})
+        and dt.datetime.fromisoformat(ledger['collection_cursors'][topic]).astimezone(dt.timezone.utc).date() == today
+        for topic in topics
+    ):
+        return {'status': 'already_current', 'collected': 0, 'new_candidates': 0, 'failed_topics': 0, 'failed_topic_names': []}
     records, failed_topics, cursors = fetch_collection(config, ledger)
     _, next_ledger, added = merge_collected_candidates(
         archive, ledger, records, topics
     )
     next_ledger["collection_cursors"] = cursors
-    atomic_write_json(ledger_path, next_ledger)
+    if len(failed_topics) < len(topics):
+        atomic_write_json(ledger_path, next_ledger)
     result = {
         "collected": len(records),
         "new_candidates": added,
         "failed_topics": len(failed_topics),
+        "failed_topic_names": failed_topics,
+        "status": "incomplete" if failed_topics else "complete",
     }
     logging.info("Cloud candidate collection result = %s", result)
     return result
@@ -300,8 +316,16 @@ def collect(config_path: str | Path) -> dict[str, int]:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", default="config/site.yaml")
+    parser.add_argument('--report', type=Path, help='write collection status JSON')
+    parser.add_argument('--skip-if-current', action='store_true')
     args = parser.parse_args()
-    collect(args.config)
+    result = collect(args.config, skip_if_current=args.skip_if_current)
+    if args.report:
+        args.report.parent.mkdir(parents=True, exist_ok=True)
+        atomic_write_json(args.report, result)
+    if result['failed_topics']:
+        logging.error('Collection incomplete; saved completed topics and preserved failed cursors. Next scheduled catch-up will retry: %s', ', '.join(result['failed_topic_names']))
+        sys.exit(75)
 
 
 if __name__ == "__main__":
