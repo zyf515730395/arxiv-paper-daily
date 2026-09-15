@@ -27209,9 +27209,11 @@
     "2502.17327": {
       "institutions": [],
       "paper_type": "paper",
-      "tags": [],
+      "tags": [
+        "Diffusion"
+      ],
       "topics": [
-        "3D Gen&Recon"
+        "Video Gen&Edit"
       ]
     },
     "2502.17363": {
@@ -28427,6 +28429,18 @@
       ],
       "topics": [
         "Video Gen&Edit"
+      ]
+    },
+    "2503.04821": {
+      "institutions": [],
+      "paper_type": "paper",
+      "tags": [
+        "Direct Regression",
+        "Multi-View",
+        "Supervised"
+      ],
+      "topics": [
+        "Depth Estimation"
       ]
     },
     "2503.04871": {
@@ -59352,7 +59366,9 @@
       "institutions": [],
       "paper_type": "paper",
       "tags": [
-        "Single-Image-to-3D"
+        "Implicit Field",
+        "Feed-Forward",
+        "Unconditional Sampling"
       ],
       "topics": [
         "3D Gen&Recon"
@@ -69052,7 +69068,7 @@
       "institutions": [],
       "paper_type": "paper",
       "tags": [
-        "Text-to-3D"
+        "Mesh"
       ],
       "topics": [
         "3D Gen&Recon"
@@ -73637,7 +73653,10 @@
     "2603.09883": {
       "institutions": [],
       "paper_type": "paper",
-      "tags": [],
+      "tags": [
+        "Video Conditioned",
+        "Joint Spatiotemporal"
+      ],
       "topics": [
         "Video Gen&Edit"
       ]
@@ -75315,9 +75334,13 @@
     "2603.19607": {
       "institutions": [],
       "paper_type": "paper",
-      "tags": [],
+      "tags": [
+        "Physics-Informed/Structured",
+        "Video Conditioned"
+      ],
       "topics": [
-        "Video Gen&Edit"
+        "Video Gen&Edit",
+        "World Model"
       ]
     },
     "2603.19682": {
@@ -82409,7 +82432,8 @@
       "institutions": [],
       "paper_type": "paper",
       "tags": [
-        "Procedural"
+        "Procedural",
+        "Mesh"
       ],
       "topics": [
         "3D Gen&Recon"

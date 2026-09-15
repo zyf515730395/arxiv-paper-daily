@@ -991,6 +991,17 @@
       "url": "https://ojs.aaai.org/index.php/AAAI/article/view/37313"
     },
     "conf-01498c04360a6270e8685fdc": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Text-to-3D",
+          "Procedural"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "conferences": [
         {
           "edition": "ECCV 2026",
@@ -1645,6 +1656,17 @@
       "url": "https://eccv.ecva.net/virtual/2026/poster/5651"
     },
     "conf-02d693e6336dab3b2f83e501": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Environment Map",
+          "Reference-Guided"
+        ],
+        "topics": [
+          "Relighting"
+        ]
+      },
       "arxiv_id": "2501.07582",
       "authors": [
         "Shinyoung Yi",
@@ -1679,16 +1701,16 @@
       "title": "Spin-weighted Spherical Harmonics for Polarized Light Transport",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": true,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "标题涉及偏振光传输的数学表示，缺乏摘要无法判断其具体应用是渲染、重建还是其他，信息不足。",
-        "reviewed_at": "2026-09-14T15:23:41+00:00"
+        "reason": "3D Gen&Recon：虽然涉及光照传输，但主要贡献是极化球谐函数表示和卷积算法，并非3D几何重建、NeRF或高斯泼溅等3D生成或重建方法。；Depth Estimation：论文未涉及深度估计、单目或立体深度预测，其核心是极化光传输的频率域分析，与深度估计任务完全无关。；Image Gen&Edit：论文核心是极化光传输的频率域表示与实时渲染算法，并非图像生成或编辑模型，不涉及扩散或自回归生成机制。；Relighting：论文提出极化球谐函数以支持极化环境光照下的实时渲染，属于在新型光照条件下模拟材料反射和光照传输的重光照技术。；Video Gen&Edit：研究内容聚焦于静态场景下的极化渲染方程求解，未涉及视频合成、时序建模或视频编辑任务，与视频生成主题无关。；World Model：论文未构建可交互的环境动力学模型或预测未来状态，而是专注于物理光照传输的数学表示与计算效率，不属于世界模型范畴。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "Relighting"
@@ -2661,6 +2683,18 @@
       "url": "https://papers.nips.cc/paper_files/paper/2025/hash/e41efb03e20ca3c231940a3c6917ef6f-Abstract-Conference.html"
     },
     "conf-044131cf550c405886e9f575": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "GAN",
+          "Text Conditioning"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "conferences": [
         {
           "edition": "ECCV 2026",
@@ -3270,6 +3304,17 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Du_Generative_3D_Part_Assembly_via_Part-Whole-Hierarchy_Message_Passing_CVPR_2024_paper.html"
     },
     "conf-05287e78f5f6102d24fa5ad6": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Flow Matching",
+          "Pixel Space"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "arxiv_id": "2410.02423",
       "authors": [
         "Ségolène Martin",
@@ -3318,14 +3363,14 @@
         "decisions": {
           "3D Gen&Recon": false,
           "Depth Estimation": false,
-          "Image Gen&Edit": null,
+          "Image Gen&Edit": true,
           "Relighting": false,
           "Video Gen&Edit": false,
           "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，仅凭标题“Plug-and-Play Image Restoration with Flow Matching”无法确定其核心贡献是生成还是修复，信息不足。",
-        "reviewed_at": "2026-09-14T15:28:55+00:00"
+        "reason": "3D Gen&Recon：论文处理的是二维图像像素空间的恢复任务，未涉及三维几何重建、网格生成或神经辐射场等三维内容，不符合该主题。；Depth Estimation：论文未涉及单目、立体或多视图深度估计，其任务为图像去噪、超分、去模糊和修复，不符合深度估计主题。；Image Gen&Edit：论文核心贡献是提出PnP-Flow算法，用于解决图像去噪、超分辨率、去模糊和修复等逆问题，属于图像编辑与恢复范畴，符合该主题定义。；Relighting：论文未涉及光照估计、反射率分解或新光照下的外观生成，仅处理通用图像逆问题，不符合重光照主题。；Video Gen&Edit：论文仅针对静态图像的逆问题求解，未涉及视频合成、编辑或时序建模，不符合视频生成与编辑的主题范围。；World Model：论文关注的是基于流匹配的图像恢复算法，不涉及环境动态预测、交互式世界建模或动作条件未来状态，不符合世界模型主题。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "Image Gen&Edit"
@@ -5007,20 +5052,18 @@
       "title": "MoGenTS: Motion Generation based on Spatial-Temporal Joint Modeling",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，标题'Motion Generation'可能指人体动作生成（3D/视频）或机器人运动（世界模型/控制），无法确定具体领域。",
-        "reviewed_at": "2026-09-14T15:29:18+00:00"
+        "reason": "3D Gen&Recon：论文处理的是人体关节运动序列，并非三维几何重建、网格生成或场景重建，不属于3D生成范畴。；Depth Estimation：论文未进行深度图预测或几何深度估计，仅处理离散化的关节位置序列，与深度估计无关。；Image Gen&Edit：论文核心是动作生成，不涉及图像合成、编辑或扩散模型在图像域的应用，与图像生成主题无关。；Relighting：论文完全不涉及光照估计、反射率恢复或重光照技术，与Relighting主题无任何关联。；Video Gen&Edit：虽然动作可视为视频骨架，但论文未涉及视频像素生成或视频编辑，仅关注骨骼运动序列。；World Model：论文未构建环境动力学模型或交互式世界状态预测，仅针对文本到动作的生成任务，非世界模型。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
-      "topics": [
-        "Video Gen&Edit"
-      ],
+      "topics": [],
       "url": "https://papers.nips.cc/paper_files/paper/2024/hash/ebf8764ecf0688cdd9fe1e5a9c525d0d-Abstract-Conference.html"
     },
     "conf-080550478e4d9520eb47edc5": {
@@ -6232,6 +6275,16 @@
       "url": "https://eccv.ecva.net/virtual/2024/poster/1231"
     },
     "conf-0934374cfe5ddfec438d580d": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Gaussian Splatting"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "conferences": [
         {
           "edition": "SIGGRAPH 2026",
@@ -8212,6 +8265,16 @@
       "url": "https://eccv.ecva.net/virtual/2026/poster/5991"
     },
     "conf-0b9b1ffa56e940bb545ab161": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Text Conditioning"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "authors": [
         "Shouwei Ruan",
         "Zhenyu Wu",
@@ -13282,6 +13345,17 @@
       "url": "https://ras.papercept.net/conferences/conferences/ICRA26/program/ICRA26_ContentListWeb_3.html#530"
     },
     "conf-11b232f03b138848e2a87bf6": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Multi-View-to-3D",
+          "Feed-Forward"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "arxiv_id": "2505.00702",
       "authors": [
         "Hanwen Jiang",
@@ -13336,16 +13410,16 @@
       "title": "RayZer: A Self-supervised Large View Synthesis Model",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，标题提及“自监督大视角合成模型”，虽暗示3D重建/新视角合成，但无摘要确认具体方法或是否属于3D Gen&Recon的核心贡献，信息不足。",
-        "reviewed_at": "2026-09-14T15:20:24+00:00"
+        "reason": "3D Gen&Recon：论文提出自监督多视角3D视觉模型，核心贡献包括场景表示重建和新视角合成，完全符合3D重建主题范围。；Depth Estimation：虽然重建过程隐含深度信息，但论文主要目标是新视角合成而非显式的深度估计或预测，不符合该主题核心。；Image Gen&Edit：论文核心贡献是3D场景重建与新视角合成，而非2D图像生成或编辑，不符合该主题定义。；Relighting：论文未涉及光照估计、反射率分解或新光照条件下的外观生成，核心任务为新视角合成，不符合该主题。；Video Gen&Edit：论文处理的是多视角静态图像序列以重建3D场景，并非视频生成或编辑任务，不符合该主题定义。；World Model：论文关注静态场景的几何重建与渲染，未涉及交互式环境、物理动力学或动作条件预测，不属于世界模型。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "3D Gen&Recon"
@@ -14414,6 +14488,17 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Zhou_Learning_Flow_Fields_in_Attention_for_Controllable_Person_Image_Generation_CVPR_2025_paper.html"
     },
     "conf-13126d8f51647af4c3752d49": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Pixel Space"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "arxiv_id": "2506.05340",
       "authors": [
         "Keshigeyan Chandrasegaran",
@@ -14455,16 +14540,16 @@
       "title": "Exploring Diffusion Transformer Designs via Grafting",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "标题提及扩散Transformer设计，但未提供摘要或具体应用领域，无法确定是图像、视频还是其他模态，信息不足。",
-        "reviewed_at": "2026-09-14T15:19:33+00:00"
+        "reason": "3D Gen&Recon：论文专注于二维图像生成的架构优化，未涉及三维对象、场景重建、神经辐射场或高斯泼溅等三维生成或重建技术。；Depth Estimation：论文未涉及单目、立体或多视图深度估计，其核心贡献在于扩散Transformer的架构嫁接与算子替换，与深度预测无关。；Image Gen&Edit：论文核心贡献是探索扩散Transformer（DiT）的架构设计，通过嫁接技术修改预训练模型以生成图像，并评估了FID和GenEval等图像生成指标，属于图像生成方法研究。；Relighting：论文未涉及光照估计、反射率恢复或新光照条件下的图像重光照，核心关注点是注意力机制和卷积算子的替换。；Video Gen&Edit：摘要中未提及视频生成、编辑或时序建模，所有实验和评估均基于图像生成任务，如PixArt-Σ文本到图像模型，不涉及视频领域。；World Model：研究目标是改进图像生成模型的架构效率和质量，而非学习环境动态、物理规律或交互式世界模型，不符合世界模型定义。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "Image Gen&Edit"
@@ -18962,6 +19047,17 @@
       "url": "https://doi.org/10.1109/iros58592.2024.10801323"
     },
     "conf-1ab2510ccbf246617fcc641d": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Imagination-Based Planning",
+          "Pixel/Observation Space"
+        ],
+        "topics": [
+          "World Model"
+        ]
+      },
       "arxiv_id": "2411.10175",
       "authors": [
         "Moritz Schneider",
@@ -18996,16 +19092,16 @@
       "title": "The Surprising Ineffectiveness of Pre-Trained Visual Representations for Model-Based Reinforcement Learning",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": true
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，仅凭标题涉及基于模型的强化学习，无法确定是否属于给定的视觉生成或重建主题。",
-        "reviewed_at": "2026-09-14T15:27:20+00:00"
+        "reason": "3D Gen&Recon：论文未涉及三维物体生成、重建、NeRF或高斯泼溅等技术，主要关注二维视觉表征在强化学习中的应用，不属于三维主题。；Depth Estimation：论文未涉及单目、立体或多视图深度估计，主要分析视觉表征对模型预测性能的影响，不属于深度估计主题。；Image Gen&Edit：论文核心是强化学习中的模型预测与规划，不涉及图像生成、编辑或扩散模型等视觉合成技术，与图像生成主题无关。；Relighting：论文未涉及光照估计、传输或编辑，主要讨论强化学习中的数据效率和泛化能力，与重光照主题完全无关。；Video Gen&Edit：研究聚焦于控制任务中的视觉强化学习，未涉及视频合成、编辑或生成式音视频方法，不符合视频生成主题定义。；World Model：论文研究基于模型的强化学习，核心贡献是评估预训练视觉表征在构建动力学模型（即世界模型）中的有效性，属于世界模型主题。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "World Model"
@@ -24405,6 +24501,17 @@
       "url": "https://eccv.ecva.net/virtual/2024/poster/1320"
     },
     "conf-219cf70f53863aa24023599c": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Mesh",
+          "Optimization-Based"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "arxiv_id": "2505.18805",
       "authors": [
         "Zhongtian Zheng",
@@ -24445,16 +24552,16 @@
       "title": "Auto Hair Card Extraction for Smooth Hair with Differentiable Rendering",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，仅凭标题“Auto Hair Card Extraction”无法确定具体技术归属，信息不足。",
-        "reviewed_at": "2026-09-14T15:19:58+00:00"
+        "reason": "3D Gen&Recon：论文提出从发丝模型自动转换为头发卡片模型的管线，涉及3D几何表示、纹理优化及可微渲染，符合3D生成与重建范畴。；Depth Estimation：论文不涉及单目、立体或多视图深度估计任务，其核心贡献在于3D头发模型的自动化构建与优化。；Image Gen&Edit：论文核心是头发卡片模型的自动提取与优化，属于3D资产生成与表示，而非2D图像合成或编辑任务。；Relighting：论文主要解决头发几何与纹理的表示及优化问题，未涉及光照估计、反射率分解或新光照下的重光照技术。；Video Gen&Edit：论文不涉及视频生成、编辑或时序动态建模，其贡献集中在静态3D头发模型的构建与渲染。；World Model：论文未涉及环境动态预测、交互式世界模型或动作条件未来状态预测，仅关注静态外观表示。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "3D Gen&Recon"
@@ -26501,6 +26608,16 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Wu_Towards_Language-Driven_Video_Inpainting_via_Multimodal_Large_Language_Models_CVPR_2024_paper.html"
     },
     "conf-23ad81ba2563e3f046d4aadc": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Inverse Rendering"
+        ],
+        "topics": [
+          "Relighting"
+        ]
+      },
       "arxiv_id": "2507.03924",
       "authors": [
         "Rongjia Zheng",
@@ -26546,19 +26663,18 @@
       "title": "DNF-Intrinsic: Deterministic Noise-Free Diffusion for Indoor Inverse Rendering",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
           "Relighting": true,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "标题提及“Indoor Inverse Rendering”（室内逆渲染），逆渲染通常涉及估计光照、反射率等属性，属于重光照/逆渲染范畴，尽管摘要缺失，但标题指向明确。",
-        "reviewed_at": "2026-09-14T15:18:18+00:00"
+        "reason": "3D Gen&Recon：虽然逆渲染涉及几何和材质，但论文未明确构建3D场景、网格或辐射场，而是关注2D图像层面的内在属性分解，不属于3D重建。；Depth Estimation：论文目标是估计内在属性如反照率和法线，而非直接预测深度图，虽然法线可用于深度，但核心贡献不在深度估计。；Image Gen&Edit：论文核心贡献是室内逆渲染，旨在从图像恢复内在属性，而非生成新的图像内容或进行图像编辑，不符合该主题定义。；Relighting：论文通过逆渲染恢复内在属性，这是实现重光照的基础，且明确提到物理忠实性约束，属于重光照领域的逆渲染方法。；Video Gen&Edit：论文处理的是静态室内图像的逆渲染任务，不涉及视频合成、编辑或时序生成，与视频生成主题无关。；World Model：论文未构建可交互的环境模型或预测未来状态，而是专注于单张图像的内在属性估计，不具备世界模型的核心特征。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
-        "Image Gen&Edit",
         "Relighting"
       ],
       "url": "https://openaccess.thecvf.com/content/ICCV2025/html/Zheng_DNF-Intrinsic_Deterministic_Noise-Free_Diffusion_for_Indoor_Inverse_Rendering_ICCV_2025_paper.html"
@@ -27426,6 +27542,14 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Li_Circular-DPO_Aligning_Multi-Stage_3D_Generative_Models_via_Preference_Feedback_Loop_CVPR_2026_paper.html"
     },
     "conf-24fb76f9adeaef440f429c30": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "arxiv_id": "2310.00433",
       "authors": [
         "Snehal Jauhri",
@@ -27458,20 +27582,18 @@
       "title": "Active-Perceptive Motion Generation for Mobile Manipulation",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，仅凭标题“Active-Perceptive Motion Generation for Mobile Manipulation”无法确定其是否属于给定的生成或重建主题，可能涉及机器人控制或动作生成，信息不足。",
-        "reviewed_at": "2026-09-14T15:44:49+00:00"
+        "reason": "3D Gen&Recon：论文核心贡献是提出一种用于移动操作机器人的主动感知运动生成方法，旨在通过优化路径以最大化视觉信息增益和抓取成功率。虽然涉及场景重建的信息增益，但其主要任务是机器人运动规划与操作，而非3D/4D物体的生成、重建或编辑，不符合3D Gen&Recon主题范围。；Depth Estimation：论文核心贡献是提出一种用于移动操作机器人的主动感知运动生成方法，旨在通过优化路径以最大化视觉信息增益和抓取成功率。虽然涉及场景重建，但其核心任务是机器人运动规划与操作，而非深度估计算法本身，故不符合主题范围。；Image Gen&Edit：论文核心贡献是提出移动操作机器人的主动感知运动生成方法，旨在通过路径规划最大化视觉信息增益以辅助抓取任务。该研究聚焦于机器人控制与导航策略，属于具身智能领域，不涉及图像合成、编辑或生成模型，因此不符合图像生成与编辑主题范围。；Relighting：论文核心贡献是提出移动操作机器人的主动感知运动生成方法，旨在通过路径规划最大化视觉信息增益以辅助抓取任务。该研究聚焦于机器人导航与操作策略，不涉及光照估计、反射率处理或新光照下的外观生成，与Relighting主题无关。；Video Gen&Edit：论文提出移动操作机器人的主动感知运动生成方法，旨在通过优化路径提升抓取成功率。其核心贡献属于机器人控制与导航领域，并非视频合成、编辑或生成式音视频方法，故不符合当前主题范围。；World Model：论文核心贡献是提出一种主动感知运动生成方法，用于移动机械臂在杂乱环境中规划路径以最大化视觉信息增益和抓取成功率。该工作侧重于机器人控制与任务导向的路径规划，并未构建用于预测环境动态或动作条件未来状态的生成式世界模型，因此不符合当前主题范围。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
-      "topics": [
-        "Video Gen&Edit"
-      ],
+      "topics": [],
       "url": "https://doi.org/10.1109/icra57147.2024.10610714"
     },
     "conf-24fbe0307bc6964a1bcd0612": {
@@ -28017,6 +28139,18 @@
       "url": "https://s2024.conference-program.org/presentation/?id=papers_1105&sess=sess108"
     },
     "conf-25fc6f2916f2398e6e0ec7ae": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Autoregressive",
+          "Diffusion",
+          "Text Conditioned"
+        ],
+        "topics": [
+          "Video Gen&Edit"
+        ]
+      },
       "arxiv_id": "2505.07344",
       "authors": [
         "Yuan Zhang",
@@ -28054,19 +28188,19 @@
       "title": "Generative Pre-trained Autoregressive Diffusion Transformer",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": true,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，标题提及“生成式预训练自回归扩散Transformer”，未明确应用领域（图像/视频/3D），信息不足。",
-        "reviewed_at": "2026-09-14T15:20:24+00:00"
+        "reason": "3D Gen&Recon：论文未涉及3D几何重建、网格生成或神经辐射场等3D内容，仅关注2D视频帧序列的时序生成，缺乏3D空间结构建模的技术贡献。；Depth Estimation：论文未涉及单目、立体或多视图深度估计，也未使用深度作为主要条件或输出，核心贡献在于视频帧的连续潜空间自回归生成。；Image Gen&Edit：论文核心贡献是长程视频合成与连续潜空间建模，虽然涉及图像帧生成，但主要目标是视频序列的动态一致性，不属于图像生成或编辑的核心范畴。；Relighting：论文未涉及光照估计、反射率恢复或新光照条件下的外观生成，核心方法围绕视频时序建模，与重光照任务无直接技术关联。；Video Gen&Edit：论文提出GPDiT用于长程视频合成，通过自回归扩散在连续潜空间预测未来帧，显著提升视频生成质量与语义一致性，完全符合视频生成主题定义。；World Model：虽然模型具备表示能力，但论文未强调动作条件预测、物理动力学模拟或交互式环境建模，主要聚焦于视频生成质量，不符合世界模型核心定义。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
-        "Image Gen&Edit"
+        "Video Gen&Edit"
       ],
       "url": "https://papers.nips.cc/paper_files/paper/2025/hash/c565514eb8cf8808d82a612c5f7a1920-Abstract-Conference.html"
     },
@@ -28847,6 +28981,17 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Santo_MVCPS-NeuS_Multi-view_Constrained_Photometric_Stereo_for_Neural_Surface_Reconstruction_CVPR_2024_paper.html"
     },
     "conf-2713c7703a8cc6d0f05def65": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Latent Dynamics"
+        ],
+        "topics": [
+          "Video Gen&Edit"
+        ]
+      },
       "conferences": [
         {
           "edition": "ECCV 2026",
@@ -32873,18 +33018,16 @@
         "decisions": {
           "3D Gen&Recon": false,
           "Depth Estimation": false,
-          "Image Gen&Edit": null,
+          "Image Gen&Edit": false,
           "Relighting": false,
           "Video Gen&Edit": false,
           "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "标题涉及基于文本到图像的人重识别（Person Re-identification），属于图像识别/检索任务，而非图像生成或编辑；因无摘要，无法完全排除其是否包含生成组件，故标记为null。",
-        "reviewed_at": "2026-09-14T15:22:02+00:00"
+        "reason": "3D Gen&Recon：论文未涉及三维对象、场景的生成、重建或编辑，也未使用神经渲染或高斯泼溅等技术，不属于三维生成与重建范畴。；Depth Estimation：论文未进行单目、立体或多视角深度估计与预测，其技术重点在于文本风格聚类与提示学习，与深度估计任务无关。；Image Gen&Edit：论文核心贡献是文本到图像行人重识别，属于检索与匹配任务，而非图像生成、编辑或可控合成方法，不符合该主题定义。；Relighting：论文未涉及光照估计、传输、编辑或在新光照下生成外观，其核心在于文本描述风格的模拟与行人重识别性能提升。；Video Gen&Edit：论文处理的是静态图像数据库的文本检索任务，未涉及视频合成、编辑或生成式音视频方法，与视频生成主题无关。；World Model：论文未构建学习环境动态或交互世界的生成式预测模型，而是专注于利用多模态大模型生成多样化文本描述以辅助检索。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
-      "topics": [
-        "Image Gen&Edit"
-      ],
+      "topics": [],
       "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Jiang_Modeling_Thousands_of_Human_Annotators_for_Generalizable_Text-to-Image_Person_Re-identification_CVPR_2025_paper.html"
     },
     "conf-2c1f8a335f502ac54975fd63": {
@@ -36684,20 +36827,18 @@
       "title": "Learning Concept-Based Causal Transition and Symbolic Reasoning for Visual Planning",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，仅凭标题“视觉规划”无法确定是否属于生成、重建或世界模型等具体主题。",
-        "reviewed_at": "2026-09-14T15:44:49+00:00"
+        "reason": "3D Gen&Recon：论文核心贡献是提出基于概念因果转换和符号推理的视觉规划框架，用于指导智能体在复杂环境中执行任务。该工作聚焦于视觉决策与规划，不涉及3D/4D物体的生成、重建、编辑或神经渲染，因此不属于3D Gen&Recon主题范围。；Depth Estimation：论文核心贡献是提出基于概念因果转换和符号推理的视觉规划框架，旨在实现目标导向的任务规划。该研究聚焦于视觉因果推理与决策，不涉及单目、立体或度量深度估计与预测，因此不属于深度估计主题。；Image Gen&Edit：论文核心贡献是提出基于概念因果转换和符号推理的视觉规划框架，用于指导智能体在复杂环境中执行任务。该工作聚焦于视觉理解、决策规划及因果推理，旨在解决目标导向的视觉任务，而非图像合成、编辑或生成方法，因此不属于图像生成与编辑主题。；Relighting：论文核心贡献是提出基于概念因果转换和符号推理的视觉规划框架，用于指导智能体在复杂环境中执行任务。该工作聚焦于视觉因果推理与任务规划，未涉及光照估计、反射率编辑或新光照下的外观生成，与Relighting主题范围不符。；Video Gen&Edit：论文核心贡献是提出基于概念因果转换和符号推理的视觉规划框架，用于指导智能体在环境中执行任务。该工作侧重于决策规划与因果推理，并非视频合成、编辑或生成方法，因此不属于Video Gen&Edit主题范围。；World Model：论文核心贡献是提出基于概念因果转换和符号推理的视觉规划框架，旨在通过抽象符号实现任务规划。该工作侧重于高层级的逻辑推理与决策过程，而非学习环境动态或预测动作条件下的未来状态，不符合世界模型定义。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
-      "topics": [
-        "World Model"
-      ],
+      "topics": [],
       "url": "https://doi.org/10.1109/iros58592.2024.10802420"
     },
     "conf-30fcd3d351e4fb5210a6603e": {
@@ -37903,6 +38044,17 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Jiang_VideoBooth_Diffusion-based_Video_Generation_with_Image_Prompts_CVPR_2024_paper.html"
     },
     "conf-32ed7a595775fa850f001d43": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Autoregressive",
+          "Text Conditioning"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "arxiv_id": "2609.11804",
       "authors": [
         "Meimingwei Li",
@@ -39084,6 +39236,18 @@
       "url": "https://iclr.cc/virtual/2025/poster/31112"
     },
     "conf-3431842c68d542c342abd9a9": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Image Conditioned",
+          "Text Conditioned"
+        ],
+        "topics": [
+          "Video Gen&Edit"
+        ]
+      },
       "arxiv_id": "2408.15241",
       "authors": [
         "Zejia Weng",
@@ -39118,16 +39282,16 @@
       "title": "GenRec: Unifying Video Generation and Recognition with Diffusion Models",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": true,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，仅凭标题“GenRec: Unifying Video Generation and Recognition”虽暗示视频生成，但缺乏具体方法细节以确认其核心贡献是否完全符合视频生成主题的定义，且无法排除其他可能性，故标记为null。",
-        "reviewed_at": "2026-09-14T15:30:34+00:00"
+        "reason": "3D Gen&Recon：摘要未提及任何三维重建、几何估计或三维资产生成内容，核心任务局限于二维视频序列的生成与识别。；Depth Estimation：摘要中没有任何关于深度估计、单目深度或立体视觉的内容，核心任务为视频生成与识别。；Image Gen&Edit：论文核心贡献是统一视频生成与识别的框架，主要评估指标为视频FVD和识别准确率，未涉及图像生成或编辑方法。；Relighting：论文未涉及光照估计、反射率恢复或重光照任务，核心贡献在于视频扩散模型的统一训练框架。；Video Gen&Edit：论文基于Stable Video Diffusion构建GenRec框架，明确支持类条件图像到视频生成，并在SSV2和EK-100上报告了FVD分数，属于视频生成方法。；World Model：虽然学习时空先验，但论文未将其定义为可交互的环境模型或动作条件预测模型，主要关注生成与识别任务的统一。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "Video Gen&Edit"
@@ -40076,6 +40240,17 @@
       "url": "https://eccv.ecva.net/virtual/2026/poster/3261"
     },
     "conf-357d38cba4089a1f3313023d": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "State-Space/Recurrent",
+          "Imagination-Based Planning"
+        ],
+        "topics": [
+          "World Model"
+        ]
+      },
       "arxiv_id": "2510.10217",
       "authors": [
         "Hyogo Hiruma",
@@ -40108,19 +40283,19 @@
       "title": "UF-RNN: Real-Time Adaptive Motion Generation Using Uncertainty-Driven Foresight Prediction",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": true
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，无法判断具体任务归属。",
-        "reviewed_at": "2026-09-14T15:16:18+00:00"
+        "reason": "3D Gen&Recon：论文未涉及三维物体生成、场景重建、网格构建或神经渲染，仅关注机器人控制策略，缺乏三维几何或空间结构重建的技术贡献。；Depth Estimation：研究未涉及单目、立体或多视角深度估计，也未使用深度图作为主要输入或输出，核心任务是机器人动作生成而非几何深度预测。；Image Gen&Edit：论文核心是机器人运动生成与不确定性预测，不涉及图像合成、编辑或视觉生成任务，与图像生成主题完全无关。；Relighting：论文未涉及光照估计、反射率恢复或新光照条件下的外观生成，核心贡献在于机器人控制中的不确定性处理，与重光照主题无关。；Video Gen&Edit：研究聚焦于机器人动作序列预测与状态空间动力学，未涉及视频帧生成、视频编辑或视觉时序内容合成，不符合视频生成主题。；World Model：模型包含内部模拟模块，通过预测未来轨迹并最小化方差来优化隐状态，符合学习预测环境动态或动作条件未来状态的世界模型定义。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
-        "Video Gen&Edit"
+        "World Model"
       ],
       "url": "https://ras.papercept.net/conferences/conferences/IROS25/program/IROS25_ContentListWeb_2.html#1907"
     },
@@ -41547,6 +41722,17 @@
       "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32862"
     },
     "conf-376968c6b394f6ac89b787cf": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Text Conditioning"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "arxiv_id": "2306.04744",
       "authors": [
         "Changhoon Kim",
@@ -41595,16 +41781,16 @@
       "title": "WOUAF: Weight Modulation for User Attribution and Fingerprinting in Text-to-Image Diffusion Models",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，仅凭标题“Text-to-Image Diffusion Models”虽暗示与图像生成相关，但缺乏具体贡献描述（如是否为生成方法、编辑方法或安全/水印研究），无法确定其核心贡献是否归属于生成/编辑主题，故标记为null。",
-        "reviewed_at": "2026-09-14T15:46:04+00:00"
+        "reason": "3D Gen&Recon：论文关注的是二维图像生成中的用户归因问题，不涉及三维物体生成、重建、网格处理或神经辐射场等三维视觉任务，与三维生成与重建主题无关联。；Depth Estimation：论文未进行单目、立体或多视图深度估计，也未涉及深度补全或度量深度预测，其任务目标是图像归因而非几何深度感知，与深度估计主题无关。；Image Gen&Edit：论文核心贡献是提出一种针对文本到图像扩散模型的权重调制方法，用于实现用户归因和指纹识别，直接作用于图像生成过程并评估生成质量，符合图像生成与编辑主题中关于扩散模型及可控生成的定义。；Relighting：论文未涉及光照估计、反射率恢复、阴影生成或新光照条件下的外观编辑，其核心是模型指纹而非光照控制，因此不属于重光照主题。；Video Gen&Edit：论文摘要明确指出方法应用于文本到图像任务，使用 Stable Diffusion 模型生成静态图像，未涉及视频合成、视频编辑或时序建模，因此不符合视频生成与编辑主题的范围。；World Model：论文未构建用于预测环境动态、物理规律或交互未来状态的世界模型，而是专注于静态图像生成模型的安全性与归因机制，不符合世界模型主题的定义。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "Image Gen&Edit"
@@ -41679,6 +41865,17 @@
       "url": "https://papers.nips.cc/paper_files/paper/2024/hash/dd51dbce305433cd60910dc5b0147be4-Abstract-Conference.html"
     },
     "conf-37899e62b1cd91858354ba3b": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Flow Matching",
+          "Text Conditioning"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "conferences": [
         {
           "edition": "ECCV 2026",
@@ -43646,6 +43843,18 @@
       "url": "https://icml.cc/virtual/2026/poster/65348"
     },
     "conf-39d036711f05a2b03792526b": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Text Conditioning",
+          "Structural Conditioning"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "authors": [
         "Mingzhu Shen",
         "Peng Ye",
@@ -46914,6 +47123,16 @@
       "url": "https://eccv.ecva.net/virtual/2024/poster/682"
     },
     "conf-3d26f5676102887af2e506a4": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Text-to-3D"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "arxiv_id": "2609.11439",
       "authors": [
         "Yifei Liu",
@@ -46962,19 +47181,19 @@
       "title": "Multi-Modal Controlled Coherent Motion Generation",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "标题提及“Coherent Motion Generation”（连贯运动生成），但摘要为空，无法确定是2D视频生成、3D人体动作生成还是其他模态，信息不足。",
-        "reviewed_at": "2026-09-14T15:01:42+00:00"
+        "reason": "3D Gen&Recon：论文提出MOCO框架，利用多模态输入生成3D虚拟角色的连贯运动，属于3D内容生成范畴。；Depth Estimation：论文核心贡献是提出MOCO框架，利用扩散模型生成由多模态输入驱动的3D虚拟角色连贯运动。该研究聚焦于动作生成与多模态融合，未涉及单目、立体或度量深度估计任务，与深度估计主题范围无关。；Image Gen&Edit：论文核心是生成3D虚拟角色的运动序列，而非合成或编辑二维图像，不符合图像生成主题。；Relighting：论文核心贡献是提出MOCO框架，利用扩散模型生成多模态驱动的3D虚拟角色连贯运动。该工作聚焦于动作生成与多模态融合，未涉及光照估计、反射率或阴影等重光照任务，与主题范围无关。；Video Gen&Edit：论文核心贡献是提出MOCO框架，利用扩散模型根据多模态输入生成3D虚拟角色的连贯运动。该任务属于3D角色动画与运动合成，旨在解决动作协调问题，而非视频像素级生成、编辑或视频内容合成，因此不符合Video Gen&Edit主题范围。；World Model：方法聚焦于特定角色的动作生成，未构建可交互的环境动力学或预测未来状态的世界模型。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
-        "Video Gen&Edit"
+        "3D Gen&Recon"
       ],
       "url": "https://eccv.ecva.net/virtual/2026/poster/4899"
     },
@@ -47399,6 +47618,17 @@
       "url": "https://papers.nips.cc/paper_files/paper/2024/hash/37611b0fc2b65cdbb60865af5f6cf453-Abstract-Conference.html"
     },
     "conf-3dce8fcb3bd7ec8180329f7e": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Transformer",
+          "Imagination-Based Planning"
+        ],
+        "topics": [
+          "World Model"
+        ]
+      },
       "arxiv_id": "2310.08674",
       "authors": [
         "Sean J. Wang",
@@ -47431,16 +47661,16 @@
       "title": "Pay Attention to How You Drive: Safe and Adaptive Model-Based Reinforcement Learning for Off-Road Driving",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": true
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，仅凭标题“Safe and Adaptive Model-Based Reinforcement Learning for Off-Road Driving”无法确定其核心贡献是否属于给定的视觉生成或重建主题，信息不足。",
-        "reviewed_at": "2026-09-14T15:44:49+00:00"
+        "reason": "3D Gen&Recon：虽然涉及机器人环境，但核心是控制策略与动力学预测，并非3D重建、NeRF、高斯泼溅或几何结构生成等3D视觉任务。；Depth Estimation：研究未涉及单目、立体或多视图深度估计，其核心在于基于模型的控制与系统辨识，而非几何深度预测任务。；Image Gen&Edit：论文核心贡献是越野驾驶中的模型强化学习与系统辨识，不涉及图像生成、编辑或扩散模型等视觉合成技术。；Relighting：论文内容完全集中在机器人控制与动力学建模，未涉及光照估计、反射率恢复或新光照下的外观生成等重光照技术。；Video Gen&Edit：研究聚焦于机器人控制策略与动力学建模，未涉及视频合成、编辑或生成式音视频方法，与视频生成主题无关。；World Model：论文提出自适应动力学模型（ADM）来概率性地建模系统动力学，用于预测未来状态，符合世界模型中学习环境动态的核心定义。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "World Model"
@@ -48715,6 +48945,18 @@
       "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28617"
     },
     "conf-3ef9234fce78269cad8e933f": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Text Conditioning",
+          "Reference Conditioning"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "arxiv_id": "2409.08077",
       "authors": [
         "Junsung Lee",
@@ -48761,16 +49003,16 @@
       "title": "Diffusion-Based Image-to-Image Translation by Noise Correction via Prompt Interpolation",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，仅凭标题“Diffusion-Based Image-to-Image Translation...”无法确定具体是图像生成、编辑还是其他任务，信息不足。",
-        "reviewed_at": "2026-09-14T15:29:44+00:00"
+        "reason": "3D Gen&Recon：论文方法基于二维图像潜空间进行扩散去噪，未涉及三维几何重建、网格生成或新视角合成等三维视觉任务。；Depth Estimation：论文未涉及深度图预测、单目或立体深度估计，其核心任务是图像外观的语义转换而非几何深度感知。；Image Gen&Edit：论文提出了一种基于扩散模型的图像到图像翻译方法，通过噪声校正和提示词插值实现图像编辑，核心贡献完全属于图像生成与编辑范畴。；Relighting：论文关注基于文本提示的图像内容编辑，未涉及光照估计、反射率恢复或新光照条件下的图像重光照任务。；Video Gen&Edit：论文专注于静态图像的翻译与编辑，未涉及视频合成、视频编辑或时序动态建模，不符合视频生成与编辑的主题定义。；World Model：论文旨在进行图像内容转换，而非学习环境动态、物理规律或交互式世界模型，不具备世界模型的核心特征。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "Image Gen&Edit"
@@ -50323,6 +50565,18 @@
       "url": "https://ojs.aaai.org/index.php/AAAI/article/view/28417"
     },
     "conf-417196e1449d0718a4dc3cf3": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Pixel/Observation Space",
+          "World-Model Policy Learning"
+        ],
+        "topics": [
+          "World Model"
+        ]
+      },
       "arxiv_id": "2411.09153",
       "authors": [
         "Youpeng Wen",
@@ -50376,19 +50630,18 @@
       "title": "VidMan: Exploiting Implicit Dynamics from Video Diffusion Model for Effective Robot Manipulation",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": true
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，标题涉及利用视频扩散模型进行机器人操作，可能涉及世界模型或视频生成，但信息不足无法确定核心归属。",
-        "reviewed_at": "2026-09-14T15:27:20+00:00"
+        "reason": "3D Gen&Recon：论文未涉及3D对象、场景的生成、重建或编辑，主要关注2D视觉轨迹与动作预测，不符合3D生成与重建主题。；Depth Estimation：论文未涉及单目、立体或多视图深度估计，主要任务是动作预测，不涉及深度图生成或预测，不符合深度估计主题。；Image Gen&Edit：论文核心贡献是利用视频扩散模型学习隐式动力学以增强机器人操作，并非图像生成或编辑方法，不符合该主题范围。；Relighting：论文未涉及光照估计、传输或编辑，主要关注机器人操作中的动力学建模，与重光照主题完全无关。；Video Gen&Edit：虽然使用了视频扩散模型进行预训练，但主要目的是学习动力学以预测动作，而非生成或编辑视频内容本身，不属于视频生成主题。；World Model：论文提出VidMan框架，利用视频扩散模型学习环境隐式动力学，构建世界模型以预测未来状态并辅助机器人动作规划，符合世界模型定义。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
-        "Video Gen&Edit",
         "World Model"
       ],
       "url": "https://papers.nips.cc/paper_files/paper/2024/hash/481c70828a4ff20d31a646cc6cc95f3d-Abstract-Conference.html"
@@ -50458,6 +50711,20 @@
       "url": "https://eccv.ecva.net/virtual/2024/poster/693"
     },
     "conf-41a6d3f39121394b95780529": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Single-Image-to-3D",
+          "Pixel/Observation Space"
+        ],
+        "topics": [
+          "3D Gen&Recon",
+          "Video Gen&Edit",
+          "World Model"
+        ]
+      },
       "arxiv_id": "2510.11107",
       "authors": [
         "Jiahui Lei",
@@ -50505,19 +50772,21 @@
       "title": "MoMaps: Semantics-Aware Scene Motion Generation with Motion Maps",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": true,
+          "World Model": true
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，无法判断具体任务归属。",
-        "reviewed_at": "2026-09-14T15:16:18+00:00"
+        "reason": "3D Gen&Recon：论文核心是学习3D场景运动先验并预测未来3D场景运动，涉及3D轨迹合成与场景动态建模，属于3D生成与重建范畴中的动态场景生成。；Depth Estimation：虽然运动图可能隐含几何信息，但论文主要贡献是运动生成而非深度估计，未将深度预测作为核心任务或主要评估指标。；Image Gen&Edit：论文核心贡献是3D场景运动生成与预测，虽然利用图像生成模型生成运动图，但并非直接生成或编辑静态图像内容，不符合图像生成主题的核心定义。；Relighting：论文关注场景运动生成，未涉及光照估计、反射率恢复或新光照下的外观生成，与重光照主题无关。；Video Gen&Edit：论文提出了一种新的2D视频合成流水线，通过生成运动图并扭曲图像来合成视频，且从真实视频中学习运动先验，符合视频生成与编辑的主题范围。；World Model：论文旨在从视频中学习语义和功能有意义的3D运动先验，以预测未来3D场景状态，这符合学习环境动态和动作条件未来状态的世界模型定义。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
-        "Video Gen&Edit"
+        "3D Gen&Recon",
+        "Video Gen&Edit",
+        "World Model"
       ],
       "url": "https://openaccess.thecvf.com/content/ICCV2025/html/Lei_MoMaps_Semantics-Aware_Scene_Motion_Generation_with_Motion_Maps_ICCV_2025_paper.html"
     },
@@ -50811,6 +51080,16 @@
       "url": "https://eccv.ecva.net/virtual/2024/poster/1754"
     },
     "conf-4234d081aa38f24ec8fbba54": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Inverse Rendering"
+        ],
+        "topics": [
+          "Relighting"
+        ]
+      },
       "conferences": [
         {
           "edition": "SIGGRAPH 2026",
@@ -54810,6 +55089,16 @@
       "url": "https://ras.papercept.net/conferences/conferences/ICRA26/program/ICRA26_ContentListWeb_5.html#4380"
     },
     "conf-467ed0fddb3c83c043febb58": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Text Conditioning"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "authors": [
         "Ruibo Chen",
         "Jiacheng Pan",
@@ -54995,6 +55284,17 @@
       "url": "https://openaccess.thecvf.com/content/ICCV2025/html/Nguyen_CSD-VAR_Content-Style_Decomposition_in_Visual_Autoregressive_Models_ICCV_2025_paper.html"
     },
     "conf-46bbe151587fe9f55bec7786": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Reference Conditioning",
+          "Text Conditioning"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "conferences": [
         {
           "edition": "ECCV 2026",
@@ -55438,6 +55738,18 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Li_BlackMirror_Black-Box_Backdoor_Detection_for_Text-to-Image_Models_via_Instruction-Response_Deviation_CVPR_2026_paper.html"
     },
     "conf-476c974ca582f1ab72b1c242": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Multi-View-to-3D",
+          "Gaussian Splatting",
+          "Implicit Field"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "arxiv_id": "2609.05888",
       "authors": [
         "Yongzhe Lyu",
@@ -56720,6 +57032,18 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Kwon_Concept_Weaver_Enabling_Multi-Concept_Fusion_in_Text-to-Image_Models_CVPR_2024_paper.html"
     },
     "conf-490097a79debec867cc96bdf": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Structural Conditioning",
+          "Reference Conditioning"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "arxiv_id": "2305.10135",
       "authors": [
         "Bohan Zeng",
@@ -56771,16 +57095,16 @@
       "title": "Controllable Mind Visual Diffusion Model",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "标题提及“Visual Diffusion Model”（视觉扩散模型），但摘要为空，无法确定具体是图像、视频还是其他模态，信息不足。",
-        "reviewed_at": "2026-09-14T15:46:04+00:00"
+        "reason": "3D Gen&Recon：论文处理的是二维图像重建任务，未涉及三维几何、形状、场景或神经辐射场等三维重建技术，不属于三维生成与重建。；Depth Estimation：论文未进行单目、立体或多视角深度估计，其输出为二维图像而非深度图，不涉及深度预测或几何深度恢复任务。；Image Gen&Edit：论文核心贡献是提出一种基于扩散模型的图像生成方法，旨在从脑信号中重建视觉刺激图像，属于图像合成与可控生成范畴。；Relighting：论文未涉及光照估计、反射率分解或新光照条件下的外观生成，其目标是根据语义和轮廓信息重建原始图像内容。；Video Gen&Edit：论文主要关注静态图像的重建与生成，未涉及视频序列的生成、编辑或时序动态建模，不符合视频生成主题。；World Model：论文未构建预测环境动态或交互未来状态的生成模型，仅利用脑信号进行静态图像解码，不具备世界模型的核心特征。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "Image Gen&Edit"
@@ -61470,6 +61794,18 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Deng_GaussianDWM_3D_Gaussian_Driving_World_Model_for_Unified_Scene_Understanding_CVPR_2026_paper.html"
     },
     "conf-4d833648834a59a60740a358": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Implicit Field",
+          "Mesh",
+          "Optimization-Based"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "conferences": [
         {
           "edition": "SIGGRAPH Asia 2025",
@@ -62590,6 +62926,17 @@
       "url": "https://icml.cc/virtual/2026/poster/62080"
     },
     "conf-4f6bb359071d334a7928c961": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "State-Space/Recurrent",
+          "Transformer"
+        ],
+        "topics": [
+          "World Model"
+        ]
+      },
       "authors": [
         "Wang, ZiRui",
         "Deng, Yue",
@@ -62635,16 +62982,16 @@
       "title": "Parallelizing Model-based Reinforcement Learning Over the Sequence Length",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": true
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "标题涉及“Model-based Reinforcement Learning”（基于模型的强化学习），虽可能涉及世界模型，但无摘要且核心贡献偏向RL算法优化，信息不足无法确定是否属于生成式世界模型。",
-        "reviewed_at": "2026-09-14T15:24:29+00:00"
+        "reason": "3D Gen&Recon：论文未处理三维物体、场景重建或神经渲染，其世界模型用于强化学习策略，不涉及三维几何或资产生成技术。；Depth Estimation：论文未进行单目、立体或多视角深度估计，其世界模型用于强化学习中的状态预测，不涉及深度预测任务。；Image Gen&Edit：论文核心是强化学习中的模型并行化，不涉及图像生成、编辑或扩散模型等视觉合成技术，与图像生成主题完全无关。；Relighting：论文未涉及光照估计、反射率恢复或新光照下的外观生成，其内容完全集中在强化学习算法的训练加速上。；Video Gen&Edit：研究聚焦于强化学习训练效率，未涉及视频合成、编辑或生成式音视频方法，不符合视频生成与编辑的主题定义。；World Model：论文提出并行世界模型PWM，通过并行化序列长度加速模型学习，属于学习环境动态或预测未来状态的世界模型方法。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "World Model"
@@ -64449,6 +64796,18 @@
       "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32277"
     },
     "conf-51a04963416205371dce7055": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Gaussian Splatting",
+          "Multi-View-to-3D",
+          "Generative-Prior Optimization"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "authors": [
         "Shidong Zhang",
         "Shuaixin Li",
@@ -64740,6 +65099,17 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Gong_Ov3R_Open-Vocabulary_Semantic_3D_Reconstruction_from_RGB_Videos_CVPR_2026_paper.html"
     },
     "conf-51fc7ff318f2e395d7e02ae5": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Video Conditioned",
+          "Long-Horizon Generation"
+        ],
+        "topics": [
+          "Video Gen&Edit"
+        ]
+      },
       "authors": [
         "Mengxian Li",
         "Zhan Wang",
@@ -66749,6 +67119,18 @@
       "url": "https://eccv.ecva.net/virtual/2026/poster/4642"
     },
     "conf-53fc4af61751a6bb1c6719d7": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "NeRF",
+          "Text-to-3D",
+          "Generative-Prior Optimization"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "arxiv_id": "2305.18766",
       "authors": [
         "Junzhe Zhu",
@@ -66785,7 +67167,7 @@
       "title": "HIFA: High-fidelity Text-to-3D Generation with Advanced Diffusion Guidance",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
+          "3D Gen&Recon": true,
           "Depth Estimation": false,
           "Image Gen&Edit": false,
           "Relighting": false,
@@ -66793,8 +67175,8 @@
           "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，仅凭标题“Text-to-3D Generation”虽暗示与3D生成相关，但缺乏具体方法描述（如是否基于NeRF、Gaussian Splatting或特定几何表示），无法确认其具体技术归属，故标记为null。",
-        "reviewed_at": "2026-09-14T15:46:04+00:00"
+        "reason": "3D Gen&Recon：论文提出了一种基于扩散引导的文本到三维生成方法，通过优化神经辐射场表示来生成高保真且视图一致的三维资产，这完全符合三维生成与重建主题中关于三维对象生成的定义。；Depth Estimation：论文的核心任务是生成三维内容，虽然涉及深度相关的正则化以优化神经辐射场，但其目的并非从图像中估计深度图，而是为了提升三维生成的质量，因此不属于深度估计主题。；Image Gen&Edit：论文核心贡献是文本到三维生成，虽然使用了预训练的文本到图像扩散模型作为引导，但其最终目标是优化三维表示并生成三维资产，而非直接生成或编辑二维图像，因此不属于图像生成与编辑主题。；Relighting：论文主要解决文本到三维生成的几何一致性和纹理细节问题，并未涉及光照估计、反射率恢复或在新光照条件下重新渲染等任务，因此不属于重光照主题。；Video Gen&Edit：论文关注的是静态三维资产的生成，不涉及视频合成、图像到视频转换或视频编辑等任务，其优化过程针对的是三维场景的渲染一致性，与视频生成主题无关。；World Model：论文旨在从文本生成静态三维场景，并未构建可交互的环境模型、物理动力学预测或动作条件未来状态预测，因此不符合世界模型主题关于学习交互式环境或动态系统的定义。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "3D Gen&Recon"
@@ -67471,6 +67853,16 @@
       "url": "https://eccv.ecva.net/virtual/2024/poster/302"
     },
     "conf-54d21a73122be811e00e65de": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Structural Conditioning"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "conferences": [
         {
           "edition": "ECCV 2026",
@@ -72262,6 +72654,17 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Yuan_Identity-Preserving_Text-to-Video_Generation_by_Frequency_Decomposition_CVPR_2025_paper.html"
     },
     "conf-5a6001b4739cab723a2fc249": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Procedural",
+          "Text-to-3D"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "arxiv_id": "2510.10292",
       "authors": [
         "Joy Hsu",
@@ -72295,16 +72698,16 @@
       "title": "From Programs to Poses: Factored Real-World Scene Generation via Learned Program Libraries",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，无法判断具体任务归属。",
-        "reviewed_at": "2026-09-14T15:16:18+00:00"
+        "reason": "3D Gen&Recon：论文提出FactoredScenes框架，通过程序库和位姿预测生成真实3D房间场景，属于3D场景生成核心任务。；Depth Estimation：论文核心贡献是提出FactoredScenes框架，通过程序库和LLM生成真实3D场景及物体姿态。其任务属于3D场景生成与重建，旨在合成新场景，而非对图像进行深度估计或预测，故不符合主题范围。；Image Gen&Edit：论文核心贡献是生成3D场景结构和物体位姿，而非2D图像合成或编辑，不符合图像生成主题。；Relighting：论文未涉及光照估计、反射率恢复或新光照渲染，仅关注物体位姿和布局，与重光照主题无关。；Video Gen&Edit：论文未涉及视频合成、编辑或时序动态生成，仅关注静态3D场景布局，与视频生成主题无关。；World Model：论文未构建可交互的环境动力学模型或预测未来状态，仅生成静态场景布局，不属于世界模型范畴。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "3D Gen&Recon"
@@ -72941,15 +73344,13 @@
           "Image Gen&Edit": false,
           "Relighting": false,
           "Video Gen&Edit": false,
-          "World Model": null
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "标题涉及基于模型的强化学习对抗鲁棒性，虽可能涉及环境模型，但无摘要且核心偏向RL算法，无法确定是否属于生成式世界模型，故标记为null。",
-        "reviewed_at": "2026-09-14T15:40:24+00:00"
+        "reason": "3D Gen&Recon：论文核心贡献是提出针对对抗性破坏的鲁棒模型强化学习算法，并证明其理论保证。该研究属于强化学习与机器学习理论范畴，不涉及3D/4D物体的生成、重建、编辑或神经渲染，与3D Gen&Recon主题范围完全无关。；Depth Estimation：论文核心贡献是提出针对对抗性破坏的鲁棒模型强化学习算法，并证明其理论保证。该研究属于强化学习与机器学习理论范畴，未涉及单目、立体或多视角深度估计及预测任务，与当前主题范围完全无关。；Image Gen&Edit：论文核心贡献是提出针对对抗性破坏的鲁棒模型强化学习算法，并证明了其理论保证。该研究属于强化学习与机器学习理论范畴，不涉及图像合成、编辑或生成方法，与当前主题范围无关。；Relighting：论文核心贡献是提出针对对抗性破坏的鲁棒基于模型的强化学习算法，并证明其理论保证。该研究聚焦于强化学习中的动态模型估计与策略优化，属于机器学习与决策理论领域，与光照估计、反射率生成或外观重光照等视觉任务完全无关。；Video Gen&Edit：论文核心贡献是提出针对对抗性破坏的鲁棒模型强化学习算法，并证明其理论保证。该研究属于强化学习与机器学习理论范畴，不涉及视频合成、编辑或生成式音视频方法，与当前主题范围无关。；World Model：论文核心贡献是提出针对对抗性数据损坏的鲁棒模型强化学习算法，通过最大似然估计学习转移模型。其重点在于强化学习中的鲁棒性理论与算法设计，而非构建用于生成或预测环境动态的世界模型，不符合主题范围。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
-      "topics": [
-        "World Model"
-      ],
+      "topics": [],
       "url": "https://proceedings.mlr.press/v235/ye24a.html"
     },
     "conf-5b6813ed0704b06ba3944835": {
@@ -73436,6 +73837,18 @@
       "url": "https://openaccess.thecvf.com/content/ICCV2025/html/Giakoumoglou_SAGI_Semantically_Aligned_and_Uncertainty_Guided_AI_Image_Inpainting_ICCV_2025_paper.html"
     },
     "conf-5c0142951e05f5dc2fdb7883": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Multi-View-to-3D",
+          "Point Cloud",
+          "Optimization-Based"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "arxiv_id": "2507.03306",
       "authors": [
         "Peilin Tao",
@@ -73483,15 +73896,15 @@
       "topic_review": {
         "decisions": {
           "3D Gen&Recon": true,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "标题明确为“Structure-from-Motion”（运动恢复结构），这是3D重建领域的经典任务，属于3D生成与重建主题。",
-        "reviewed_at": "2026-09-14T15:18:18+00:00"
+        "reason": "3D Gen&Recon：论文提出多相机几何驱动的全局运动恢复结构方法，属于多视图重建和结构恢复的核心技术范畴。；Depth Estimation：虽然涉及三维点估计，但核心目标是全局相机位姿和场景结构重建，而非单目或立体深度图预测。；Image Gen&Edit：论文核心贡献是多相机系统的运动恢复结构算法，不涉及图像生成、编辑或扩散模型等图像合成技术。；Relighting：论文内容完全围绕相机位姿和三维点云重建，未涉及光照估计、反射率恢复或重光照生成等任务。；Video Gen&Edit：该研究专注于几何驱动的全局运动平均框架，旨在解决多相机位姿估计问题，与视频生成或编辑无关。；World Model：研究聚焦于静态场景的几何重建与位姿估计，未涉及环境动态预测、交互式世界模型或未来状态生成。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "3D Gen&Recon"
@@ -73499,6 +73912,17 @@
       "url": "https://openaccess.thecvf.com/content/ICCV2025/html/Tao_MGSfM_Multi-Camera_Geometry_Driven_Global_Structure-from-Motion_ICCV_2025_paper.html"
     },
     "conf-5c0b94e1afae7e7265cc87ac": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Transformer",
+          "Pixel/Observation Space"
+        ],
+        "topics": [
+          "World Model"
+        ]
+      },
       "arxiv_id": "2412.05766",
       "authors": [
         "Miles Hutson",
@@ -73536,11 +73960,11 @@
           "Image Gen&Edit": false,
           "Relighting": false,
           "Video Gen&Edit": false,
-          "World Model": null
+          "World Model": true
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "标题涉及基于模型的强化学习预测，可能涉及世界模型，但无摘要确认具体是否为生成式环境模型，信息不足。",
-        "reviewed_at": "2026-09-14T15:24:55+00:00"
+        "reason": "3D Gen&Recon：论文未涉及3D对象、场景的重建、生成或编辑，其世界模型主要处理2D观测或潜在状态，无3D几何贡献。；Depth Estimation：论文未涉及深度估计任务，其世界模型可能包含深度信息但非核心贡献，核心是策略学习中的干扰抑制。；Image Gen&Edit：论文核心贡献是改进基于模型的强化学习中的世界模型，以解决背景干扰问题，并非图像生成或编辑方法。；Relighting：论文未涉及光照估计、传输或编辑，其关注点是强化学习中的干扰因素，与重光照技术无关。；Video Gen&Edit：虽然涉及视频序列预测，但目的是强化学习策略优化而非视频内容生成或编辑，不符合视频生成主题。；World Model：论文明确针对基于模型的强化学习中的世界模型，提出方法以聚焦模型容量，避免无关细节干扰，属于世界模型范畴。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "World Model"
@@ -76145,20 +76569,18 @@
       "title": "UniMuMo: Unified Text, Music, and Motion Generation",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，仅凭标题“Unified Text, Music, and Motion Generation”无法确定其核心贡献是否属于给定的视觉生成主题（如可能是音频或动作生成，且未明确提及图像或视频）。",
-        "reviewed_at": "2026-09-14T15:28:55+00:00"
+        "reason": "3D Gen&Recon：论文处理的是动作序列（motion）而非3D几何、网格或场景重建，未涉及3D资产生成、NeRF或高斯泼溅等技术，不符合3D生成与重建主题。；Depth Estimation：论文未涉及单目、立体或多视图深度估计，其核心任务是音乐、动作和文本的生成，与深度预测任务无关，因此排除该主题。；Image Gen&Edit：论文核心贡献是统一文本、音乐和动作生成的多模态模型，未涉及图像合成、编辑或扩散模型在图像域的应用，不符合该主题范围。；Relighting：论文完全未涉及光照估计、反射率恢复或新光照条件下的外观生成，与重光照主题无任何技术关联，因此排除该主题。；Video Gen&Edit：虽然动作生成可能涉及时序数据，但论文明确针对音乐和动作模态，未涉及视频帧合成、视频编辑或视听联合生成，不属于视频生成主题。；World Model：论文旨在进行多模态内容生成而非学习环境动态或预测未来状态，未涉及交互式世界模型、物理动力学或动作条件下的状态预测，不符合世界模型主题。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
-      "topics": [
-        "Video Gen&Edit"
-      ],
+      "topics": [],
       "url": "https://ojs.aaai.org/index.php/AAAI/article/view/34752"
     },
     "conf-5f241d4bffdf7d4124f9bcc2": {
@@ -76718,6 +77140,21 @@
       "url": "https://eccv.ecva.net/virtual/2024/poster/2025"
     },
     "conf-5ff7914187ee0f3b054bbeb8": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Autoregressive",
+          "Text Conditioned",
+          "Pixel/Observation Space",
+          "Long-Horizon Generation"
+        ],
+        "topics": [
+          "Video Gen&Edit",
+          "World Model"
+        ]
+      },
       "arxiv_id": "2604.11707",
       "authors": [
         "Efstathios Karypidis",
@@ -76763,16 +77200,16 @@
       "title": "Representations Before Pixels: Semantics-Guided Hierarchical Video Prediction",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": true,
+          "World Model": true
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，仅凭标题“Semantics-Guided Hierarchical Video Prediction”无法确定其具体是视频生成、预测模型还是其他任务，信息不足。",
-        "reviewed_at": "2026-09-14T15:08:59+00:00"
+        "reason": "3D Gen&Recon：论文未涉及3D几何重建、网格生成或神经辐射场等3D表示技术，仅在特征空间预测场景结构，不属于3D生成与重建主题。；Depth Estimation：论文未进行单目、立体或多视图深度估计，虽然涉及场景结构预测，但输出是视频帧而非深度图，不符合深度估计主题。；Image Gen&Edit：论文核心贡献是视频预测框架，虽然涉及图像合成，但主要目标是时序视频生成而非静态图像编辑或生成，不符合该主题核心。；Relighting：论文未涉及光照估计、反射率恢复或新光照条件下的渲染，核心关注点是语义一致性和视觉保真度，与重光照无关。；Video Gen&Edit：论文提出Re2Pix框架用于未来视频预测，通过语义引导的层次化方法生成视频帧，属于视频生成与编辑的核心范畴。；World Model：论文旨在预测复杂动态环境（如自动驾驶）中的未来状态，通过语义表示预测场景动态，符合世界模型对环境动态预测的定义。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "Video Gen&Edit",
@@ -77197,6 +77634,16 @@
       "url": "https://eccv.ecva.net/virtual/2024/poster/2606"
     },
     "conf-606e58c0e7403d00eadd89f7": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Gaussian Splatting"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "conferences": [
         {
           "edition": "ECCV 2026",
@@ -77420,18 +77867,16 @@
         "decisions": {
           "3D Gen&Recon": false,
           "Depth Estimation": false,
-          "Image Gen&Edit": null,
+          "Image Gen&Edit": false,
           "Relighting": false,
           "Video Gen&Edit": false,
           "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "标题涉及跨数据集文本到图像的人像检索，属于图像检索/识别任务，而非图像生成或编辑，且无摘要确认具体方法，故主要主题不确定，但可排除其他生成类主题。",
-        "reviewed_at": "2026-09-14T15:23:15+00:00"
+        "reason": "3D Gen&Recon：论文处理的是二维图像和文本模态，未涉及三维重建、生成、NeRF或高斯泼溅等三维几何相关技术。；Depth Estimation：论文未进行深度估计或预测，其方法基于图传播和对比学习进行特征匹配，与深度感知任务无关。；Image Gen&Edit：论文核心贡献是跨数据集文本到图像行人检索的无监督域适应方法，不涉及图像生成、编辑或扩散模型等生成技术。；Relighting：论文未涉及光照估计、传输或编辑，核心关注点在于文本与图像特征的跨域对齐和知识蒸馏。；Video Gen&Edit：虽然应用场景涉及视频监控，但核心任务是检索而非视频生成或编辑，未涉及视频合成或时序生成机制。；World Model：论文未构建环境动态模型或预测未来状态，而是专注于跨模态特征表示学习和域适应，不属于世界模型范畴。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
-      "topics": [
-        "Image Gen&Edit"
-      ],
+      "topics": [],
       "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32037"
     },
     "conf-60dcd57f4fa3729dd6060aec": {
@@ -77572,6 +78017,19 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Guo_Dark3R_Learning_Structure_from_Motion_in_the_Dark_CVPR_2026_paper.html"
     },
     "conf-60e751dbd234b2245205c51b": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Gaussian Splatting",
+          "Video Conditioned",
+          "Long-Horizon Generation"
+        ],
+        "topics": [
+          "3D Gen&Recon",
+          "Video Gen&Edit"
+        ]
+      },
       "arxiv_id": "2409.08353",
       "authors": [
         "Yuheng Jiang",
@@ -77610,19 +78068,20 @@
       "title": "Robust Dual Gaussian Splatting for Immersive Human-centric Volumetric Videos",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": true,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，仅凭标题“Robust Dual Gaussian Splatting for Immersive Human-centric Volumetric Videos”无法确定其核心贡献是视频生成、3D重建还是其他，信息不足。",
-        "reviewed_at": "2026-09-14T15:29:44+00:00"
+        "reason": "3D Gen&Recon：论文利用高斯泼溅技术对人体进行三维重建与表示，支持自由视角渲染，属于3D重建与神经渲染的核心任务。；Depth Estimation：论文目标是实现沉浸式体积视频渲染，而非从图像中估计深度图，深度信息仅作为渲染的中间结果而非主要输出。；Image Gen&Edit：论文核心贡献是用于沉浸式视频的高保真人体体积表示与压缩，而非静态图像的生成或编辑，不符合该主题范围。；Relighting：论文主要关注人体外观与运动的高斯表示及压缩，未涉及光照估计、反射率分解或新光照条件下的重光照生成。；Video Gen&Edit：论文提出DualGS方法用于实时高保真的人体体积视频播放与压缩，属于视频合成与生成范畴，符合该主题定义。；World Model：论文侧重于特定人体实例的视觉重建与压缩，并未构建可交互的环境动力学模型或预测未来状态，不属于世界模型。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
-        "3D Gen&Recon"
+        "3D Gen&Recon",
+        "Video Gen&Edit"
       ],
       "url": "https://doi.org/10.1145/3687926"
     },
@@ -84500,6 +84959,18 @@
       "url": "https://eccv.ecva.net/virtual/2026/poster/3537"
     },
     "conf-6974ef6a76d870300c4f3fc1": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Depth Completion",
+          "Video",
+          "Supervised"
+        ],
+        "topics": [
+          "Depth Estimation"
+        ]
+      },
       "authors": [
         "Jianbo Cao",
         "Yuqi Han",
@@ -85070,6 +85541,18 @@
       "url": "https://proceedings.mlr.press/v267/lee25p.html"
     },
     "conf-6a5224396b841157fe16d3c0": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Point Cloud",
+          "Multi-View-to-3D",
+          "Feed-Forward"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "arxiv_id": "2507.02863",
       "authors": [
         "Yuqi Wu",
@@ -85118,15 +85601,15 @@
       "topic_review": {
         "decisions": {
           "3D Gen&Recon": true,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "标题明确为“3D Reconstruction”（3D重建），尽管摘要缺失，但标题直接指向3D重建主题。",
-        "reviewed_at": "2026-09-14T15:18:18+00:00"
+        "reason": "3D Gen&Recon：论文提出Point3R框架，通过显式空间指针记忆实现密集流式三维重建，属于多视图重建和神经渲染范畴，符合主题定义。；Depth Estimation：虽然重建过程涉及深度信息，但论文核心是全局三维场景重建而非单目或立体深度估计任务，不符合深度估计主题。；Image Gen&Edit：论文核心贡献是流式三维重建框架，不涉及图像合成、编辑或生成方法，与图像生成主题无关。；Relighting：论文未涉及光照估计、反射率恢复或新光照下的外观生成，核心在于几何结构重建，与重光照主题无关。；Video Gen&Edit：论文关注从图像序列进行三维场景重建，而非视频生成、编辑或动画制作，不符合视频生成主题。；World Model：论文旨在重建静态三维场景结构，而非学习环境动态、物理规律或交互式世界模型，不属于世界模型主题。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "3D Gen&Recon"
@@ -89330,6 +89813,19 @@
       "url": "https://iclr.cc/virtual/2025/poster/29926"
     },
     "conf-6f89e91e2479b6998739a55a": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Text-to-3D",
+          "Gaussian Splatting",
+          "Point Cloud",
+          "Optimization-Based"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "conferences": [
         {
           "edition": "ECCV 2026",
@@ -89607,20 +90103,18 @@
       "title": "You Think, You ACT: The New Task of Arbitrary Text to Motion Generation",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，标题涉及“Text to Motion Generation”，可能指人体动作生成（3D/视频）或机器人动作，缺乏摘要无法确定具体归属主题。",
-        "reviewed_at": "2026-09-14T15:36:21+00:00"
+        "reason": "3D Gen&Recon：论文生成的是人体动作序列（运动学数据），而非3D几何形状、场景重建或3D资产生成，不符合3D生成与重建主题的定义范围。；Depth Estimation：论文未涉及深度估计、单目或多目深度预测任务，其核心是动作生成而非几何深度感知，与深度估计主题无关。；Image Gen&Edit：论文核心贡献是文本到人体动作生成的新任务与数据集，不涉及图像合成、编辑或扩散模型在图像域的应用，与图像生成主题无关。；Relighting：论文内容完全涉及文本到动作生成，未涉及光照估计、反射率恢复或重光照技术，与重光照主题无任何关联。；Video Gen&Edit：虽然动作生成可渲染为视频，但论文主要关注动作序列生成与文本理解，未提出视频合成、编辑或音视频联合生成的核心方法，不属于视频生成主题。；World Model：论文未构建环境动力学模型或交互式世界模型，仅针对特定任务进行动作生成，缺乏对物理动态或未来状态预测的世界模型核心贡献。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
-      "topics": [
-        "Video Gen&Edit"
-      ],
+      "topics": [],
       "url": "https://openaccess.thecvf.com/content/ICCV2025/html/Wang_You_Think_You_ACT_The_New_Task_of_Arbitrary_Text_ICCV_2025_paper.html"
     },
     "conf-6fe853faa88489e1e6cc14ea": {
@@ -89727,20 +90221,18 @@
       "title": "Jump Restore Light Transport",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，仅凭标题“Jump Restore Light Transport”无法确定其具体是重光照、渲染还是其他任务，信息不足。",
-        "reviewed_at": "2026-09-14T15:29:44+00:00"
+        "reason": "3D Gen&Recon：论文未涉及三维对象生成、重建或神经渲染，其光传输模拟应用属于渲染领域而非三维几何重建或生成任务。；Depth Estimation：论文未涉及单目、立体或多视图深度估计，其内容完全集中在采样算法和光传输模拟，与深度估计任务无关。；Image Gen&Edit：论文核心是连续时间马尔可夫链蒙特卡洛采样框架，虽应用于光传输模拟，但并非图像生成或编辑方法，不符合该主题定义。；Relighting：论文虽提及光传输模拟，但核心贡献是通用的MCMC采样算法改进，并未专门解决重光照、反射率估计或光照编辑问题。；Video Gen&Edit：论文未涉及视频合成、编辑或生成音频视频的方法，其贡献集中在采样算法理论，与视频生成主题无关。；World Model：论文未构建学习环境动态或交互世界的生成模型，其MCMC框架用于概率分布采样，不属于世界模型范畴。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
-      "topics": [
-        "Relighting"
-      ],
+      "topics": [],
       "url": "https://sa2025.conference-schedule.org/?post_type=page&p=15&id=papers_1176&sess=sess139"
     },
     "conf-7026e5637795037af9800707": {
@@ -89813,6 +90305,16 @@
       "url": "https://eccv.ecva.net/virtual/2026/poster/3886"
     },
     "conf-702732d352dbd752064f6e20": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "arxiv_id": "2505.13377",
       "authors": [
         "Yasi Zhang",
@@ -89862,16 +90364,16 @@
       "title": "Score Distillation Beyond Acceleration: Generative Modeling from Corrupted Data",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "标题提及分数蒸馏和生成建模，但未明确指定是图像、视频还是3D生成，且无摘要辅助判断具体模态，信息不足。",
-        "reviewed_at": "2026-09-14T15:19:58+00:00"
+        "reason": "3D Gen&Recon：论文聚焦于二维图像数据的生成与恢复，未涉及三维几何重建、网格生成或神经辐射场等三维生成与重建技术。；Depth Estimation：论文未涉及单目、立体或多视图深度估计，其核心是生成模型学习，而非预测深度图或几何结构。；Image Gen&Edit：论文提出RSD框架，利用扩散模型从含噪或退化数据中学习生成模型，并在图像去噪、修复等任务上验证，属于图像生成与编辑范畴。；Relighting：论文处理的是模糊、掩码等退化数据的恢复，未涉及光照估计、反射率分解或新光照条件下的图像重光照任务。；Video Gen&Edit：摘要仅提及图像数据集如CIFAR-10和FFHQ，未涉及视频生成、编辑或时序建模，核心贡献与视频生成任务无直接关联。；World Model：研究目标是学习静态图像的生成分布，而非构建可交互的环境动态模型或预测动作条件下的未来状态，不符合世界模型定义。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "Image Gen&Edit"
@@ -90893,6 +91395,17 @@
       "url": "https://openaccess.thecvf.com/content/ICCV2025/html/Zhang_Quantifying_and_Narrowing_the_Unknown_Interactive_Text-to-Video_Retrieval_via_Uncertainty_ICCV_2025_paper.html"
     },
     "conf-72386b5367f119dd6085b110": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Autoregressive",
+          "Continuous Latents"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "arxiv_id": "2505.07812",
       "authors": [
         "Chenze Shao",
@@ -90939,16 +91452,16 @@
       "title": "Continuous Visual Autoregressive Generation via Score Maximization",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，标题提及“连续视觉自回归生成”，但未明确是图像、视频还是3D，信息不足。",
-        "reviewed_at": "2026-09-14T15:20:24+00:00"
+        "reason": "3D Gen&Recon：论文关注二维视觉数据的连续自回归生成，未涉及三维几何重建、网格生成或三维场景表示等技术贡献。；Depth Estimation：论文不涉及深度图预测、单目或立体深度估计，而是专注于视觉数据的生成模型训练方法。；Image Gen&Edit：论文提出连续视觉自回归生成框架，旨在直接处理连续视觉数据而不依赖量化，核心贡献属于图像生成方法。；Relighting：摘要未提及光照估计、反射率恢复或重光照任务，核心贡献在于连续自回归生成的评分规则优化。；Video Gen&Edit：摘要未提及视频生成、时序建模或视频编辑任务，仅讨论通用视觉数据的自回归生成，无视频相关证据。；World Model：论文核心是图像生成的训练目标与理论框架，未涉及环境动力学预测、交互式世界模型或动作条件未来状态。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "Image Gen&Edit"
@@ -92001,6 +92514,16 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Li_PROMPTMINER_Black-Box_Prompt_Stealing_against_Text-to-Image_Generative_Models_via_Reinforcement_CVPR_2026_paper.html"
     },
     "conf-73a0fb7f9675e36389d1ebfb": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "arxiv_id": "2412.07229",
       "authors": [
         "Wan Jiang",
@@ -92051,16 +92574,16 @@
       "title": "Moderating the Generalization of Score-based Generative Model",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "标题提及'Score-based Generative Model'，但未指明具体应用领域（图像、视频或3D），且无摘要，信息不足无法确定具体归属。",
-        "reviewed_at": "2026-09-14T15:24:55+00:00"
+        "reason": "3D Gen&Recon：论文未涉及3D或4D对象的生成、重建、编辑或神经渲染技术。其核心方法基于连续时间随机微分方程（SDE）过程中的分数函数调整，属于2D图像或通用数据分布的生成模型范畴，没有涉及3D几何结构、网格、点云、NeRF或高斯泼溅等3D表示或重建方法，因此与3D生成与重建主题无关。；Depth Estimation：论文未涉及单目、立体或多视图深度估计、预测或补全。其方法基于分数函数调整以实现机器遗忘，不涉及深度图生成、几何匹配、成本体或深度回归等技术，因此与深度估计主题无关。；Image Gen&Edit：论文核心贡献是提出一种针对基于分数的生成模型（SGM）的机器遗忘（Machine Unlearning）方法，通过调整分数函数来抑制模型对特定数据的泛化能力。虽然其应用背景可能涉及图像生成，但该方法本身是一种通用的生成模型训练与推理策略，旨在解决生成模型的安全与隐私问题，而非直接改进图像合成、编辑或可控生成的视觉质量或技术机制。因此，它不属于图像生成与编辑的核心技术范畴，而是生成模型基础理论层面的贡献。；Relighting：论文未涉及光照估计、传输、编辑或生成，也未处理反射率、阴影或新光照下的外观变化。其核心贡献是机器遗忘框架，旨在移除训练数据的影响，与光照建模、逆渲染或重光照技术完全无关，因此不符合重光照主题的纳入标准。；Video Gen&Edit：论文摘要中未提及任何与视频生成、视频编辑、图像到视频转换或视频相关的时间建模技术。该方法主要关注基于分数的生成模型（SGM）的通用遗忘机制，虽然SGM可用于视频生成，但本文并未针对视频模态提出特定的时间一致性、运动建模或视频编辑方法，因此不符合视频生成与编辑主题的纳入标准。；World Model：论文未涉及学习环境动态、物理动力学或交互式世界的预测模型。其研究对象是基于分数的生成模型（SGM），主要关注数据分布的生成与遗忘，而非构建能够预测未来状态或支持动作条件生成的世界模型。虽然SGM可用于世界模型，但本文并未提出任何关于世界模型动力学、状态表示或规划推理的核心贡献，因此不符合世界模型主题。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "Image Gen&Edit"
@@ -93431,6 +93954,16 @@
       "url": "https://ojs.aaai.org/index.php/AAAI/article/view/37522"
     },
     "conf-76072c0b31a1b7211d481e6a": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Text Conditioned"
+        ],
+        "topics": [
+          "Video Gen&Edit"
+        ]
+      },
       "arxiv_id": "2412.09283",
       "authors": [
         "Tiehan Fan",
@@ -93486,16 +94019,16 @@
       "title": "InstanceCap: Improving Text-to-Video Generation via Instance-aware Structured Caption",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": true,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，仅凭标题“InstanceCap: Improving Text-to-Video Generation...”虽暗示视频生成，但缺乏摘要确认其核心贡献是生成模型本身还是仅涉及提示词工程（Captioning），信息不足。",
-        "reviewed_at": "2026-09-14T15:24:29+00:00"
+        "reason": "3D Gen&Recon：论文未涉及3D对象、场景的生成、重建或编辑，其关注点在于2D视频内容的文本条件生成质量，与3D几何无关。；Depth Estimation：论文未进行单目、立体或多视角深度估计，其辅助模型用于实例分割以生成字幕，而非预测深度图，不符合深度估计主题。；Image Gen&Edit：论文核心贡献是改进文本到视频生成的实例感知结构化字幕框架，而非图像合成或编辑方法，不符合该主题范围。；Relighting：论文未涉及光照估计、传输或编辑，其核心在于通过结构化字幕提升视频生成的语义一致性，与重光照技术无关。；Video Gen&Edit：论文提出InstanceCap框架以增强文本到视频生成的保真度，通过实例级细粒度字幕解决视频生成中的幻觉和运动描述不精确问题，属于视频生成核心方法。；World Model：论文未构建学习环境动态或交互世界的生成模型，而是专注于基于文本提示的视频内容生成，不属于世界模型范畴。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "Video Gen&Edit"
@@ -94069,6 +94602,17 @@
       "url": "https://papers.nips.cc/paper_files/paper/2025/hash/ced63a669e5f3e6fd6dad3a0fd8f3567-Abstract-Conference.html"
     },
     "conf-76b11fc748e5a32cee8cf615": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Direct Regression"
+        ],
+        "topics": [
+          "Depth Estimation",
+          "Relighting"
+        ]
+      },
       "arxiv_id": "2512.04222",
       "authors": [
         "Alara Dirik",
@@ -94117,18 +94661,19 @@
       "title": "ReasonX: MLLM-Guided Intrinsic Image Decomposition",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": true,
+          "Image Gen&Edit": false,
+          "Relighting": true,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，仅凭标题“MLLM-Guided Intrinsic Image Decomposition”无法确定其具体任务归属，信息不足。",
-        "reviewed_at": "2026-09-14T15:13:27+00:00"
+        "reason": "3D Gen&Recon：虽然分解出深度和法线，但论文目标是单张图像的内在属性估计，而非从多视图或单视图重建3D几何、网格、NeRF或高斯泼溅等3D资产，不属于3D生成或重建范畴。；Depth Estimation：论文将深度作为内在图像分解的核心输出之一，并在ETH3D数据集上评估了深度精度，其方法直接提升了单目深度估计的性能，符合深度估计主题的定义。；Image Gen&Edit：论文核心贡献是内在图像分解，旨在将图像分离为反照率、深度、法线和光照等物理分量，属于分析性视觉任务，而非图像合成、编辑或可控生成，不符合该主题定义。；Relighting：内在图像分解明确包含光照估计，这是重光照任务的基础，论文通过分解出光照分量来支持对图像外观和照明条件的理解，符合重光照主题中估计光照的定义。；Video Gen&Edit：论文处理的是静态图像的内在属性分解，未涉及视频合成、视频编辑、动画生成或音视频联合生成，与视频生成和编辑主题完全无关。；World Model：论文未构建学习环境动态、物理规律或动作条件未来状态的生成式或预测性世界模型，而是利用多模态大语言模型作为感知裁判来指导图像分解模型的训练。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
+        "Depth Estimation",
         "Relighting"
       ],
       "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Dirik_ReasonX_MLLM-Guided_Intrinsic_Image_Decomposition_CVPR_2026_paper.html"
@@ -94188,6 +94733,18 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Lee_OmniSplat_Taming_Feed-Forward_3D_Gaussian_Splatting_for_Omnidirectional_Images_with_CVPR_2025_paper.html"
     },
     "conf-76b95b09188e5ed1ed624938": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Multi-View-to-3D",
+          "NeRF",
+          "Optimization-Based"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "conferences": [
         {
           "edition": "SIGGRAPH Asia 2025",
@@ -96253,6 +96810,16 @@
       "url": "https://papers.nips.cc/paper_files/paper/2024/hash/076c1fa639a7190e216e734f0a1b3e7b-Abstract-Conference.html"
     },
     "conf-79a647c212297e0ae5e4d6d3": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Language-Augmented Multimodal"
+        ],
+        "topics": [
+          "World Model"
+        ]
+      },
       "arxiv_id": "2409.17652",
       "authors": [
         "Fan-Yun Sun",
@@ -96304,16 +96871,16 @@
       "title": "FactorSim: Generative Simulation via Factorized Representation",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": true
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，仅凭标题'Generative Simulation'无法确定具体是图像、视频、3D还是世界模型，信息不足。",
-        "reviewed_at": "2026-09-14T15:29:18+00:00"
+        "reason": "3D Gen&Recon：论文关注的是基于语言生成仿真逻辑和任务定义，并未涉及3D几何重建、网格生成或神经渲染等技术贡献。；Depth Estimation：论文未涉及单目、立体或多视图深度估计任务，其评估指标为仿真代码的准确性和强化学习迁移能力。；Image Gen&Edit：论文核心贡献是生成用于训练智能体的代码形式仿真环境，而非图像合成、编辑或扩散模型，不符合图像生成主题。；Relighting：论文未涉及光照估计、反射率恢复或重光照技术，其核心在于仿真环境的程序化生成而非视觉外观控制。；Video Gen&Edit：论文未涉及视频合成、编辑或音视频生成方法，其输出为可执行的仿真代码，与视频生成主题无关。；World Model：论文提出从语言输入生成完整的仿真环境代码，构建可交互的动态世界模型，用于训练智能体，符合世界模型定义。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "World Model"
@@ -97694,6 +98261,18 @@
       "url": "https://icml.cc/virtual/2026/poster/62177"
     },
     "conf-7b6a92edfc01dca0b60d2f03": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Pixel/Observation Space"
+        ],
+        "topics": [
+          "3D Gen&Recon",
+          "World Model"
+        ]
+      },
       "arxiv_id": "2512.02982",
       "authors": [
         "Xiang Xu",
@@ -97743,18 +98322,19 @@
       "title": "U4D: Uncertainty-Aware 4D World Modeling from LiDAR Sequences",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": true
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，仅凭标题“Uncertainty-Aware 4D World Modeling from LiDAR Sequences”无法确定其是生成式世界模型还是3D重建/预测，信息不足。",
-        "reviewed_at": "2026-09-14T15:13:27+00:00"
+        "reason": "3D Gen&Recon：论文提出U4D框架，从LiDAR序列重建动态3D环境，属于3D生成与重建的核心技术贡献。；Depth Estimation：虽然LiDAR提供深度信息，但核心是4D场景生成而非单目或立体深度估计任务，不匹配。；Image Gen&Edit：论文核心贡献是LiDAR序列的4D世界建模，并非二维图像合成或编辑，不符合该主题范围。；Relighting：论文核心贡献是提出U4D框架，利用不确定性感知方法从LiDAR序列生成几何保真且时间一致的4D世界模型。该工作聚焦于动态场景的几何重建与生成，旨在提升自动驾驶感知的可靠性，未涉及光照估计、反射率处理或新光照下的外观生成，因此不属于Relighting主题。；Video Gen&Edit：虽然涉及时序数据，但目标是3D/4D几何结构而非视频像素生成，不属于视频生成主题。；World Model：论文明确构建4D世界模型，预测动态环境状态，符合世界模型主题中环境动态建模的定义。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
+        "3D Gen&Recon",
         "World Model"
       ],
       "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Xu_U4D_Uncertainty-Aware_4D_World_Modeling_from_LiDAR_Sequences_CVPR_2026_paper.html"
@@ -102829,23 +103409,32 @@
       "title": "ELGAR: Expressive Cello Performance Motion Generation for Audio Rendition",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，标题提及“大提琴演奏动作生成用于音频渲染”，可能涉及3D人体动作生成或音频驱动，但无法确定是否属于3D生成/重建或视频生成，信息不足。",
-        "reviewed_at": "2026-09-14T15:20:24+00:00"
+        "reason": "3D Gen&Recon：论文核心贡献是提出ELGAR框架，基于音频生成大提琴演奏的全身体运动。该任务属于人体动作生成与音频驱动动画，旨在模拟演奏者肢体动态，而非3D/4D物体、场景或网格的生成、重建及神经渲染，因此不符合3D Gen&Recon主题范围。；Depth Estimation：论文核心贡献是提出ELGAR框架，利用扩散模型从音频生成大提琴演奏的全身体运动。该研究聚焦于动作生成与音乐表演模拟，属于计算机视觉中的动作合成领域，与深度估计、预测或重建任务无直接关联，故排除。；Image Gen&Edit：论文核心贡献是提出ELGAR框架，利用扩散模型从音频生成大提琴演奏的全身运动。该任务属于动作生成或音频驱动动画，旨在重建人体运动轨迹，而非图像合成、编辑或生成，因此不符合图像生成与编辑的主题范围。；Relighting：论文核心贡献是提出ELGAR框架，利用扩散模型从音频生成大提琴演奏的全身体部运动。该工作聚焦于动作生成与交互建模，不涉及光照、反射率或阴影的估计与生成，与Relighting主题无关。；Video Gen&Edit：论文核心贡献是提出ELGAR框架，基于音频生成大提琴演奏的全身运动数据。该任务属于动作生成与音频驱动，旨在生成运动序列而非视频像素或图像，不符合视频合成、编辑或生成式音视频方法的定义，故排除。；World Model：论文核心贡献是提出ELGAR框架，利用扩散模型从音频生成大提琴演奏的全身体部运动，并设计交互接触损失。该任务属于基于音频的动作生成与人体运动合成，旨在还原演奏动作，而非学习环境动态或预测交互世界的未来状态，因此不符合世界模型主题范围。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
-      "topics": [
-        "Video Gen&Edit"
-      ],
+      "topics": [],
       "url": "https://s2025.conference-schedule.org/?post_type=page&p=14&id=papers_1381&sess=sess150"
     },
     "conf-81087e0a3fb5467052759999": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Multi-Condition Control"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "arxiv_id": "2411.01573",
       "authors": [
         "Bing Cao",
@@ -102880,16 +103469,16 @@
       "title": "Conditional Controllable Image Fusion",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，仅凭标题“Conditional Controllable Image Fusion”无法确定其具体技术路线（如是否为生成式融合或传统融合），信息不足。",
-        "reviewed_at": "2026-09-14T15:27:20+00:00"
+        "reason": "3D Gen&Recon：论文聚焦二维图像融合，未涉及三维重建、几何估计或三维资产生成，不属于三维生成与重建主题。；Depth Estimation：论文目标是生成融合图像，未进行深度估计、深度补全或几何深度预测，不符合深度估计主题。；Image Gen&Edit：论文提出基于扩散模型的条件可控图像融合框架，核心贡献是生成融合图像，属于图像合成与编辑范畴。；Relighting：论文处理多源图像信息融合，未涉及光照估计、重光照或反射率建模，不属于重光照主题范围。；Video Gen&Edit：摘要仅提及图像融合任务，未涉及视频生成、编辑或时序建模，不符合视频生成与编辑主题范围。；World Model：方法基于扩散模型进行图像融合，未构建环境动力学或交互式世界模型，不符合世界模型主题定义。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "Image Gen&Edit"
@@ -104665,6 +105254,17 @@
       "url": "https://papers.nips.cc/paper_files/paper/2024/hash/456ce0476c9b4689a74918b851cecd5a-Abstract-Conference.html"
     },
     "conf-83b66c8bc418b4a0de3b9799": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Generative-Prior Relighting",
+          "Environment Map"
+        ],
+        "topics": [
+          "Relighting"
+        ]
+      },
       "conferences": [
         {
           "edition": "SIGGRAPH Asia 2025",
@@ -105276,20 +105876,18 @@
       "title": "Learning to Move with Style: Few-Shot Cross-Modal Style Transfer for Creative Robot Motion Generation",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，仅凭标题“机器人运动生成”无法确定其是否属于视觉生成、3D重建或世界模型等具体主题，信息不足。",
-        "reviewed_at": "2026-09-14T15:03:02+00:00"
+        "reason": "3D Gen&Recon：论文处理的是动作序列和姿态数据，未涉及3D几何重建、网格生成或场景重建等3D生成与重建技术。；Depth Estimation：论文未进行单目、立体或多视角深度估计，其核心在于动作风格转换而非深度图预测或几何深度恢复。；Image Gen&Edit：论文核心贡献是机器人运动风格迁移，输入为人体动作视频，输出为机器人运动序列，并非图像合成或编辑任务。；Relighting：论文关注运动风格迁移，未涉及光照估计、反射率恢复或新光照条件下的外观生成等重光照任务。；Video Gen&Edit：虽然输入包含视频，但目标是生成机器人运动轨迹而非视频帧序列，不属于视频生成或视频编辑的核心范畴。；World Model：方法基于Transformer进行风格迁移，未构建预测环境动态或未来状态的生成式世界模型，不符合世界模型定义。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
-      "topics": [
-        "Video Gen&Edit"
-      ],
+      "topics": [],
       "url": "https://papers.nips.cc/paper_files/paper/2025/hash/137298d9e40c90a36a29616d82e0e5a5-Abstract-Creative_AI_Track.html"
     },
     "conf-8512e0ead9f135929851e43f": {
@@ -106556,6 +107154,17 @@
       "url": "https://ras.papercept.net/conferences/conferences/IROS25/program/IROS25_ContentListWeb_2.html#2704"
     },
     "conf-86959b1dcc2ff1b9d0fc8c27": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Text Conditioning"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "conferences": [
         {
           "edition": "ECCV 2026",
@@ -107725,6 +108334,18 @@
       "url": "https://papers.nips.cc/paper_files/paper/2025/hash/ac1af21780d24a1345774c4a2e383972-Abstract-Conference.html"
     },
     "conf-886627f8207133c63202fad9": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "GAN",
+          "Continuous Latents",
+          "Reference Conditioning"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "arxiv_id": "2305.06671",
       "authors": [
         "Yuxuan Duan",
@@ -107770,16 +108391,16 @@
       "title": "WeditGAN: Few-Shot Image Generation via Latent Space Relocation",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "标题提及“Image Generation”（图像生成），但摘要为空，无法确认具体方法或是否属于生成/编辑范畴，信息不足。",
-        "reviewed_at": "2026-09-14T15:46:04+00:00"
+        "reason": "3D Gen&Recon：论文处理的是二维图像生成任务，未涉及三维对象、场景的重建、生成或编辑，不属于三维生成与重建主题。；Depth Estimation：论文未进行深度估计或预测，其目标是生成图像而非恢复几何深度信息，不符合深度估计主题。；Image Gen&Edit：论文提出WeditGAN用于少样本图像生成，通过编辑StyleGAN的潜在代码实现模型迁移，核心贡献属于图像合成与生成方法。；Relighting：论文未涉及光照估计、传输或编辑，其核心是潜在空间分布的重定位，与重光照技术无关。；Video Gen&Edit：论文专注于静态图像的少样本生成，未涉及视频合成、编辑或时序建模，不符合视频生成与编辑的主题范围。；World Model：论文旨在解决图像生成的过拟合问题，未构建环境动态、物理规律或交互式世界的预测模型，不属于世界模型主题。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "Image Gen&Edit"
@@ -110757,6 +111378,16 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Liang_FlowVid_Taming_Imperfect_Optical_Flows_for_Consistent_Video-to-Video_Synthesis_CVPR_2024_paper.html"
     },
     "conf-8c812dcf0e52bfb6ee4f43b4": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "State-Space/Recurrent"
+        ],
+        "topics": [
+          "World Model"
+        ]
+      },
       "arxiv_id": "2510.05558",
       "authors": [
         "Christopher Hoang",
@@ -110801,19 +111432,18 @@
       "title": "Midway Network: Learning Representations for Recognition and Motion from Latent Dynamics",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": true
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "标题涉及'Latent Dynamics'和'Motion'，但缺乏摘要，无法确定其具体是用于视频生成、世界模型还是其他任务，信息不足。",
-        "reviewed_at": "2026-09-14T15:16:18+00:00"
+        "reason": "3D Gen&Recon：论文未涉及三维物体、场景或几何结构的生成与重建，其目标局限于二维视频帧间的语义与运动表示学习。；Depth Estimation：虽然评估了光流任务，但核心贡献是学习通用视觉表示而非深度估计，未涉及单目或立体深度预测的具体方法。；Image Gen&Edit：论文核心是自监督学习架构，旨在从自然视频中提取用于识别和运动理解的视觉表示，并非图像生成或编辑方法。；Relighting：摘要未提及光照估计、反射率恢复或新光照条件下的外观生成，核心贡献与重光照技术完全无关。；Video Gen&Edit：该工作关注视频表示学习和动态建模，用于下游分割与光流任务，不涉及视频合成、生成或编辑的核心技术贡献。；World Model：论文扩展了潜在动力学建模，通过中间路径推断帧间运动潜变量，学习观察及其随时间转换的潜在表示，符合世界模型定义。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
-        "Video Gen&Edit",
         "World Model"
       ],
       "url": "https://iclr.cc/virtual/2026/poster/10008791"
@@ -111500,6 +112130,17 @@
       "url": "https://ojs.aaai.org/index.php/AAAI/article/view/29056"
     },
     "conf-8d6eba53eb1e7b2b9467fcee": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Multi-View-to-3D",
+          "Generative-Prior Optimization"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "arxiv_id": "2609.06099",
       "authors": [
         "Yuankun Yang",
@@ -111688,6 +112329,16 @@
       "url": "https://icml.cc/virtual/2026/poster/65571"
     },
     "conf-8daddc6de3f58ac12307c155": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "arxiv_id": "2512.17298",
       "authors": [
         "Fanpu Cao",
@@ -111734,16 +112385,16 @@
       "title": "ProCache: Constraint-Aware Feature Caching with Selective Computation for Diffusion Transformer Acceleration",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，仅凭标题“Diffusion Transformer Acceleration”无法确定其具体应用于图像、视频还是其他模态的生成，信息不足。",
-        "reviewed_at": "2026-09-14T15:13:02+00:00"
+        "reason": "3D Gen&Recon：论文聚焦于2D图像生成的扩散模型加速，未涉及3D对象、场景重建、NeRF或高斯泼溅等3D生成或重建技术，与3D主题无关。；Depth Estimation：论文未涉及单目、立体或多视图深度估计，核心贡献是扩散模型推理加速，不涉及深度预测、几何匹配或深度补全等任务。；Image Gen&Edit：论文核心贡献是加速扩散Transformer（DiT）的推理过程，而DiT是图像生成领域的主流架构，实验在PixArt-alpha等图像生成模型上验证，属于图像生成加速技术。；Relighting：论文未涉及光照估计、反射率恢复或新光照下的外观生成，核心是计算加速而非光照渲染，与重光照主题完全无关。；Video Gen&Edit：摘要中未提及视频生成、编辑或时序视频建模，实验对象为PixArt-alpha和DiT，均为图像生成模型，缺乏视频生成的核心贡献证据。；World Model：论文讨论的是静态图像生成的去噪过程加速，不涉及环境动态预测、交互式世界模型或动作条件未来状态预测，不符合世界模型定义。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "Image Gen&Edit"
@@ -111927,20 +112578,18 @@
       "title": "SD4Match: Learning to Prompt Stable Diffusion Model for Semantic Matching",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，仅凭标题“学习提示Stable Diffusion模型进行语义匹配”无法确定其核心贡献是生成、编辑还是其他应用，信息不足。",
-        "reviewed_at": "2026-09-14T15:44:27+00:00"
+        "reason": "3D Gen&Recon：论文未涉及三维重建、生成或神经渲染，仅利用二维图像特征进行匹配，不符合三维主题定义。；Depth Estimation：论文未进行深度估计或预测，而是利用扩散模型特征进行关键点匹配，不属于深度估计主题。；Image Gen&Edit：论文核心贡献是利用 Stable Diffusion 的中间特征进行语义关键点匹配，而非图像生成或编辑，不属于该主题。；Relighting：论文未涉及光照估计、传输或重光照生成，核心任务是语义匹配，与重光照主题完全无关。；Video Gen&Edit：论文处理的是静态图像对之间的匹配任务，不涉及视频合成、编辑或生成，与视频主题无关。；World Model：论文未构建环境动力学模型或预测未来状态，仅使用扩散模型特征做匹配，不属于世界模型范畴。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
-      "topics": [
-        "Image Gen&Edit"
-      ],
+      "topics": [],
       "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Li_SD4Match_Learning_to_Prompt_Stable_Diffusion_Model_for_Semantic_Matching_CVPR_2024_paper.html"
     },
     "conf-8e3ac4d814d55b688c00b5b8": {
@@ -112292,6 +112941,17 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Chen_SHAP-EDITOR_Instruction-Guided_Latent_3D_Editing_in_Seconds_CVPR_2024_paper.html"
     },
     "conf-8f850776a3d7f3caaa8a9543": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Continuous Latents"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "conferences": [
         {
           "edition": "ECCV 2026",
@@ -115191,6 +115851,17 @@
       "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33062"
     },
     "conf-92335796bba5683f366e9f3d": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Autoregressive",
+          "Discrete Tokens"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "arxiv_id": "2507.02358",
       "authors": [
         "Anlin Zheng",
@@ -115243,16 +115914,16 @@
       "title": "Holistic Tokenizer for Autoregressive Image Generation",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
           "Image Gen&Edit": true,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "标题明确为“Autoregressive Image Generation”（自回归图像生成），属于图像生成方法，尽管摘要缺失，但标题指向明确。",
-        "reviewed_at": "2026-09-14T15:18:18+00:00"
+        "reason": "3D Gen&Recon：研究内容局限于二维图像像素空间的自回归建模，未涉及三维几何重建、网格生成、神经辐射场或任何三维场景表示方法。；Depth Estimation：论文未进行单目、立体或多视角深度估计，其输出为完整图像而非深度图，不涉及几何深度预测或深度补全任务。；Image Gen&Edit：论文核心贡献是提出一种用于自回归图像生成的新型分词器，旨在提升图像合成质量与效率，完全符合图像生成方法的定义。；Relighting：论文未涉及光照估计、反射率分解或新光照条件下的图像重渲染，其核心任务是基于文本或潜在变量的图像生成而非光照编辑。；Video Gen&Edit：论文专注于静态图像的自回归生成与分词机制，未涉及视频序列建模、时序一致性或视频编辑等视频生成相关任务。；World Model：论文未构建环境动态模型或交互式世界状态预测，仅关注静态图像内容的生成，不具备世界模型所需的物理或交互动态特性。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "Image Gen&Edit"
@@ -119223,6 +119894,18 @@
       "url": "https://ojs.aaai.org/index.php/AAAI/article/view/39378"
     },
     "conf-975e603d2a360f01ceeed7e4": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Mesh",
+          "Feed-Forward",
+          "Single-Image-to-3D"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "arxiv_id": "2507.02861",
       "authors": [
         "Zhening Huang",
@@ -119259,15 +119942,15 @@
       "topic_review": {
         "decisions": {
           "3D Gen&Recon": true,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "标题明确为“3D Scene Reconstruction”（3D场景重建），尽管摘要缺失，但标题直接指向3D重建主题。",
-        "reviewed_at": "2026-09-14T15:18:18+00:00"
+        "reason": "3D Gen&Recon：论文提出从RGB-D扫描重建3D场景的方法，包括场景解析、资产检索和材质恢复，属于3D重建与生成范畴，符合主题描述。；Depth Estimation：论文使用RGB-D扫描作为输入，深度是已知输入而非估计目标，核心贡献在于3D场景重建而非深度预测。；Image Gen&Edit：论文核心贡献是3D场景重建与资产检索，虽然涉及图像到3D的外观迁移，但主要目标不是2D图像生成或编辑，不符合该主题定义。；Relighting：虽然涉及材质恢复以支持物理渲染，但核心不是估计或转移光照，而是重建静态3D资产，不属于重光照主题。；Video Gen&Edit：论文处理的是静态RGB-D扫描数据，不涉及视频合成、编辑或时序生成，与视频生成主题完全无关。；World Model：论文旨在构建可交互的3D虚拟副本，而非学习环境动态或预测未来状态的生成式世界模型，缺乏时序预测核心机制。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "3D Gen&Recon"
@@ -123324,6 +124007,18 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Liu_One-2-3-45_Fast_Single_Image_to_3D_Objects_with_Consistent_Multi-View_CVPR_2024_paper.html"
     },
     "conf-9c4136ce464d47f43b32dea6": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Multi-View-to-3D",
+          "Gaussian Splatting",
+          "Feed-Forward"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "arxiv_id": "2609.05925",
       "authors": [
         "Muyu Xu",
@@ -123454,6 +124149,16 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Liu_Countering_Personalized_Text-to-Image_Generation_with_Influence_Watermarks_CVPR_2024_paper.html"
     },
     "conf-9c5ce56e4cab9e1b16256bc2": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Gaussian Splatting"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "conferences": [
         {
           "edition": "ECCV 2026",
@@ -123727,6 +124432,17 @@
       "url": "https://doi.org/10.1109/icra55743.2025.11128699"
     },
     "conf-9c8ca90748900670399b1e98": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Physics-Informed/Structured",
+          "World-Model Policy Learning"
+        ],
+        "topics": [
+          "World Model"
+        ]
+      },
       "conferences": [
         {
           "edition": "SIGGRAPH Asia 2025",
@@ -124581,6 +125297,17 @@
       "url": "https://doi.org/10.1109/iros58592.2024.10802237"
     },
     "conf-9d3b8fa09e37521c68f5e634": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Video Conditioned"
+        ],
+        "topics": [
+          "Video Gen&Edit"
+        ]
+      },
       "authors": [
         "Yuchen Xi",
         "Yuhan Guo",
@@ -124876,6 +125603,18 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Shirakawa_NoiseCollage_A_Layout-Aware_Text-to-Image_Diffusion_Model_Based_on_Noise_Cropping_CVPR_2024_paper.html"
     },
     "conf-9dd231df6c36620de590c27b": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Multi-View-to-3D",
+          "Gaussian Splatting",
+          "Optimization-Based"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "conferences": [
         {
           "edition": "SIGGRAPH 2026",
@@ -125118,6 +125857,16 @@
       "url": "https://openaccess.thecvf.com/content/ICCV2025/html/Li_Puppet-Master_Scaling_Interactive_Video_Generation_as_a_Motion_Prior_for_ICCV_2025_paper.html"
     },
     "conf-9e581eb102190658ae5c217d": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "authors": [
         "Mikhail Zhirnov",
         "Arsen Kuzhamuratov",
@@ -125854,6 +126603,18 @@
       "url": "https://doi.org/10.1109/icra55743.2025.11127553"
     },
     "conf-9f402907a6dd22a69341505d": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Gaussian Splatting",
+          "Object-Centric"
+        ],
+        "topics": [
+          "3D Gen&Recon",
+          "World Model"
+        ]
+      },
       "arxiv_id": "2404.07950",
       "authors": [
         "Jiaxu Wang",
@@ -125894,19 +126655,20 @@
       "title": "Reinforcement Learning with Generalizable Gaussian Splatting",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": true
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，仅凭标题“Reinforcement Learning with Generalizable Gaussian Splatting”无法判断其核心贡献是3D重建、生成还是强化学习策略，信息不足。",
-        "reviewed_at": "2026-09-14T15:38:48+00:00"
+        "reason": "3D Gen&Recon：论文提出可泛化的3D高斯泼溅框架作为环境表示，涉及3D场景的重建与表示技术，符合3D生成与重建主题。；Depth Estimation：论文未以深度估计为主要任务或贡献，虽3DGS隐含深度信息，但核心目标是强化学习表示，非深度预测。；Image Gen&Edit：论文核心贡献是提出用于强化学习的环境表示方法，并非图像生成或编辑技术，不符合该主题范围。；Relighting：论文未涉及光照估计、传输或编辑，其核心是几何表示与强化学习，与重光照主题无直接关联。；Video Gen&Edit：论文未涉及视频合成、编辑或生成方法，其重点在于3D场景表示在强化学习中的应用，与视频主题无关。；World Model：论文将3D高斯泼溅用于强化学习环境表示，构建可交互的环境模型，属于学习环境动态的世界模型范畴。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
-        "3D Gen&Recon"
+        "3D Gen&Recon",
+        "World Model"
       ],
       "url": "https://doi.org/10.1109/iros58592.2024.10801348"
     },
@@ -126300,6 +127062,18 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Chen_ArtAdapter_Text-to-Image_Style_Transfer_using_Multi-Level_Style_Encoder_and_Explicit_CVPR_2024_paper.html"
     },
     "conf-9fd908a61391e694d8d44ef7": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "State-Space/Recurrent",
+          "Language-Augmented Multimodal",
+          "Object-Centric"
+        ],
+        "topics": [
+          "World Model"
+        ]
+      },
       "arxiv_id": "2512.03454",
       "authors": [
         "Haicheng Liao",
@@ -126374,16 +127148,16 @@
       "title": "Think Before You Drive: World Model-Inspired Multimodal Grounding",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": true
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，仅凭标题“World Model-Inspired Multimodal Grounding”无法确定其核心贡献是生成、重建还是其他多模态任务，信息不足。",
-        "reviewed_at": "2026-09-14T15:13:27+00:00"
+        "reason": "3D Gen&Recon：论文利用3D空间关系进行推理，但并未进行3D场景重建、网格生成或新视角合成，核心任务仍是2D图像上的定位。；Depth Estimation：虽然涉及3D空间关系，但论文未直接预测深度图或进行深度估计，而是利用潜在状态进行空间推理以辅助目标定位。；Image Gen&Edit：论文核心贡献是自动驾驶中的多模态视觉定位与推理，并非图像生成或编辑方法，未涉及扩散模型或图像合成技术。；Relighting：论文未涉及光照估计、反射率恢复或重光照生成，其关注点在于空间关系推理和多模态定位，与重光照技术无关。；Video Gen&Edit：虽然涉及场景演化预测，但目标是定位目标物体而非生成视频内容，不属于视频合成或编辑的技术范畴。；World Model：论文提出空间感知世界模型SA-WM，通过蒸馏当前场景到潜在状态并滚动预测未来潜在状态，利用世界模型原理进行前瞻推理以解决定位歧义。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "World Model"
@@ -126515,6 +127289,19 @@
       "url": "https://papers.nips.cc/paper_files/paper/2024/hash/48fecef47b19fe501d27d338b6d52582-Abstract-Conference.html"
     },
     "conf-a008605659dbae9c581a981d": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Transformer",
+          "State-Space/Recurrent",
+          "Long-Horizon Generation"
+        ],
+        "topics": [
+          "Video Gen&Edit",
+          "World Model"
+        ]
+      },
       "authors": [
         "Park, Young-Jae",
         "Seo, Minseok",
@@ -126551,14 +127338,15 @@
           "Image Gen&Edit": false,
           "Relighting": false,
           "Video Gen&Edit": true,
-          "World Model": null
+          "World Model": true
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "标题明确提及“Video Prediction”（视频预测），属于视频生成或预测范畴，归入Video Gen&Edit。",
-        "reviewed_at": "2026-09-14T15:08:12+00:00"
+        "reason": "3D Gen&Recon：论文提出VideoTitans架构，核心贡献是结合滑动窗口注意力与记忆机制，旨在解决长序列视频预测的计算效率与精度问题。该任务属于时序视频预测，不涉及3D/4D物体的生成、重建、编辑或神经渲染，因此不符合3D Gen&Recon主题范围。；Depth Estimation：论文提出VideoTitans架构，核心贡献是结合滑动窗口注意力与记忆机制以高效进行视频预测。该任务属于时序视频生成与预测范畴，未涉及单目、立体或多视角深度估计方法，与当前主题范围不符。；Image Gen&Edit：论文核心贡献是提出VideoTitans架构用于视频预测，通过集成短期和长期记忆机制提升长序列预测效率。该任务属于视频预测或世界模型范畴，而非图像生成、编辑或文本到图像合成，因此不符合当前主题范围。；Relighting：论文提出VideoTitans架构，核心贡献是结合滑动窗口注意力与记忆机制以高效进行视频预测。该工作聚焦于时序动态建模与预测任务，未涉及光照估计、反射率或阴影生成，与Relighting主题无关。；Video Gen&Edit：论文提出VideoTitans用于视频预测，属于视频生成与编辑范畴，符合主题定义。；World Model：论文提出VideoTitans架构，通过集成短期与长期记忆机制实现可扩展的视频预测。该工作旨在准确预测未来视频帧，属于对物理动态环境的预测建模，符合世界模型中关于动作条件未来状态或环境动态预测的核心定义。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
-        "Video Gen&Edit"
+        "Video Gen&Edit",
+        "World Model"
       ],
       "url": "https://papers.nips.cc/paper_files/paper/2025/hash/905202e21386913d8eac637c2b50f590-Abstract-Conference.html"
     },
@@ -130042,6 +130830,18 @@
       "url": "https://eccv.ecva.net/virtual/2024/poster/1679"
     },
     "conf-a4806a5e531a93a7b999f7d4": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Geometric Matching",
+          "Multi-View",
+          "Metric Depth"
+        ],
+        "topics": [
+          "Depth Estimation"
+        ]
+      },
       "authors": [
         "Yunseok Yang",
         "Eunjin Son",
@@ -134817,6 +135617,17 @@
       "url": "https://sa2025.conference-schedule.org/?post_type=page&p=15&id=papers_2307&sess=sess140"
     },
     "conf-a96099e30026137802bceea5": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Reference Conditioning"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "arxiv_id": "2509.21989",
       "authors": [
         "Abdelrahman Eldesokey",
@@ -134850,16 +135661,16 @@
       "title": "Mind-the-Glitch: Visual Correspondence for Detecting Inconsistencies in Subject-Driven Generation",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，仅凭标题“Subject-Driven Generation”无法确定是图像、视频还是3D生成，信息不足。",
-        "reviewed_at": "2026-09-14T15:17:05+00:00"
+        "reason": "3D Gen&Recon：论文主要关注二维图像特征解耦与视觉对应，旨在检测图像生成中的视觉不一致，并未涉及三维物体生成、重建、神经辐射场或高斯泼溅等三维几何或场景表示技术，不符合三维生成与重建主题。；Depth Estimation：论文未进行单目、立体或多视图深度估计，也未预测度量或相对深度，其提出的视觉对应方法用于检测生成图像中的视觉不一致，而非恢复场景几何深度信息，因此不属于深度估计主题。；Image Gen&Edit：论文核心贡献是提出一种用于检测主体驱动图像生成中视觉不一致性的方法，通过解耦扩散模型特征并构建视觉对应关系，直接服务于图像生成质量评估与编辑控制，符合图像生成与编辑主题中关于可控生成及扩散模型方法的定义。；Relighting：论文未涉及光照估计、反射率恢复、阴影生成或新光照条件下的外观渲染，其核心贡献在于视觉特征解耦与不一致性检测，与重光照主题中关于照明、反射或外观生成的定义完全无关。；Video Gen&Edit：论文摘要明确提及基于主体驱动图像生成数据集构建图像对，且提出的视觉语义匹配指标针对图像生成中的不一致性，未涉及视频合成、视频编辑或时序动态建模，因此不属于视频生成与编辑主题。；World Model：论文利用预训练扩散模型作为特征提取器，但核心目标是构建视觉对应以评估生成图像的一致性，并未构建用于预测环境动态、物理规律或动作条件未来状态的世界模型，因此不属于世界模型主题。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "Image Gen&Edit"
@@ -136170,6 +136981,17 @@
       "url": "https://iclr.cc/virtual/2025/poster/29998"
     },
     "conf-ab03c3b982516abc8ace6bb7": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Transformer",
+          "Language-Augmented Multimodal"
+        ],
+        "topics": [
+          "World Model"
+        ]
+      },
       "arxiv_id": "2410.11448",
       "authors": [
         "Zhi Wang",
@@ -136218,16 +137040,16 @@
       "title": "Meta-DT: Offline Meta-RL as Conditional Sequence Modeling with World Model Disentanglement",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": true
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，仅凭标题“Offline Meta-RL... with World Model Disentanglement”无法确定其核心贡献是生成式世界模型还是强化学习中的状态预测，信息不足。",
-        "reviewed_at": "2026-09-14T15:28:08+00:00"
+        "reason": "3D Gen&Recon：论文核心贡献是提出Meta-DT，利用世界模型解耦进行离线元强化学习，旨在提升智能体在未见任务上的泛化能力。该工作属于强化学习与序列建模领域，不涉及3D/4D物体的生成、重建、编辑或神经渲染，与3D Gen&Recon主题范围无关。；Depth Estimation：论文未涉及单目、立体或多视图深度估计，其核心是强化学习中的策略泛化而非几何感知。；Image Gen&Edit：论文核心是离线元强化学习中的序列建模，不涉及图像生成、编辑或扩散模型等视觉合成技术。；Relighting：论文核心贡献是提出Meta-DT框架，利用世界模型解耦进行离线元强化学习。其关注点在于智能体在MuJoCo等环境中的任务泛化与序列建模，属于强化学习领域，不涉及光照估计、反射率或外观生成等重光照任务。；Video Gen&Edit：论文提出Meta-DT用于离线元强化学习，核心贡献是结合世界模型解耦与序列建模提升任务泛化。该工作属于强化学习算法研究，不涉及视频合成、编辑或生成式音视频方法，故不符合当前主题范围。；World Model：论文提出利用世界模型解耦学习紧凑任务表示，并作为条件注入因果Transformer以指导序列生成。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "World Model"
@@ -136983,6 +137805,18 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Xu_Stability-Driven_Motion_Generation_for_Object-Guided_Human-Human_Co-Manipulation_CVPR_2026_paper.html"
     },
     "conf-ac25dd59c8f150b0ca3293b8": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Multi-View-to-3D",
+          "Gaussian Splatting",
+          "Optimization-Based"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "authors": [
         "Binjian Xie",
         "Chenhui Shi",
@@ -140624,6 +141458,18 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Ling_ADFactory_An_Effective_Framework_for_Generalizing_Optical_Flow_with_NeRF_CVPR_2024_paper.html"
     },
     "conf-b077dd974c895c6cdc35553f": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Physics-Informed/Structured",
+          "Continuous Latents"
+        ],
+        "topics": [
+          "World Model"
+        ]
+      },
       "arxiv_id": "2505.09284",
       "authors": [
         "Panqi Chen",
@@ -140662,16 +141508,16 @@
       "title": "Generating Full-field Evolution of Physical Dynamics from Irregular Sparse Observations",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": true
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，仅凭标题“从不规则稀疏观测生成物理动力学全场演化”无法确定具体是视频生成、世界模型还是其他领域，信息不足。",
-        "reviewed_at": "2026-09-14T15:20:24+00:00"
+        "reason": "3D Gen&Recon：论文处理的是多维物理场数据，非三维几何结构、网格或场景重建，不符合3D重建定义。；Depth Estimation：论文提出SDIFT框架，利用功能Tucker空间和序列扩散模型从稀疏观测生成物理动力学全场演化。其核心贡献在于科学计算中的物理场重建与模拟，而非计算机视觉中的深度估计任务，与主题范围不符。；Image Gen&Edit：论文提出SDIFT框架，利用功能Tucker空间和序列扩散模型从稀疏观测生成物理动力学全场演化。其核心贡献在于科学计算中的物理场重建与模拟，而非图像合成、编辑或视觉生成方法，故不属于Image Gen&Edit主题。；Relighting：论文未涉及光照估计、反射率分解或重光照任务，与Relighting主题完全无关。；Video Gen&Edit：论文提出SDIFT框架，利用功能Tucker空间和序列扩散模型，从稀疏不规则观测中重建物理动力学全场演化。其核心贡献在于科学计算中的物理场重建与模拟，而非视频生成、编辑或动画制作，不属于视频生成与编辑主题范围。；World Model：论文利用扩散模型学习物理动力学演化规律，从稀疏观测生成完整场演化，符合世界模型定义。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "World Model"
@@ -141956,6 +142802,17 @@
       "url": "https://eccv.ecva.net/virtual/2024/poster/2522"
     },
     "conf-b1cc02f0369c990f0be6838f": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Text Conditioned"
+        ],
+        "topics": [
+          "Video Gen&Edit"
+        ]
+      },
       "arxiv_id": "2609.04283",
       "authors": [
         "Jiuzhou Lin",
@@ -142575,6 +143432,17 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Kim_Rethinking_Training_for_De-biasing_Text-to-Image_Generation_Unlocking_the_Potential_of_CVPR_2025_paper.html"
     },
     "conf-b2f1dc6d7940f060216ccb3f": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Gaussian Splatting",
+          "Optimization-Based"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "conferences": [
         {
           "edition": "ECCV 2026",
@@ -143756,6 +144624,18 @@
       "url": "https://eccv.ecva.net/virtual/2024/poster/665"
     },
     "conf-b468f6eeedc6cdd8a944e7ea": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "NeRF",
+          "Gaussian Splatting",
+          "Multi-View-to-3D"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "conferences": [
         {
           "edition": "ECCV 2026",
@@ -145007,6 +145887,17 @@
       "url": "https://icml.cc/virtual/2026/poster/63546"
     },
     "conf-b60b4c3a87ffaba26c4dbf24": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Audio/Multimodal Conditioned",
+          "Text Conditioned"
+        ],
+        "topics": [
+          "Video Gen&Edit"
+        ]
+      },
       "arxiv_id": "2606.29473",
       "authors": [
         "Kaiqi Liu",
@@ -145062,16 +145953,16 @@
       "title": "MAVIN: Multi-Shot Audio-Visual Generation with Customized Narrative Control",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": true,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，仅凭标题“Multi-Shot Audio-Visual Generation”虽暗示音视频生成，但缺乏具体技术细节和核心贡献描述，无法确切判断是否属于特定主题（如是否涉及3D或世界模型），故标记为null。",
-        "reviewed_at": "2026-09-14T15:03:55+00:00"
+        "reason": "3D Gen&Recon：论文未涉及3D或4D对象、场景、网格或神经辐射场的生成与重建，主要关注2D视频帧与音频的时序一致性，缺乏3D几何结构贡献。；Depth Estimation：论文未涉及单目、立体或多视图深度估计与预测，核心任务是音视频生成而非几何深度感知，因此不符合深度估计主题。；Image Gen&Edit：论文核心贡献是多镜头音视频生成框架，主要处理视频序列与音频的同步及叙事控制，并非针对静态图像合成或编辑任务，因此不符合该主题范围。；Relighting：论文未涉及光照估计、反射率恢复或新光照条件下的外观生成，主要关注多镜头叙事与身份一致性，与重光照技术无关。；Video Gen&Edit：论文提出MAVIN框架用于多镜头音视频生成，解决时间对齐、可控性及脚本生成问题，属于视频合成与生成式音视频方法，完全符合该主题定义。；World Model：论文旨在生成符合叙事控制的音视频内容，而非学习环境动态、物理规律或动作条件未来状态的预测模型，不属于世界模型范畴。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "Video Gen&Edit"
@@ -147089,6 +147980,17 @@
       "url": "https://eccv.ecva.net/virtual/2024/poster/1749"
     },
     "conf-b96f7fc70a0d517419f59f9e": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Gaussian Splatting",
+          "Optimization-Based"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "conferences": [
         {
           "edition": "ECCV 2026",
@@ -148314,6 +149216,17 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Turkulainen_Cross-View_Splatter_Feed-Forward_View_Synthesis_with_Georeferenced_Images_CVPR_2026_paper.html"
     },
     "conf-bc1a8681fb2f9294cd2f8085": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Imagination-Based Planning",
+          "World-Model Policy Learning"
+        ],
+        "topics": [
+          "World Model"
+        ]
+      },
       "arxiv_id": "2601.21306",
       "authors": [
         "Wei-Di Chang",
@@ -148367,11 +149280,11 @@
           "Image Gen&Edit": false,
           "Relighting": false,
           "Video Gen&Edit": false,
-          "World Model": null
+          "World Model": true
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "标题涉及基于模型的强化学习中的搜索难度，虽涉及模型但无摘要确认是否为生成式世界模型，信息不足。",
-        "reviewed_at": "2026-09-14T15:12:14+00:00"
+        "reason": "3D Gen&Recon：论文讨论的是抽象状态空间中的模型预测与搜索，未涉及三维物体、场景重建、神经辐射场或高斯泼溅等三维几何技术。；Depth Estimation：论文未涉及单目、立体或多视图深度估计任务，其模型预测的是强化学习中的状态转移而非几何深度信息。；Image Gen&Edit：论文核心贡献是模型强化学习中的搜索策略与价值函数偏差缓解，不涉及图像生成、编辑或扩散模型等视觉合成技术。；Relighting：内容完全集中在强化学习算法和搜索策略，未涉及光照估计、反射率恢复或新光照条件下的外观生成等重光照技术。；Video Gen&Edit：研究聚焦于强化学习中的决策搜索机制，未涉及视频合成、编辑或生成式音视频方法，与视频生成主题无关。；World Model：论文研究基于模型的强化学习，核心在于利用学习到的环境动态模型进行未来状态预测和规划，属于世界模型在决策中的应用。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "World Model"
@@ -153206,6 +154119,18 @@
       "url": "https://ojs.aaai.org/index.php/AAAI/article/view/32831"
     },
     "conf-c0fafc89841af140d832ac88": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Reference Conditioning",
+          "Diffusion",
+          "Autoregressive"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "authors": [
         "Jingxu Zhang",
         "Daneul Kim",
@@ -157979,6 +158904,18 @@
       "url": "https://eccv.ecva.net/virtual/2024/poster/907"
     },
     "conf-c6eabb0829c3facd216e8167": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Gaussian Splatting",
+          "Multi-View-to-3D",
+          "Optimization-Based"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "conferences": [
         {
           "edition": "ECCV 2026",
@@ -158036,6 +158973,17 @@
       "url": "https://eccv.ecva.net/virtual/2026/poster/5936"
     },
     "conf-c6f34815006f91eb60a3fdb1": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Implicit Field",
+          "Optimization-Based"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "arxiv_id": "2409.13486",
       "authors": [
         "Xutong Jin",
@@ -158071,19 +159019,19 @@
       "title": "DiffSound: Differentiable Modal Sound Rendering and Inverse Rendering for Diverse Inference Tasks",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，无法判断论文的具体主题归属。",
-        "reviewed_at": "2026-09-14T15:29:18+00:00"
+        "reason": "3D Gen&Recon：论文提出基于隐式形状表示的可微分声音渲染框架，并支持几何形状推理等逆问题求解，涉及3D形状的重建与推断。；Depth Estimation：论文未涉及单目、立体或多视角深度估计任务，其核心贡献在于声学物理模拟与形状推理，与深度估计无关。；Image Gen&Edit：论文核心是声音渲染与物理参数估计，不涉及图像合成、编辑或视觉生成任务，与图像生成主题无关。；Relighting：论文处理的是声学领域的声音渲染与逆渲染，而非光照、反射率或阴影等视觉重光照任务，领域不匹配。；Video Gen&Edit：论文关注音频信号的处理与物理模拟，未涉及视频生成、编辑或时序视觉内容创作，不符合视频生成主题。；World Model：论文聚焦于特定物理对象的声音模拟与参数估计，并非构建通用的环境动态预测或交互式世界模型。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
-        "Relighting"
+        "3D Gen&Recon"
       ],
       "url": "https://s2024.conference-program.org/presentation/?id=papers_922&sess=sess145"
     },
@@ -160074,6 +161022,17 @@
       "url": "https://eccv.ecva.net/virtual/2024/poster/2514"
     },
     "conf-c9576dc8543cca30e7f10d7c": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "GAN"
+        ],
+        "topics": [
+          "3D Gen&Recon",
+          "Image Gen&Edit"
+        ]
+      },
       "arxiv_id": "2312.00739",
       "authors": [
         "Min Wei",
@@ -160120,18 +161079,19 @@
       "title": "Adversarial Score Distillation: When score distillation meets GAN",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，仅凭标题“对抗分数蒸馏”无法判断其具体应用于图像、视频还是3D生成，信息不足。",
-        "reviewed_at": "2026-09-14T15:43:13+00:00"
+        "reason": "3D Gen&Recon：核心贡献是改进分数蒸馏采样，并在文本到三维生成任务中展示优越性能，符合三维生成定义。；Depth Estimation：方法目标是优化生成质量而非预测深度图，未包含单目、立体或深度补全等深度估计任务。；Image Gen&Edit：论文提出对抗分数蒸馏方法，并在图像编辑任务中验证了泛化能力，属于图像生成与编辑范畴。；Relighting：论文未涉及光照估计、反射率恢复或新光照条件下的外观生成，与重光照技术无直接关联。；Video Gen&Edit：摘要仅提及二维蒸馏和文本到三维任务，未涉及视频合成、编辑或时序生成相关技术贡献。；World Model：研究聚焦于基于分数的蒸馏优化机制，未构建环境动力学模型或交互式世界状态预测系统。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
+        "3D Gen&Recon",
         "Image Gen&Edit"
       ],
       "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Wei_Adversarial_Score_Distillation_When_score_distillation_meets_GAN_CVPR_2024_paper.html"
@@ -161354,20 +162314,18 @@
       "title": "Video Diffusion Models Excel at Tracking Similar-Looking Objects Without Supervision",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，仅凭标题“Video Diffusion Models Excel at Tracking...”无法确定其核心是视频生成还是利用视频模型进行跟踪分析，信息不足。",
-        "reviewed_at": "2026-09-14T15:13:27+00:00"
+        "reason": "3D Gen&Recon：论文关注的是二维图像序列中的目标跟踪与运动区分，未涉及三维物体生成、重建、网格或神经辐射场等技术贡献。；Depth Estimation：论文主要解决视觉相似物体的跟踪问题，未涉及单目、立体或多视图深度估计、深度补全或度量深度预测等任务。；Image Gen&Edit：论文核心贡献是利用视频扩散模型的运动表征进行无监督目标跟踪，并非图像生成或编辑方法，不符合该主题范围。；Relighting：论文内容完全涉及目标跟踪与运动表征，未涉及光照估计、反射率恢复或新光照条件下的外观生成等重光照任务。；Video Gen&Edit：虽然使用了视频扩散模型，但目的是提取运动特征用于跟踪任务，而非进行视频合成、生成或编辑，不属于视频生成主题。；World Model：论文利用扩散模型去噪过程中的运动隔离特性进行跟踪，未构建可交互的环境动力学模型或预测未来状态的世界模型。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
-      "topics": [
-        "Video Gen&Edit"
-      ],
+      "topics": [],
       "url": "https://papers.nips.cc/paper_files/paper/2025/hash/396446770f5e8496ca1feb02079d4fb7-Abstract-Conference.html"
     },
     "conf-cad7fd34d9988c928154ac8a": {
@@ -162277,6 +163235,17 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Luo_DMAligner_Enhancing_Image_Alignment_via_Diffusion_Model_Based_View_Synthesis_CVPR_2026_paper.html"
     },
     "conf-cb98cb600a1785e577cbfa7a": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Gaussian Splatting",
+          "Optimization-Based"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "conferences": [
         {
           "edition": "ECCV 2026",
@@ -165900,6 +166869,16 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Li_When_StyleGAN_Meets_Stable_Diffusion_a_W_Adapter_for_Personalized_CVPR_2024_paper.html"
     },
     "conf-cfe6b48274315577db8fe60c": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Gaussian Splatting"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "conferences": [
         {
           "edition": "ECCV 2026",
@@ -166363,6 +167342,17 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Zhang_Towards_Decompositional_Human_Motion_Generation_with_Energy-Based_Diffusion_Models_CVPR_2026_paper.html"
     },
     "conf-d038694787775f8e4cd794d3": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Gaussian Splatting",
+          "Multi-View-to-3D"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "arxiv_id": "2403.11577",
       "authors": [
         "Quentin Herau",
@@ -166403,16 +167393,16 @@
       "title": "3DGS-Calib: 3D Gaussian Splatting for Multimodal SpatioTemporal Calibration",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，仅凭标题“3D Gaussian Splatting for Multimodal SpatioTemporal Calibration”无法确定其核心是重建、生成还是其他应用，信息不足。",
-        "reviewed_at": "2026-09-14T15:38:48+00:00"
+        "reason": "3D Gen&Recon：论文使用3D高斯泼溅构建场景表示以进行标定，涉及3D场景重建与神经渲染技术，属于3D生成与重建范畴内的方法应用。；Depth Estimation：虽然3D高斯泼溅可隐含深度信息，但论文核心目标是传感器标定而非直接预测单目或立体深度图，未将深度估计作为主要贡献。；Image Gen&Edit：论文核心贡献是利用3D高斯泼溅进行多模态时空标定，而非图像生成或编辑，不涉及文本到图像或图像修复等任务。；Relighting：论文关注的是多模态传感器的时空对齐与标定，不涉及光照估计、反射率恢复或新光照下的外观生成等重光照任务。；Video Gen&Edit：论文旨在解决传感器标定问题，虽然涉及视频序列数据，但核心并非视频合成、生成或编辑，不符合该主题定义。；World Model：论文未构建预测环境动态或交互世界的生成模型，仅利用3D表示进行静态或准静态的传感器参数估计，不属于世界模型。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "3D Gen&Recon"
@@ -166618,6 +167608,17 @@
       "url": "https://eccv.ecva.net/virtual/2026/poster/5604"
     },
     "conf-d0722253a0df9c7d6b890213": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Text Conditioned"
+        ],
+        "topics": [
+          "Video Gen&Edit"
+        ]
+      },
       "arxiv_id": "2412.09389",
       "authors": [
         "Delong Liu",
@@ -166667,16 +167668,16 @@
       "title": "UFO: Enhancing Diffusion-Based Video Generation with a Uniform Frame Organizer",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": true,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，仅凭标题“UFO: Enhancing Diffusion-Based Video Generation...”虽暗示视频生成，但缺乏具体方法细节以确认其是否属于核心生成方法还是其他辅助技术，且通常此类标题若无摘要支持，需谨慎判断，但根据标题明确提及“Video Generation”，倾向于Video Gen&Edit。然而，根据指令“信息不足用null”，且摘要完全缺失，无法验证其核心贡献是否仅为生成，故标记为null以保守处理，或者根据标题强信号标记为true。重新审视：标题明确说“Enhancing... Video Generation”，这通常意味着核心贡献是改进视频生成。但为了严格遵守“信息不足用null”且摘要为空，这里存在歧义。通常标题足够明确时可不判null。但对比其他有摘要的，这篇没有。让我们看标题：“Enhancing Diffusion-Based...",
-        "reviewed_at": "2026-09-14T15:24:29+00:00"
+        "reason": "3D Gen&Recon：论文未涉及3D几何重建、多视图合成或3D资产生成，仅关注2D视频帧的生成质量与一致性，不符合3D主题定义。；Depth Estimation：论文未进行深度图预测、单目或立体深度估计，也未利用深度信息作为核心条件，完全不属于深度估计任务范畴。；Image Gen&Edit：论文核心贡献是视频生成中的帧一致性优化，虽然基于扩散模型，但主要解决视频时序问题而非静态图像生成或编辑。；Relighting：论文未涉及光照估计、反射率恢复或新光照条件下的渲染，核心贡献在于视频帧间一致性与美学质量，与重光照无关。；Video Gen&Edit：论文提出UFO插件用于增强基于扩散的视频生成模型，直接针对视频生成中的时序一致性和质量下降问题，属于视频生成方法。；World Model：论文未构建可交互的环境动力学模型或预测未来状态，仅作为视频生成插件提升视觉质量，不具备世界模型的核心特征。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "Video Gen&Edit"
@@ -173702,6 +174703,19 @@
       "url": "https://proceedings.mlr.press/v267/shen25g.html"
     },
     "conf-d95790435352977b30e6f665": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Transformer",
+          "Text Conditioning"
+        ],
+        "topics": [
+          "Image Gen&Edit",
+          "World Model"
+        ]
+      },
       "arxiv_id": "2605.24631",
       "authors": [
         "Sol Park",
@@ -173748,19 +174762,20 @@
       "title": "Beyond Generative Priors: Minority Sampling with JEPA-Guided Diffusion",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": true
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，仅凭标题“Beyond Generative Priors: Minority Sampling with JEPA-Guided Diffusion”无法确定具体应用领域（如图像、视频或3D），信息不足。",
-        "reviewed_at": "2026-09-14T15:05:08+00:00"
+        "reason": "3D Gen&Recon：论文聚焦于二维图像数据流形上的少数样本生成，未涉及三维对象、场景、网格或神经辐射场等三维几何结构的生成、重建或编辑，与三维生成与重建主题无关。；Depth Estimation：论文主要关注图像内容的生成与采样策略，未涉及单目、立体或多视图深度估计、深度补全或深度预测等任务，与深度估计主题的核心内容完全不符。；Image Gen&Edit：论文核心贡献是提出一种基于扩散模型的图像生成采样框架，旨在生成低密度的少数样本，并在无条件、类别条件及文本到图像生成任务上进行了广泛实验验证，符合图像合成与可控生成的主题定义。；Relighting：论文讨论的是数据流形上的密度采样与语义稀有性，未涉及光照估计、反射率恢复、阴影生成或新光照条件下的外观渲染等重光照相关技术，因此不属于重光照主题。；Video Gen&Edit：摘要中明确列出的实验场景包括无条件、类别条件以及文本到图像生成，未提及任何视频合成、视频编辑或时序视频生成的任务或方法，因此不符合视频生成与编辑的主题范围。；World Model：论文引入联合嵌入预测架构作为世界模型来引导扩散采样，利用其编码的语义丰富表示定义现实世界中的稀有性，这种利用世界模型表征进行生成引导的方法符合世界模型主题中关于学习环境动态或语义表征的定义。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
-        "Image Gen&Edit"
+        "Image Gen&Edit",
+        "World Model"
       ],
       "url": "https://icml.cc/virtual/2026/poster/63949"
     },
@@ -175120,6 +176135,17 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Lee_DiSR-NeRF_Diffusion-Guided_View-Consistent_Super-Resolution_NeRF_CVPR_2024_paper.html"
     },
     "conf-dabc9b3506fb90708e5e79da": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Latent Dynamics",
+          "Long-Horizon Generation"
+        ],
+        "topics": [
+          "Video Gen&Edit"
+        ]
+      },
       "authors": [
         "Zile Huang",
         "Ser-nam Lim"
@@ -177940,6 +178966,17 @@
       "url": "https://iclr.cc/virtual/2026/poster/10009951"
     },
     "conf-dea473fd399784a2cdae63eb": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Autoregressive",
+          "Text Conditioning"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "arxiv_id": "2505.04116",
       "authors": [
         "Yu Cheng",
@@ -177988,16 +179025,16 @@
       "title": "RFNNS: Robust Fixed Neural Network Steganography with Universal Text-to-Image Models",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": true,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，标题提及“基于通用文本到图像模型的鲁棒固定神经网络隐写术”，虽涉及T2I模型，但核心任务是隐写术（Steganography），不属于生成或编辑方法本身，且无摘要确认其是否主要贡献在生成技术改进，信息不足。",
-        "reviewed_at": "2026-09-14T15:20:24+00:00"
+        "reason": "3D Gen&Recon：论文未涉及三维对象、场景或几何结构的生成与重建，其核心任务局限于二维图像空间的隐写通信，与三维主题无关。；Depth Estimation：论文未进行单目、立体或多视角深度估计，其方法关注图像隐写中的视觉质量保持与攻击鲁棒性，不涉及深度预测任务。；Image Gen&Edit：论文核心贡献是提出一种基于固定神经网络的图像隐写方法，利用文本到图像生成模型产生载体图像，并通过扰动嵌入秘密信息，属于图像生成与编辑范畴内的安全应用。；Relighting：论文未涉及光照估计、传输或编辑，其核心贡献在于图像隐写中的信息嵌入与提取鲁棒性，与重光照主题无技术关联。；Video Gen&Edit：论文仅涉及静态图像的隐写与生成，未涉及视频合成、编辑或时序建模，不符合视频生成与编辑主题的定义范围。；World Model：论文未构建学习环境动态或预测未来状态的世界模型，其方法聚焦于图像隐写中的扰动生成与鲁棒性提升，不涉及交互式世界建模。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "Image Gen&Edit"
@@ -179202,6 +180239,17 @@
       "url": "https://eccv.ecva.net/virtual/2024/poster/2388"
     },
     "conf-df99244e4186c5d87d9d6cb8": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Autoregressive"
+        ],
+        "topics": [
+          "Video Gen&Edit"
+        ]
+      },
       "arxiv_id": "2401.06146",
       "authors": [
         "Tianyu Li",
@@ -179248,16 +180296,16 @@
       "title": "AAMDM: Accelerated Auto-regressive Motion Diffusion Model",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": true,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，仅凭标题“加速自回归运动扩散模型”无法确定具体应用领域（如图像、视频或3D），信息不足。",
-        "reviewed_at": "2026-09-14T15:43:13+00:00"
+        "reason": "3D Gen&Recon：论文提出AAMDM用于加速自回归运动扩散模型，核心贡献是生成高质量且多样的角色动画序列。该任务属于时序动作生成，未涉及3D物体、场景或网格的生成、重建及神经渲染，不符合3D Gen&Recon主题范围。；Depth Estimation：论文提出AAMDM用于加速自回归运动扩散模型，核心贡献是提升动作合成的质量、多样性与效率。该研究聚焦于动画生成与游戏交互，不涉及单目、立体或度量深度估计任务，与当前主题范围无关。；Image Gen&Edit：论文提出AAMDM用于加速自回归运动扩散模型，核心贡献是提升动作合成的质量、多样性与效率。该研究聚焦于人体动作生成，属于视频或3D生成领域，而非图像生成或编辑，故不符合当前主题范围。；Relighting：论文核心贡献是提出加速自回归运动扩散模型用于交互式动作合成。该研究聚焦于游戏和虚拟现实中的动画生成，旨在提升运动质量与效率，不涉及光照估计、反射率或阴影生成，与重光照主题无关。；Video Gen&Edit：论文提出AAMDM用于加速自回归运动扩散模型，核心贡献是结合DDGAN与自回归扩散实现高效运动合成。该任务属于动画生成范畴，符合视频生成与编辑主题中关于动画方法的定义。；World Model：论文核心贡献是提出加速自回归运动扩散模型，用于生成高质量且多样的角色动画。该任务属于特定动作序列的生成，并非对环境物理动态或交互世界进行建模，不符合世界模型主题范围。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "Video Gen&Edit"
@@ -182700,6 +183748,18 @@
       "url": "https://ras.papercept.net/conferences/conferences/ICRA26/program/ICRA26_ContentListWeb_3.html#4601"
     },
     "conf-e3829b0d2cd6f23ee940ae28": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Gaussian Splatting",
+          "Multi-View-to-3D",
+          "Optimization-Based"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "conferences": [
         {
           "edition": "ECCV 2026",
@@ -184345,6 +185405,16 @@
       "url": "https://ojs.aaai.org/index.php/AAAI/article/view/38131"
     },
     "conf-e556446549d46b0f4cd307c6": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Text Conditioning"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "conferences": [
         {
           "edition": "ECCV 2026",
@@ -189321,6 +190391,16 @@
       "url": "https://eccv.ecva.net/virtual/2026/poster/3671"
     },
     "conf-ec10edddb6c7c70b51783d73": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Text Conditioning"
+        ],
+        "topics": [
+          "Image Gen&Edit"
+        ]
+      },
       "conferences": [
         {
           "edition": "ECCV 2026",
@@ -193933,6 +195013,18 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Liu_Depth_Hypothesis_Guided_Iterative_Refinement_for_Event-Image_Monocular_Depth_Estimation_CVPR_2026_paper.html"
     },
     "conf-f1cc83075991af58e20adb1f": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Joint Embedding",
+          "Physics-Informed/Structured",
+          "Continuous Latents"
+        ],
+        "topics": [
+          "World Model"
+        ]
+      },
       "conferences": [
         {
           "edition": "ECCV 2026",
@@ -196608,6 +197700,17 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2025/html/Kumar_DynaMoDe-NeRF_Motion-aware_Deblurring_Neural_Radiance_Field_for_Dynamic_Scenes_CVPR_2025_paper.html"
     },
     "conf-f5a04f8e4310f4bfbeb308c5": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Diffusion",
+          "Video Conditioned"
+        ],
+        "topics": [
+          "Video Gen&Edit"
+        ]
+      },
       "arxiv_id": "2412.09026",
       "authors": [
         "Hang Zhou",
@@ -196659,19 +197762,18 @@
       "title": "Video Anomaly Detection with Motion and Appearance Guided Patch Diffusion Model",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": true,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，仅凭标题“Video Anomaly Detection”（视频异常检测）无法确定其核心贡献是生成、编辑还是检测，且异常检测通常不属于生成或重建主题，信息不足。",
-        "reviewed_at": "2026-09-14T15:24:29+00:00"
+        "reason": "3D Gen&Recon：论文处理的是二维视频序列的异常检测，未涉及三维几何重建、三维资产生成或三维场景编辑，缺乏三维空间结构建模的技术贡献，不符合三维生成与重建主题。；Depth Estimation：论文未进行单目、立体或多视角深度估计，也未输出深度图或视差图，其技术贡献集中在视频帧的生成与异常检测，不符合深度估计主题。；Image Gen&Edit：论文核心任务是视频异常检测，虽然使用了扩散模型，但生成对象是视频帧而非静态图像，且未涉及图像编辑或文本到图像生成，不符合图像生成与编辑主题的核心定义。；Relighting：论文未涉及光照估计、反射率恢复或新光照条件下的外观生成，核心关注点是视频内容中的异常行为检测，与重光照主题完全无关。；Video Gen&Edit：论文提出了一种基于补丁的扩散模型，将视频异常检测建模为生成问题，通过恢复正常视频模式来识别异常，核心贡献在于视频帧的生成与预测方法，符合视频生成与编辑主题中关于视频合成的定义。；World Model：虽然模型预测未来帧，但其目的是检测异常而非学习可交互的环境动力学或物理规律，未构建用于规划或控制的世界模型，不符合世界模型主题中关于环境动力学预测的核心要求。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
-        "Image Gen&Edit",
         "Video Gen&Edit"
       ],
       "url": "https://ojs.aaai.org/index.php/AAAI/article/view/33169"
@@ -197829,6 +198931,18 @@
       "url": "https://papers.nips.cc/paper_files/paper/2024/hash/d75660d6eb0ce31360c768fef85301dd-Abstract-Conference.html"
     },
     "conf-f7216e5fd6d6f1e519c8b710": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Single-Image-to-3D",
+          "Gaussian Splatting",
+          "Procedural"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "conferences": [
         {
           "edition": "SIGGRAPH Asia 2025",
@@ -199533,6 +200647,17 @@
       "url": "https://openaccess.thecvf.com/content/CVPR2026/html/Ferreira_SpiderCam_Low-Power_Snapshot_Depth_from_Differential_Defocus_CVPR_2026_paper.html"
     },
     "conf-f9b01e819d84f4845ea0c348": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "Single-Image-to-3D",
+          "Procedural"
+        ],
+        "topics": [
+          "3D Gen&Recon"
+        ]
+      },
       "arxiv_id": "2404.15228",
       "authors": [
         "Peter Kulits",
@@ -199583,19 +200708,19 @@
       "title": "Re-Thinking Inverse Graphics With Large Language Models",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": true,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": false
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要为空，仅凭标题“Re-Thinking Inverse Graphics With Large Language Models”无法确定其具体是涉及图像、视频还是3D的逆图形学任务，信息不足。",
-        "reviewed_at": "2026-09-14T15:36:21+00:00"
+        "reason": "3D Gen&Recon：论文提出从图像反演3D场景表示，属于3D重建范畴，通过LLM解码视觉嵌入生成结构化3D场景描述。；Depth Estimation：论文目标是反演完整3D场景变量，而非直接预测深度图，深度仅是3D重建的副产品，非核心任务。；Image Gen&Edit：论文核心是逆向图形学，旨在从图像反演物理变量，而非生成新图像或编辑现有图像内容，不符合图像生成主题。；Relighting：虽涉及材质和颜色反演，但核心是整体3D场景逆向图形学，未专门针对重光照或光照估计进行技术贡献。；Video Gen&Edit：摘要未提及视频生成、编辑或时序动态建模，仅关注静态图像的逆向解析，与视频生成编辑主题完全无关。；World Model：虽然利用LLM世界知识，但目标是静态场景逆向解析而非预测未来状态或交互动力学，不属于世界模型主题。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
-        "Relighting"
+        "3D Gen&Recon"
       ],
       "url": "https://iclr.cc/virtual/2025/poster/31472"
     },
@@ -202803,6 +203928,16 @@
       "url": "https://ras.papercept.net/conferences/conferences/IROS25/program/IROS25_ContentListWeb_1.html#3128"
     },
     "conf-fe42407f75ece64eeab06c2e": {
+      "annotation": {
+        "institutions": [],
+        "paper_type": "paper",
+        "tags": [
+          "State-Space/Recurrent"
+        ],
+        "topics": [
+          "World Model"
+        ]
+      },
       "arxiv_id": "2402.12527",
       "authors": [
         "Anya Sims",
@@ -202850,16 +203985,16 @@
       "title": "The Edge-of-Reach Problem in Offline Model-Based Reinforcement Learning",
       "topic_review": {
         "decisions": {
-          "3D Gen&Recon": null,
-          "Depth Estimation": null,
-          "Image Gen&Edit": null,
-          "Relighting": null,
-          "Video Gen&Edit": null,
-          "World Model": null
+          "3D Gen&Recon": false,
+          "Depth Estimation": false,
+          "Image Gen&Edit": false,
+          "Relighting": false,
+          "Video Gen&Edit": false,
+          "World Model": true
         },
         "model": "PaperReader-Qwen3.8",
-        "reason": "摘要缺失，仅凭标题“离线基于模型的强化学习中的边缘可达性问题”无法确定其是否涉及给定的视觉生成或重建主题，信息不足。",
-        "reviewed_at": "2026-09-14T15:40:24+00:00"
+        "reason": "3D Gen&Recon：论文讨论的是抽象状态空间中的动力学模型，而非三维几何重建、网格生成或神经辐射场等三维视觉内容生成与重建方法。；Depth Estimation：研究不涉及单目、立体或多视图深度估计，也未使用深度图作为输入或输出，与深度感知任务无直接关联。；Image Gen&Edit：论文核心贡献是离线强化学习中的动力学模型误差分析与价值学习算法，不涉及图像生成、编辑或扩散模型等视觉合成技术。；Relighting：内容完全集中在强化学习理论分析与算法设计，未涉及光照估计、反射率恢复或新光照条件下的外观生成等重光照技术。；Video Gen&Edit：研究聚焦于强化学习代理在离线数据上的训练与评估，未涉及视频合成、图像到视频转换或视频编辑等生成式视觉任务。；World Model：论文深入分析了基于模型的强化学习中动力学模型（即世界模型）的局限性，提出了边缘可达性问题并设计了针对世界模型改进的鲁棒价值学习方法。",
+        "reviewed_at": "2026-09-15T19:49:15+00:00"
       },
       "topics": [
         "World Model"
