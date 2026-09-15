@@ -173,13 +173,20 @@ def body_tags(item, material, directory, labels, args):
         if error.code != 'annotation_tags_missing':
             raise
     from papers.summaries.extraction import extract_introduction
-    if item['source'] == 'arXiv':
+    linked_id = item['id'] if item['source'] == 'arXiv' else item['record'].get('arxiv_id')
+    source = None
+    if linked_id:
         client = ArxivSourceClient()
         try:
-            source = client.acquire(item['id'], item['title'])
+            source = client.acquire(linked_id, item['title'])
+            extract_introduction(source.document)
+        except PaperSummaryError:
+            if item['source'] == 'arXiv':
+                raise
+            source = None
         finally:
             client.session.close()
-    else:
+    if source is None:
         source, _ = acquire_conference_paper(item['record'], directory)
     enriched = {**material, 'abstract':source.document.abstract,
                 'introduction':extract_introduction(source.document)}
