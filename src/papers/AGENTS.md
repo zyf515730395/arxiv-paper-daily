@@ -1,6 +1,7 @@
 # Paper pipeline rules
 
 - Targeted evidence recovery may use operator-verified author abstracts or official conference descriptions saved in its private frozen scope. Record the original URL, raw evidence path and SHA-256; verify the file digest on replay. Distinguish schedule descriptions from paper abstracts and retain title-version evidence for renamed papers. Missing abstract tags may be retried against the identity-checked paper introduction; never manufacture tags or lower evidence checks.
+- When copied evidence fails because PDF text contains line-break artifacts, the local model may select numbered source spans instead. Save the exact span table and selections, validate each index and taxonomy limit, and derive quotations only from the selected original spans. Empty selections remain unresolved.
 
 - Cloud collection treats exhausted HTTP 429 as a collection-wide pause: retain incomplete-topic cursors, save completed topics, emit a local JSON report, and return a nonzero CLI status. Scheduled catch-up runs skip when every topic has completed the current UTC day. Never report a deferred collection as successful or advance incomplete cursors.
 
