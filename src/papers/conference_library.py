@@ -15,6 +15,17 @@ from shared.site_shell import render_site_page
 LIBRARY = ROOT / 'content/papers/conference-library.json'
 
 
+def conference_annotation(record):
+    from papers.annotations.catalog import (load_annotation_definitions, load_topic_tag_allowlists,
+        annotation_from_value, filter_annotation_for_topics)
+    if not record.get('annotation'):
+        return None
+    labels = load_annotation_definitions(ROOT / 'config/site.yaml')
+    allowlists = load_topic_tag_allowlists(ROOT / 'config/site.yaml', labels)
+    value = annotation_from_value(record['id'], record['annotation'], labels)
+    return filter_annotation_for_topics(value, labels, allowlists, record['topics'])
+
+
 def load_library(path: Path = LIBRARY) -> dict:
     if not path.exists():
         return {'version': 1, 'papers': {}}
@@ -33,6 +44,8 @@ def validate_library(value: dict) -> dict:
                 or not record.get('url', '').startswith('https://')):
             raise ValueError('Invalid conference library record')
         display_id(record)
+        if record.get('annotation'):
+            conference_annotation(record)
     return value
 
 
@@ -74,6 +87,7 @@ def library_rows(library: dict, archive: dict, ledger: dict) -> list[dict]:
         if record.get('arxiv_id') in ids or title in titles:
             continue
         parts = [int(part) for part in record['published'].split('-')]
+        annotation = conference_annotation(record)
         rows.append({
             'id': record['id'], 'display_id': display_id(record), 'title': record['title'],
             'date': date(parts[0], parts[1] if len(parts) > 1 else 1, parts[2] if len(parts) > 2 else 1),
@@ -81,8 +95,10 @@ def library_rows(library: dict, archive: dict, ledger: dict) -> list[dict]:
             'date_source': record.get('date_source', {}),
             'paper_url': 'https://arxiv.org/abs/' + record['arxiv_id'] if record.get('arxiv_id') else record['url'],
             'authors': record.get('authors', ''), 'code_url': None,
-            'topics': tuple(record['topics']), 'tags': (), 'institutions': (),
-            'paper_type': 'paper', 'annotation_status': 'pending', 'summary_pending': True,
+            'topics': tuple(record['topics']), 'tags': annotation.tags if annotation else (),
+            'institutions': annotation.institutions if annotation else (),
+            'paper_type': annotation.paper_type if annotation else 'paper',
+            'annotation_status': 'ready' if annotation and annotation.tags else 'pending', 'summary_pending': True,
             'conferences': record['conferences'],
         })
         if record.get('arxiv_id'):
