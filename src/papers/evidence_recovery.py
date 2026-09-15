@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import copy
+import hashlib
 import json
 import threading
 import time
@@ -51,15 +52,30 @@ def complete_short_reviews(material, labels, allowlists, args, result, receipt):
                 raise PaperSummaryError('invalid_review','single-topic rationale remains incomplete')
             system += '\n上次理由不足40字符。请完整解释核心贡献和主题关联，至少60字符。'
     retained = [t for t,v in decisions.items() if v['accept'] is not False]
-    annotation = r.filter_annotation_for_topics(annotation,labels,allowlists,retained)
+    if retained:
+        annotation = r.filter_annotation_for_topics(annotation,labels,allowlists,retained)
     if any(v['accept'] is True for v in decisions.values()) and not annotation.tags:
         allowed = r.annotation_labels_for_topics(labels,allowlists,retained)
-        annotation = r.replace(annotation,tags=r.evidence_tags(material,allowed,args))
+        try:
+            annotation = r.replace(annotation,tags=r.evidence_tags(material,allowed,args))
+        except PaperSummaryError as error:
+            if error.code != 'annotation_tags_missing':
+                raise
     return decisions, annotation
 
 
 def official_abstract(item, directory):
     directory.mkdir(parents=True, exist_ok=True)
+    if item.get('verified_material'):
+        # Private, operator-verified author/publisher evidence. Preserve identity
+        # and the original URL in the frozen scope instead of changing catalog IDs.
+        value = item['verified_material']
+        if value.get('id') != item['id'] or value.get('title') != item['title']:
+            raise PaperSummaryError('paper_identity_mismatch', 'recovered evidence identity changed')
+        raw_path = (paths.ROOT / value['raw_path']).resolve()
+        if not raw_path.is_relative_to((paths.ROOT/'build').resolve()) or hashlib.sha256(raw_path.read_bytes()).hexdigest() != value['raw_sha256']:
+            raise PaperSummaryError('source_identity_changed', 'private recovered source changed')
+        return copy.deepcopy(value)
     if item['source'] == 'arXiv':
         client = ArxivSourceClient()
         try:
@@ -100,6 +116,23 @@ def official_abstract(item, directory):
     source, _ = acquire_conference_paper(record, directory)
     return {'id': item['id'], 'title': item['title'], 'abstract': source.document.abstract,
             'source_url': record['url'], 'basis': 'identity_verified_full_text'}
+
+
+def body_tags(item, material, directory, labels, args):
+    """Use the verified paper body when its abstract cannot substantiate tags."""
+    from papers.summaries.extraction import extract_introduction
+    if item['source'] == 'arXiv':
+        client = ArxivSourceClient()
+        try:
+            source = client.acquire(item['id'], item['title'])
+        finally:
+            client.session.close()
+    else:
+        source, _ = acquire_conference_paper(item['record'], directory)
+    enriched = {**material, 'abstract':source.document.abstract,
+                'introduction':extract_introduction(source.document)}
+    r.atomic_write_json(directory/'tag-material.json', enriched)
+    return r.evidence_tags(enriched, labels, args)
 
 
 def work(item, directory, labels, allowlists, args):
@@ -143,8 +176,17 @@ def work(item, directory, labels, allowlists, args):
             result['status'] = 'uncertain' if any(v['accept'] is None for v in decisions.values()) else 'ready'
             if accepted and not annotation.tags:
                 result['status'] = 'annotation_tags_missing'
+                retained = [t for t,v in decisions.items() if v['accept'] is not False]
+                annotation = r.replace(annotation,tags=body_tags(item,material,directory/'sources'/item['id'],
+                    r.annotation_labels_for_topics(labels,allowlists,retained),args))
+                result.update(annotation=annotation_value(annotation),status='uncertain' if any(v['accept'] is None for v in decisions.values()) else 'ready')
         else:
-            tags = r.evidence_tags(material, allowed, args)
+            try:
+                tags = r.evidence_tags(material, allowed, args)
+            except PaperSummaryError as error:
+                if error.code != 'annotation_tags_missing':
+                    raise
+                tags = body_tags(item,material,directory/'sources'/item['id'],allowed,args)
             value = {'topics': item['topics'], 'tags': list(tags), 'paper_type': item.get('paper_type','paper'), 'institutions': []}
             result.update(annotation=annotation_value(annotation_from_value(item['id'], value, labels)), status='ready')
     except Exception as error:

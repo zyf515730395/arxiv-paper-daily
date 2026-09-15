@@ -1,5 +1,7 @@
 # Paper pipeline rules
 
+- Targeted evidence recovery may use operator-verified author abstracts or official conference descriptions saved in its private frozen scope. Record the original URL, raw evidence path and SHA-256; verify the file digest on replay. Distinguish schedule descriptions from paper abstracts and retain title-version evidence for renamed papers. Missing abstract tags may be retried against the identity-checked paper introduction; never manufacture tags or lower evidence checks.
+
 - Cloud collection treats exhausted HTTP 429 as a collection-wide pause: retain incomplete-topic cursors, save completed topics, emit a local JSON report, and return a nonzero CLI status. Scheduled catch-up runs skip when every topic has completed the current UTC day. Never report a deferred collection as successful or advance incomplete cursors.
 
 - Conference attribution comes from `content/papers/conference-papers.json`, a versioned catalog of official accepted-paper lists from configured editions since 2024. `proceedings.py` owns collection and deterministic matching. Never infer acceptance from topic, author affiliation, submission, or fuzzy title similarity. Keep failed/pending editions explicit and preserve previously collected lists on fetch failure. Raw responses and coverage reports belong under ignored `build/conferences/`.
