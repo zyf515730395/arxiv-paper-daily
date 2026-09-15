@@ -254,8 +254,10 @@ def infer_review(system, material, labels, args, record_attempt=None):
             record_attempt(attempts)
         try:
             decisions, annotation = parse_review(raw, material['id'], material['requested_topics'], labels)
-            if any(len(value['reason'].strip()) < 40 for value in decisions.values()):
-                raise ValueError('incomplete review rationale')
+            short_reasons = {topic: len(value['reason'].strip()) for topic, value in decisions.items()
+                             if len(value['reason'].strip()) < 40}
+            if short_reasons:
+                raise ValueError('Each reason requires at least 40 characters; write 60-100 evidence-backed characters. Short reasons: ' + json.dumps(short_reasons, ensure_ascii=False))
             _, allowlists, _ = taxonomy()
             retained_topics = [topic for topic, value in decisions.items() if value['accept'] is not False]
             if retained_topics:
@@ -277,12 +279,12 @@ def infer_review(system, material, labels, args, record_attempt=None):
             return decisions, annotation, attempts
         except (PaperSummaryError, LoopbackChatError):
             raise
-        except (ValueError, PaperAnnotationError):
+        except (ValueError, PaperAnnotationError) as error:
             if attempt:
                 raise PaperSummaryError('invalid_review', 'model JSON failed validation twice') from None
             example = {'decisions': {t: {'accept': None, 'reason': '填写证据判断理由'} for t in material['requested_topics']},
                        'annotation': {'topics': [], 'tags': [], 'paper_type': 'paper', 'institutions': []}}
-            messages.append({'role': 'user', 'content': '上次响应格式不合法。请重新判断并输出合法 JSON；decisions 和 annotation 必须是两个并列顶层字段。结构示例（示例值不是判断结果）：' + json.dumps(example, ensure_ascii=False)})
+            messages.append({'role': 'user', 'content': '具体校验问题：' + str(error)[:1000] + '\n请基于原始证据重新判断并输出完整合法 JSON；decisions 和 annotation 必须是两个并列顶层字段。结构示例（示例值不是判断结果）：' + json.dumps(example, ensure_ascii=False)})
 
 
 def refresh_source(client, source, title):
