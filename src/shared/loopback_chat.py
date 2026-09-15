@@ -6,6 +6,8 @@ import http.client
 import ipaddress
 import json
 import socket
+
+from .inference_budget import InferenceBudget
 from typing import Mapping, Sequence
 from urllib.parse import SplitResult, urlsplit
 
@@ -174,54 +176,59 @@ class LoopbackChatTransport:
             self._host, self._port, timeout=float(timeout)
         )
         try:
-            connection.connect()
-            validate_connected_peer(connection)
-            connection.request(
-                "POST",
-                "/v1/chat/completions",
-                body=payload,
-                headers={
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                },
-            )
-            response = connection.getresponse()
-            if 300 <= response.status < 400:
-                raise LoopbackChatError(
-                    "model_redirect", "local model service returned a redirect"
+            budget = InferenceBudget()
+        except ValueError as error:
+            raise LoopbackChatError('model_runtime_environment', str(error)) from None
+        with budget.request():
+            try:
+                connection.connect()
+                validate_connected_peer(connection)
+                connection.request(
+                    "POST",
+                    "/v1/chat/completions",
+                    body=payload,
+                    headers={
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                    },
                 )
-            if response.status != 200:
-                raise LoopbackChatError(
-                    "model_http_error",
-                    "local model service returned a non-success status",
-                )
-            length = response.getheader("Content-Length")
-            if length is not None:
-                try:
-                    parsed_length = int(length)
-                except ValueError:
+                response = connection.getresponse()
+                if 300 <= response.status < 400:
                     raise LoopbackChatError(
-                        "model_response_invalid",
-                        "local model response length is invalid",
-                    ) from None
-                if parsed_length > self._max_response_bytes:
-                    raise LoopbackChatError(
-                        "model_response_too_large",
-                        "local model response exceeds the size boundary",
+                        "model_redirect", "local model service returned a redirect"
                     )
-            body = response.read(self._max_response_bytes + 1)
-        except LoopbackChatError:
-            raise
-        except (TimeoutError, socket.timeout):
-            raise LoopbackChatError(
-                "model_timeout", "local model service timed out"
-            ) from None
-        except (OSError, http.client.HTTPException):
-            raise LoopbackChatError(
-                "model_unavailable", "local model service is unavailable"
-            ) from None
-        finally:
-            connection.close()
+                if response.status != 200:
+                    raise LoopbackChatError(
+                        "model_http_error",
+                        "local model service returned a non-success status",
+                    )
+                length = response.getheader("Content-Length")
+                if length is not None:
+                    try:
+                        parsed_length = int(length)
+                    except ValueError:
+                        raise LoopbackChatError(
+                            "model_response_invalid",
+                            "local model response length is invalid",
+                        ) from None
+                    if parsed_length > self._max_response_bytes:
+                        raise LoopbackChatError(
+                            "model_response_too_large",
+                            "local model response exceeds the size boundary",
+                        )
+                body = response.read(self._max_response_bytes + 1)
+            except LoopbackChatError:
+                raise
+            except (TimeoutError, socket.timeout):
+                raise LoopbackChatError(
+                    "model_timeout", "local model service timed out"
+                ) from None
+            except (OSError, http.client.HTTPException):
+                raise LoopbackChatError(
+                    "model_unavailable", "local model service is unavailable"
+                ) from None
+            finally:
+                connection.close()
         if len(body) > self._max_response_bytes:
             raise LoopbackChatError(
                 "model_response_too_large",

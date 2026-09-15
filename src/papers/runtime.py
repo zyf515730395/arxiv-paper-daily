@@ -25,12 +25,10 @@ PUBLIC = ('content/papers/archive.json', 'content/papers/arxiv-candidates.json',
 PRIVATE = paths.ROOT / 'build/paper-summaries'
 ZONE = ZoneInfo('Asia/Shanghai')
 BACKFILL_BATCH_SIZE = 100
-BACKFILL_PAPERS_PER_PUBLISH = 500
-BACKFILL_BATCHES_PER_PUBLISH = BACKFILL_PAPERS_PER_PUBLISH // BACKFILL_BATCH_SIZE
-BACKFILL_REST_SECONDS = 30 * 60
 GIT_PUSH_TIMEOUT_SECONDS = 5 * 60
 GIT_PUSH_RETRY_SECONDS = 60
 GIT_SSH_COMMAND = 'ssh -o ServerAliveInterval=15 -o ServerAliveCountMax=4'
+PENDING_PUSH = PRIVATE / 'pending-runtime-push.json'
 
 
 class RetryableGitPush(RuntimeError):
@@ -52,11 +50,11 @@ def _origin_is_ancestor():
                    check=False).returncode == 0
 
 
-def _push_main_once(*, timeout=GIT_PUSH_TIMEOUT_SECONDS):
+def _push_main_once(commit, *, timeout=GIT_PUSH_TIMEOUT_SECONDS):
     environment = os.environ.copy()
     environment['GIT_SSH_COMMAND'] = GIT_SSH_COMMAND
     process = subprocess.Popen(
-        ('git', 'push', 'origin', 'main'), cwd=paths.ROOT, env=environment,
+        ('git', 'push', 'origin', f'{commit}:refs/heads/main'), cwd=paths.ROOT, env=environment,
         start_new_session=True,
     )
     try:
@@ -79,10 +77,17 @@ def _push_main_once(*, timeout=GIT_PUSH_TIMEOUT_SECONDS):
 def _push_main():
     if (PRIVATE / 'recheck/local-only.json').exists():
         raise RuntimeError('local recheck review is active; remote publication is disabled')
-    _push_main_once()
+    receipt = json.loads(PENDING_PUSH.read_text(encoding='utf-8'))
+    commit = receipt.get('commit')
+    base = receipt.get('base')
+    if (not commit or not base or git('rev-parse', 'HEAD', capture=True) != commit
+            or git('rev-parse', f'{commit}^', capture=True) != base):
+        raise RuntimeError('Publication history changed; preserve concurrent task commits for review')
+    _push_main_once(commit)
     git('fetch', 'origin', 'main')
-    if git('rev-parse', 'HEAD', capture=True) != git('rev-parse', 'origin/main', capture=True):
+    if commit != git('rev-parse', 'origin/main', capture=True):
         raise RetryableGitPush('git push was not confirmed by origin/main; completed commit retained for retry')
+    PENDING_PUSH.unlink(missing_ok=True)
 
 
 def clean_pull():
@@ -97,7 +102,10 @@ def clean_pull():
     if git('rev-parse', 'HEAD', capture=True) != git('rev-parse', 'origin/main', capture=True):
         if not _origin_is_ancestor():
             raise RuntimeError('local main and origin/main diverged; preserve both histories for review')
-        print('Recovering clean local commits that were not confirmed by origin/main', flush=True)
+        receipt = json.loads(PENDING_PUSH.read_text(encoding='utf-8')) if PENDING_PUSH.exists() else {}
+        if receipt.get('commit') != git('rev-parse', 'HEAD', capture=True):
+            raise RuntimeError('Local commits await explicit publication; another maintenance job must not push them')
+        print('Recovering this runtime publication from its pending push receipt', flush=True)
         _push_main()
         recovered = True
     git('var', 'GIT_AUTHOR_IDENT', capture=True)
@@ -109,11 +117,13 @@ def allowed_path(path):
                if item.endswith('/') else path == item for item in PUBLIC)
 
 
-def publish(mode):
+def publish(mode, *, expected_head):
     if (PRIVATE / 'recheck/local-only.json').exists():
         command(sys.executable, '-m', 'papers', 'build')
         print('Local review: built results; Git publication remains disabled', flush=True)
         return
+    if git('branch', '--show-current', capture=True) != 'main' or git('rev-parse', 'HEAD', capture=True) != expected_head:
+        raise RuntimeError('Another task changed the branch or committed during inference; preserve both results for review')
     # No untracked or unrelated file can hitchhike in an automatic commit.
     names = git('diff', '--name-only', capture=True).splitlines()
     staged = git('diff', '--cached', '--name-only', capture=True).splitlines()
@@ -141,7 +151,14 @@ def publish(mode):
     if not git('diff', '--cached', '--name-only', capture=True):
         print('No public changes', flush=True)
         return
+    if git('branch', '--show-current', capture=True) != 'main' or git('rev-parse', 'HEAD', capture=True) != expected_head:
+        raise RuntimeError('Publication base changed during build; preserve the staged results for review')
     git('commit', '-m', f'Publish {mode} paper results for {datetime.now(ZONE):%Y-%m-%d}')
+    from papers.candidate_ledger import atomic_write_json
+    commit = git('rev-parse', 'HEAD', capture=True)
+    if git('rev-parse', f'{commit}^', capture=True) != expected_head:
+        raise RuntimeError('Concurrent commit detected; local results retained without pushing')
+    atomic_write_json(PENDING_PUSH, {'commit': commit, 'base': expected_head})
     _push_main()
 
 
@@ -211,8 +228,9 @@ def in_weekend_window(now=None):
 
 def execute(mode, args):
     recovered_push = clean_pull()
+    expected_head = git('rev-parse', 'origin/main', capture=True)
     if mode == 'backfill' and recovered_push:
-        print('Recovered prior publication push; preserving the normal backfill rest boundary', flush=True)
+        print('Recovered prior publication push', flush=True)
         return 0
     with model_service(args.service) as model:
         common = ['--model', model, '--workers', str(args.workers), '--timeout', str(args.timeout)]
@@ -221,7 +239,9 @@ def execute(mode, args):
         else:
             from datetime import timedelta
             now = datetime.now(ZONE)
-            batch_count = BACKFILL_BATCHES_PER_PUBLISH if mode == 'backfill' else 1
+            # Release runtime.lock after each checkpoint batch. Publication
+            # batching never imposes a paper-count-based inference rest.
+            batch_count = 1
             command_args = [sys.executable, '-m', 'papers', 'batch',
                             '--batch-size', str(BACKFILL_BATCH_SIZE),
                             '--max-batches', str(batch_count), '--batch-pause', '0', *common]
@@ -241,10 +261,12 @@ def execute(mode, args):
             if LIBRARY.exists():
                 from papers.conference_intake import summarize, rules
                 # The daily owner already holds runtime.lock; finish a small queue slice.
-                summarize(limit=rules()['conference_intake']['summary_batch_size'],
-                          timeout=args.timeout, model=model, runtime_owned=True)
+                conference_result = summarize(limit=rules()['conference_intake']['summary_batch_size'],
+                                              timeout=args.timeout, model=model, runtime_owned=True)
+                if conference_result.get('counts', {}).get('failed'):
+                    result.returncode = 3
                 command(sys.executable, '-m', 'papers', 'build')
-        publish(mode)
+        publish(mode, expected_head=expected_head)
         return result.returncode
 
 
@@ -264,9 +286,9 @@ def main(argv=None):
     if args.dry_run:
         print(json.dumps({'mode': effective_mode, 'workers': args.workers, 'timeout': args.timeout,
                           'limit': args.limit, 'weekend_window': in_weekend_window(),
-                          'papers_per_publish': BACKFILL_PAPERS_PER_PUBLISH,
-                          'batches_per_publish': BACKFILL_BATCHES_PER_PUBLISH,
-                          'rest_seconds': BACKFILL_REST_SECONDS, 'public_paths': PUBLIC}))
+                          'checkpoint_batch_size': BACKFILL_BATCH_SIZE,
+                          'inference_run_seconds': 7200, 'inference_rest_seconds': 600,
+                          'public_paths': PUBLIC}))
         return 0
     if sys.platform != 'linux':
         parser.error('run this command inside WSL')
@@ -301,12 +323,10 @@ def main(argv=None):
                 state = load_state()
                 if state is None:
                     if recovery_cycle_pending():
-                        time.sleep(BACKFILL_REST_SECONDS)
                         continue
                     return result
                 if state.get('network_paused') or state['phase'] == 'summarize':
                     return 3
-                time.sleep(BACKFILL_REST_SECONDS)
         return 0
     except KeyboardInterrupt:
         print('Stopped; completed caches and batch checkpoint retained', flush=True)
