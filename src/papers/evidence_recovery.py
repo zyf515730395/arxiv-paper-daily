@@ -59,11 +59,14 @@ def official_abstract(item, directory):
 def work(item, directory, labels, allowlists, args):
     receipt = directory / (item['id'] + '.json')
     fingerprint = r.digest({'item': item, 'config': paths.CONFIG.read_text(encoding='utf-8'), 'model': args.model})
+    old = None
     if receipt.exists():
         old = r.read(receipt)
-        if old.get('fingerprint') == fingerprint and 'status' in old:
+        if old.get('fingerprint') == fingerprint and 'status' in old and (old['status'] == 'ready' or not getattr(args, 'retry_failed', False)):
             return old
     result = {'id': item['id'], 'source': item['source'], 'fingerprint': fingerprint, 'item': item}
+    if old is not None:
+        result['previous_result'] = old
     try:
         with SOURCE_LOCK:
             time.sleep(3)
@@ -104,11 +107,12 @@ def main():
     parser.add_argument('--review-list', type=Path, required=True)
     parser.add_argument('--month', default='2026-09')
     parser.add_argument('--apply', action='store_true')
+    parser.add_argument('--retry-failed', action='store_true')
     args = parser.parse_args()
     r.RUN_NAME = 'evidence-recovery-20260916'
     directory = paths.ROOT / 'build/paper-summaries/evidence-recovery-20260916'
     directory.mkdir(parents=True, exist_ok=True)
-    model_args = SimpleNamespace(model=r.DEFAULT_MODEL, base_url='http://127.0.0.1:8000/v1', timeout=900)
+    model_args = SimpleNamespace(model=r.DEFAULT_MODEL, base_url='http://127.0.0.1:8000/v1', timeout=900, retry_failed=args.retry_failed)
     with runtime.lock('recheck-owner.lock'), runtime.lock('runtime.lock'):
         with r.run_lock():
             original = {k:r.read(p) for k,p in r.targets().items()}
@@ -131,7 +135,10 @@ def main():
         for key,record in original['library']['papers'].items():
             if record['topics'] and record['published'].startswith(args.month) and not record.get('annotation',{}).get('tags') and key not in items:
                 items[key] = {'id':key,'title':record['title'],'url':record['url'],'source':'会议','review':False,'topics':record['topics'],'record':record}
-        r.atomic_write_json(directory/'scope.json', list(items.values()))
+        if (directory/'scope.json').exists():
+            items = {item['id']:item for item in r.read(directory/'scope.json')}
+        else:
+            r.atomic_write_json(directory/'scope.json', list(items.values()))
         with runtime.model_service('vllm-paper.service') as model:
             if model != model_args.model: raise ValueError('wrong registered model')
             with ThreadPoolExecutor(max_workers=4) as pool:

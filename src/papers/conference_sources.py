@@ -91,7 +91,7 @@ def _page_details(raw: bytes, url: str, title: str) -> dict:
         metadata['doi'] = doi
     abstract = meta.get('citation_abstract', '')
     if not abstract:
-        node = soup.select_one('#abstract, .abstract, .abstract-content')
+        node = soup.select_one('#abstract, .abstract, .abstract-content, .paper-abstract')
         if node:
             abstract = node.get_text(' ', strip=True)
     links = [meta.get('citation_pdf_url', '')]
