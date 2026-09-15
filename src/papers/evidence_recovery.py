@@ -144,7 +144,7 @@ def main():
             item=result['item']; key=item['id']
             if item['source']=='arXiv':
                 if item['review']:
-                    after['archive'],after['ledger'],after['annotations']['papers']=r.transform(after['archive'],after['ledger'],after['annotations']['papers'],[result])
+                    after['archive'],after['ledger'],after['annotations']['papers']=r.apply_records(after['archive'],after['ledger'],after['annotations']['papers'],[result])
                 else:
                     previous=after['annotations']['papers'].get(key,{})
                     value=result['annotation']; value['institutions']=previous.get('institutions',[])
