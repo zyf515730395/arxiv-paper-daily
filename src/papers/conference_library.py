@@ -23,6 +23,10 @@ def conference_annotation(record):
     labels = load_annotation_definitions(ROOT / 'config/site.yaml')
     allowlists = load_topic_tag_allowlists(ROOT / 'config/site.yaml', labels)
     value = annotation_from_value(record['id'], record['annotation'], labels)
+    if not record['topics']:
+        # Excluded records retain historical annotations for audit; library_rows
+        # omits them, so no active-topic tag allowlist is applicable.
+        return value
     return filter_annotation_for_topics(value, labels, allowlists, record['topics'])
 
 
