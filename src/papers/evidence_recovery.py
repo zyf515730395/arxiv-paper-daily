@@ -38,6 +38,16 @@ def official_abstract(item, directory):
         finally:
             client.session.close()
     record = item['record']
+    if record.get('arxiv_id'):
+        linked_id = record['arxiv_id']
+        try:
+            evidence = official_abstract({'source':'arXiv', 'id':linked_id,
+                'title':item['title'], 'url':'https://arxiv.org/abs/'+linked_id}, directory)
+            evidence['id'] = item['id']
+            return evidence
+        except PaperSummaryError:
+            # The independent publisher route still requires its own title check.
+            pass
     try:
         raw, kind, final = _download(record['url'], directory)
         if 'html' in kind:
@@ -62,7 +72,8 @@ def work(item, directory, labels, allowlists, args):
     old = None
     if receipt.exists():
         old = r.read(receipt)
-        if old.get('fingerprint') == fingerprint and 'status' in old and (old['status'] == 'ready' or not getattr(args, 'retry_failed', False)):
+        retry = getattr(args, 'retry_failed', False) and (not getattr(args, 'retry_status', []) or old.get('status') in args.retry_status)
+        if old.get('fingerprint') == fingerprint and 'status' in old and (old['status'] == 'ready' or not retry):
             return old
     result = {'id': item['id'], 'source': item['source'], 'fingerprint': fingerprint, 'item': item}
     if old is not None:
@@ -108,11 +119,12 @@ def main():
     parser.add_argument('--month', default='2026-09')
     parser.add_argument('--apply', action='store_true')
     parser.add_argument('--retry-failed', action='store_true')
+    parser.add_argument('--retry-status', action='append', default=[])
     args = parser.parse_args()
     r.RUN_NAME = 'evidence-recovery-20260916'
     directory = paths.ROOT / 'build/paper-summaries/evidence-recovery-20260916'
     directory.mkdir(parents=True, exist_ok=True)
-    model_args = SimpleNamespace(model=r.DEFAULT_MODEL, base_url='http://127.0.0.1:8000/v1', timeout=900, retry_failed=args.retry_failed)
+    model_args = SimpleNamespace(model=r.DEFAULT_MODEL, base_url='http://127.0.0.1:8000/v1', timeout=900, retry_failed=args.retry_failed, retry_status=args.retry_status)
     with runtime.lock('recheck-owner.lock'), runtime.lock('runtime.lock'):
         with r.run_lock():
             original = {k:r.read(p) for k,p in r.targets().items()}
